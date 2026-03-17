@@ -1,0 +1,169 @@
+/* ─── NAVBAR CONTAINER ─── */
+.adv-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(19, 33, 71, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ─── LOGO ─── */
+.adv-navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.adv-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adv-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.adv-logo-wordmark {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.adv-logo-wordmark span {
+  color: #22c55e;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline !important;
+}
+
+.adv-logo-sub {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ─── DESKTOP LINKS ─── */
+.adv-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adv-nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.adv-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  text-decoration: none;
+}
+
+.adv-nav-btn {
+  padding: 9px 22px;
+  border-radius: 50px;
+  background: #22c55e;
+  border: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: 4px;
+}
+
+.adv-nav-btn:hover {
+  background: #16a34a;
+}
+
+/* ─── HAMBURGER ─── */
+.adv-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.adv-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #22c55e;
+  border-radius: 2px;
+  /* override global span styles */
+  background-color: #22c55e !important;
+  width: 22px !important;
+  height: 2px !important;
+}
+
+/* ─── MODAL LOGO ─── */
+.adv-modal-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.adv-modal-logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.adv-modal-logo-text span {
+  color: #22c55e;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline !important;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .adv-navbar { padding: 0 20px; }
+  .adv-navbar-links { display: none; }
+  .adv-hamburger { display: flex; }
+}
+
+@media (max-width: 767px) {
+  .adv-navbar { height: 60px; padding: 0 16px; }
+  .adv-logo-wordmark { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .adv-navbar { padding: 0 16px; height: 56px; }
+  .adv-navbar-logo img { height: 28px; }
+  .adv-navbar-links { gap: 12px; }
+  .adv-navbar-links a { font-size: 12px; }
+}

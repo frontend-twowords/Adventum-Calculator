@@ -1,0 +1,61 @@
+<div class="container" style="margin-top: 100px;">
+  <div class="row mt-30" id="firstMain">
+    <div class="col-md-6 col-6">
+      <img id="Logo" class="wd125" src={{logo}} alt="logo">
+    </div>
+    <div class="col-md-6 col-12 bread-p text-right">
+      <p class="mb-1">{{HeaderText}}</p>
+      <p class="mb-0">{{validation.getCurrentDateWithSpecificFormat()}}</p>
+    </div>
+  </div>
+
+  <div class="row mt-30" id="secondMain">
+    <div class="col-md-5" id="forth">
+      <h2 class="head-text">Hi there,<br /> Lets get you started.</h2>
+      <p class="intro-text">{{HeaderContent}}</p>
+
+    </div>
+
+    <div class="col-md-7" id="fifth">
+      <h5 class="mb-4">
+        <b class="questyle ">
+          Which UK city are you investing in?
+        </b>
+      </h5>
+      <select [(ngModel)]="PropertyLondon" id="PropertyLondon">
+        <option value="">Select</option>
+        <option value="1">London</option>
+        <option value="2">Liverpool, Manchester, Birmingham</option>
+        <option value="3">Others</option>
+
+      </select>
+
+    <div class="col-md-12 text-right mobile-center mt-4 pr0">
+
+        <button type="submit" class="btn submit-btn " [ngClass]="PropertyLondon==''?'btn-default':'btn-success'"
+          (click)="next()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4" id="thirdMain">
+    <div class="mapcontainer">
+      <app-googlemap [MapClassLoad]="MapLoad" [latitude]="lat" [longitude]="long"></app-googlemap>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row" id="progressPerc">
+    <div class="col-md-12 p0">
+      <progress-bar [progress]="(Pincode!==''?6.25:0)+(City!==''?6.25:0)+(PropertyValue!==''?6.25:0)"
+        [color]="'#488aff'">
+      </progress-bar>
+      <label
+        class="float-right p-rec">{{(Pincode!==''?6.25:0)+(City!==''?6.25:0)+(PropertyValue!==''?6.25:0) | number:'1.0-0'}}%
+        data recieved</label>
+
+    </div>
+
+  </div>
+</div>

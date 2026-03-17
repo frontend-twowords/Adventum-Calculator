@@ -1,0 +1,199 @@
+<!-- Capital Growth Result — dark navy theme matching reference HTML -->
+<div class="cgr-page" id="contentToConvert">
+
+  <!-- ── Header ── -->
+  <div class="cgr-header">
+    <div class="cgr-header-top">
+      <div class="cgr-title-row">
+        <div class="cgr-accent-bar"></div>
+        <div>
+          <h1 class="cgr-title">Results</h1>
+          <p class="cgr-subtitle">The results calculated according to the values entered.</p>
+        </div>
+      </div>
+      <div class="cgr-header-btns noprint">
+        <button class="cgr-btn-sm" (click)="startagain()">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button class="cgr-btn-sm" (click)="emailpopup()">
+          <img src="/assets/Icon.svg" width="14" height="14" alt="">
+          Share
+        </button>
+        <button class="cgr-btn-green" (click)="startagain()">Recalculate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── KPI Row ── -->
+  <div class="cgr-kpi-row">
+
+    <!-- KPI 1: Total Return % (featured) -->
+    <div class="cgr-kpi cgr-kpi--featured">
+      <div class="cgr-kpi__icon-wrap">
+        <div class="cgr-icon-blob1"></div>
+        <div class="cgr-icon-blob2"></div>
+        <img src="/assets/7c900b49323732ed7b943a957d4c6d2d6807882d.png" alt="">
+      </div>
+      <div class="cgr-kpi__inner">
+        <div class="cgr-kpi-lbl">Total {{calcData?.homecurrencyText}} Return</div>
+        <div class="cgr-kpi-val">{{CaptitalGrowthinHomeCurrencyArray[CaptitalGrowthinHomeCurrencyArray.length-1]?.toFixed(1)}}%</div>
+        <div class="cgr-kpi-note">Over {{investedTenure}} Years</div>
+      </div>
+    </div>
+
+    <!-- KPI 2: Initial Investment -->
+    <div class="cgr-kpi">
+      <div class="cgr-kpi__icon-wrap">
+        <div class="cgr-icon-blob1"></div>
+        <div class="cgr-icon-blob2"></div>
+        <img src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
+      </div>
+      <div class="cgr-kpi__inner">
+        <div class="cgr-kpi-lbl">Initial (GBP)</div>
+        <div class="cgr-kpi-val">{{propertyValue | currency:'GBP':'symbol':'1.0-0'}}</div>
+        <div class="cgr-kpi-note">{{formatCurrency(propertyValueHomeCurrency, calcData?.homecurrencyText)}}</div>
+      </div>
+    </div>
+
+    <!-- KPI 3: Exit Value -->
+    <div class="cgr-kpi">
+      <div class="cgr-kpi__icon-wrap">
+        <div class="cgr-icon-blob1"></div>
+        <div class="cgr-icon-blob2"></div>
+        <img src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
+      </div>
+      <div class="cgr-kpi__inner">
+        <div class="cgr-kpi-lbl">Exit (GBP)</div>
+        <div class="cgr-kpi-val">{{calculatedCapitalGrowth | currency:'GBP':'symbol':'1.0-0'}}</div>
+        <div class="cgr-kpi-note">{{formatCurrency(CaptitalGrowthinHomeCurrency, calcData?.homecurrencyText)}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Scrollable body ── -->
+  <div class="cgr-body">
+
+    <!-- Card 1: Your Assumptions -->
+    <div class="cgr-card">
+      <div class="cgr-card-title">Your Assumptions</div>
+      <div class="cgr-card-sub">All assumptions used in this calculation</div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">City</span>
+        <span class="cgr-assumption-val">{{calcData?.City || 'UK'}}</span>
+      </div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">Property Value</span>
+        <span class="cgr-assumption-val">{{propertyValue | currency:'GBP':'symbol':'1.0-0'}}</span>
+      </div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">Capital Growth p.a.</span>
+        <span class="cgr-assumption-val">{{calcData?.capitalgrowth}}%</span>
+      </div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">FX Growth p.a.</span>
+        <span class="cgr-assumption-val">{{calcData?.fxgrowth}}%</span>
+      </div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">Investment Period</span>
+        <span class="cgr-assumption-val">{{investedTenure}} years</span>
+      </div>
+      <div class="cgr-assumption-row">
+        <span class="cgr-assumption-lbl">Home Currency</span>
+        <span class="cgr-assumption-val">{{calcData?.homecurrencyText}}</span>
+      </div>
+      <div class="cgr-assumption-row cgr-assumption-row--last">
+        <span class="cgr-assumption-lbl">Exchange Rate</span>
+        <span class="cgr-assumption-val">{{calcData?.homecurrency}} {{calcData?.homecurrencyText}}/£</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Growth Over Time chart -->
+    <div class="cgr-card">
+      <div class="cgr-card-title">Growth Over Time</div>
+      <div class="cgr-card-sub">Cumulative percentage appreciation year by year</div>
+      <div class="cgr-chart-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="cgr-chart-legend">
+        <span class="cgr-legend-item">
+          <span class="cgr-legend-line cgr-legend-line--gbp"></span>
+          GBP Growth
+        </span>
+        <span class="cgr-legend-item">
+          <span class="cgr-legend-line cgr-legend-line--fx"></span>
+          {{calcData?.homecurrencyText}} Growth (incl. FX)
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 3: Year-by-Year table -->
+    <div class="cgr-card">
+      <div class="cgr-card-title">Year-by-Year Values</div>
+      <div style="overflow-x:auto">
+        <table class="cgr-table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>GBP Value</th>
+              <th>{{calcData?.homecurrencyText}} Value</th>
+              <th>GBP Growth</th>
+              <th>{{calcData?.homecurrencyText}} Growth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let yr of calculatedCapitalGrowtharray; let i=index">
+              <td class="cgr-table-year">{{i+1}}</td>
+              <td class="cgr-table-val">{{gbpValuesArray[i] | currency:'GBP':'symbol':'1.0-0'}}</td>
+              <td class="cgr-table-val">{{formatCurrency(homeCurrencyValuesArray[i], calcData?.homecurrencyText)}}</td>
+              <td class="cgr-table-pos">+{{yr.toFixed(1)}}%</td>
+              <td class="cgr-table-pos">+{{CaptitalGrowthinHomeCurrencyArray[i].toFixed(1)}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Sticky footer ── -->
+  <div class="rp-footer noprint">
+    <button class="rp-footer-btn rp-footer-back" (click)="startagain()">
+      <img src="/assets/Icon (1).svg" width="8" height="14" alt="">
+      Back
+    </button>
+    <button class="rp-footer-btn rp-footer-share" (click)="emailpopup()">
+      <img src="/assets/Icon.svg" width="15" height="15" alt="">
+      Share Report
+    </button>
+    <button class="rp-footer-btn rp-footer-recalc" (click)="startagain()">Recalculate</button>
+  </div>
+
+</div>
+
+<!-- Share Modal -->
+<div class="modal fade noprint" id="myModal">
+  <div class="modal-dialog">
+    <div class="cgr-modal-content">
+      <div class="cgr-modal-header">
+        <h5>Share Report</h5>
+        <button class="cgr-modal-close" (click)="cancel()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="cgr-modal-body">
+        <label class="cgr-modal-label">Recipient email addresses (comma-separated, max 5)</label>
+        <input type="email" class="cgr-modal-input" placeholder="e.g. joe@example.com, jane@example.com"
+          [(ngModel)]="Email" autocomplete="off">
+      </div>
+      <div class="cgr-modal-footer">
+        <button class="cgr-modal-cancel" id="cancelbtn" (click)="cancel()">Cancel</button>
+        <button class="cgr-modal-send" (click)="shareReport()">
+          <span *ngIf="loadingSharebtn"><i class="fa fa-spin fa-spinner"></i> Sending...</span>
+          <span *ngIf="!loadingSharebtn">Send Report</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

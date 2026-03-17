@@ -1,0 +1,194 @@
+<!-- CURRENCY & GROWTH PAGE -->
+<div class="assumptions-page">
+
+  <!-- LEFT PANEL -->
+  <div class="panel-left">
+    <div class="panel-left-bg"></div>
+    <div class="panel-left-content">
+
+      <!-- Logo -->
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Hero card -->
+      <div class="panel-hero-card">
+        <p class="panel-hero-title">Project Your <strong>Returns</strong></p>
+        <p class="panel-hero-sub">Configure growth assumptions based on historical UK market performance.</p>
+
+        <!-- Always-visible 2×2 summary grid -->
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-card-lbl">Rental Yield</div>
+            <div class="summary-card-val">{{rentalYeild || '4%'}}</div>
+            <div class="summary-card-note">per annum</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-lbl">Capital Growth</div>
+            <div class="summary-card-val">{{capitalgrowth || '4%'}}</div>
+            <div class="summary-card-note">per annum</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-lbl">FX Appreciation</div>
+            <div class="summary-card-val">{{fxgrowth || '4%'}}</div>
+            <div class="summary-card-note">GBP vs home</div>
+          </div>
+          <div class="summary-card hi">
+            <div class="summary-card-lbl">Exchange Rate</div>
+            <div class="summary-card-val summary-card-val--green">{{homecurrency ? '£1 = ' + homecurrency : '—'}}</div>
+            <div class="summary-card-note">{{homecurrencyText || 'INR'}}</div>
+          </div>
+        </div>
+
+        <!-- Foreign buyer notice — shown when ForeignBuyer = 1 from step1 -->
+        <div class="foreign-notice" *ngIf="foreignbuyer=='1'">
+          <div class="foreign-notice-title">UK Market Context</div>
+          <p class="foreign-notice-text">Non-UK residents are subject to a 2% SDLT surcharge. This has been factored into your stamp duty estimate.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel-right">
+    <div class="panel-right-inner">
+
+      <!-- Top bar -->
+      <div class="panel-topbar">
+        <button [routerLink]="['/step2']" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="section-title">Currency &amp; Growth</h2>
+      <p class="section-sub">Set your home currency and expected growth rates.</p>
+
+      <!-- Home Currency -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Home Currency</span>
+        </div>
+        <!-- Custom dropdown (replaces native select to fix dropdown-at-top issue) -->
+        <div class="custom-select-wrap" id="currencySelectWrap">
+          <button type="button" class="custom-select-btn" (click)="currencyDropdownOpen=!currencyDropdownOpen" [class.open]="currencyDropdownOpen">
+            <span class="custom-select-val" [class.placeholder]="!homecurrencyText">
+              {{homecurrencyText ? getCurrencyLabel(homecurrencyText) : 'Select currency'}}
+            </span>
+            <svg class="custom-select-chevron" [class.rotated]="currencyDropdownOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="custom-dropdown" *ngIf="currencyDropdownOpen">
+            <div class="custom-dropdown-search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" class="custom-dropdown-input" placeholder="Search currency..." [(ngModel)]="currencySearch" autocomplete="off" (click)="$event.stopPropagation()">
+            </div>
+            <div class="custom-dropdown-list">
+              <div
+                *ngFor="let c of getFilteredCurrencies()"
+                class="custom-dropdown-item"
+                [class.selected]="homecurrencyText === c.code"
+                (click)="selectCurrency(c.code)">
+                <span class="cdd-name">{{c.name}}</span>
+                <span class="cdd-code">{{c.code}}</span>
+              </div>
+              <div class="custom-dropdown-empty" *ngIf="getFilteredCurrencies().length === 0">No currencies found</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Investment Period — pill buttons -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Investment Period</span>
+        </div>
+        <div class="pill-row">
+          <button class="pill-btn" [class.active]="investedTenure=='3'"  (click)="investedTenure='3'">3 Yrs</button>
+          <button class="pill-btn" [class.active]="investedTenure=='5'"  (click)="investedTenure='5'">5 Yrs</button>
+          <button class="pill-btn" [class.active]="investedTenure=='7'"  (click)="investedTenure='7'">7 Yrs</button>
+          <button class="pill-btn" [class.active]="investedTenure=='10'" (click)="investedTenure='10'">10 Yrs</button>
+        </div>
+      </div>
+
+      <!-- Gross Rental Yield -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Gross Rental Yield</span>
+          <span class="field-hint">10yr UK avg: 6.2%</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="rentalYeild"
+            autocomplete="off"
+            placeholder="e.g. {{PropertyLondon == 1 ? '4.5' : '6.2'}}"
+            [(ngModel)]="rentalYeild"
+            (keyup)="rentalYeild=validation.appendPercent($event,rentalYeild)"
+            (keypress)="validation.DesimalOnly($event,rentalYeild)">
+        </div>
+      </div>
+
+      <!-- Annual Capital Growth -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Annual Capital Growth</span>
+          <span class="field-hint">10yr UK avg: 4.8%</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="capitalgrowth"
+            autocomplete="off"
+            placeholder="e.g. {{PropertyLondon == 1 ? '4.0' : '4.8'}}"
+            [(ngModel)]="capitalgrowth"
+            (keyup)="capitalgrowth=validation.appendPercent($event,capitalgrowth)"
+            (keypress)="validation.DesimalOnly($event,capitalgrowth)">
+        </div>
+      </div>
+
+      <!-- FX Appreciation -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">FX Appreciation</span>
+          <span class="field-hint">GBP vs home currency</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="fxgrowth"
+            autocomplete="off"
+            placeholder="e.g. 4.0"
+            [(ngModel)]="fxgrowth"
+            (keyup)="fxgrowth=validation.appendPercent($event,fxgrowth)"
+            (keypress)="validation.DesimalOnly($event,fxgrowth)">
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div class="panel-nav">
+        <button class="btn-back-outline" [routerLink]="['/step2']">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button
+          class="btn-continue btn-continue--active"
+          type="button"
+          (click)="next()">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

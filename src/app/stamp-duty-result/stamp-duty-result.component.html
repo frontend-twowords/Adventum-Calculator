@@ -1,0 +1,169 @@
+<div class="sdlt-results" id="contentToConvert">
+
+  <!-- ══ HEADER ══ -->
+  <div class="sdlt-header">
+    <div class="sdlt-header-inner">
+      <div class="sdlt-title-row">
+        <div class="sdlt-bar"></div>
+        <div>
+          <h1 class="sdlt-title">Results</h1>
+          <p class="sdlt-sub">The results calculated according to the values entered.</p>
+        </div>
+      </div>
+      <div class="sdlt-header-btns noprint">
+        <a [routerLink]="['/stamp-duty-calculator/question']" class="sdlt-btn-sm">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </a>
+        <button class="sdlt-btn-sm" (click)="emailpopup()">
+          <img src="/assets/Icon.svg" width="14" height="14" alt="">
+          Share
+        </button>
+        <button class="sdlt-btn-green" (click)="startagain()">Recalculate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ KPI CARDS — 2 columns ══ -->
+  <div class="sdlt-kpi-row">
+
+    <!-- Total SDLT (featured) -->
+    <div class="sdlt-kpi sdlt-kpi--feat">
+      <div class="sdlt-kpi-icon">
+        <div class="sdlt-kpi-icon-blob1"></div>
+        <div class="sdlt-kpi-icon-blob2"></div>
+        <img src="/assets/e8b22e177f552a6f434e1c1fec7ee7376aa4fca6.png" alt="Total SDLT">
+      </div>
+      <div class="sdlt-kpi-inner">
+        <div class="sdlt-kpi-lbl">Total SDLT Payable</div>
+        <div class="sdlt-kpi-val sdlt-kpi-val--blue">£{{stampDutyLandTax | number:'1.0-0'}}</div>
+        <div class="sdlt-kpi-note">{{purchaseTypeLabel}}</div>
+      </div>
+    </div>
+
+    <!-- Effective Tax Rate -->
+    <div class="sdlt-kpi">
+      <div class="sdlt-kpi-icon">
+        <div class="sdlt-kpi-icon-blob1"></div>
+        <div class="sdlt-kpi-icon-blob2"></div>
+        <img src="/assets/e05ee0722794d292aa2425d31377ffb8ffad90fe.png" alt="Effective Rate">
+      </div>
+      <div class="sdlt-kpi-inner">
+        <div class="sdlt-kpi-lbl">Effective Tax Rate</div>
+        <div class="sdlt-kpi-val">{{effectiveRate}}%</div>
+        <div class="sdlt-kpi-note">On £{{calcData?.PropertyValue | number:'1.0-0'}} property</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div class="sdlt-body">
+
+    <!-- Your Assumptions -->
+    <div class="sdlt-card">
+      <div class="sdlt-card-head">
+        <div class="sdlt-card-title">Your Assumptions</div>
+        <div class="sdlt-card-sub">All assumptions used in this calculation</div>
+      </div>
+      <div class="sdlt-card-inner">
+        <div class="sdlt-arow">
+          <span class="sdlt-arow-lbl">Property Value</span>
+          <span class="sdlt-arow-val">£{{calcData?.PropertyValue | number:'1.0-0'}}</span>
+        </div>
+        <div class="sdlt-arow">
+          <span class="sdlt-arow-lbl">Type</span>
+          <span class="sdlt-arow-val">{{purchaseTypeLabel}}</span>
+        </div>
+        <div class="sdlt-arow">
+          <span class="sdlt-arow-lbl">Foreign</span>
+          <span class="sdlt-arow-val">{{calcData?.ForeignBuyer==='1' ? 'Yes (+2%)' : 'No'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Band-by-Band Breakdown -->
+    <div class="sdlt-card">
+      <div class="sdlt-card-head">
+        <div class="sdlt-card-title">Band-by-Band Breakdown</div>
+      </div>
+      <div class="sdlt-tbl-wrap">
+        <table class="sdlt-tbl">
+          <thead>
+            <tr>
+              <th>Band</th>
+              <th>Rate</th>
+              <th>Taxable Amount</th>
+              <th>Tax</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let b of bandBreakdown">
+              <td>{{b.band}}</td>
+              <td>{{b.rate}}%</td>
+              <td>£{{b.taxable | number:'1.0-0'}}</td>
+              <td class="sdlt-td-green">£{{b.due | number:'1.0-0'}}</td>
+            </tr>
+            <tr *ngIf="additionalSurcharge > 0">
+              <td>Additional Dwelling Surcharge</td>
+              <td>5%</td>
+              <td>£{{calcData?.PropertyValue | number:'1.0-0'}}</td>
+              <td class="sdlt-td-green">£{{additionalSurcharge | number:'1.0-0'}}</td>
+            </tr>
+            <tr *ngIf="calcData?.ForeignBuyer==='1' && foreignSurcharge > 0">
+              <td>Foreign Buyer Surcharge</td>
+              <td>2%</td>
+              <td>£{{calcData?.PropertyValue | number:'1.0-0'}}</td>
+              <td class="sdlt-td-green">£{{foreignSurcharge | number:'1.0-0'}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="sdlt-tbl-total">
+              <td colspan="3">Total SDLT</td>
+              <td>£{{stampDutyLandTax | number:'1.0-0'}}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ STICKY FOOTER ══ -->
+  <div class="rp-footer noprint">
+    <a [routerLink]="['/stamp-duty-calculator/question']" class="rp-footer-btn rp-footer-back">
+      <img src="/assets/Icon (1).svg" width="8" height="14" alt="">
+      Back
+    </a>
+    <button class="rp-footer-btn rp-footer-share" (click)="emailpopup()">
+      <img src="/assets/Icon.svg" width="15" height="15" alt="">
+      Share
+    </button>
+    <button class="rp-footer-btn rp-footer-recalc" (click)="startagain()">Recalculate</button>
+  </div>
+
+</div>
+
+<!-- Share Modal -->
+<div class="modal fade noprint" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="top:100px;">
+      <div class="modal-header" style="border-bottom:0;padding-bottom:0">
+        <h5 class="modal-title" style="color:#1d1751;padding-left:12px;">Share Report</h5>
+      </div>
+      <div class="modal-body" style="padding-top:20px;padding-bottom:5px;">
+        <div class="form-group col-md-12">
+          <label style="color:#444854;font-size:14px;">Enter email ids of recipients</label>
+          <input type="email" class="form-control" id="email" placeholder="example: joe@gmail.com,mark@gmail.com" name="email" [(ngModel)]="Email" autocomplete="off" style="height:45px !important;">
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:0;padding-top:0;padding-bottom:8px;">
+        <div style="width:100%;display:flex;justify-content:center;">
+          <button *ngIf="loadingSharebtn" type="submit" class="btn modal-btn"><i class="fa fa-spin fa-spinner"></i> Please Wait...</button>
+          <button *ngIf="!loadingSharebtn" type="submit" class="btn modal-btn" (click)="shareReport()">Send</button>
+          <button type="button" class="btn modal-cancel-btn" id="cancelbtn" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

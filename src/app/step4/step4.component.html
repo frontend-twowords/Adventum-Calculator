@@ -1,0 +1,251 @@
+<!-- COSTS PAGE -->
+<div class="costs-page">
+
+  <!-- ── LEFT PANEL ── -->
+  <div class="panel-left">
+    <div class="panel-left-bg"></div>
+    <div class="panel-left-content">
+
+      <!-- Logo -->
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Hero card -->
+      <div class="panel-hero-card">
+
+        <!-- Title -->
+        <div class="panel-hero-title">
+          <span class="panel-hero-title-light">Understand Your </span><span class="panel-hero-title-bold">Investment Costs</span>
+        </div>
+        <div class="panel-hero-sub">Factor in all upfront and ongoing expenses to see your true net returns.</div>
+
+        <!-- Acquisition Costs block -->
+        <div class="summary-block">
+          <div class="summary-block-header">
+            <div class="summary-block-icon">
+              <img src="/assets/Frame 1000003035.svg" alt="" width="38" height="38">
+            </div>
+            <div class="summary-block-header-text">
+              <span class="summary-block-title">Acquisition Costs</span>
+              <span class="summary-block-total">£{{acquisitionTotal || '—'}}</span>
+            </div>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row-label">Stamp Duty &amp; Land Tax</span>
+            <span class="summary-row-val">£{{stampDutyLandTax || '—'}}</span>
+          </div>
+          <div class="summary-row" *ngIf="calcData?.optmortgage!='0'">
+            <span class="summary-row-label">Processing Fee ({{loanOriginationFee || '0'}}%)</span>
+            <span class="summary-row-val">£{{processingFeeAmount || '0'}}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row-label">Legal/Solicitor Fees</span>
+            <span class="summary-row-val">£{{groundRent || '0'}}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row-label">Other Expenses</span>
+            <span class="summary-row-val">£{{miscelleneousExpense || '0'}}</span>
+          </div>
+        </div>
+
+        <!-- Annual Running Costs block -->
+        <div class="summary-block">
+          <div class="summary-block-header">
+            <div class="summary-block-icon">
+              <img src="/assets/Frame 1000003035 (1).svg" alt="" width="38" height="38">
+            </div>
+            <div class="summary-block-header-text">
+              <span class="summary-block-title">Annual Running Costs</span>
+              <span class="summary-block-total">~£{{runningCostTotal || '—'}}/yr</span>
+            </div>
+          </div>
+          <div class="summary-row" *ngIf="letteingManagFee!=''">
+            <span class="summary-row-label">Lettings Fee</span>
+            <span class="summary-row-val">{{letteingManagFee}}% of rent</span>
+          </div>
+          <div class="summary-row" *ngIf="serviceCharges!=''">
+            <span class="summary-row-label">Service Charges</span>
+            <span class="summary-row-val">£{{serviceCharges}}</span>
+          </div>
+        </div>
+
+        <!-- Year 1 Total Outlay -->
+        <div class="year1-banner">
+          <div class="year1-label">YEAR 1 TOTAL OUTLAY</div>
+          <div class="year1-val">£{{year1Total || '—'}}</div>
+          <div class="year1-note">Acquisition + 1st Year running costs</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RIGHT PANEL ── -->
+  <div class="panel-right">
+    <div class="panel-right-inner">
+
+      <!-- Top bar -->
+      <div class="panel-topbar">
+        <button [routerLink]="['/step3']" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="section-title">Costs &amp; Expenses</h2>
+      <p class="section-sub">Define your acquisition costs and expected ongoing expenses.</p>
+
+      <!-- SDLT Banner -->
+      <div class="sdlt-card">
+        <div class="sdlt-card-left">
+          <div class="sdlt-card-name">Stamp Duty &amp; Land Tax</div>
+          <div class="sdlt-card-note">{{calcData?.ForeignBuyer=='1' ? '(incl. 2% foreign buyer surcharge)' : 'Standard investment rates'}}</div>
+        </div>
+        <div class="sdlt-card-val">£{{stampDutyLandTax || '0'}}</div>
+      </div>
+
+      <!-- Section: Acquisition Costs -->
+      <p class="costs-section-label">Acquisition Costs</p>
+
+      <!-- Processing Fee (only if mortgage) -->
+      <div class="field-group" *ngIf="calcData?.optmortgage!='0'">
+        <div class="field-label-row">
+          <span class="field-label">Processing Fee</span>
+          <span class="app-hint">% of loan amount</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="loanOriginationFee"
+            autocomplete="off"
+            placeholder="e.g. 1"
+            [(ngModel)]="loanOriginationFee"
+            (keyup)="onFeeChange()"
+            (keypress)="validation.DesimalOnly($event,loanOriginationFee)">
+          <span class="field-suffix">%</span>
+        </div>
+      </div>
+
+      <!-- Legal/Solicitor Fees -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Legal / Solicitor Fees</span>
+          <span class="app-hint">Typical: £1,500–£3,000</span>
+        </div>
+        <div class="field-input-wrap">
+          <span class="field-prefix">£</span>
+          <input
+            class="field-input"
+            type="text"
+            id="groundRent"
+            autocomplete="off"
+            placeholder="e.g. 1,500"
+            [(ngModel)]="groundRent"
+            (keyup)="groundRent=validation.amountWithComma(groundRent); calcTotals()"
+            (keypress)="validation.numberOnly($event)">
+        </div>
+      </div>
+
+      <!-- Other Expenses -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Other Expenses</span>
+        </div>
+        <div class="field-input-wrap">
+          <span class="field-prefix">£</span>
+          <input
+            class="field-input"
+            type="text"
+            id="miscelleneousExpense"
+            autocomplete="off"
+            placeholder="e.g. 0"
+            [(ngModel)]="miscelleneousExpense"
+            (keyup)="miscelleneousExpense=validation.amountWithComma(miscelleneousExpense); calcTotals()"
+            (keypress)="validation.numberOnly($event)">
+        </div>
+      </div>
+
+      <!-- Section: Annual Running Costs -->
+      <p class="costs-section-label">Annual Running Costs</p>
+
+      <!-- Lettings Fee -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Lettings / Management Fee</span>
+          <span class="app-hint">{{PropertyLondon == 1 ? 'London avg: 12%' : 'UK avg: 10%'}}</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="letteingManagFee"
+            autocomplete="off"
+            placeholder="{{PropertyLondon == 1 ? '12' : '10'}}"
+            [(ngModel)]="letteingManagFee"
+            (keyup)="calcTotals()"
+            (keypress)="validation.DesimalOnly($event,letteingManagFee)">
+          <span class="field-suffix">% of rent</span>
+        </div>
+      </div>
+
+      <!-- Service Charges -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Service Charges p.a.</span>
+          <span class="app-hint">{{PropertyLondon == 1 ? 'London avg: £3,000' : 'UK avg: £1,000'}}</span>
+        </div>
+        <div class="field-input-wrap">
+          <span class="field-prefix">£</span>
+          <input
+            class="field-input"
+            type="text"
+            id="serviceCharges"
+            autocomplete="off"
+            placeholder="{{PropertyLondon == 1 ? '3000' : '1000'}}"
+            [(ngModel)]="serviceCharges"
+            (keyup)="serviceCharges=validation.amountWithComma(serviceCharges); calcTotals()"
+            (keypress)="validation.numberOnly($event)">
+        </div>
+      </div>
+
+      <!-- Rental Escalation -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Rental Escalation p.a.</span>
+          <span class="app-hint">UK avg: 3–5%</span>
+        </div>
+        <div class="field-input-wrap">
+          <input
+            class="field-input"
+            type="text"
+            id="rentalGrowthEscalation"
+            autocomplete="off"
+            placeholder="e.g. 3"
+            [(ngModel)]="rentalGrowthEscalation"
+            (keyup)="rentalGrowthEscalation=validation.appendPercent($event,rentalGrowthEscalation)"
+            (keypress)="validation.DesimalOnly($event,rentalGrowthEscalation)">
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div class="panel-nav">
+        <button class="btn-back-outline" [routerLink]="['/step3']">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button class="btn-continue btn-continue--active" type="button" (click)="next()">
+          Calculate Returns
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

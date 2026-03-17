@@ -1,0 +1,77 @@
+<!-- First -->
+<div class="row pt5" id="firstMain">
+    <div class="col-md-4 p0">
+        <img class="logo-icon" src="assets/Group 79@1X.png" alt="logo" width="114" height="70" >
+    </div>
+    <div class="col-md-8">
+        <label class="headinglable">Foreign Buyer Property Investment Calculator</label>
+    </div>
+</div>
+  <!-- First -->
+
+<!-- Second -->
+<div class="row mt-4"  id="secondMain">
+    <div class="mapcontainer">
+        <app-googlemap [MapClassLoad]="MapLoad" [latitude]="lat" [longitude]="long"></app-googlemap>
+      </div>
+</div>
+<!-- Second -->
+
+<!-- Third -->
+  <div class="row mt-4"  id="thirdMain">
+    <div class="col-md-12 p0">
+        <progress-bar [progress]="(94+(letteingManagFee!=''?6.25:0))>100?100:(94+(letteingManagFee!=''?6.25:0))" [color]="'#488aff'">
+        </progress-bar>
+    </div>
+    <div class="col-md-2 p-back">
+        <a [routerLink]="['/step4']" class="backlink">Back</a>
+    </div>
+    <div class="col-md-10 p-rec">
+        <label class="float-right">{{(94+(letteingManagFee!=''?6.25:0))>100?100:(94+(letteingManagFee!=''?6.25:0))}}% data recieved</label>
+    </div>
+  </div>
+<!-- Third -->
+<div class="row mt-3">
+    <div class="col-md-5 pl0">
+        <h5><b class="questyle">Lettings Fee p.a</b></h5>
+    </div>
+    <div class="col-md-7 pr0">
+        <input type="text" id="letteingManagFee" (keypress)="validation.DesimalOnly($event,letteingManagFee)" [(ngModel)]="letteingManagFee" placeholder="Letting management fee (10%)">
+        <span *ngIf="letteingManagFee!=''" class="tick-g"><i class="fa fa-check" aria-hidden="true"></i></span>
+    </div>
+</div>
+<div class="row mt-3" [@affirst]="letteingManagFee!=''?'visible':'hide'">
+    <div class="col-md-5 pl0">
+        <h5><b class="questyle">Ground rent</b></h5>
+    </div>
+    <div class="col-md-7 pr0">
+        <input type="text" id="groundRent" [(ngModel)]="groundRent" (keypress)="validation.numberOnly($event)" placeholder="Ground rent (500)">
+        <span *ngIf="groundRent!=''" class="tick-g"><i class="fa fa-check" aria-hidden="true"></i></span>
+    </div>
+</div>
+<div class="row mt-3" [@asfirst]="letteingManagFee!=''?'visible':'hide'">
+    <div class="col-md-5 pl0">
+        <h5><b class="questyle">Service charges p.a</b></h5>
+    </div>
+    <div class="col-md-7 pr0">
+        <input type="text" id="serviceCharges" [(ngModel)]="serviceCharges" (keypress)="validation.numberOnly($event)" placeholder="Service charges (in GBP)">
+        <span *ngIf="serviceCharges!=''" class="tick-g"><i class="fa fa-check" aria-hidden="true"></i></span>
+    </div>
+</div>
+<div class="row mt-3" [@atfirst]="letteingManagFee!=''?'visible':'hide'">
+    <div class="col-md-5 pl0">
+        <h5><b class="questyle">Other expenses</b></h5>
+    </div>
+    <div class="col-md-7 pr0">
+        <input type="text" id="miscelleneousExpense" [(ngModel)]="miscelleneousExpense" (keypress)="validation.numberOnly($event)" placeholder="Miscelleneous expense">
+        <span *ngIf="miscelleneousExpense!=''" class="tick-g"><i class="fa fa-check" aria-hidden="true"></i></span>
+    </div>
+</div>
+<div class="row pt-5" id="FourthMain">
+    <div class="col-md-9">
+        <app-calculatordetails [coldesign]="6"></app-calculatordetails>
+    </div>
+    <div class="col-md-3 pr0" style="text-align: right;">
+        <button *ngIf="letteingManagFee!=''" class="btn btn-success" type="button" (click)="next()">Next</button>
+    </div>
+</div>

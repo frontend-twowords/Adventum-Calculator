@@ -1,0 +1,176 @@
+<!-- Estimated Weekly Rent — Step 2 -->
+<div class="ewr-page">
+
+  <!-- ══ LEFT PANEL ══ -->
+  <div class="ewr-panel-left">
+    <div class="ewr-panel-left-photo"></div>
+    <div class="ewr-panel-left-overlay"></div>
+    <div class="ewr-panel-left-inner">
+
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Live preview card -->
+      <div class="ewr-rent-card">
+        <div class="ewr-rent-heading">
+          <div class="ewr-rent-title"><span class="ewr-rent-title-light">Your Rental </span><span class="ewr-rent-title-bold">Income</span></div>
+          <p class="ewr-rent-sub">Live estimates update as you enter details.</p>
+        </div>
+        <div class="ewr-rent-stats">
+          <div class="ewr-rs">
+            <div class="ewr-rs-lbl">Weekly</div>
+            <div class="ewr-rs-val">£{{liveWeekly | number:'1.0-0'}}</div>
+          </div>
+          <div class="ewr-rs ewr-rs--accent">
+            <div class="ewr-rs-lbl">Monthly</div>
+            <div class="ewr-rs-val ewr-rs-val--green">£{{liveMonthly | number:'1.0-0'}}</div>
+          </div>
+          <div class="ewr-rs ewr-rs--accent">
+            <div class="ewr-rs-lbl">Annual</div>
+            <div class="ewr-rs-val ewr-rs-val--green">£{{liveAnnual | number:'1.0-0'}}</div>
+          </div>
+          <div class="ewr-rs">
+            <div class="ewr-rs-lbl">Gross Yield</div>
+            <div class="ewr-rs-val">{{liveGrossYield | number:'1.1-1'}}%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <div class="ewr-panel-right">
+    <div class="ewr-panel-right-inner">
+
+      <!-- Topbar -->
+      <div class="ewr-topbar">
+        <a [routerLink]="['/estimated-weekly-rent-calculator/step1']" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </a>
+        <div class="ewr-location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{calcData?.City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="ewr-title">Estimated Weekly Rent</h1>
+      <p class="ewr-subtitle">Calculate rental income from yield or a known weekly rent figure.</p>
+
+      <div class="ewr-sec-label">Your Situation</div>
+
+      <!-- Property Value -->
+      <div class="ewr-field">
+        <div class="ewr-label">
+          Property Value
+          <span class="app-hint">
+            UK market average: £280k
+          </span>
+        </div>
+        <div class="ewr-input-wrap">
+          <span class="ewr-input-pre">£</span>
+          <input class="ewr-inp" type="text" id="propertyValue" autocomplete="off"
+            placeholder="e.g. 400,000"
+            (input)="PropertyValue=validation.amountWithComma(PropertyValue); calcLive()"
+            (keypress)="validation.numberOnly($event)"
+            [(ngModel)]="PropertyValue">
+        </div>
+      </div>
+
+      <!-- Home Currency -->
+      <div class="ewr-field">
+        <div class="ewr-label">Home Currency</div>
+        <div class="ewr-custom-select" [class.ewr-custom-select--open]="currencyDropdownOpen">
+          <button type="button" class="ewr-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
+            <span [class.ewr-custom-placeholder]="!homecurrencyText">{{homecurrencyText ? selectedCurrencyName : 'Select currency'}}</span>
+            <svg class="ewr-custom-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="ewr-custom-dropdown" *ngIf="currencyDropdownOpen">
+            <div class="ewr-custom-search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input class="ewr-custom-search" type="text" placeholder="Search currency..." [(ngModel)]="currencySearch" (click)="$event.stopPropagation()" autocomplete="off">
+            </div>
+            <div class="ewr-custom-list">
+              <div *ngFor="let c of filteredCurrencies"
+                class="ewr-custom-option"
+                [class.ewr-custom-option--selected]="c.code===homecurrencyText"
+                (click)="selectCurrency(c.code)">
+                <span class="ewr-cdd-name">{{stripCode(c.name)}}</span>
+                <span class="ewr-cdd-code">{{c.code}}</span>
+              </div>
+              <div *ngIf="filteredCurrencies.length===0" class="ewr-custom-empty">No results</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FX Rate -->
+      <div class="ewr-field">
+        <div class="ewr-label">FX Rate (1 GBP)</div>
+        <div class="ewr-input-wrap">
+          <input class="ewr-inp" type="text" id="fxRateDisplay" autocomplete="off"
+            [value]="homecurrency || '—'"
+            readonly>
+          <span class="ewr-input-suf">{{homecurrencyText || 'Select currency first'}}</span>
+        </div>
+      </div>
+
+      <!-- Rental Input Mode Toggle -->
+      <div class="ewr-sec-label" style="margin-top:8px">Rental Input</div>
+      <div class="ewr-label" style="margin-bottom:8px">I Know The...</div>
+      <div class="ewr-mode-toggle">
+        <button class="ewr-mode-btn" [class.ewr-mode-btn--active]="inputMode==='yield'" (click)="setMode('yield')">Rental Yield %</button>
+        <button class="ewr-mode-btn" [class.ewr-mode-btn--active]="inputMode==='weekly'" (click)="setMode('weekly')">Weekly Rent £</button>
+      </div>
+
+      <!-- Yield mode -->
+      <div *ngIf="inputMode==='yield'">
+        <div class="ewr-field">
+          <div class="ewr-label">
+            Gross Rental Yield
+            <span class="app-hint">UK: 3.5–5.5%</span>
+          </div>
+          <div class="ewr-input-wrap">
+            <input class="ewr-inp" type="text" id="rentalYeild" autocomplete="off"
+              placeholder="e.g. 5.5%"
+              (input)="rentalYeild=validation.appendPercent($event,rentalYeild); calcLive()"
+              (keypress)="validation.DesimalOnly($event,rentalYeild)"
+              [(ngModel)]="rentalYeild">
+            <span class="ewr-input-suf">% p.a.</span>
+          </div>
+          <div class="ewr-field-sub">UK typical: 3.5–5.5%</div>
+        </div>
+      </div>
+
+      <!-- Weekly rent mode -->
+      <div *ngIf="inputMode==='weekly'">
+        <div class="ewr-field">
+          <div class="ewr-label">Known Weekly Rent</div>
+          <div class="ewr-input-wrap">
+            <span class="ewr-input-pre">£</span>
+            <input class="ewr-inp" type="text" id="weeklyRent" autocomplete="off"
+              placeholder="e.g. 500"
+              (input)="weeklyRent=validation.amountWithComma(weeklyRent); calcLive()"
+              (keypress)="validation.numberOnly($event)"
+              [(ngModel)]="weeklyRent">
+            <span class="ewr-input-suf">per week</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Actions — sticky at bottom -->
+    <div class="ewr-actions">
+      <a [routerLink]="['/estimated-weekly-rent-calculator/step1']" class="ewr-btn-back">
+        <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+        Back
+      </a>
+      <button class="ewr-btn-continue" (click)="next()">Calculate Returns</button>
+    </div>
+
+  </div>
+
+</div>

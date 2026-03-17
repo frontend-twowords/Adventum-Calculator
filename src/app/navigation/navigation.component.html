@@ -1,0 +1,95 @@
+<!-- ── TOP NAVIGATION BAR ── -->
+<nav class="adv-navbar fixed-header noprint">
+  <!-- Logo -->
+  <a routerLink="/" class="adv-navbar-logo">
+    <div class="adv-logo-icon">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="7" fill="#22c55e" fill-opacity="0.15"/>
+        <path d="M7 20L14 8L21 20" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9.5 16H18.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="adv-logo-text">
+      <span class="adv-logo-wordmark">ADVENT<span>UM</span></span>
+      <span class="adv-logo-sub">Calculators</span>
+    </div>
+  </a>
+
+  <!-- Desktop links -->
+  <div class="adv-navbar-links">
+    <a class="adv-nav-link" (click)="About()" style="cursor:pointer;">About</a>
+    <a class="adv-nav-link" href="https://www.adventumwealth.com/#return-to-top" target="_blank">Contact</a>
+
+    <ng-container *ngIf="!validation.checkSession()">
+      <a class="adv-nav-link" (click)="changepage(1)" style="cursor:pointer;">Login</a>
+      <button class="adv-nav-btn" (click)="changepage(2)">Register</button>
+    </ng-container>
+
+    <ng-container *ngIf="validation.checkSession()">
+      <a class="adv-nav-link" (click)="Logout()" style="cursor:pointer;">Logout</a>
+    </ng-container>
+  </div>
+
+  <!-- Mobile hamburger -->
+  <button
+    class="adv-hamburger"
+    [class.hidden-xs]="router.url === '/login'"
+    data-toggle="modal"
+    data-target="#navbar-modal"
+    type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE MENU MODAL ── -->
+<div id="navbar-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Logo inside modal -->
+        <div class="adv-modal-logo">
+          <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="28" rx="7" fill="#22c55e" fill-opacity="0.15"/>
+            <path d="M7 20L14 8L21 20" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 16H18.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span class="adv-modal-logo-text">ADVENT<span>UM</span></span>
+        </div>
+
+        <ul class="navmobile-link">
+          <li class="main-nav"><a routerLink="/" data-dismiss="modal">Calculators</a></li>
+          <li class="sub-nav"><a routerLink="/step1" data-dismiss="modal">Investment Property Calculator</a></li>
+          <li class="sub-nav"><a routerLink="/cashflow/step1" data-dismiss="modal">Cashflow Calculator</a></li>
+          <li class="sub-nav"><a routerLink="/capital-growth-calculator/question" data-dismiss="modal">Capital Growth Calculator</a></li>
+          <li class="sub-nav"><a routerLink="/estimated-weekly-rent-calculator/question" data-dismiss="modal">Estimated Weekly Rent Calculator</a></li>
+          <li class="sub-nav"><a routerLink="/Predictive-Foreign-calculator/question" data-dismiss="modal">Predictive Foreign Exchange</a></li>
+          <li class="sub-nav"><a routerLink="/stamp-duty-calculator/question" data-dismiss="modal">Stamp Duty Calculator</a></li>
+          <li class="sub-nav"><a routerLink="/ated/step1" data-dismiss="modal">ATED Calculator</a></li>
+          <li class="main-nav"><a (click)="About()" data-dismiss="modal">About</a></li>
+          <li class="main-nav"><a (click)="changepage(1)" data-dismiss="modal">Login</a></li>
+          <li class="main-nav"><a (click)="changepage(2)" data-dismiss="modal">Register</a></li>
+          <li class="main-nav"><a href="https://www.adventumwealth.com/#return-to-top" target="_blank">Contact</a></li>
+        </ul>
+
+        <div class="social-links">
+          <a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+          <a href="https://www.google.com/" target="_blank"><i class="fa fa-google"></i></a>
+          <a href="https://www.instagram.com/accounts/login" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+
+        <div class="privacy-link">
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

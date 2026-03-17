@@ -1,0 +1,143 @@
+<!-- PROPERTY SELECT PAGE -->
+<div class="property-select-page">
+
+  <!-- LEFT PANEL -->
+  <div class="panel-left">
+    <div class="panel-left-bg"></div>
+    <div class="panel-left-content">
+
+      <!-- Logo -->
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Hero card -->
+      <div class="panel-hero-card">
+        <p class="panel-hero-title">Invest in <strong>{{City || 'UK'}}'s Future</strong></p>
+        <p class="panel-hero-sub">{{HeaderContent || "The UK's fastest-growing property markets with strong yields and capital appreciation."}}</p>
+        <div class="panel-stats">
+          <div class="panel-stat">
+            <div class="panel-stat-val">{{City === 'Manchester' ? '6.5%' : City === 'Liverpool' ? '7.2%' : City === 'Birmingham' ? '5.8%' : '5.5%'}}</div>
+            <div class="panel-stat-lbl">Avg. Yield</div>
+          </div>
+          <div class="panel-stat">
+            <div class="panel-stat-val">{{City === 'Manchester' ? '+23%' : City === 'Liverpool' ? '+18%' : City === 'Birmingham' ? '+20%' : '+15%'}}</div>
+            <div class="panel-stat-lbl">5yr Growth</div>
+          </div>
+          <div class="panel-stat">
+            <div class="panel-stat-val">{{City === 'Manchester' ? '#1' : City === 'Liverpool' ? '#2' : City === 'Birmingham' ? '#3' : 'UK'}}</div>
+            <div class="panel-stat-lbl">UK BTL City</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel-right">
+    <div class="panel-right-inner">
+
+      <!-- Top bar -->
+      <div class="panel-topbar">
+        <button (click)="router.navigate(['/'])" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="section-title">Where would you like to invest?</h2>
+      <p class="section-sub">Enter any UK postcode or select any city to explore investment potential</p>
+
+      <!-- Search input -->
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input
+          class="search-input"
+          type="text"
+          id="pincode"
+          placeholder="Search postcode or city..."
+          [(ngModel)]="Pincode"
+          (input)="geoLocation()">
+      </div>
+
+      <!-- Popular area chips -->
+      <p class="popular-label">Popular areas:</p>
+      <div class="area-chips">
+        <button class="area-chip" [class.selected]="City==='London'" (click)="selectCity('London','SW1A 1AA',51.5074,-0.1278)">London</button>
+        <button class="area-chip" [class.selected]="City==='Liverpool'" (click)="selectCity('Liverpool','L1 1AA',53.4084,-2.9916)">Liverpool</button>
+        <button class="area-chip" [class.selected]="City==='Manchester'" (click)="selectCity('Manchester','M1 1AA',53.4808,-2.2426)">Manchester</button>
+        <button class="area-chip" [class.selected]="City==='Birmingham'" (click)="selectCity('Birmingham','B1 1AA',52.4862,-1.8904)">Birmingham</button>
+        <button class="area-chip" [class.selected]="City==='Others'" (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
+      </div>
+
+      <!-- City card (shown when city selected) -->
+      <div class="city-card" *ngIf="City">
+        <div class="city-card-info">
+          <div class="city-card-name">{{City}}</div>
+          <div class="city-card-desc">{{getCityDesc()}}</div>
+        </div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <div class="city-stat-val">{{getCityStat('yield')}}</div>
+            <div class="city-stat-lbl">Avg Yield</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-val">{{getCityStat('growth')}}</div>
+            <div class="city-stat-lbl">5yr Growth</div>
+          </div>
+          <div class="city-stat">
+            <div class="city-stat-val">{{getCityStat('price')}}</div>
+            <div class="city-stat-lbl">Avg Price</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buyer Status card (shown when city selected) -->
+      <div class="buyer-card" *ngIf="City">
+        <div class="buyer-card-title">Buyer Status</div>
+        <div class="buyer-card-sub">This affects your stamp duty calculation</div>
+        <div class="buyer-row">
+          <div class="buyer-row-labels">
+            <div class="buyer-row-label-main">Are You a Foreign (Non-UK Resident) Buyer?</div>
+            <div class="buyer-row-label-sub">Foreign buyers pay an additional 2% stamp duty surcharge</div>
+          </div>
+          <div class="toggle-pair">
+            <button class="toggle-opt" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'">UK Resident</button>
+            <button class="toggle-opt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div class="panel-nav">
+        <button class="btn-back-outline" *ngIf="skipbtnvisibility" (click)="next('skip')">
+          Skip
+        </button>
+        <button
+          class="btn-continue"
+          [class.btn-continue--active]="City!=''"
+          (click)="next('next')">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- OLD CODE COMMENTED OUT
+<div class="container" style="margin-top: 100px;">
+  <input type="text" id="pincode" (input)="geoLocation()" placeholder="Enter Valid UK Pincode" [(ngModel)]="Pincode">
+  <app-googlemap [MapClassLoad]="MapLoad" [latitude]="lat" [longitude]="long"></app-googlemap>
+  <progress-bar [progress]="(Pincode!==''?6.25:0)+(City!==''?6.25:0)+(PropertyValue!==''?6.25:0)" [color]="'#488aff'"></progress-bar>
+  <button *ngIf="skipbtnvisibility" (click)="next('skip')">Skip</button>
+  <button (click)="next('next')">Start</button>
+</div>
+-->

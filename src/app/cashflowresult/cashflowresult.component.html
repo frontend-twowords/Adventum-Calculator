@@ -1,0 +1,336 @@
+<div class="rp-page" id="contentToConvert">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="rp-header">
+    <div class="rp-header__top">
+      <div class="rp-header__title-group">
+        <span class="rp-accent-bar"></span>
+        <div>
+          <h1 class="rp-title">Results</h1>
+          <p class="rp-subtitle">The results calculated according to the values entered.</p>
+        </div>
+      </div>
+      <div class="rp-header__actions">
+        <button class="rp-btn rp-btn--ghost" (click)="goBack()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back
+        </button>
+        <button class="rp-btn rp-btn--outline" (click)="shareReport()">
+          <img src="/assets/Icon.svg" width="16" height="16" alt="">
+          Share
+        </button>
+        <button class="rp-btn rp-btn--primary" (click)="startagain()">
+          
+          Recalculate
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ BODY ═══ -->
+  <main class="rp-body">
+
+    <!-- KPI cards row -->
+    <div class="rp-kpi-grid">
+
+      <!-- KPI 1: Total Net Cashflow (featured) -->
+      <div class="rp-kpi rp-kpi--featured">
+        <div class="rp-kpi__icon-wrap">
+          <div class="rp-icon-blob1"></div>
+          <div class="rp-icon-blob2"></div>
+          <img src="/assets/11d9fad285ba06a9681023cec70db1a364815571.png" alt="">
+        </div>
+        <div class="rp-kpi__inner">
+          <div class="rp-kpi__label">Total Net Cashflow</div>
+          <div class="rp-kpi__value rp-kpi__value--blue">£{{totalCashFlow | number:'1.0-0'}}</div>
+        </div>
+      </div>
+
+      <!-- KPI 2: Initial Outlay -->
+      <div class="rp-kpi">
+        <div class="rp-kpi__icon-wrap">
+          <div class="rp-icon-blob1"></div>
+          <div class="rp-icon-blob2"></div>
+          <img src="/assets/831e0c53cafecde3e60b81e4eee36c893080e99b.png" alt="">
+        </div>
+        <div class="rp-kpi__inner">
+          <div class="rp-kpi__label">Initial Outlay</div>
+          <div class="rp-kpi__value">£{{initialOutlay | number:'1.0-0'}}</div>
+          <div class="rp-kpi__note">Deposit + SDLT + Fees</div>
+        </div>
+      </div>
+
+      <!-- KPI 3: Year 1 Net Cashflow -->
+      <div class="rp-kpi">
+        <div class="rp-kpi__icon-wrap">
+          <div class="rp-icon-blob1"></div>
+          <div class="rp-icon-blob2"></div>
+          <img src="/assets/303592f2c41b3425bbcee1b6febcb47dde7edad8.png" alt="">
+        </div>
+        <div class="rp-kpi__inner">
+          <div class="rp-kpi__label">Year 1 Net Cashflow</div>
+          <div class="rp-kpi__value">£{{cashflowdata[0]?.CashFlow | number:'1.0-0'}}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Assumptions Card -->
+    <div class="rp-card">
+      <div class="rp-card__heading-block">
+        <h2 class="rp-card__heading">Your Assumptions</h2>
+        <p class="rp-card__sub">All assumptions used in this calculation</p>
+      </div>
+      <div class="rp-assumptions-card">
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Property Value</span>
+          <span class="rp-assumption-row__value">£{{+calcData.PropertyValue | number:'1.0-0'}}</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">LTV</span>
+          <span class="rp-assumption-row__value">{{+calcData.loanAmount}}%</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Period</span>
+          <span class="rp-assumption-row__value">{{investedTenure}} years</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Yield</span>
+          <span class="rp-assumption-row__value">{{+calcData.rentalYeild | number:'1.2-2'}}%</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Growth</span>
+          <span class="rp-assumption-row__value">{{+calcData.rentalGrowthEscalation | number:'1.2-2'}}% p.a.</span>
+        </div>
+        <div class="rp-assumption-row" *ngIf="calcData.optmortgage !== '0'">
+          <span class="rp-assumption-row__label">Mortgage Rate</span>
+          <span class="rp-assumption-row__value">{{+calcData.mortgageInterestRate | number:'1.2-2'}}%</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Stamp Duty</span>
+          <span class="rp-assumption-row__value">£{{+calcData.stampDutyLandTax | number:'1.0-0'}}</span>
+        </div>
+        <div class="rp-assumption-row" *ngIf="calcData.optmortgage !== '0'">
+          <span class="rp-assumption-row__label">Loan Origination Fee</span>
+          <span class="rp-assumption-row__value">£{{+loanoriginationfee | number:'1.0-0'}}</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Letting Fee</span>
+          <span class="rp-assumption-row__value">{{+calcData.letteingManagFee | number:'1.2-2'}}%</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Ground Rent</span>
+          <span class="rp-assumption-row__value">£{{+calcData.groundRent | number:'1.0-0'}}</span>
+        </div>
+        <div class="rp-assumption-row">
+          <span class="rp-assumption-row__label">Service Charges</span>
+          <span class="rp-assumption-row__value">£{{+calcData.serviceCharges | number:'1.0-0'}}</span>
+        </div>
+        <div class="rp-assumption-row rp-assumption-row--last">
+          <span class="rp-assumption-row__label">Other Expenses</span>
+          <span class="rp-assumption-row__value">£{{+calcData.miscelleneousExpense | number:'1.0-0'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Annual Net Cashflow Chart -->
+    <div class="rp-card">
+      <div class="rp-card__heading-block">
+        <h2 class="rp-card__heading">Annual Net Cashflow</h2>
+      </div>
+      <div class="rp-chart-area">
+        <!-- Y-axis labels -->
+        <div class="rp-y-axis">
+          <span>£25,000</span>
+          <span>£20,000</span>
+          <span>£15,000</span>
+          <span>£10,000</span>
+          <span>£5,000</span>
+          <span>£0</span>
+        </div>
+        <!-- Grid + bars -->
+        <div class="rp-chart-body">
+          <div class="rp-grid-lines">
+            <div class="rp-grid-line"></div>
+            <div class="rp-grid-line"></div>
+            <div class="rp-grid-line"></div>
+            <div class="rp-grid-line"></div>
+            <div class="rp-grid-line"></div>
+            <div class="rp-grid-line"></div>
+          </div>
+          <div class="rp-bars-row">
+            <ng-container *ngFor="let row of cashflowdata; let i = index">
+              <div class="rp-bar-col">
+                <div class="rp-bar-track">
+                  <div class="rp-bar"
+                    [style.height.px]="getBarHeight(row.CashFlow)"
+                    [style.background]="'#506E9C'">
+                  </div>
+                </div>
+                <div class="rp-bar-label">{{i + 1}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Year-by-Year Breakdown -->
+    <div class="rp-card">
+      <h2 class="rp-card__heading">Year-by-Year Breakdown</h2>
+      <div class="rp-table-header">
+        <span class="rp-th">Year</span>
+        <span class="rp-th">Gross Rent</span>
+        <span class="rp-th">Lettings</span>
+        <span class="rp-th">Expenses</span>
+        <span class="rp-th">Mortgage</span>
+        <span class="rp-th">Net Cashflow</span>
+        <span class="rp-th">Cumulative</span>
+      </div>
+      <div class="rp-table-body">
+        <div class="rp-table-row" *ngFor="let row of cashflowdata; let i = index">
+          <span class="rp-td rp-td--dim">{{i + 1}}</span>
+          <span class="rp-td">£{{row.GrossRent | number:'1.0-0'}}</span>
+          <span class="rp-td rp-td--neg">-£{{row.LettingFee | number:'1.0-0'}}</span>
+          <span class="rp-td rp-td--neg">-£{{(row.GroundRent + row.ServiceCharges + row.MiscelleneousExpense) | number:'1.0-0'}}</span>
+          <span class="rp-td rp-td--neg">-£{{row.Interest | number:'1.0-0'}}</span>
+          <span class="rp-td" [class.rp-td--pos]="row.CashFlow >= 0" [class.rp-td--neg]="row.CashFlow < 0">
+            {{row.CashFlow >= 0 ? '£' : '-£'}}{{(row.CashFlow < 0 ? -row.CashFlow : row.CashFlow) | number:'1.0-0'}}
+          </span>
+          <span class="rp-td rp-td--dim">{{netYield[i]}}%</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══ HIDDEN EXCEL TABLE ═══ -->
+  <div style="display:none;">
+    <table id="cashflowtable">
+      <tr class="text-left">
+        <th>Set Up Cost:</th>
+        <th class="text-center">Year 0</th>
+        <th *ngFor="let cashflow of cashflowdata; let i = index" class="text-center">Year {{i + 1}}</th>
+      </tr>
+      <tbody class="text-center cashflowtablebody">
+        <tr>
+          <td class="text-left">SDLT</td>
+          <td class="text-right">-{{calcData.stampDutyLandTax | currency:'GBP':'symbol':'1.0-0'}}</td>
+          <td *ngFor="let cashflow of cashflowdata"></td>
+        </tr>
+        <tr>
+          <td class="text-left">Loan Origination Fee</td>
+          <td class="text-right">-{{loanoriginationfee | currency:'GBP':'symbol':'1.0-0'}}</td>
+          <td *ngFor="let cashflow of cashflowdata"></td>
+        </tr>
+        <tr>
+          <td class="text-left">Property Value</td>
+          <td class="text-right">-{{calcData.PropertyValue | currency:'GBP':'symbol':'1.0-0'}}</td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right"></td>
+        </tr>
+        <tr>
+          <td class="text-left">Gross Rent</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">&#163;{{cashflow.GrossRent | number:'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Mortgage interest</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.Interest | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Principal repayment</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.PrincipleRepayment | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Letting Management Fee</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.LettingFee | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Service Charge</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.ServiceCharges | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Ground rent</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.GroundRent | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Miscellaneous Expenses</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">-{{cashflow.MiscelleneousExpense | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr>
+          <td class="text-left">Loan outstanding</td>
+          <td></td>
+          <td *ngFor="let cashflow of cashflowdata" class="text-right">{{cashflow.loanOutstanding | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr style="font-weight:bold;">
+          <td class="text-left">Cashflow</td>
+          <td class="text-right" *ngFor="let cashflow of allCahsflow">{{cashflow | currency:'GBP':'symbol':'1.0-0'}}</td>
+        </tr>
+        <tr style="font-weight:bold;">
+          <td class="text-left">Net Yield</td>
+          <td></td>
+          <td class="text-right" *ngFor="let netyield of netYield">{{netyield | number:'1.2'}}%</td>
+        </tr>
+        <tr style="font-weight:bold;">
+          <td class="text-left">Avg Net Yield</td>
+          <td class="text-right">{{avgnetYield | number:'1.2'}}%</td>
+          <td class="text-right" *ngFor="let netyield of netYield"></td>
+        </tr>
+        <tr style="font-weight:bold;">
+          <td class="text-left">Total Cashflow</td>
+          <td class="text-right">{{totalCashFlow | currency:'GBP':'symbol':'1.0-0'}}</td>
+          <td class="text-right" *ngFor="let netyield of netYield"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ═══ STICKY FOOTER ═══ -->
+<footer class="rp-footer">
+  <button class="rp-footer-btn rp-footer-back" (click)="goBack()">
+    <img src="/assets/Icon (1).svg" width="8" height="14" alt="">
+    Back
+  </button>
+  <button class="rp-footer-btn rp-footer-share" (click)="emailpopup()">
+    <img src="/assets/Icon.svg" width="16" height="16" alt="">
+    Share Report
+  </button>
+  <button class="rp-footer-btn rp-footer-recalc" (click)="startagain()">
+    
+    Recalculate
+  </button>
+</footer>
+
+<!-- ═══ EMAIL MODAL ═══ -->
+<div class="modal fade noprint" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content rp-modal">
+      <div class="modal-header rp-modal__header">
+        <h5 class="rp-modal__title">Share Report</h5>
+      </div>
+      <div class="modal-body rp-modal__body">
+        <div class="form-group">
+          <label class="rp-modal__label">Enter email ids of recipients</label>
+          <input type="email" class="form-control rp-modal__input" id="email"
+            placeholder="example: joe@gmail.com,mark@gmail.com"
+            name="email" [(ngModel)]="Email" autocomplete="off">
+        </div>
+      </div>
+      <div class="modal-footer rp-modal__footer">
+        <button *ngIf="loadingSharebtn" type="submit" class="rp-btn rp-btn--primary rp-modal__send">
+          <i class="fa fa-spin fa-spinner"></i> Please Wait...
+        </button>
+        <button *ngIf="!loadingSharebtn" type="submit" class="rp-btn rp-btn--primary rp-modal__send" (click)="sendexcel()">Send</button>
+        <button type="button" class="rp-btn rp-btn--ghost" id="cancelbtn" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

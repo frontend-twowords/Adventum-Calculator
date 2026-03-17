@@ -1,0 +1,14 @@
+<div
+  class="circle-shell"
+  [style.width.px]="radius * 2"
+  [style.height.px]="radius * 2"
+  [style.border-width.px]="outerStrokeWidth"
+  [style.border-color]="outerStrokeColor">
+  <div
+    *ngIf="showTitle"
+    class="circle-text"
+    [style.color]="titleColor"
+    [style.font-size.px]="titleFontSize">
+    {{ displayTitle }}<span *ngIf="showUnits">%</span>
+  </div>
+</div>

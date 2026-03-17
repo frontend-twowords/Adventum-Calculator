@@ -1,0 +1,204 @@
+<div class="ewr-results" id="contentToConvert">
+
+  <!-- ══ HEADER ══ -->
+  <div class="ewr-rp-header">
+    <div class="ewr-rp-header-top">
+      <div class="ewr-rp-title-row">
+        <div class="ewr-rp-bar"></div>
+        <div>
+          <h1 class="ewr-rp-title">Results</h1>
+          <p class="ewr-rp-sub">The results calculated according to the values entered.</p>
+        </div>
+      </div>
+      <div class="ewr-rp-btns noprint">
+        <a [routerLink]="['/estimated-weekly-rent-calculator/question']" class="ewr-rp-btn-sm">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </a>
+        <button class="ewr-rp-btn-sm" (click)="emailpopup()">
+          <img src="/assets/Icon.svg" width="14" height="14" alt="">
+          Share
+        </button>
+        <button class="ewr-rp-btn-green" (click)="startagain()">Recalculate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ KPI CARDS — 3 columns ══ -->
+  <div class="ewr-rp-kpi-row">
+
+    <!-- Annual Rent -->
+    <div class="ewr-rp-kpi ewr-rp-kpi--feat">
+      <div class="ewr-rp-kpi__icon-wrap">
+        <div class="ewr-icon-blob1"></div>
+        <div class="ewr-icon-blob2"></div>
+        <img src="/assets/image 19-2.png" alt="Annual Rent">
+      </div>
+      <div class="ewr-rp-kpi__inner">
+        <div class="ewr-rp-kpi-lbl">Annual Rent</div>
+        <div class="ewr-rp-kpi-val">£{{annualGBP | number:'1.0-0'}}</div>
+        <div class="ewr-rp-kpi-note">
+          <span *ngIf="homeCurrencyCode==='INR'">₹{{annualHomeFmt}}</span>
+          <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{annualHome | number:'1.0-0'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Rent -->
+    <div class="ewr-rp-kpi">
+      <div class="ewr-rp-kpi__icon-wrap">
+        <div class="ewr-icon-blob1"></div>
+        <div class="ewr-icon-blob2"></div>
+        <img src="/assets/image 19-1.png" alt="Weekly Rent">
+      </div>
+      <div class="ewr-rp-kpi__inner">
+        <div class="ewr-rp-kpi-lbl">Weekly Rent</div>
+        <div class="ewr-rp-kpi-val">£{{weeklyGBP | number:'1.0-0'}}</div>
+        <div class="ewr-rp-kpi-note">
+          <span *ngIf="homeCurrencyCode==='INR'">₹{{weeklyHomeFmt}}</span>
+          <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{weeklyHome | number:'1.0-0'}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Rent -->
+    <div class="ewr-rp-kpi">
+      <div class="ewr-rp-kpi__icon-wrap">
+        <div class="ewr-icon-blob1"></div>
+        <div class="ewr-icon-blob2"></div>
+        <img src="/assets/image 19.png" alt="Monthly Rent">
+      </div>
+      <div class="ewr-rp-kpi__inner">
+        <div class="ewr-rp-kpi-lbl">Monthly Rent</div>
+        <div class="ewr-rp-kpi-val">£{{monthlyGBP | number:'1.0-0'}}</div>
+        <div class="ewr-rp-kpi-note">
+          <span *ngIf="homeCurrencyCode==='INR'">₹{{monthlyHomeFmt}}</span>
+          <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{monthlyHome | number:'1.0-0'}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div class="ewr-rp-body">
+
+    <!-- Assumptions -->
+    <div class="ewr-rp-card">
+      <div class="ewr-rp-card-title">Your Assumptions</div>
+      <div class="ewr-rp-card-sub">All assumptions used in this calculation</div>
+      <div class="ewr-arow">
+        <span class="ewr-arow-lbl">Property Value</span>
+        <span class="ewr-arow-val">£{{calcData?.PropertyValue | number:'1.0-0'}}</span>
+      </div>
+      <div class="ewr-arow">
+        <span class="ewr-arow-lbl">Home Currency</span>
+        <span class="ewr-arow-val">{{calcData?.homecurrencyText || '—'}}</span>
+      </div>
+      <div class="ewr-arow">
+        <span class="ewr-arow-lbl">Rental Yield</span>
+        <span class="ewr-arow-val">{{calcData?.rentalYeild | number:'1.2-2'}}%</span>
+      </div>
+      <div class="ewr-arow">
+        <span class="ewr-arow-lbl">FX Rate (1 GBP)</span>
+        <span class="ewr-arow-val">{{calcData?.homecurrency || '—'}} {{calcData?.homecurrencyText}}</span>
+      </div>
+    </div>
+
+    <!-- Breakdown: GBP + Home Currency side by side -->
+    <div class="ewr-rp-card">
+      <div class="ewr-rp-card-title">Breakdown</div>
+      <div class="ewr-breakdown-grid">
+        <!-- GBP column -->
+        <div class="ewr-breakdown-col">
+          <div class="ewr-breakdown-col-header">GBP</div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Annual Rent</span>
+            <span class="ewr-brow-val">£{{annualGBP | number:'1.0-0'}}</span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Monthly Rent</span>
+            <span class="ewr-brow-val">£{{monthlyGBP | number:'1.0-0'}}</span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Weekly Rent</span>
+            <span class="ewr-brow-val">£{{weeklyGBP | number:'1.0-0'}}</span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Gross Yield</span>
+            <span class="ewr-brow-val">{{grossYield | number:'1.2-2'}}%</span>
+          </div>
+        </div>
+        <!-- Home currency column -->
+        <div class="ewr-breakdown-col" *ngIf="homeCurrencyCode">
+          <div class="ewr-breakdown-col-header">{{homeCurrencyCode}}</div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Annual Rent</span>
+            <span class="ewr-brow-val">
+              <span *ngIf="homeCurrencyCode==='INR'">₹{{annualHomeFmt}}</span>
+              <span *ngIf="homeCurrencyCode!=='INR'">{{annualHome | number:'1.0-0'}}</span>
+            </span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Monthly Rent</span>
+            <span class="ewr-brow-val">
+              <span *ngIf="homeCurrencyCode==='INR'">₹{{monthlyHomeFmt}}</span>
+              <span *ngIf="homeCurrencyCode!=='INR'">{{monthlyHome | number:'1.0-0'}}</span>
+            </span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">Weekly Rent</span>
+            <span class="ewr-brow-val">
+              <span *ngIf="homeCurrencyCode==='INR'">₹{{weeklyHomeFmt}}</span>
+              <span *ngIf="homeCurrencyCode!=='INR'">{{weeklyHome | number:'1.0-0'}}</span>
+            </span>
+          </div>
+          <div class="ewr-brow">
+            <span class="ewr-brow-lbl">FX Rate</span>
+            <span class="ewr-brow-val">1 GBP = {{calcData?.homecurrency}} {{homeCurrencyCode}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ STICKY FOOTER ══ -->
+  <div class="rp-footer noprint">
+    <a [routerLink]="['/estimated-weekly-rent-calculator/question']" class="rp-footer-btn rp-footer-back">
+      <img src="/assets/Icon (1).svg" width="8" height="14" alt="">
+      Back
+    </a>
+    <button class="rp-footer-btn rp-footer-share" (click)="emailpopup()">
+      <img src="/assets/Icon.svg" width="15" height="15" alt="">
+      Share
+    </button>
+    <button class="rp-footer-btn rp-footer-recalc" (click)="startagain()">Recalculate</button>
+  </div>
+
+</div>
+
+
+<!-- Share Modal -->
+<div class="modal fade noprint" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="top:100px;">
+      <div class="modal-header" style="border-bottom:0;padding-bottom:0">
+        <h5 class="modal-title" style="color:#1d1751;padding-left:12px;">Share Report</h5>
+      </div>
+      <div class="modal-body" style="padding-top:20px;padding-bottom:5px;">
+        <div class="form-group col-md-12">
+          <label style="color:#444854;font-size:14px;">Enter email ids of recipients</label>
+          <input type="email" class="form-control" id="email" placeholder="example: joe@gmail.com,mark@gmail.com" name="email" [(ngModel)]="Email" autocomplete="off" style="height:45px !important;">
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:0;padding-top:0;padding-bottom:8px;">
+        <div style="width:100%;display:flex;justify-content:center;">
+          <button *ngIf="loadingSharebtn" type="submit" class="btn modal-btn"><i class="fa fa-spin fa-spinner"></i> Please Wait...</button>
+          <button *ngIf="!loadingSharebtn" type="submit" class="btn modal-btn" (click)="shareReport()">Send</button>
+          <button type="button" class="btn modal-cancel-btn" id="cancelbtn" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

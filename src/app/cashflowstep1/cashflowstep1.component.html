@@ -1,0 +1,97 @@
+<!-- CASHFLOW STEP 1 — Where would you like to invest? -->
+<div class="cf-page">
+
+  <!-- LEFT PANEL -->
+  <div class="panel-left">
+    <div class="pl-inner">
+      <div class="logo-wrap">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+      <div class="hero-card">
+        <p class="hero-pre">Cashflow Calculator</p>
+        <h2 class="hero-title">Invest in <strong>{{City || 'Manchester'}}</strong>'s Future</h2>
+        <p class="hero-body">The UK's fastest-growing property market with 6-8% yields and strong capital appreciation.</p>
+        <div class="hero-stats">
+          <div class="hstat"><div class="hstat-v">{{getHeroYield()}}</div><div class="hstat-l">Avg. Yield</div></div>
+          <div class="hstat"><div class="hstat-v">{{getHeroGrowth()}}</div><div class="hstat-l">5yr Growth</div></div>
+          <div class="hstat"><div class="hstat-v">{{City === 'Manchester' ? '#1' : City === 'Liverpool' ? '#2' : City === 'Birmingham' ? '#3' : 'UK'}}</div><div class="hstat-l">UK BTL City</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel-right">
+    <div class="pr-inner">
+
+      <!-- Topbar -->
+      <div class="topbar">
+        <button (click)="router.navigate(['/'])" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="loc-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <h1 class="step-title">Where would you like to invest?</h1>
+      <p class="step-sub">Enter any UK postcode or select any city to explore investment potential</p>
+
+      <!-- Location search -->
+      <div class="sw">
+        <svg class="si" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="sinp" type="text" placeholder="Search postcode or city..." [(ngModel)]="searchQuery" />
+      </div>
+
+      <p class="pop-lbl">Popular areas:</p>
+      <div class="area-pills">
+        <button class="ap" *ngIf="'London'    | cityFilter:searchQuery" [class.active]="City==='London'"     (click)="selectCity('London','SW1A 1AA',51.5074,-0.1278)">London</button>
+        <button class="ap" *ngIf="'Liverpool' | cityFilter:searchQuery" [class.active]="City==='Liverpool'"  (click)="selectCity('Liverpool','L1 1AA',53.4084,-2.9916)">Liverpool</button>
+        <button class="ap" *ngIf="'Manchester'| cityFilter:searchQuery" [class.active]="City==='Manchester'" (click)="selectCity('Manchester','M1 1AA',53.4808,-2.2426)">Manchester</button>
+        <button class="ap" *ngIf="'Birmingham'| cityFilter:searchQuery" [class.active]="City==='Birmingham'" (click)="selectCity('Birmingham','B1 1AA',52.4862,-1.8904)">Birmingham</button>
+        <button class="ap" *ngIf="'Others'    | cityFilter:searchQuery" [class.active]="City==='Others'"     (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
+      </div>
+
+      <!-- City card -->
+      <div class="city-card" *ngIf="City">
+        <div class="cc-left">
+          <h3>{{City}}</h3>
+          <p>{{getCityDesc()}}</p>
+        </div>
+        <div class="cc-stats">
+          <div class="ccs"><div class="ccs-v">{{getCityStat('yield')}}</div><div class="ccs-l">Avg Yield</div></div>
+          <div class="ccs"><div class="ccs-v">{{getCityStat('growth')}}</div><div class="ccs-l">5yr Growth</div></div>
+          <div class="ccs"><div class="ccs-v">{{getCityStat('price')}}</div><div class="ccs-l">Avg Price</div></div>
+        </div>
+      </div>
+
+      <!-- Buyer Status card -->
+      <div class="buyer-card">
+        <h4>Buyer Status</h4>
+        <p>This affects your stamp duty calculation</p>
+        <div class="buyer-row">
+          <div class="buyer-row-left">
+            <h5>Are You a Foreign (Non-UK Resident) Buyer?</h5>
+            <p>Foreign buyers pay an additional 2% stamp duty surcharge</p>
+          </div>
+          <div class="buyer-tgl">
+            <button class="bto" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'">UK Resident</button>
+            <button class="bto" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn-back" (click)="router.navigate(['/'])">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button class="btn-cont" (click)="next()">Continue</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

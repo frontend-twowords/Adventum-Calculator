@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="login-div pt-60">
+            <div class="row mb-35">
+                <div class="col-md-8 col-6">
+                    <h2>Sign Up</h2>
+                </div>
+                <div class="col-md-4 col-6 text-right pos-rel">
+                    <h4 class="pos-abs"><a [routerLink]="['/login']" class="sign">Log in</a></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <input type="email" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="Name">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="Email">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="{{inputtype}}" class="form-control pr-45" id="pwd" placeholder="Password" name="pwd" [(ngModel)]="Password">
+                    <i class="fa fa-eye lock-ic" (click) = "showpassword()" *ngIf = "!showPassword" style="cursor:pointer;"></i>
+                    <i class="fa fa-lock lock-ic" (click) = "hidepassword()" *ngIf = "showPassword" style="cursor:pointer;"></i>
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="{{cnfinputtype}}" class="form-control pr-45" id="c_pwd" placeholder="Repeat Password" name="c_pwd" [(ngModel)]="ConfirmPassword">
+                    <i class="fa fa-eye lock-ic" (click) = "showcnfpassword()" *ngIf = "!showcnfPassword" style="cursor:pointer;"></i>
+                    <i class="fa fa-lock lock-ic" (click) = "hidecnfpassword()" *ngIf = "showcnfPassword" style="cursor:pointer;"></i>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="container-checkbox"> I agree to the terms & condition
+                        <input type="checkbox" [(ngModel)]="TermAccepted">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-default submit-btn" (click)="registerUser()" [disabled]="buttonText!=='Sign Up'">
+                        <i class="fa fa-spin fa-spinner" *ngIf="buttonText!=='Sign Up'"></i> 
+                        {{buttonText}}    
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="container">
+    <div class="row">
+        <div class="login-div pt-60">
+            <div class="row mb-35">
+                <div class="col-md-8 col-6">
+                    <h2>Sign Up</h2>
+                </div>
+                <div class="col-md-4 col-6 text-right">
+                    <h4><a [routerLink]="['/login']" class="sign">Log in</a></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <input type="email" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="Name">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" [(ngModel)]="Email">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="password" class="form-control pr-45" id="pwd" placeholder="Password" name="pwd" [(ngModel)]="Password">
+                    <i class="fa fa-lock lock-ic"></i>
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="password" class="form-control pr-45" id="c_pwd" placeholder="Confirm Password" name="c_pwd" [(ngModel)]="ConfirmPassword">
+                    <i class="fa fa-lock lock-ic"></i>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="container-checkbox"> I agree to the wireframe terms
+                        <input type="checkbox" [(ngModel)]="TermAccepted">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-default submit-btn" (click)="registerUser()" [disabled]="buttonText!=='Sign Up'">
+                        <i class="fa fa-spin fa-spinner" *ngIf="buttonText!=='Sign Up'"></i> 
+                        {{buttonText}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

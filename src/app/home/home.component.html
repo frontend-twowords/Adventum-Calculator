@@ -1,0 +1,153 @@
+<div class="landing-page">
+
+  <video #bgVideo class="landing-bg-video" autoplay muted loop playsinline>
+    <source src="assets/6594156-hd_1920_1080_24fps.mp4" type="video/mp4">
+  </video>
+  <div class="landing-bg-overlay"></div>
+
+  <div class="landing-content">
+
+    <!-- Logo -->
+    <div class="landing-logo">
+      <img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="landing-logo-img">
+    </div>
+
+    <!-- Tagline -->
+    <p class="landing-tagline">
+      Your playground where you play with locations, rates, numbers at your terms and your rules.
+    </p>
+
+    <!-- Calculator Cards Grid -->
+    <div class="calc-grid">
+
+      <div class="calc-card" (click)="next(1)">
+        <div>
+          <h3>Investment Property Calculator</h3>
+          <p>As a foreign investor, calculate 3-dimensional returns in tandem from rent, foreign exchange gains and capital growth on your property in UK. Play with your assumptions and optimise investment strategies.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-card" (click)="next(6)">
+        <div>
+          <h3>Cashflow Calculator</h3>
+          <p>Calculate the profits and losses gained by doing investment.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-card" (click)="next(2)">
+        <div>
+          <h3>Capital Growth Calculator</h3>
+          <p>A simple Capital Growth Calculator to see the future value of your property. Play with your growth assumptions and optimise strategies on your properties in the UK.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-card" (click)="next(3)">
+        <div>
+          <h3>Estimated Weekly Rent Calculator</h3>
+          <p>Use this calculator to quickly check and compare rents in UK by the week in a 52 week year. Play with your assumptions to optimise and achieve rental yield that is in line with the market..</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-card" (click)="next(4)">
+        <div>
+          <h3>Predictive Foreign Exchange Value</h3>
+          <p>Play with your assumptions on the Foreign Exchange impact on your overseas investment. Calculations are supported with real-time data to support your assumptions from XE.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="calc-card" (click)="next(5)">
+        <div>
+          <h3>Stamp Duty Calculator</h3>
+          <p>Calculate the exact cost of stamp duty on your property purchase as it varies in the UK with the price of the property and the kind of the buyer: First-time, Investor, Corporate, Foreign and more.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- <div class="calc-card" (click)="next(7)">
+        <div>
+          <h3>Annual Tax on Enveloped Dwellings</h3>
+          <p>Calculate your ATED liability for UK residential properties held within a corporate wrapper or envelope structure.</p>
+        </div>
+        <div class="calc-card-bottom">
+          <button class="calc-cta-btn" type="button">
+            Calculate
+            <span class="calc-arrow-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="9,4.5 13.5,8 9,11.5" stroke="#4F5C70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div> -->
+
+    </div>
+
+  </div>
+
+</div>

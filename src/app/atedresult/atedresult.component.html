@@ -1,0 +1,94 @@
+<div class="container" id="contentToConvert" style="margin-top: 100px;"> 
+    <div class="row mt-30">
+        <div class="col-md-6 col-6">
+            <img src="./assets/annual-breadcrumb.svg" class="logoicon">
+        </div>
+        <div class="col-md-6 col-12 bread-p text-right">
+            <p class="mb-1">ATED (Annual Tax on Enveloped Dwellings) Calculator</p>
+            <p class="mb-0">{{validation.getCurrentDateWithSpecificFormat()}}</p>
+        </div> 
+    </div>
+    <div class="row mt-3 plr-1"  id="secondMain">
+        <div class="mapcontainer">
+            <app-googlemap [MapClassLoad]="MapLoad" [latitude]="lat" [longitude]="long"></app-googlemap>
+        </div>
+      </div>
+    <div class="row mt-30">
+        <div class="col-md-6 col-lg-6">
+            
+           
+            <app-calculatordetails [coldesign]="12"></app-calculatordetails>
+    
+            <div class="row text-right noprint">
+                <div class="col-md-12">
+                    <!-- <button type="submit" class="btn btn-default submit-btn text-right"><img src="assets/img/save-report1.svg"> Save Reports</button> -->
+                    <button type="submit" class="btn btn-default submit-btn text-right" (click)="startagain()"> <img src="./assets/recalculate1.svg">  Recalculate</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="progress-box box2">
+                <h4>ATED Charge </h4>
+                <p>Annual Charge : {{atedchargevalue}}</p>
+               
+            </div>
+        </div>
+    
+    </div>
+   
+    
+        <div class="row noprint" id="buttonsrow" style="justify-content:center;padding-top:30px;">
+            <div class="col-md-6 col-lg-3 mob-center text-right">
+                <button *ngIf="loadingPrintbtn" type="submit" class="btn btn-default report-btn text-right"><i class="fa fa-spin fa-spinner"></i>
+                    Please Wait...</button>
+                <button *ngIf="!loadingPrintbtn" type="submit" class="btn btn-default report-btn text-right" (click)="printScreen()"><img src="./assets/save-report1.svg">
+                    Print Report</button>
+            </div>
+            <div class="col-md-7 col-lg-3 mob-center text-center" id="downloadreportdiv" style="display:none;">
+                <button *ngIf="loadingDownloadbtn" type="submit" class="btn btn-default report-btn text-right"><i class="fa fa-spin fa-spinner"></i>
+                    Please Wait...</button>
+                <button *ngIf="!loadingDownloadbtn" type="submit" class="btn btn-default report-btn text-right" (click)="convetToPDF()"><img
+                        src="./assets/download-cursor1.svg"> Download Report</button>
+            </div>
+            <div class="col-md-6 col-lg-3 mob-center text-left">
+                <button *ngIf="loadingSharebtn" type="submit" class="btn btn-default report-btn text-right"><i class="fa fa-spin fa-spinner"></i>
+                    Please Wait...</button>
+                <button *ngIf="!loadingSharebtn" type="submit" class="btn btn-default report-btn text-right" (click)="emailpopup()"><img src="/assets/Icon.svg" width="14" height="14" alt="">Share Report</button>
+            </div>
+        </div>
+        
+        </div>
+    
+        <div class="modal fade noprint" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content" style="top: 100px;">
+          
+                <!-- Modal Header -->
+                <div class="modal-header" style="border-bottom:0px;padding-bottom:0px">
+                  <h5 class="modal-title" style="color:#1d1751;padding-left:12px;">Share Report</h5>
+                  <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body" style="padding-top: 20px;padding-bottom:5px;">
+                    <div class="form-group col-md-12">
+                        <label style="color:#444854;font-size:14px;">Enter email ids of recipients</label>
+                        <input type="email" class="form-control" id="email" placeholder="example : joe@gmail.com,mark@gmail.com" name="email" [(ngModel)]="Email" autocomplete="off"  style="height:45px !important;" data-role="tagsinput">
+                    </div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer" style="border-top: 0px;padding-top: 0px;padding-bottom: 8px;">
+                    <div  style="width:100%;display:flex;justify-content:center;">
+                       
+                        <button *ngIf="loadingSharebtn" type="submit" class="btn modal-btn"><i class="fa fa-spin fa-spinner"></i>
+                            Please Wait...</button>
+                        <button *ngIf="!loadingSharebtn" type="submit" class="btn modal-btn" (click)=" shareReport()">Send</button>
+                        <button type="button" class="btn modal-cancel-btn" id="cancelbtn" (click)="cancel()">Cancel</button>
+                    </div>
+                
+                </div>
+          
+              </div>
+            </div>
+          </div>

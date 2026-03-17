@@ -1,0 +1,14 @@
+<agm-map    
+      [latitude]="latitude"
+      [longitude]="longitude"
+      [zoom]="17"
+      [disableDefaultUI]="true"
+      [mapTypeId]="'roadmap'"
+      id="googlemap"
+      [styles]="style" >
+      <agm-marker
+            [latitude]="latitude" 
+            [longitude]="longitude"
+            [iconUrl]="markerStyle">
+      </agm-marker>     
+</agm-map>

@@ -1,0 +1,399 @@
+/* ─────────────────────────────────────────────────────────
+   INTER DISPLAY — LOCAL FONT FACES
+───────────────────────────────────────────────────────── */
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Thin.ttf') format('truetype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-ThinItalic.ttf') format('truetype'); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-ExtraLight.ttf') format('truetype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-ExtraLightItalic.ttf') format('truetype'); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-MediumItalic.ttf') format('truetype'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-SemiBoldItalic.ttf') format('truetype'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-ExtraBoldItalic.ttf') format('truetype'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-Black.ttf') format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter Display'; src: url('assets/fonts/InterDisplay-BlackItalic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
+
+/* ─────────────────────────────────────────────────────────
+   GLOBAL CSS VARIABLES
+───────────────────────────────────────────────────────── */
+:root {
+  --navy: #132147;
+  --navy-dark: #0a1628;
+  --navy-mid: #1a2d4f;
+  --green: #22c55e;
+  --green-bg: rgba(34, 197, 94, 0.12);
+  --green-text: #16a34a;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.16);
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter Display', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, span, a, button, input, select, textarea, label, li {
+  font-family: 'Inter Display', sans-serif;
+}
+
+/* SVG — do NOT force 100% width (breaks sized icons) */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Span reset — prevent Bootstrap/legacy overrides from making spans block-level boxes */
+span {
+  display: inline;
+  background: transparent;
+  width: auto;
+  height: auto;
+}
+
+/* ─────────────────────────────────────────────────────────
+   UTILITY
+───────────────────────────────────────────────────────── */
+.displaynone { display: none !important; }
+.noprint { /* handled in print block */ }
+
+/* ─────────────────────────────────────────────────────────
+   FORM CONTROLS (global defaults for Angular inputs)
+───────────────────────────────────────────────────────── */
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password] {
+  height: auto;
+  width: 100%;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--navy);
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--white);
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus {
+  border-color: var(--navy);
+}
+
+input::placeholder {
+  color: var(--gray-400);
+  font-weight: 400;
+}
+
+/* Inside a field-input-wrap, the input has no own border/radius */
+.field-input-wrap input[type=text],
+.field-input-wrap input[type=email],
+.field-input-wrap input[type=number] {
+  border: none;
+  border-radius: 0;
+  padding: 14px 16px;
+  height: auto;
+  width: auto;
+  flex: 1;
+}
+
+select {
+  width: 100%;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 14px 40px 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--navy);
+  height: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 16px center;
+  outline: none;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+select:focus { border-color: var(--navy); }
+select::-ms-expand { display: none; }
+select option { color: var(--navy); }
+
+button {
+  float: none;
+  width: auto;
+  font-family: 'Inter', sans-serif;
+}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.error-input {
+  border: 1.5px solid #f87171 !important;
+}
+.error-input::placeholder {
+  color: #f87171 !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PROGRESS BAR
+───────────────────────────────────────────────────────── */
+.progress-inner {
+  min-height: 4px !important;
+  max-height: 4px !important;
+  border-radius: 2px;
+  background-color: var(--green) !important;
+  transition: width 0.6s ease;
+  min-width: 0% !important;
+}
+
+.progress-outer {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--gray-200) !important;
+  border: none !important;
+  border-radius: 2px !important;
+  height: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   MAP
+───────────────────────────────────────────────────────── */
+.mapclass { position: initial !important; }
+.mapcontainer { width: 100%; overflow: hidden; position: relative; }
+
+/* ─────────────────────────────────────────────────────────
+   FIXED HEADER / NAV
+───────────────────────────────────────────────────────── */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1111;
+  margin: 0 !important;
+}
+
+/* ─────────────────────────────────────────────────────────
+   MODAL
+───────────────────────────────────────────────────────── */
+.modal { z-index: 1200 !important; }
+
+#navbar-modal .modal-dialog { margin: 0; }
+#navbar-modal .modal-header { border-bottom: 0; }
+#navbar-modal .modal-content {
+  border: 0;
+  height: 100vh;
+  border-radius: 0;
+  background: var(--navy-dark);
+}
+#navbar-modal .close {
+  opacity: 1;
+  color: var(--green);
+  font-weight: 300;
+  position: absolute;
+  font-size: 48px;
+  top: 8px;
+  right: 16px;
+  z-index: 11111;
+}
+#navbar-modal .modal-body {
+  margin-top: 32px;
+  text-align: center;
+  padding: 24px;
+}
+
+.navmobile-link { padding-left: 0; }
+.navmobile-link li {
+  list-style: none;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+.navmobile-link li.main-nav {
+  font-size: 17px;
+  font-weight: 600;
+}
+.navmobile-link li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navmobile-link li a:hover { color: var(--green); }
+
+.social-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; }
+.social-links a { color: rgba(255,255,255,0.6); font-size: 18px; transition: color 0.2s; }
+.social-links a:hover { color: var(--green); }
+
+.privacy-link ul { padding-left: 0; display: flex; justify-content: center; gap: 16px; }
+.privacy-link li { display: inline-block; font-size: 13px; }
+.privacy-link li a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+/* ─────────────────────────────────────────────────────────
+   LEGACY CLASSES — kept for compatibility with TS files
+───────────────────────────────────────────────────────── */
+.questyle { font-size: 20px; font-weight: 500; color: var(--navy); }
+.headinglable { font-size: 18px; }
+.hidden-xs { display: block; }
+.hidden-lg { display: none !important; }
+.p0 { padding: 0; }
+.pl0 { padding-left: 0; }
+.pr0 { padding-right: 0; }
+.mr10 { margin-right: 10px !important; }
+.bold { font-weight: 700; }
+.displaynone { display: none !important; }
+
+/* ─────────────────────────────────────────────────────────
+   PRINT
+───────────────────────────────────────────────────────── */
+@media print {
+  .noprint { display: none !important; }
+  .printimportant { width: 100% !important; }
+  .printheadfont { font-size: 30px !important; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────────── */
+
+/* Left panel: prevent logo/card overlap on stacked mobile layout */
+@media only screen and (max-width: 900px) {
+  .panel-logo,
+  .logo-wrap {
+    margin-bottom: 16px !important;
+  }
+
+  .panel-logo-img {
+    height: 36px !important;
+    width: auto;
+  }
+
+  .panel-hero-card,
+  .hero-card,
+  .cf-card,
+  .sdlt-card,
+  .cg-hero-card,
+  .ewr-hero-card,
+  .pfx-hero-card {
+    margin-top: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .panel-logo-img {
+    height: 30px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .hidden-xs { display: none !important; }
+  .hidden-lg { display: block !important; }
+
+  select, input[type=text], input[type=email], input[type=number], input[type=password] {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  select {
+    padding: 10px 36px 10px 14px;
+    background-position: right 12px center;
+  }
+
+  .navmobile-link li { font-size: 16px; margin-bottom: 14px; }
+  .navmobile-link li.main-nav { font-size: 18px; }
+}
+
+@media only screen and (max-width: 480px) {
+  select, input[type=text], input[type=email], input[type=number], input[type=password] {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  select {
+    padding: 9px 32px 9px 12px;
+  }
+
+  .app-hint {
+    padding: 8px 16px;
+    font-size: 12px;
+    gap: 6px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  #navbar-modal .modal-body { margin-top: 8px; }
+  .navmobile-link li { margin-bottom: 8px; }
+}
+.panel-logo a {
+  display: inline-block;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.app-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: linear-gradient(221deg, rgba(36,177,75,0.10) 0%, rgba(36,177,75,0.10) 100%);
+  border-radius: 100px;
+  outline: 1px rgba(36,177,75,0.20) solid;
+  outline-offset: -1px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(51,58,68,0.70);
+  font-family: 'Inter', sans-serif;
+  line-height: 20px;
+}
+
+.app-hint::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 13px;
+  background: url('/assets/Vector 63.svg') center/contain no-repeat;
+  flex-shrink: 0;
+}

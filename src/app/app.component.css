@@ -1,0 +1,16 @@
+.main {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.mapclass {
+  overflow: unset !important;
+  position: absolute !important;
+}
+
+/* navbar is fixed — zero out the spacer div */
+.navAC {
+  margin: 0;
+  padding: 0;
+  height: 0;
+}

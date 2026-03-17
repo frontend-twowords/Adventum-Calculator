@@ -1,0 +1,188 @@
+<div class="cg-page">
+
+  <!-- ══ LEFT PANEL ══ -->
+  <div class="cg-panel-left">
+    <div class="cg-panel-left-bg"></div>
+    <div class="cg-panel-left-inner">
+
+      <!-- Logo -->
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Growth preview card -->
+      <div class="cg-preview-card">
+        <h3 class="cg-preview-title">Project Your <strong>Growth</strong></h3>
+        <p class="cg-preview-sub">Live preview updates as you fill in the form.</p>
+        <div class="cg-preview-grid">
+          <div class="cg-preview-item">
+            <div class="cg-preview-lbl">Current Value</div>
+            <div class="cg-preview-val">{{previewCurrentGBP ? ('£' + (previewCurrentGBP | number:'1.0-0')) : '—'}}</div>
+            <div class="cg-preview-note">{{previewCurrentHome ? previewCurrentHomeCr : ''}}</div>
+          </div>
+          <div class="cg-preview-item cg-preview-accent">
+            <div class="cg-preview-lbl">Exit Value ({{investedTenure || '?'}}yr)</div>
+            <div class="cg-preview-val">{{previewExitGBP ? ('£' + (previewExitGBP | number:'1.0-0')) : '—'}}</div>
+            <div class="cg-preview-note">{{previewExitHome ? previewExitHomeCr : ''}}</div>
+          </div>
+          <div class="cg-preview-item">
+            <div class="cg-preview-lbl">GBP Growth p.a.</div>
+            <div class="cg-preview-val">{{capitalgrowth || '—'}}</div>
+          </div>
+          <div class="cg-preview-item cg-preview-accent">
+            <div class="cg-preview-lbl">Total {{homecurrencyText || 'Home'}} Return</div>
+            <div class="cg-preview-val">{{previewTotalReturn ? (previewTotalReturn + '%') : '—'}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <div class="cg-panel-right">
+    <div class="cg-panel-right-inner">
+
+      <!-- Topbar -->
+      <div class="cg-topbar">
+        <a [routerLink]="['/capital-growth-calculator/step1']" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </a>
+        <div class="cg-location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{calcData?.City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <div class="cg-heading">
+        <h1 class="cg-title">Capital Growth Inputs</h1>
+        <p class="cg-subtitle">Estimate long-term property value growth in GBP and your home currency.</p>
+      </div>
+
+      <!-- Property Value -->
+      <div class="cg-field">
+        <div class="cg-label">
+          Property Value
+          <span class="app-hint">
+     
+            UK avg: £280k
+          </span>
+        </div>
+        <div class="cg-input-wrap">
+          <span class="cg-input-pre">£</span>
+          <input class="cg-inp" type="text" id="propertyValue" autocomplete="off"
+            placeholder="e.g. 280,000"
+            (keyup)="PropertyValue=validation.amountWithComma(PropertyValue)"
+            (keypress)="validation.numberOnly($event)"
+            [(ngModel)]="PropertyValue">
+        </div>
+      </div>
+
+      <!-- Annual Capital Growth -->
+      <div class="cg-field">
+        <div class="cg-label">
+          Annual Capital Growth
+          <span class="app-hint">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            10yr UK avg: 4.8%
+          </span>
+        </div>
+        <div class="cg-input-wrap">
+          <input class="cg-inp" type="text" id="capitalgrowth" autocomplete="off"
+            placeholder="e.g. 4%"
+            (keyup)="capitalgrowth=validation.appendPercent($event,capitalgrowth)"
+            (keypress)="validation.DesimalOnly($event,capitalgrowth)"
+            [(ngModel)]="capitalgrowth">
+          <span class="cg-input-suf">% p.a.</span>
+        </div>
+      </div>
+
+      <!-- FX Appreciation -->
+      <div class="cg-field">
+        <div class="cg-label">
+          FX Appreciation
+          <span class="app-hint">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            GBP vs home currency
+          </span>
+        </div>
+        <div class="cg-input-wrap">
+          <input class="cg-inp" type="text" id="FXGrowthPA" autocomplete="off"
+            placeholder="e.g. 3%"
+            (keyup)="FXGrowthPA=validation.appendPercent($event,FXGrowthPA)"
+            (keypress)="validation.DesimalOnly($event,FXGrowthPA)"
+            [(ngModel)]="FXGrowthPA">
+          <span class="cg-input-suf">% p.a.</span>
+        </div>
+      </div>
+
+      <!-- Investment Period -->
+      <div class="cg-field">
+        <div class="cg-label">Investment Period</div>
+        <div class="cg-pill-row">
+          <button class="cg-pill" [class.cg-pill--active]="investedTenure==='5'"  (click)="investedTenure='5'">5 Yrs</button>
+          <button class="cg-pill" [class.cg-pill--active]="investedTenure==='10'" (click)="investedTenure='10'">10 Yrs</button>
+          <button class="cg-pill" [class.cg-pill--active]="investedTenure==='15'" (click)="investedTenure='15'">15 Yrs</button>
+        </div>
+      </div>
+
+      <!-- Home Currency -->
+      <div class="cg-field">
+        <div class="cg-label">Home Currency</div>
+        <div class="cg-custom-select" [class.cg-custom-select--open]="currencyDropdownOpen">
+          <button type="button" class="cg-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
+            <span [class.cg-custom-placeholder]="!homecurrencyText">{{homecurrencyText ? selectedCurrencyName : 'Select currency'}}</span>
+            <svg class="cg-custom-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="cg-custom-dropdown" *ngIf="currencyDropdownOpen">
+            <div class="cg-custom-search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input class="cg-custom-search" type="text" placeholder="Search currency..." [(ngModel)]="currencySearch" (click)="$event.stopPropagation()" autocomplete="off">
+            </div>
+            <div class="cg-custom-list">
+              <div *ngFor="let c of filteredCurrencies"
+                class="cg-custom-option"
+                [class.cg-custom-option--selected]="c.code===homecurrencyText"
+                (click)="selectCurrency(c.code)">
+                <span class="cg-cdd-name">{{c.name.replace(' (' + c.code + ')', '')}}</span>
+                <span class="cg-cdd-code">{{c.code}}</span>
+              </div>
+              <div *ngIf="filteredCurrencies.length===0" class="cg-custom-empty">No results</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Live Summary Cards -->
+      <div class="cg-summary-row" *ngIf="previewExitGBP">
+        <div class="cg-summary-card">
+          <div class="cg-summary-lbl">Current Value</div>
+          <div class="cg-summary-val">£ {{previewCurrentGBP | number:'1.0-0'}}</div>
+          <div class="cg-summary-sub">{{previewCurrentHomeCr}}</div>
+        </div>
+        <div class="cg-summary-card">
+          <div class="cg-summary-lbl">Exit Value ({{investedTenure}}yr)</div>
+          <div class="cg-summary-val">£ {{previewExitGBP | number:'1.0-0'}}</div>
+          <div class="cg-summary-sub">{{previewExitHomeCr}}</div>
+        </div>
+        <div class="cg-summary-card">
+          <div class="cg-summary-lbl">Total {{homecurrencyText}} Growth</div>
+          <div class="cg-summary-val cg-summary-val--green">{{previewTotalReturn}}%</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="cg-actions">
+        <a [routerLink]="['/capital-growth-calculator/step1']" class="cg-btn-back">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </a>
+        <button class="cg-btn-continue" (click)="next()">Calculate Returns</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

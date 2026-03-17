@@ -1,0 +1,196 @@
+<!-- ── FINANCING PAGE ── -->
+<div class="financing-page">
+
+  <!-- ── LEFT PANEL ── -->
+  <div class="panel-left">
+    <div class="panel-left-bg"></div>
+    <div class="panel-left-content">
+
+      <!-- Logo -->
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Hero card -->
+      <div class="panel-hero-card">
+        <p class="panel-hero-title"><strong>Investment Property Calculator</strong></p>
+        <p class="panel-hero-sub">Define your property value and financing structure to model accurate investment returns.</p>
+
+        <!-- 2×2 summary grid — always visible, values update live -->
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-card-lbl">Property Value</div>
+            <div class="summary-card-val">{{PropertyValue ? '£' + PropertyValue : '—'}}</div>
+          </div>
+          <div class="summary-card hi">
+            <div class="summary-card-lbl">Your Deposit</div>
+            <div class="summary-card-val summary-card-val--green">{{depositDisplay}}</div>
+            <div class="summary-card-note" *ngIf="depositNote">{{depositNote}}</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-lbl">Loan Amount</div>
+            <div class="summary-card-val">{{loanAmountDisplay}}</div>
+          </div>
+          <div class="summary-card hi">
+            <div class="summary-card-lbl">Est. Stamp Duty</div>
+            <div class="summary-card-val summary-card-val--green">{{stampDutyDisplay}}</div>
+            <div class="summary-card-note" *ngIf="stampDutyNote">{{stampDutyNote}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── RIGHT PANEL ── -->
+  <div class="panel-right">
+    <div class="panel-right-inner">
+
+      <!-- Top bar -->
+      <div class="panel-topbar">
+        <button [routerLink]="['/step1']" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h2 class="section-title">Property &amp; Financing</h2>
+      <p class="section-sub">Set up your investment structure and mortgage preferences.</p>
+
+      <!-- Property Value -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Property Value</span>
+          <span class="app-hint">UK market average: £280k</span>
+        </div>
+        <div class="field-input-wrap" [class.field-input-wrap--error]="PropertyValue==''">
+          <span class="field-prefix">£</span>
+          <input
+            class="field-input"
+            type="text"
+            id="propertyValue"
+            autocomplete="off"
+            placeholder="e.g. 250,000"
+            [(ngModel)]="PropertyValue"
+            (keyup)="PropertyValue=validation.amountWithComma(PropertyValue)"
+            (keypress)="validation.numberOnly($event)">
+        </div>
+      </div>
+
+      <!-- Will you need a mortgage? -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Will you need a mortgage?</span>
+        </div>
+        <div class="toggle-pair">
+          <button
+            class="toggle-opt"
+            [class.active]="optmortgage=='1'"
+            (click)="optmortgage='1'">
+            Yes
+          </button>
+          <button
+            class="toggle-opt"
+            [class.active]="optmortgage=='0'"
+            (click)="optmortgage='0'">
+            No
+          </button>
+        </div>
+      </div>
+
+      <!-- Loan to Value — pill buttons -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Loan to Value (LTV)</span>
+          <span class="app-hint">Higher LTV = less deposit required</span>
+        </div>
+        <div class="pill-row">
+          <button class="pill-btn" [class.active]="loanAmount=='50'" (click)="loanAmount='50'">50%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='55'" (click)="loanAmount='55'">55%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='60'" (click)="loanAmount='60'">60%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='65'" (click)="loanAmount='65'">65%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='70'" (click)="loanAmount='70'">70%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='75'" (click)="loanAmount='75'">75%</button>
+          <button class="pill-btn" [class.active]="loanAmount=='80'" (click)="loanAmount='80'">80%</button>
+        </div>
+      </div>
+
+      <!-- Interest Rate -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Interest Rate</span>
+          <span class="app-hint">Current avg: 5.2%</span>
+        </div>
+        <div class="field-input-wrap">
+          <span class="field-prefix">%</span>
+          <input
+            class="field-input"
+            type="text"
+            id="mortgageInterestRate"
+            autocomplete="off"
+            placeholder="e.g. 3.75"
+            [(ngModel)]="mortgageInterestRate"
+            (keyup)="mortgageInterestRate=validation.appendPercent($event,mortgageInterestRate)"
+            (keypress)="validation.DesimalOnly($event,mortgageInterestRate)">
+        </div>
+      </div>
+
+      <!-- Loan Tenure — pill buttons -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Loan Tenure</span>
+          <span class="app-hint">Typical BTL: 10-25 years</span>
+        </div>
+        <div class="pill-row">
+          <button class="pill-btn" [class.active]="mortgageTenure=='5'"  (click)="mortgageTenure='5'">5 Yrs</button>
+          <button class="pill-btn" [class.active]="mortgageTenure=='10'" (click)="mortgageTenure='10'">10 Yrs</button>
+          <button class="pill-btn" [class.active]="mortgageTenure=='15'" (click)="mortgageTenure='15'">15 Yrs</button>
+          <button class="pill-btn" [class.active]="mortgageTenure=='20'" (click)="mortgageTenure='20'">20 Yrs</button>
+          <button class="pill-btn" [class.active]="mortgageTenure=='25'" (click)="mortgageTenure='25'">25 Yrs</button>
+        </div>
+      </div>
+
+      <!-- Mortgage Type — toggle pair -->
+      <div class="field-group">
+        <div class="field-label-row">
+          <span class="field-label">Mortgage Type</span>
+        </div>
+        <div class="toggle-pair">
+          <button
+            class="toggle-opt"
+            [class.active]="mortgageType=='1'"
+            (click)="mortgageType='1'">
+            Interest Only
+          </button>
+          <button
+            class="toggle-opt"
+            [class.active]="mortgageType=='2'"
+            (click)="mortgageType='2'">
+            Repayment
+          </button>
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div class="panel-nav">
+        <button class="btn-back-outline" [routerLink]="['/step1']">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button
+          class="btn-continue btn-continue--active"
+          type="button"
+          (click)="next()">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

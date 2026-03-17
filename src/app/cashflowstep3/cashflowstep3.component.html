@@ -1,0 +1,117 @@
+<!-- CASHFLOW STEP 3 — Rental Income -->
+<div class="cf-page">
+
+  <!-- LEFT PANEL -->
+  <div class="panel-left">
+    <div class="pl-inner">
+      <div class="logo-wrap">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+      <div class="cf-card">
+        <h3 class="cf-card-title">Your <strong>Cashflow</strong> at a Glance</h3>
+        <p class="cf-card-sub">Watch your net income update as you configure.</p>
+        <div class="cf-stats">
+          <div class="cfs"><div class="cfs-l">Gross Annual</div><div class="cfs-v">£{{grossAnnual | number:'1.0-0'}}</div></div>
+          <div class="cfs acc"><div class="cfs-l">Est. Net Annual</div><div class="cfs-v">£{{netAnnual | number:'1.0-0'}}</div></div>
+          <div class="cfs"><div class="cfs-l">Est. Net Monthly</div><div class="cfs-v">£{{(netAnnual/12) | number:'1.0-0'}}</div></div>
+          <div class="cfs acc"><div class="cfs-l">Gross Yield</div><div class="cfs-v">{{(grossAnnual > 0 && propertyValue > 0) ? ((grossAnnual / propertyValue) * 100 | number:'1.1-1') + '%' : '0.0%'}}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel-right">
+    <div class="pr-inner">
+
+      <!-- Topbar -->
+      <div class="topbar">
+        <button [routerLink]="['/cashflow/step2']" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </button>
+        <div class="loc-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{calcData?.City || 'United Kingdom'}}
+        </div>
+      </div>
+
+      <div class="heading-block">
+        <h1 class="step-title">Rental Income</h1>
+        <p class="step-sub">Define your investment horizon and rental expectations.</p>
+      </div>
+
+      <!-- 3-col fields row -->
+      <div class="fields-row">
+
+        <!-- Investment Period -->
+        <div class="field-col">
+          <div class="field-lbl">Investment Period</div>
+          <div class="input-card">
+            <select class="inp-sel" [(ngModel)]="investedTenure" (change)="updatePreview()">
+              <option value="3">3 yrs</option>
+              <option value="5">5 yrs</option>
+              <option value="10">10 yrs</option>
+              <option value="15">15 yrs</option>
+              <option value="20">20 yrs</option>
+              <option value="25">25 yrs</option>
+            </select>
+            <svg class="sel-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="#6F747B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Gross Rental Yield -->
+        <div class="field-col">
+          <div class="field-lbl">Gross Rental Yield</div>
+          <div class="input-card">
+            <input class="inp-val" type="text" autocomplete="off"
+              (keyup)="rentalYeild=validation.appendPercent($event,rentalYeild); updatePreview()"
+              (keypress)="validation.DesimalOnly($event,rentalYeild)"
+              placeholder="6"
+              [(ngModel)]="rentalYeild">
+            <span class="inp-unit">%</span>
+          </div>
+          <span class="app-hint">UK typical: 3.5–5.5%</span>
+        </div>
+
+        <!-- Rental Growth -->
+        <div class="field-col">
+          <div class="field-lbl">Rental Growth p.a.</div>
+          <div class="input-card">
+            <input class="inp-val" type="text" autocomplete="off"
+              (keyup)="rentalGrowthEscalation=validation.appendPercent($event,rentalGrowthEscalation); updatePreview()"
+              (keypress)="validation.DesimalOnly($event,rentalGrowthEscalation)"
+              placeholder="2.5"
+              [(ngModel)]="rentalGrowthEscalation">
+            <span class="inp-unit">%</span>
+          </div>
+          <span class="app-hint">UK average: 2–4%</span>
+        </div>
+
+      </div>
+
+      <!-- 2-col preview -->
+      <div class="preview-row">
+        <div class="prev-card">
+          <div class="prev-lbl">Year 1 Gross Rent</div>
+          <div class="prev-val"><span class="prev-sym">£</span>{{grossAnnual | number:'1.0-0'}}</div>
+        </div>
+        <div class="prev-card">
+          <div class="prev-lbl">Year 1 Net Cashflow</div>
+          <div class="prev-val"><span class="prev-sym">£</span>{{netAnnual | number:'1.0-0'}}</div>
+          <div class="prev-note">after all costs</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn-back" [routerLink]="['/cashflow/step2']">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+          Back
+        </button>
+        <button class="btn-cont" type="button" (click)="next()">Continue</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

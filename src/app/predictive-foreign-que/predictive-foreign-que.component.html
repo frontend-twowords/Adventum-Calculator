@@ -1,0 +1,162 @@
+<!-- Predictive Foreign Exchange Calculator -->
+<div class="pfx-page">
+
+  <!-- ══ LEFT PANEL ══ -->
+  <div class="pfx-panel-left">
+    <div class="pfx-panel-left-photo"></div>
+    <div class="pfx-panel-left-overlay"></div>
+    <div class="pfx-panel-left-inner">
+
+      <div class="panel-logo">
+        <a routerLink="/"><img src="assets/Calci_logo (1).png" alt="Adventum Calculators" class="panel-logo-img"></a>
+      </div>
+
+      <!-- Live FX card -->
+      <div class="pfx-card">
+        <h3 class="pfx-card-title">Project Your <strong>FX Returns</strong></h3>
+        <p class="pfx-card-sub">Currency appreciation adds a powerful dimension to your returns.</p>
+        <div class="pfx-stats">
+          <div class="pfx-stat">
+            <div class="pfx-stat-lbl">Exchange Rate</div>
+            <div class="pfx-stat-val">£1 = {{currencySymbol}}{{liveRate | number:'1.1-2'}}</div>
+          </div>
+          <div class="pfx-stat pfx-stat--accent">
+            <div class="pfx-stat-lbl">FX Appreciation</div>
+            <div class="pfx-stat-val">+{{liveAppreciation}}% p.a.</div>
+          </div>
+          <div class="pfx-stat">
+            <div class="pfx-stat-lbl">In {{livePeriod}} Yrs (GBP)</div>
+            <div class="pfx-stat-val">£{{livePrice | number:'1.0-0'}}</div>
+          </div>
+          <div class="pfx-stat pfx-stat--accent">
+            <div class="pfx-stat-lbl">FX Boost ({{selectedCurrencyCode || 'INR'}})</div>
+            <div class="pfx-stat-val">+{{formatHomeCurrency(liveFxBoost)}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ RIGHT PANEL ══ -->
+  <div class="pfx-panel-right">
+    <div class="pfx-panel-right-inner">
+
+      <!-- Topbar -->
+      <div class="pfx-topbar">
+        <a [routerLink]="['/']" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
+        </a>
+        <div class="pfx-location-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{locationName}}
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="pfx-title">Predictive Forex Value</h1>
+      <p class="pfx-subtitle">See how currency appreciation impacts your investment value over time.</p>
+
+      <div class="pfx-sec-label">Your Situation</div>
+
+      <!-- Property Value -->
+      <div class="pfx-field">
+        <div class="pfx-label-row">
+          <div class="pfx-label">Property Value</div>
+          <span class="app-hint">UK market average: £280k</span>
+        </div>
+        <div class="pfx-input-wrap">
+          <span class="pfx-input-pre">£</span>
+          <input class="pfx-inp" type="text" id="InvestmentGBP" autocomplete="off"
+            placeholder="e.g. 400,000"
+            (keyup)="InvestmentGBP=validation.amountWithComma(InvestmentGBP); calcLive()"
+            (keypress)="validation.numberOnly($event)"
+            [(ngModel)]="InvestmentGBP">
+        </div>
+      </div>
+
+      <!-- Home Currency -->
+      <div class="pfx-field">
+        <div class="pfx-label">Home Currency</div>
+        <div class="pfx-custom-select" [class.pfx-custom-select--open]="currencyDropdownOpen">
+          <button type="button" class="pfx-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
+            <span [class.pfx-custom-placeholder]="!selectedCurrencyCode">
+              {{selectedCurrencyCode ? getCurrencyLabel(selectedCurrencyCode) : 'Select currency'}}
+            </span>
+            <svg class="pfx-custom-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="pfx-custom-dropdown" *ngIf="currencyDropdownOpen">
+            <div class="pfx-custom-search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" class="pfx-custom-search-input" placeholder="Search currency..." [(ngModel)]="currencySearch" autocomplete="off" (click)="$event.stopPropagation()">
+            </div>
+            <div class="pfx-custom-list">
+              <div *ngFor="let c of getFilteredCurrencies()"
+                class="pfx-custom-item"
+                [class.pfx-custom-item--selected]="c.code === selectedCurrencyCode"
+                (click)="onCurrencySelect2(c.code)">
+                <span class="pfx-cdd-name">{{c.name}}</span>
+                <span class="pfx-cdd-code">{{c.code}}</span>
+              </div>
+              <div class="pfx-custom-empty" *ngIf="getFilteredCurrencies().length === 0">No currencies found</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FX Rate -->
+      <div class="pfx-field" *ngIf="selectedCurrencyCode">
+        <div class="pfx-label">FX Rate (1 GBP)</div>
+        <div class="pfx-input-wrap">
+          <input class="pfx-inp" type="number" autocomplete="off"
+            placeholder="e.g. 106.5"
+            step="0.01" min="0"
+            (input)="calcLive()"
+            [(ngModel)]="homecurrency">
+          <span class="pfx-input-suf">{{selectedCurrencyCode}}</span>
+        </div>
+      </div>
+
+      <div class="pfx-sec-label" style="margin-top:8px">Your Assumptions</div>
+
+      <!-- FX Appreciation -->
+      <div class="pfx-field">
+        <div class="pfx-label">FX Appreciation p.a.</div>
+        <div class="pfx-input-wrap">
+          <input class="pfx-inp" type="number" id="FXGrowth" autocomplete="off"
+            placeholder="e.g. 4"
+            step="0.1" min="0" max="50"
+            (input)="calcLive()"
+            [(ngModel)]="FXGrowth">
+          <span class="pfx-input-suf">%</span>
+        </div>
+        <div class="pfx-field-sub">GBP/INR historical: 2–4%</div>
+      </div>
+
+      <!-- Projection Period -->
+      <div class="pfx-field">
+        <div class="pfx-label">Projection Period</div>
+        <div class="pfx-period-row">
+          <button *ngFor="let y of periodOptions"
+            class="pfx-period-btn"
+            [class.pfx-period-btn--active]="investedTenure===y"
+            (click)="investedTenure=y; calcLive()">
+            {{y}} Yrs
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Actions — sticky at bottom -->
+    <div class="pfx-actions">
+      <a [routerLink]="['/']" class="pfx-btn-back">
+        <img src="/assets/Frame 1000003040.svg" alt="Back" width="20" height="20">
+        Back
+      </a>
+      <button class="pfx-btn-continue" (click)="next()">Calculate Returns</button>
+    </div>
+
+  </div>
+
+</div>

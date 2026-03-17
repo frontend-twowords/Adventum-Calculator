@@ -1,0 +1,17 @@
+:host {
+  display: inline-block;
+}
+
+.circle-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.circle-text {
+  line-height: 1;
+  text-align: center;
+}

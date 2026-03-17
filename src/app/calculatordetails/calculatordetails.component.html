@@ -1,0 +1,170 @@
+<div class="row">
+    <div class="col-md-12 p-0" *ngIf="PropertyValue">
+        <!-- <h5><b class="questyle">Previous inputs</b></h5> -->
+    </div>
+</div>
+<div class="row pt-3" style="padding-bottom:1rem">
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="PropertyValue && this.CalculatorType != '7'">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7  pl0"><label>Property Value</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.PropertyValue | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="PropertyValueText && this.CalculatorType == '7'">
+        <div class="row prop-val">
+            <div class="col-md-6 col-6  pl0"><label>Property Value</label> </div>
+            <div class="col-md-6 col-6 pl0 mobprop-val"><label>{{this.CalculationDetails.PropertyValueText}}</label></div>
+        </div>
+    </div>
+
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="loanAmount && optmortgage">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Loan Amount</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.PropertyValue*(this.CalculationDetails.loanAmount/100) | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="mortgageInterestRate && optmortgage">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Mortgage Interest Rate</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.mortgageInterestRate}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="mortgageType && optmortgage">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Mortgage Interest Type</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.mortgageType==1?'Interest Only':'Principle + Interest'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="mortgageTenure && optmortgage">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Mortgage Interest Tenure</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.mortgageTenure}} years</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="InvestmentGBP">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Investment GBP</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.InvestmentGBP | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="investedTenure">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Investment Tenure</label> </div>
+            <div class="col-md-5  col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.investedTenure}} years</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="homecurrency">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Home Currency</label> </div>
+            <!-- <div class="col-md-5"><label>{{this.CalculationDetails.homecurrency | currency:'INR':true}}</label></div> -->
+            <div class="col-md-5  col-5 pl0 mobprop-val"><label>({{this.CalculationDetails.homecurrencyText}}) {{this.CalculationDetails.homecurrency}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="rentalYeild">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Rental Yield</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.rentalYeild}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="rentalGrowthEscalation">
+        <div class="row prop-val">
+            <div class="col-md-7  col-7 pl0"><label>Rental Growth / Escalation</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.rentalGrowthEscalation}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="capitalgrowth">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Project capital growth</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.capitalgrowth}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="fxgrowth">
+        <div class="row prop-val">
+            <div class="col-md-7  col-7 pl0"><label>FX Growth</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.fxgrowth}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="stampDutyLandTax">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Stamp Duty & Land Tax</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.stampDutyLandTax | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="loanOriginationFee">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Loan Origination Fee</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.loanOriginationFee}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="letteingManagFee">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Letting Management Fee</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.letteingManagFee}} %</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="groundRent">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Ground Rent</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.groundRent | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="serviceCharges">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Service charges</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.serviceCharges | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="miscelleneousExpense">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Miscelleneous expense</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.miscelleneousExpense | currency:'GBP':'symbol':'1.0-0'}}</label></div>
+        </div>
+    </div>
+   
+
+
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="SelfInvestment">
+        <div class="row prop-val">
+            <div class="col-md-7  col-7 pl0"><label>Self Use & Investment</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.SelfInvestment==1?'Self':'Investment'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="Nationality">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Nationality</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.Nationality==1?'British':'Other'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="InvestmentProperty">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>InvestmentProperty</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.InvestmentProperty==1?'Yes':'No'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="PrimaryResidence">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>PrimaryResidence</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.PrimaryResidence==1?'Yes':'No'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="FirstTimeBuyer">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>FirstTimeBuyer</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.FirstTimeBuyer==1?'Yes':'No'}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="PurchaseType">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Purchase Type</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.PurchaseType | titlecase}}</label></div>
+        </div>
+    </div>
+    <div [ngClass]="'col-md-'+coldesign" *ngIf="ForeignBuyer">
+        <div class="row prop-val">
+            <div class="col-md-7 col-7 pl0"><label>Foreign Buyer</label> </div>
+            <div class="col-md-5 col-5 pl0 mobprop-val"><label>{{this.CalculationDetails.ForeignBuyer==1?'Yes':'No'}}</label></div>
+        </div>
+    </div>
+</div>
+
