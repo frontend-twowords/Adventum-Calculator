@@ -170,8 +170,9 @@
 /* Heading */
 .cg-heading { margin-bottom: 28px; }
 .cg-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #132147;
   margin: 0 0 6px;
   line-height: 1.2;
@@ -338,9 +339,8 @@
   flex: 2;
   padding: 14px;
   border-radius: 12px;
-  background: linear-gradient(90deg, #24BF6B 0%, #2FA3AC 52%, #3889E6 100%);
-  outline: 1px solid rgba(19,33,71,0.40);
-  outline-offset: -1px;
+  background: #23B14B;
+  outline: none;
   border: none;
   color: #fff;
   font-size: 15px;
@@ -395,7 +395,7 @@
 @media (max-width: 480px) {
   .cg-left-inner, .panel-left-content { padding: 20px 16px; min-height: 200px; }
   .cg-right-inner, .panel-right-inner { padding: 20px 16px; }
-  .cg-title, .section-title { font-size: 22px; }
+  .cg-title, .section-title { font-size: 1.3rem; }
   .cg-sub, .section-sub { font-size: 13px; }
   .cg-field-label, .field-label { font-size: 13px; }
   .cg-summary-row { grid-template-columns: 1fr; gap: 8px; }
@@ -405,6 +405,13 @@
   .panel-nav { gap: 8px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }
+}
+
+@media (min-width: 810px) {
+  .cg-title { font-size: 1.8rem; }
+}
+@media (min-width: 1200px) {
+  .cg-title { font-size: 2.0rem; }
 }
 
 .panel-logo-img { height: 48px; width: auto; display: block; }

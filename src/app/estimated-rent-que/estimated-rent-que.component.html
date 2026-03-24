@@ -79,8 +79,8 @@
         </div>
       </div>
 
-      <!-- Home Currency -->
-      <div class="ewr-field">
+      <!-- Home Currency (foreign buyers only) -->
+      <div class="ewr-field" *ngIf="foreignbuyer==='1'">
         <div class="ewr-label">Home Currency</div>
         <div class="ewr-custom-select" [class.ewr-custom-select--open]="currencyDropdownOpen">
           <button type="button" class="ewr-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
@@ -106,8 +106,8 @@
         </div>
       </div>
 
-      <!-- FX Rate -->
-      <div class="ewr-field">
+      <!-- FX Rate (foreign buyers only) -->
+      <div class="ewr-field" *ngIf="foreignbuyer==='1'">
         <div class="ewr-label">FX Rate (1 GBP)</div>
         <div class="ewr-input-wrap">
           <input class="ewr-inp" type="text" id="fxRateDisplay" autocomplete="off"

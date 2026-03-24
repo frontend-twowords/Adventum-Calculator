@@ -27,9 +27,9 @@
   --navy: #132147;
   --navy-dark: #0a1628;
   --navy-mid: #1a2d4f;
-  --green: #22c55e;
-  --green-bg: rgba(34, 197, 94, 0.12);
-  --green-text: #16a34a;
+  --green: #23B14B;
+  --green-bg: rgba(35, 177, 75, 0.12);
+  --green-text: #1a8a3a;
   --white: #ffffff;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -377,9 +377,9 @@ button:focus {
   align-items: center;
   gap: 10px;
   padding: 10px 24px;
-  background: linear-gradient(221deg, rgba(36,177,75,0.10) 0%, rgba(36,177,75,0.10) 100%);
+  background: linear-gradient(221deg, rgba(35,177,75,0.10) 0%, rgba(35,177,75,0.10) 100%);
   border-radius: 100px;
-  outline: 1px rgba(36,177,75,0.20) solid;
+  outline: 1px rgba(35,177,75,0.20) solid;
   outline-offset: -1px;
   overflow: hidden;
   font-size: 14px;
@@ -396,4 +396,118 @@ button:focus {
   height: 13px;
   background: url('/assets/Vector 63.svg') center/contain no-repeat;
   flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY SCALE — Inter Display
+   XS: 0–810px  |  S: 810–1200px  |  M: 1200–1920px  |  L: 1920px+
+───────────────────────────────────────────────────────── */
+
+/* ── Headings base (XS) ── */
+h1 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  font-size: 1.8rem;
+}
+h2 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  font-size: 1.6rem;
+}
+h3 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  font-size: 1.2rem;
+}
+h4 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  font-size: 1.2rem;
+}
+h5 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4em;
+  font-size: 1.0rem;
+}
+
+/* ── S — 810px and up ── */
+@media (min-width: 810px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.3rem; }
+  h4 { font-size: 1.3rem; }
+  h5 { font-size: 1.1rem; }
+}
+
+/* ── M — 1200px and up (M = L for h3/h4/h5) ── */
+@media (min-width: 1200px) {
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 2.0rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.4rem; }
+  h5 { font-size: 1.2rem; }
+}
+
+/* ── L — 1920px and up ── */
+@media (min-width: 1920px) {
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2.4rem; }
+  /* h3/h4/h5 unchanged — M = L */
+}
+
+/* ── Body utility classes ── */
+
+/* Body 1 — Regular, responsive */
+.body-1 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.4em;
+}
+@media (min-width: 810px) {
+  .body-1 { font-size: 14px; letter-spacing: 0; line-height: 1.6em; }
+}
+@media (min-width: 1200px) {
+  .body-1 { font-size: 16px; letter-spacing: 0; line-height: 1.6em; }
+}
+@media (min-width: 1920px) {
+  .body-1 { font-size: 18px; letter-spacing: -0.02em; line-height: 1.6em; }
+}
+
+/* Body 2 — Light, fixed */
+.body-2 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.6em;
+}
+
+/* Body 3 — Light, fixed */
+.body-3 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  line-height: 1.6em;
+}
+
+/* Body 4 — Regular, fixed */
+.body-4 {
+  font-family: 'Inter Display', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.6em;
 }

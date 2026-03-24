@@ -169,8 +169,9 @@
 
 /* Heading */
 .sdlt-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #132147;
   margin: 0 0 6px;
   line-height: 1.2;
@@ -405,9 +406,8 @@
 .sdlt-btn-continue {
   flex: 2;
   height: 50px;
-  background: linear-gradient(90deg, #24BF6B 0%, #2FA3AC 52%, #3889E6 100%) !important;
-  outline: 1px solid rgba(19,33,71,0.40);
-  outline-offset: -1px;
+  background: #23B14B !important;
+  outline: none;
   border: none !important;
   border-radius: 12px;
   color: #fff !important;
@@ -436,7 +436,7 @@
 @media (max-width: 480px) {
   .sdlt-left-inner { padding: 20px 16px; min-height: 200px; }
   .sdlt-right-inner { padding: 20px 16px; }
-  .sdlt-title { font-size: 22px; }
+  .sdlt-title { font-size: 1.3rem; }
   .sdlt-sub { font-size: 13px; }
   .sdlt-field-label { font-size: 13px; }
   .sdlt-input, .sdlt-select { font-size: 14px; padding: 10px 14px; height: 44px; }
@@ -447,6 +447,13 @@
   .sdlt-btn-back, .sdlt-btn-calc { padding: 12px; font-size: 14px; }
   .sdlt-nav { gap: 8px; }
   .sdlt-pill { padding: 6px 12px; font-size: 12px; }
+}
+
+@media (min-width: 810px) {
+  .sdlt-title { font-size: 1.8rem; }
+}
+@media (min-width: 1200px) {
+  .sdlt-title { font-size: 2.0rem; }
 }
 
 .panel-logo-img { height: 48px; width: auto; display: block; }

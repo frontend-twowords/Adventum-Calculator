@@ -59,9 +59,12 @@ export class Step2Component implements OnInit {
     this.long=this.calcData.long; 
   }
   if(!this.dataService.EmptyNullOrUndefined(this.calcData.City)){
-    this.City=this.calcData.City; 
+    this.City=this.calcData.City;
   }
- 
+
+  // Pre-fill defaults if not already set
+  if(!this.PropertyValue) this.PropertyValue = '280,000';
+  if(!this.mortgageInterestRate) this.mortgageInterestRate = '5.2%';
 }
   private get priceNum(): number {
     return parseInt((this.PropertyValue || '0').replace(/,/g, ''), 10) || 0;

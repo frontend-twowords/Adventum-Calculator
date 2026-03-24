@@ -2,8 +2,6 @@ import { Component, OnInit, HostListener, ChangeDetectorRef } from '@angular/cor
 import { ValidationService } from '../validation.service';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
-
 @Component({
   selector: 'app-estimated-rent-que',
   templateUrl: './estimated-rent-que.component.html',
@@ -17,6 +15,7 @@ export class EstimatedRentQueComponent implements OnInit {
   calcData: any;
   homecurrency = '';
   homecurrencyText: string = '';
+  foreignbuyer = '';
   currencyDropdownOpen = false;
   currencySearch = '';
 
@@ -168,29 +167,33 @@ export class EstimatedRentQueComponent implements OnInit {
     if (!this.dataService.EmptyNullOrUndefined(this.calcData.homecurrency)) {
       this.homecurrency = this.calcData.homecurrency;
     }
+    this.foreignbuyer = this.calcData?.ForeignBuyer || '';
+    if (this.foreignbuyer !== '1') {
+      this.homecurrencyText = 'GBP';
+      this.homecurrency = '1';
+    }
+
+    // Pre-fill defaults if not already set
+    if(!this.PropertyValue) this.PropertyValue = '280,000';
+    if(!this.rentalYeild) this.rentalYeild = '4.5%';
   }
 
   async homecurrencyChange() {
     if (!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)) {
       this.calcData.homecurrencyText = this.homecurrencyText.toUpperCase();
-      var FinalRate = 0;
       let Currpromise = new Promise((res, rej) => {
-        this.dataService.GetRequest1('https://data.fixer.io/api/latest?access_key=' + environment.CurrencyAPIKey + '&format=1').subscribe(data => {
+        this.dataService.GetRequest1('https://open.er-api.com/v6/latest/GBP').subscribe(data => {
           try {
             let res1 = data;
-            if (res1.success == true) {
-              var GBP_Rate = res1.rates['GBP'];
+            if (res1.result === 'success') {
               var HC_Rate = res1.rates[this.homecurrencyText.toUpperCase()];
-              if (!this.dataService.EmptyNullOrUndefined(HC_Rate)) {
-                FinalRate = parseFloat((HC_Rate / GBP_Rate).toFixed(2));
-                this.homecurrency = FinalRate.toString();
+              if (HC_Rate) {
+                this.homecurrency = parseFloat(HC_Rate.toFixed(2)).toString();
                 this.calcData.homecurrency = this.homecurrency;
               }
             }
             res(res1);
-          } catch (ex) {
-            rej(false);
-          }
+          } catch (ex) { rej(false); }
         });
       });
       await Currpromise;
@@ -234,18 +237,22 @@ export class EstimatedRentQueComponent implements OnInit {
       }
     }
 
-    if (!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)) {
-      this.calcData.homecurrencyText = this.homecurrencyText.toUpperCase();
+    if (this.foreignbuyer !== '1') {
+      this.calcData.homecurrencyText = 'GBP';
+      this.calcData.homecurrency = '1';
     } else {
-      alert('Please select a home currency.');
-      flag = false;
-    }
-
-    if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
-      this.calcData.homecurrency = this.homecurrency;
-    } else {
-      alert('Exchange rate could not be loaded. Please try selecting your currency again.');
-      flag = false;
+      if (!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)) {
+        this.calcData.homecurrencyText = this.homecurrencyText.toUpperCase();
+      } else {
+        alert('Please select a home currency.');
+        flag = false;
+      }
+      if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
+        this.calcData.homecurrency = this.homecurrency;
+      } else {
+        alert('Exchange rate could not be loaded. Please try selecting your currency again.');
+        flag = false;
+      }
     }
 
     if (flag) {

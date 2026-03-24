@@ -502,9 +502,8 @@
 .rp-footer-share { background: transparent; outline: 1px solid rgba(255,255,255,0.2); outline-offset: -1px; border: none; color: rgba(255,255,255,0.6); }
 .rp-footer-share:hover { outline-color: rgba(255,255,255,0.5); color: #ffffff; }
 .rp-footer-recalc {
-  background: linear-gradient(90deg, #24BF6B 0%, #2FA3AC 52%, #3889E6 100%);
-  outline: 1px solid rgba(19,33,71,0.40);
-  outline-offset: -1px;
+  background: #23B14B;
+  outline: none;
   border: none;
   color: #ffffff;
   font-weight: 500;

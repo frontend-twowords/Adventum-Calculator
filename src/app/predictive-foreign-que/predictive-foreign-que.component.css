@@ -166,8 +166,9 @@
 
 /* Heading */
 .pfx-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #132147;
   margin: 0 0 6px;
   line-height: 1.2;
@@ -432,9 +433,8 @@
 .pfx-btn-continue {
   flex: 2;
   height: 50px;
-  background: linear-gradient(90deg, #24BF6B 0%, #2FA3AC 52%, #3889E6 100%);
-  outline: 1px solid rgba(19,33,71,0.40);
-  outline-offset: -1px;
+  background: #23B14B;
+  outline: none;
   border: none;
   border-radius: 12px;
   color: #fff;
@@ -461,7 +461,7 @@
 @media (max-width: 480px) {
   .panel-left-content, .pf-left-inner { padding: 20px 16px; min-height: 200px; }
   .panel-right-inner, .pf-right-inner { padding: 20px 16px; }
-  .section-title, .pf-title { font-size: 22px; }
+  .section-title, .pf-title, .pfx-title { font-size: 1.3rem; }
   .section-sub, .pf-sub { font-size: 13px; }
   .field-label, .pf-field-label { font-size: 13px; }
   .field-input, .pf-input { padding: 11px 14px; font-size: 14px; }
@@ -469,6 +469,13 @@
   .panel-nav { gap: 8px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }
+}
+
+@media (min-width: 810px) {
+  .pfx-title { font-size: 1.8rem; }
+}
+@media (min-width: 1200px) {
+  .pfx-title { font-size: 2.0rem; }
 }
 
 .panel-logo-img { height: 48px; width: auto; display: block; }

@@ -75,8 +75,8 @@
         </div>
       </div>
 
-      <!-- Home Currency -->
-      <div class="pfx-field">
+      <!-- Home Currency (foreign buyers only) -->
+      <div class="pfx-field" *ngIf="foreignbuyer==='1'">
         <div class="pfx-label">Home Currency</div>
         <div class="pfx-custom-select" [class.pfx-custom-select--open]="currencyDropdownOpen">
           <button type="button" class="pfx-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
@@ -104,8 +104,8 @@
         </div>
       </div>
 
-      <!-- FX Rate -->
-      <div class="pfx-field" *ngIf="selectedCurrencyCode">
+      <!-- FX Rate (foreign buyers only) -->
+      <div class="pfx-field" *ngIf="foreignbuyer==='1' && selectedCurrencyCode">
         <div class="pfx-label">FX Rate (1 GBP)</div>
         <div class="pfx-input-wrap">
           <input class="pfx-inp" type="number" autocomplete="off"

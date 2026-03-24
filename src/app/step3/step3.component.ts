@@ -182,10 +182,15 @@ export class Step3Component implements OnInit {
       this.long=this.calcData.long; 
     } 
     if(!this.dataService.EmptyNullOrUndefined(this.calcData.ForeignBuyer)){
-      this.foreignbuyer=this.calcData.ForeignBuyer; 
+      this.foreignbuyer=this.calcData.ForeignBuyer;
     }
     if(!this.dataService.EmptyNullOrUndefined(this.calcData.City)){
-      this.City=this.calcData.City; 
+      this.City=this.calcData.City;
+    }
+    // Force GBP for UK residents
+    if(this.foreignbuyer !== '1'){
+      this.homecurrencyText = 'GBP';
+      this.homecurrency = '1';
     }
     
   }
@@ -194,6 +199,11 @@ export class Step3Component implements OnInit {
 
     this.PropertyLondon=localStorage.getItem("PropertyLondon");
     console.log(this.PropertyLondon);
+
+    // Pre-fill defaults if not already set
+    if(!this.rentalYeild) this.rentalYeild = this.PropertyLondon == 1 ? '4.5%' : '6.2%';
+    if(!this.capitalgrowth) this.capitalgrowth = this.PropertyLondon == 1 ? '4.0%' : '4.8%';
+    if(!this.fxgrowth) this.fxgrowth = '4.0%';
 
     // $(document).ready(function(){
     //   $(".percent").on('input', function() {
@@ -234,97 +244,48 @@ export class Step3Component implements OnInit {
    async homecurrencyChange(){
     if(!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)){
       this.calcData.homecurrencyText=this.homecurrencyText.toUpperCase();
-      var FinalRate=0;
+      const applyFallback = () => {
+        const fallback = this.fallbackRates[this.homecurrencyText.toUpperCase()];
+        if(fallback){ this.homecurrency = fallback.toString(); this.calcData.homecurrency = this.homecurrency; }
+      };
       let Currpromise = new Promise((res, rej) => {
-        this.dataService.GetRequest1('https://data.fixer.io/api/latest?access_key='+environment.CurrencyAPIKey+'&format=1').subscribe(data => {
+        this.dataService.GetRequest1('https://open.er-api.com/v6/latest/GBP').subscribe(data => {
           try {
             let res1 = data;
-            if(res1.success==true){
-              var GBP_Rate = res1.rates['GBP']
-              var HC_Rate = res1.rates[this.homecurrencyText.toUpperCase()]
-              if(!this.dataService.EmptyNullOrUndefined(HC_Rate) && !this.dataService.EmptyNullOrUndefined(GBP_Rate) && GBP_Rate > 0){
-                FinalRate= parseFloat((HC_Rate/GBP_Rate).toFixed(2));
-                this.homecurrency=FinalRate.toString();
-                this.calcData.homecurrency=this.homecurrency;
-              } else {
-                // Use fallback rate if API doesn't have this currency
-                const fallback = this.fallbackRates[this.homecurrencyText.toUpperCase()];
-                if(fallback){
-                  this.homecurrency = fallback.toString();
-                  this.calcData.homecurrency = this.homecurrency;
-                }
-              }
-            } else {
-              // API failed — use fallback rates
-              const fallback = this.fallbackRates[this.homecurrencyText.toUpperCase()];
-              if(fallback){
-                this.homecurrency = fallback.toString();
+            if(res1.result === 'success'){
+              var HC_Rate = res1.rates[this.homecurrencyText.toUpperCase()];
+              if(HC_Rate){
+                this.homecurrency = parseFloat(HC_Rate.toFixed(2)).toString();
                 this.calcData.homecurrency = this.homecurrency;
-              }
-            }
+              } else { applyFallback(); }
+            } else { applyFallback(); }
             res(res1);
-          }
-          catch (ex) {
-            // On exception, use fallback rates
-            const fallback = this.fallbackRates[this.homecurrencyText.toUpperCase()];
-            if(fallback){
-              this.homecurrency = fallback.toString();
-              this.calcData.homecurrency = this.homecurrency;
-            }
-            rej(false);
-          }
-        }, _err => {
-          // HTTP error — use fallback rates
-          const fallback = this.fallbackRates[this.homecurrencyText.toUpperCase()];
-          if(fallback){
-            this.homecurrency = fallback.toString();
-            this.calcData.homecurrency = this.homecurrency;
-          }
-          res(null);
-        })
+          } catch (ex) { applyFallback(); rej(false); }
+        }, _err => { applyFallback(); res(null); });
       });
       await Currpromise;
     }
    }
  async next(){
     let flag=true;
-    if(!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)){
-      // this.calcData.homecurrencyText=this.homecurrencyText.toUpperCase();
-      // var FinalRate=0;
-      // let Currpromise = new Promise((res, rej) => {
-      //   this.dataService.GetRequest1('https://data.fixer.io/api/latest?access_key='+environment.CurrencyAPIKey+'&format=1').subscribe(data => {
-      //     try {
-      //       let res1 = data;
-      //       if(res1.success==true){
-      //         var GBP_Rate = res1.rates['GBP']
-      //         var HC_Rate = res1.rates[this.homecurrencyText.toUpperCase()]
-      //         if(!this.dataService.EmptyNullOrUndefined(HC_Rate)){
-      //           FinalRate= HC_Rate/GBP_Rate;
-      //           this.homecurrency=FinalRate.toString(2);
-      //           alert( this.homecurrency);
-      //           this.calcData.homecurrency=FinalRate;
-      //         }
-      //       }
-      //       res(res1);
-      //     }
-      //     catch (ex) {
-      //       rej(false);
-      //     }
-      //   })
-      // });
-      // await Currpromise;
-    }else{
-      document.getElementById("homecurrencyText")?.classList.add("error-input");
-      flag=false;
-    }
-    // if(this.dataService.EmptyNullOrUndefined(this.calcData.homecurrency)){
-    //   document.getElementById("homecurrencyText")?.classList.add("error-input");
-    //   flag=false;
-    // }
-    if(!this.dataService.EmptyNullOrUndefined(this.homecurrency)){
-      this.calcData.homecurrency=this.homecurrency;
-    }else{
-      flag=false;
+    if(this.foreignbuyer !== '1'){
+      // UK resident — always use GBP
+      this.homecurrencyText = 'GBP';
+      this.homecurrency = '1';
+      this.calcData.homecurrencyText = 'GBP';
+      this.calcData.homecurrency = '1';
+    } else {
+      if(!this.dataService.EmptyNullOrUndefined(this.homecurrencyText)){
+        // currency already resolved via selectCurrency
+      }else{
+        document.getElementById("homecurrencyText")?.classList.add("error-input");
+        flag=false;
+      }
+      if(!this.dataService.EmptyNullOrUndefined(this.homecurrency)){
+        this.calcData.homecurrency=this.homecurrency;
+      }else{
+        flag=false;
+      }
     }
     if(!this.dataService.EmptyNullOrUndefined(this.investedTenure)){
       this.calcData.investedTenure=this.investedTenure;

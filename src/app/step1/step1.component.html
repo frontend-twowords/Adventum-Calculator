@@ -75,28 +75,6 @@
         <button class="area-chip" [class.selected]="City==='Others'" (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
       </div>
 
-      <!-- City card (shown when city selected) -->
-      <div class="city-card" *ngIf="City">
-        <div class="city-card-info">
-          <div class="city-card-name">{{City}}</div>
-          <div class="city-card-desc">{{getCityDesc()}}</div>
-        </div>
-        <div class="city-card-stats">
-          <div class="city-stat">
-            <div class="city-stat-val">{{getCityStat('yield')}}</div>
-            <div class="city-stat-lbl">Avg Yield</div>
-          </div>
-          <div class="city-stat">
-            <div class="city-stat-val">{{getCityStat('growth')}}</div>
-            <div class="city-stat-lbl">5yr Growth</div>
-          </div>
-          <div class="city-stat">
-            <div class="city-stat-val">{{getCityStat('price')}}</div>
-            <div class="city-stat-lbl">Avg Price</div>
-          </div>
-        </div>
-      </div>
-
       <!-- Buyer Status card (shown when city selected) -->
       <div class="buyer-card" *ngIf="City">
         <div class="buyer-card-title">Buyer Status</div>

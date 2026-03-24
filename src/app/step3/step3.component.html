@@ -70,8 +70,8 @@
       <h2 class="section-title">Currency &amp; Growth</h2>
       <p class="section-sub">Set your home currency and expected growth rates.</p>
 
-      <!-- Home Currency -->
-      <div class="field-group">
+      <!-- Home Currency (foreign buyers only) -->
+      <div class="field-group" *ngIf="foreignbuyer==='1'">
         <div class="field-label-row">
           <span class="field-label">Home Currency</span>
         </div>

@@ -74,7 +74,14 @@
 }
 
 /* Section heading */
-.section-title { font-size: 26px; font-weight: 700; color: #132147; margin-bottom: 6px; }
+.section-title {
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #132147;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
 .section-sub { font-size: 14px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
 
 /* Search */
@@ -186,7 +193,7 @@
   .panel-stat-val { font-size: 18px; }
   .panel-right-inner { padding: 20px 16px; }
   .panel-topbar { margin-bottom: 20px; }
-  .section-title { font-size: 22px; }
+  .section-title { font-size: 1.3rem; }
   .section-sub { font-size: 13px; margin-bottom: 16px; }
   .search-input { padding: 11px 16px 11px 40px; font-size: 14px; }
   .area-chip { padding: 7px 14px; font-size: 12px; }
@@ -197,6 +204,13 @@
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .toggle-opt { padding: 10px 14px; font-size: 12px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }
+}
+
+@media (min-width: 810px) {
+  .section-title { font-size: 1.8rem; }
+}
+@media (min-width: 1200px) {
+  .section-title { font-size: 2.0rem; }
 }
 
 /* OLD CSS COMMENTED OUT - see git history */

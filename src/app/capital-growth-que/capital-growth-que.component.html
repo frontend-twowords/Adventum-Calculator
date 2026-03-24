@@ -127,8 +127,8 @@
         </div>
       </div>
 
-      <!-- Home Currency -->
-      <div class="cg-field">
+      <!-- Home Currency (foreign buyers only) -->
+      <div class="cg-field" *ngIf="foreignbuyer==='1'">
         <div class="cg-label">Home Currency</div>
         <div class="cg-custom-select" [class.cg-custom-select--open]="currencyDropdownOpen">
           <button type="button" class="cg-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">

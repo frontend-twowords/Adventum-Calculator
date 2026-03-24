@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ValidationService } from '../validation.service';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
-
 @Component({
   selector: 'app-predictive-foreign-que',
   templateUrl: './predictive-foreign-que.component.html',
@@ -18,6 +16,7 @@ export class PredictiveForeignQueComponent implements OnInit {
   selectedCurrencyCode = '';
   selectedCurrencyName = '';
   selectedCurrencySymbol = '';
+  foreignbuyer = '';
   currencyDropdownOpen = false;
   currencySearch = '';
 
@@ -62,6 +61,20 @@ export class PredictiveForeignQueComponent implements OnInit {
     if (!this.dataService.EmptyNullOrUndefined(this.calcData.investedTenure)) {
       this.investedTenure = +this.calcData.investedTenure;
     }
+    this.foreignbuyer = this.calcData?.ForeignBuyer || '';
+    if (this.foreignbuyer !== '1') {
+      const gbp = this.currencies.find(c => c.code === 'GBP');
+      if (gbp) {
+        this.selectedCurrencyCode = gbp.code;
+        this.selectedCurrencyName = gbp.name;
+        this.selectedCurrencySymbol = gbp.sym;
+        this.homecurrency = gbp.rate;
+      }
+    }
+
+    // Pre-fill defaults if not already set
+    if(!this.InvestmentGBP) this.InvestmentGBP = '280,000';
+    if(!this.FXGrowth) this.FXGrowth = 4;
   }
 
   get locationName(): string {
@@ -157,15 +170,12 @@ export class PredictiveForeignQueComponent implements OnInit {
   }
 
   private fetchLiveRate(code: string): void {
-    this.dataService.GetRequest1(
-      'https://data.fixer.io/api/latest?access_key=' + environment.CurrencyAPIKey + '&format=1'
-    ).subscribe((data: any) => {
+    this.dataService.GetRequest1('https://open.er-api.com/v6/latest/GBP').subscribe((data: any) => {
       try {
-        if (data?.success && data.rates) {
-          const gbpRate = data.rates['GBP'];
+        if (data?.result === 'success' && data.rates) {
           const hcRate = data.rates[code];
-          if (gbpRate && hcRate) {
-            this.homecurrency = parseFloat((hcRate / gbpRate).toFixed(4));
+          if (hcRate) {
+            this.homecurrency = parseFloat(hcRate.toFixed(4));
             this.calcLive();
           }
         }
@@ -188,16 +198,20 @@ export class PredictiveForeignQueComponent implements OnInit {
       flag = false;
     }
 
-    if (this.selectedCurrencyCode) {
-      this.calcData.homecurrencyText = this.selectedCurrencyCode;
+    if (this.foreignbuyer !== '1') {
+      this.calcData.homecurrencyText = 'GBP';
+      this.calcData.homecurrency = 1;
     } else {
-      flag = false;
-    }
-
-    if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
-      this.calcData.homecurrency = this.homecurrency;
-    } else {
-      flag = false;
+      if (this.selectedCurrencyCode) {
+        this.calcData.homecurrencyText = this.selectedCurrencyCode;
+      } else {
+        flag = false;
+      }
+      if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
+        this.calcData.homecurrency = this.homecurrency;
+      } else {
+        flag = false;
+      }
     }
 
     if (!this.dataService.EmptyNullOrUndefined(this.FXGrowth)) {

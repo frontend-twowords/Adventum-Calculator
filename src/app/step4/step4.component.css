@@ -177,10 +177,12 @@
 
 /* Heading */
 .section-title {
-  font-size: 26px;
-  font-weight: 700;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #132147;
   margin: 0 0 6px;
+  line-height: 1.2;
 }
 
 .section-sub {
@@ -348,9 +350,8 @@
 
 .btn-continue--active,
 .btn-continue:hover {
-  background: linear-gradient(90deg, #24BF6B 0%, #2FA3AC 52%, #3889E6 100%);
-  outline: 1px solid rgba(19,33,71,0.40);
-  outline-offset: -1px;
+  background: #23B14B;
+  outline: none;
 }
 
 /* ── Responsive: tablet ── */
@@ -392,8 +393,18 @@
   .summary-block-total { font-size: 14px; }
   .year1-val { font-size: 18px; }
   .panel-right-inner { padding: 20px 16px; }
-  .section-title { font-size: 22px; }
+  .section-title { font-size: 1.3rem; }
   .section-sub { font-size: 13px; }
+}
+
+@media (min-width: 810px) {
+  .section-title { font-size: 1.8rem; }
+}
+@media (min-width: 1200px) {
+  .section-title { font-size: 2.0rem; }
+}
+
+@media (max-width: 480px) {
   .sdlt-card { flex-direction: column; align-items: flex-start; padding: 12px 14px; }
   .sdlt-card-val { font-size: 16px; padding: 6px 12px; }
   .field-label { font-size: 13px; }

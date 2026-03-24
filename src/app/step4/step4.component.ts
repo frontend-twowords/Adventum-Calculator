@@ -125,6 +125,14 @@ export class Step4Component implements OnInit {
   ngOnInit(): void {
     this.PropertyLondon = localStorage.getItem("PropertyLondon");
 
+    // Pre-fill defaults if not already set
+    if(!this.loanOriginationFee && this.calcData?.optmortgage !== '0') this.loanOriginationFee = '1';
+    if(!this.groundRent) this.groundRent = '1,500';
+    if(!this.miscelleneousExpense) this.miscelleneousExpense = '0';
+    if(!this.letteingManagFee) this.letteingManagFee = this.PropertyLondon == 1 ? '12' : '10';
+    if(!this.serviceCharges) this.serviceCharges = this.PropertyLondon == 1 ? '3,000' : '1,000';
+    if(!this.rentalGrowthEscalation) this.rentalGrowthEscalation = '3%';
+
     const apiCountry = this.resolveApiCountry(this.country);
 
     this.dataService.GetRequest(
