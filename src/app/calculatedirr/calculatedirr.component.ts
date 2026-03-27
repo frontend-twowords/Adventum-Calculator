@@ -297,15 +297,78 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
           titleFontColor: '#fff',
           bodyFontColor: 'rgba(255,255,255,0.7)',
           borderColor: 'rgba(255,255,255,0.1)',
-          borderWidth: 1
+          borderWidth: 1,
+          callbacks: {
+            label: function(tooltipItem: any, data: any) {
+              const dataset = data.datasets[tooltipItem.datasetIndex];
+              const total = dataset.data.reduce((acc: number, val: number) => acc + val, 0);
+              const current = dataset.data[tooltipItem.index];
+              const pct = total > 0 ? ((current / total) * 100).toFixed(1) : '0.0';
+              return ' ' + data.labels[tooltipItem.index] + ': ' + pct + '%';
+            }
+          }
         }
       }
     });
 
-    // Set default active country tab based on user's currency or fallback to India
-    const userCurrency = (this.homecurrencyText || '').toUpperCase();
-    const matched = this.countryList.find(c => this.countryFxMap[c]?.currency === userCurrency);
-    setTimeout(() => this.selectCountry(matched || 'India'), 0);
+
+    // Investment Journey — vertical stacked bar chart
+    const ctxJourney = ($('#journeyBar')[0] as HTMLCanvasElement).getContext('2d');
+    const fxVal = Math.max(this.TotalReturnOfInvestment - this.capitalAppreciation - this.RentalIncome, 0);
+    const self = this;
+    new Chart(ctxJourney, {
+      type: 'bar',
+      data: {
+        labels: ['Your Returns'],
+        datasets: [
+          {
+            label: 'Initial Investment',
+            data: [Math.max(-this.graphInitialInvestmentInHomeCurrency, 0)],
+            backgroundColor: 'rgba(255,255,255,0.08)',
+            borderWidth: 0
+          },
+          {
+            label: 'Capital Growth',
+            data: [Math.max(this.capitalAppreciation, 0)],
+            backgroundColor: '#506E9C',
+            borderWidth: 0
+          },
+          {
+            label: 'FX Appreciation',
+            data: [Math.max(fxVal, 0)],
+            backgroundColor: 'rgba(45,97,237,0.80)',
+            borderWidth: 0
+          },
+          {
+            label: 'Net Rental Income',
+            data: [Math.max(this.RentalIncome, 0)],
+            backgroundColor: 'rgba(255,255,255,0.20)',
+            borderWidth: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        scales: {
+          xAxes: [{ stacked: true, gridLines: { display: false }, ticks: { fontColor: 'rgba(255,255,255,0.5)', fontSize: 13 } }],
+          yAxes: [{ stacked: true, gridLines: { color: 'rgba(255,255,255,0.08)', zeroLineColor: 'rgba(255,255,255,0.15)' }, ticks: { fontColor: 'rgba(255,255,255,0.5)', fontSize: 11, callback: function(val: number) { return self.formatCurrency(val, self.homecurrencyText); } } }]
+        },
+        tooltips: {
+          backgroundColor: '#132147',
+          titleFontColor: '#fff',
+          bodyFontColor: 'rgba(255,255,255,0.7)',
+          borderColor: 'rgba(255,255,255,0.1)',
+          borderWidth: 1,
+          callbacks: {
+            label: function(item: any, data: any) {
+              return ' ' + data.datasets[item.datasetIndex].label + ': ' + self.formatCurrency(item.yLabel, self.homecurrencyText);
+            }
+          }
+        }
+      }
+    } as any);
 
     if (!this.calcData.reportSavedOnServer && !this.validation.isNullEmptyUndefined(sessionStorage.getItem('UserId'))) {
       this.reportSaveToServer();

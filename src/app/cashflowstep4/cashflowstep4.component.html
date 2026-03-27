@@ -9,13 +9,12 @@
       </div>
       <div class="cf-card">
         <p class="cf-card-pre">Cashflow Calculator</p>
-        <h3 class="cf-card-title">Costs &amp; <strong>Expenses</strong></h3>
-        <p class="cf-card-sub">Stamp duty is auto-calculated. Enter your recurring and one-off costs.</p>
+        <p class="cf-card-sub">Enter your recurring and one-off costs.</p>
         <div class="cf-stats">
           <div class="cfs"><div class="cfs-l">Step</div><div class="cfs-v">4 of 4</div></div>
-          <div class="cfs acc"><div class="cfs-l">SDLT</div><div class="cfs-v">Auto</div></div>
-          <div class="cfs"><div class="cfs-l">Typical Mgmt</div><div class="cfs-v">{{PropertyLondon == 1 ? '12%' : '10%'}}</div></div>
-          <div class="cfs acc"><div class="cfs-l">SDLT Amount</div><div class="cfs-v">{{stampDutyLandTax ? '£'+stampDutyLandTax : '—'}}</div></div>
+          <div class="cfs"><div class="cfs-l">Buyer</div><div class="cfs-v">{{foreignbuyer==='1' ? 'Foreign' : 'UK Res.'}}</div></div>
+          <div class="cfs"><div class="cfs-l">Mgmt Fee</div><div class="cfs-v">{{PropertyLondon == 1 ? '12%' : '10%'}}</div></div>
+          <div class="cfs acc"><div class="cfs-l">SDLT</div><div class="cfs-v">{{stampDutyLandTax ? '£'+stampDutyLandTax : '—'}}</div></div>
         </div>
       </div>
     </div>
@@ -37,7 +36,7 @@
       </div>
 
       <h1 class="step-title">Costs &amp; Expenses</h1>
-      <p class="step-sub">Stamp duty is auto-calculated from your property value.</p>
+      <p class="step-sub">SDLT is auto-calculated based on your buyer status from step 1.</p>
 
       <!-- UPFRONT COSTS -->
       <div class="sec-label">Upfront Costs (One-Time)</div>
@@ -54,33 +53,6 @@
           <span class="isuf">%</span>
         </div>
         <div class="field-sub">% of loan amount</div>
-      </div>
-
-      <!-- SDLT Banner -->
-      <div class="sdlt-card" *ngIf="stampDutyLandTax!=''">
-        <div class="sdlt-card-left">
-          <div class="sdlt-card-name">Stamp Duty &amp; Land Tax</div>
-          <div class="sdlt-card-note">{{foreignbuyer==='1' ? '(incl. 2% foreign buyer surcharge)' : 'Standard investment rates · Auto-calculated'}}</div>
-        </div>
-        <div class="sdlt-card-val">£{{stampDutyLandTax}}</div>
-      </div>
-
-      <!-- Hidden SDLT for validation -->
-      <input type="hidden" id="stampDutyLandTax" [(ngModel)]="stampDutyLandTax">
-
-      <!-- Foreign Buyer -->
-      <div class="field">
-        <div class="field-label">Foreign Buyer?</div>
-        <div class="toggle-pair">
-          <button class="topt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'; calculatestampduty()">Yes</button>
-          <button class="topt" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'; calculatestampduty()">No</button>
-        </div>
-      </div>
-
-      <!-- Tax alert -->
-      <div class="tax-alert" *ngIf="foreignbuyer==='1'">
-        <div class="tax-alert-title">Tax Alert</div>
-        <div class="tax-alert-body">Non-UK residents are subject to a 2% SDLT surcharge. This has been factored into your stamp duty estimate.</div>
       </div>
 
       <!-- ANNUAL RECURRING COSTS -->

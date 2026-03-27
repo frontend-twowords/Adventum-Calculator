@@ -44,6 +44,8 @@ export class Cashflowstep3Component implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.rentalYeild) this.rentalYeild = '5%';
+    if (!this.rentalGrowthEscalation) this.rentalGrowthEscalation = '2.5%';
     this.updatePreview();
   }
 

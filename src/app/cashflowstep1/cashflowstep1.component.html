@@ -53,31 +53,18 @@
         <button class="ap" *ngIf="'Others'    | cityFilter:searchQuery" [class.active]="City==='Others'"     (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
       </div>
 
-      <!-- City card -->
-      <div class="city-card" *ngIf="City">
-        <div class="cc-left">
-          <h3>{{City}}</h3>
-          <p>{{getCityDesc()}}</p>
-        </div>
-        <div class="cc-stats">
-          <div class="ccs"><div class="ccs-v">{{getCityStat('yield')}}</div><div class="ccs-l">Avg Yield</div></div>
-          <div class="ccs"><div class="ccs-v">{{getCityStat('growth')}}</div><div class="ccs-l">5yr Growth</div></div>
-          <div class="ccs"><div class="ccs-v">{{getCityStat('price')}}</div><div class="ccs-l">Avg Price</div></div>
-        </div>
-      </div>
-
       <!-- Buyer Status card -->
       <div class="buyer-card">
-        <h4>Buyer Status</h4>
-        <p>This affects your stamp duty calculation</p>
+        <div class="buyer-card-title">Buyer Status</div>
+        <div class="buyer-card-sub">This affects your stamp duty calculation</div>
         <div class="buyer-row">
-          <div class="buyer-row-left">
-            <h5>Are You a Foreign (Non-UK Resident) Buyer?</h5>
-            <p>Foreign buyers pay an additional 2% stamp duty surcharge</p>
+          <div class="buyer-row-labels">
+            <div class="buyer-row-label-main">Are You a Foreign (Non-UK Resident) Buyer?</div>
+            <div class="buyer-row-label-sub">Foreign buyers pay an additional 2% stamp duty surcharge</div>
           </div>
-          <div class="buyer-tgl">
-            <button class="bto" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'">UK Resident</button>
-            <button class="bto" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
+          <div class="toggle-pair">
+            <button class="toggle-opt" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'">UK Resident</button>
+            <button class="toggle-opt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
           </div>
         </div>
       </div>

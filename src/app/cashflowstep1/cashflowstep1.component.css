@@ -49,14 +49,14 @@
   padding: 28px 28px 24px;
   margin-top: auto;
 }
-.hero-pre { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.hero-title { font-size: 26px; font-weight: 300; color: #fff; line-height: 1.3; margin-bottom: 6px; }
+.hero-pre { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 400; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.hero-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 2rem; font-weight: 400; line-height: 1.4em; color: #fff; margin-bottom: 6px; }
 .hero-title strong { font-weight: 700; }
-.hero-body { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; line-height: 1.5; }
+.hero-body { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
 .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
 .hstat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 10px; }
-.hstat-v { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-.hstat-l { font-size: 10px; color: rgba(255,255,255,0.45); }
+.hstat-v { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.4rem; font-weight: 400; line-height: 1.4em; color: #fff; margin-bottom: 3px; }
+.hstat-l { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); }
 
 /* ── RIGHT PANEL ── */
 .panel-right {
@@ -85,12 +85,12 @@
 .loc-pill {
   display: flex; align-items: center; gap: 6px;
   border: 1.5px solid #e5e7eb; border-radius: 50px;
-  padding: 8px 16px; font-size: 13px; font-weight: 500; color: #132147;
+  padding: 8px 16px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #132147;
 }
 
 /* Headings */
-.step-title { font-size: 26px; font-weight: 700; color: #132147; margin-bottom: 6px; line-height: 1.2; }
-.step-sub { font-size: 14px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
+.step-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 2rem; font-weight: 400; line-height: 1.4em; color: #132147; margin-bottom: 6px; }
+.step-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #6b7280; margin-bottom: 20px; }
 
 /* City search */
 .sw { position: relative; margin-bottom: 14px; }
@@ -98,17 +98,17 @@
 .sinp {
   width: 100%; padding: 12px 14px 12px 40px;
   border: 1.5px solid #e5e7eb; border-radius: 12px;
-  font-size: 14px; color: #132147; font-family: inherit; outline: none; transition: border 0.2s;
+  font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #132147; outline: none; transition: border 0.2s;
 }
 .sinp:focus { border-color: #132147; }
-.pop-lbl { font-size: 12px; color: #9ca3af; margin-bottom: 10px; }
+.pop-lbl { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; margin-bottom: 10px; }
 
 /* Area pills */
 .area-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 .ap {
-  padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 500;
+  padding: 8px 18px; border-radius: 50px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em;
   border: 1.5px solid #e5e7eb; background: #fff; color: #6b7280;
-  cursor: pointer; font-family: inherit; transition: all 0.18s;
+  cursor: pointer; transition: all 0.18s;
 }
 .ap.active, .ap:hover { background: #132147; border-color: #132147; color: #fff; }
 
@@ -118,38 +118,39 @@
   display: flex; align-items: center; justify-content: space-between;
   gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
 }
-.cc-left h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-.cc-left p { font-size: 12px; color: rgba(255,255,255,0.5); }
+.cc-left h3 { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.5rem; font-weight: 500; line-height: 1.4em; color: #fff; margin-bottom: 3px; }
+.cc-left p { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.5); }
 .cc-stats { display: flex; flex-shrink: 0; }
 .ccs { padding: 6px 14px; text-align: center; border-left: 1px solid rgba(255,255,255,0.15); }
 .ccs:first-child { border-left: none; }
-.ccs-v { font-size: 14px; font-weight: 700; color: #fff; }
-.ccs-l { font-size: 9px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
+.ccs-v { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #fff; }
+.ccs-l { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
 
 /* Buyer card */
-.buyer-card { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
-.buyer-card h4 { font-size: 14px; font-weight: 600; color: #132147; margin-bottom: 3px; }
-.buyer-card > p { font-size: 12px; color: #9ca3af; margin-bottom: 12px; }
-.buyer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.buyer-row-left h5 { font-size: 13px; font-weight: 500; color: #132147; margin-bottom: 3px; }
-.buyer-row-left p { font-size: 12px; color: #9ca3af; }
-.buyer-tgl { display: flex; border: 1.5px solid #e5e7eb; border-radius: 50px; overflow: hidden; flex-shrink: 0; }
-.bto {
-  padding: 8px 16px; font-size: 13px; font-weight: 500;
-  cursor: pointer; font-family: inherit; background: #fff; color: #6b7280;
-  border: none; outline: none; transition: all 0.2s;
+.buyer-card { border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.buyer-card-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.0rem; font-weight: 400; line-height: 1.4em; color: #132147; margin-bottom: 3px; }
+.buyer-card-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; margin-bottom: 16px; }
+.buyer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.buyer-row-labels { flex: 1; min-width: 160px; }
+.buyer-row-label-main { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.0rem; font-weight: 400; line-height: 1.4em; color: #132147; }
+.buyer-row-label-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; margin-top: 2px; }
+.toggle-pair { display: flex; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
+.toggle-opt {
+  padding: 12px 18px; font-size: 16px; font-weight: 500; line-height: 1.6em; color: #9ca3af;
+  cursor: pointer; font-family: 'Inter Display', 'Inter', sans-serif;
+  background: #ffffff; border: none; transition: all 0.2s; white-space: nowrap;
 }
-.bto + .bto { border-left: 1px solid #e5e7eb; }
-.bto.active { background: #132147; color: #fff; font-weight: 600; border-radius: 50px; }
+.toggle-opt + .toggle-opt { border-left: 1px solid #e5e7eb; }
+.toggle-opt.active { background: #132147; color: #ffffff; }
 
 /* Fields */
 .field { margin-bottom: 16px; }
 .field-label {
-  font-size: 13px; font-weight: 500; color: #132147; margin-bottom: 8px;
+  font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 500; line-height: 1.6em; letter-spacing: -0.02em; color: #132147; margin-bottom: 8px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .field-hint {
-  display: flex; align-items: center; gap: 4px; font-size: 11px; color: #16a34a;
+  display: flex; align-items: center; gap: 4px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #16a34a;
   background: rgba(34,197,94,0.12); padding: 3px 10px; border-radius: 50px;
   font-weight: 500; flex-shrink: 0;
 }
@@ -157,14 +158,14 @@
 /* Input */
 .iw { display: flex; align-items: center; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; transition: border 0.2s; }
 .iw:focus-within { border-color: #132147; }
-.ipre { padding: 12px 14px; background: #f9fafb; font-size: 14px; font-weight: 500; color: #6b7280; border-right: 1px solid #e5e7eb; flex-shrink: 0; }
-.inp { flex: 1; border: none; outline: none; padding: 12px 14px; font-size: 15px; font-weight: 500; color: #132147; font-family: inherit; background: #fff; }
+.ipre { padding: 12px 14px; background: #f9fafb; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #6b7280; border-right: 1px solid #e5e7eb; flex-shrink: 0; }
+.inp { flex: 1; border: none; outline: none; padding: 12px 14px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #132147; background: #fff; }
 
 /* Toggle pair */
 .toggle-pair { display: flex; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
 .topt {
-  flex: 1; padding: 12px 16px; text-align: center; font-size: 14px; font-weight: 500;
-  cursor: pointer; font-family: inherit; background: #fff; color: #6b7280; border: none; outline: none; transition: all 0.2s;
+  flex: 1; padding: 12px 16px; text-align: center; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0;
+  cursor: pointer; background: #fff; color: #6b7280; border: none; outline: none; transition: all 0.2s;
 }
 .topt + .topt { border-left: 1px solid #e5e7eb; }
 .topt.active { background: #132147; color: #fff; font-weight: 600; }
@@ -172,9 +173,9 @@
 /* Pills */
 .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
 .pill {
-  padding: 9px 16px; border-radius: 50px; font-size: 13px; font-weight: 500;
+  padding: 9px 16px; border-radius: 50px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em;
   border: 1.5px solid #e5e7eb; background: #fff; color: #6b7280;
-  cursor: pointer; font-family: inherit; transition: all 0.18s;
+  cursor: pointer; transition: all 0.18s;
 }
 .pill.active { background: #132147; border-color: #132147; color: #fff; }
 .pill:hover:not(.active) { border-color: #132147; color: #132147; }
@@ -186,42 +187,64 @@
 }
 .btn-back {
   flex: 1; padding: 13px; border-radius: 12px; border: 1.5px solid #e5e7eb;
-  background: #fff; font-size: 14px; font-weight: 500; color: #6b7280;
-  cursor: pointer; font-family: inherit;
+  background: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #6b7280;
+  cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;
 }
 .btn-back:hover { border-color: #132147; color: #132147; }
 .btn-cont {
   flex: 2; padding: 13px; border-radius: 12px; background: #132147;
-  border: none; color: #fff; font-size: 14px; font-weight: 600;
-  font-family: inherit; cursor: pointer; transition: background 0.2s;
+  border: none; color: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.6em; letter-spacing: 0;
+  cursor: pointer; transition: background 0.2s;
 }
 .btn-cont:hover { background: #0d1730; }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .cf-page { grid-template-columns: 1fr; }
-  .panel-left { min-height: 280px; }
-  .pl-inner { min-height: 280px; padding: 24px; }
-  .panel-right { height: auto; }
-  .pr-inner { padding: 24px 20px; }
-  .city-card { flex-direction: column; align-items: flex-start; }
-  .buyer-row { flex-direction: column; align-items: flex-start; }
-  .hero-stats { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1200px) {
+  .step-title { font-size: 1.8rem; }
+  .hero-title { font-size: 1.8rem; }
+  .hstat-v { font-size: 1.3rem; }
+  .step-sub { font-size: 14px; }
+  .field-label { font-size: 12px; }
+  .btn-back, .btn-cont { font-size: 14px; }
+  .topt { font-size: 14px; }
+  .inp { font-size: 14px; }
+  .ipre { font-size: 14px; }
 }
 
-@media (max-width: 480px) {
-  .pl-inner { padding: 20px 16px; min-height: 200px; }
-  .pr-inner { padding: 20px 16px; }
-  .step-title { font-size: 22px; }
-  .step-sub { font-size: 13px; }
+@media (max-width: 900px) {
+  .cf-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  .pl-inner {
+    height: 100%; min-height: 0; padding: 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .panel-logo-img { height: 22px; margin-bottom: 0; }
+  .hero-card { margin-top: 0; padding: 10px 12px; }
+  .hero-pre { display: none; }
+  .hero-title { font-size: 13px; margin-bottom: 3px; line-height: 1.3; }
+  .hero-body { display: none; }
+  .hero-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+  .hstat { padding: 7px 9px; }
+  .hstat-v { font-size: 14px; margin-bottom: 1px; }
+  .hstat-l { font-size: 8px; }
+  .panel-right { flex: 1; height: auto; overflow-y: auto; min-height: 0; }
+  .pr-inner { padding: 16px 16px 28px; }
+  .buyer-row { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 810px) {
+  .step-title { font-size: 1.6rem; }
+  .hero-title { font-size: 1.6rem; }
+  .hstat-v { font-size: 1.2rem; }
+  .step-sub { font-size: 12px; }
   .loc-pill { padding: 6px 12px; font-size: 11px; }
   .search-bar { padding: 11px 16px 11px 40px; font-size: 14px; }
   .pill-row { gap: 6px; }
   .pill { padding: 8px 14px; font-size: 12px; }
-  .btn-back, .btn-cont { padding: 12px; font-size: 14px; }
+  .btn-back, .btn-cont { padding: 12px; font-size: 12px; }
+  .topt { font-size: 12px; }
+  .inp { font-size: 12px; }
+  .ipre { font-size: 12px; }
   .actions { gap: 8px; padding-top: 20px; }
-  .cf-card { padding: 20px; }
-  .cf-title { font-size: 20px; }
-  .cf-val { font-size: 18px; }
 }

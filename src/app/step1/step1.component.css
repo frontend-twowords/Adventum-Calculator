@@ -40,14 +40,14 @@
   background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
   border-radius: 16px; padding: 28px; margin-top: auto; backdrop-filter: blur(10px);
 }
-.panel-hero-title { font-size: 26px; font-weight: 300; color: #ffffff; line-height: 1.3; margin-bottom: 8px; }
+.panel-hero-title { font-size: 1.5rem; font-weight: 300; color: #ffffff; line-height: 1.3; margin-bottom: 8px; font-family: 'Inter Display', 'Inter', sans-serif; }
 .panel-hero-title strong { font-weight: 700; }
-.panel-hero-sub { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.6; }
+.panel-hero-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.6; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 .panel-stats { display: flex; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px; }
 .panel-stat { flex: 1; text-align: center; }
 .panel-stat + .panel-stat { border-left: 1px solid rgba(255,255,255,0.12); }
-.panel-stat-val { font-size: 22px; font-weight: 700; color: #ffffff; }
-.panel-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+.panel-stat-val { font-size: 1.4rem; font-weight: 700; color: #ffffff; font-family: 'Inter Display', 'Inter', sans-serif; }
+.panel-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; font-family: 'Inter Display', 'Inter', sans-serif; }
 
 /* RIGHT PANEL */
 .panel-right {
@@ -70,7 +70,8 @@
 .location-pill {
   display: flex; align-items: center; gap: 6px;
   border: 1px solid #e5e7eb; border-radius: 50px;
-  padding: 8px 16px; font-size: 13px; font-weight: 500; color: #132147;
+  padding: 8px 16px; font-size: 12px; font-weight: 500; color: #132147;
+  font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em;
 }
 
 /* Section heading */
@@ -82,7 +83,7 @@
   margin-bottom: 6px;
   line-height: 1.2;
 }
-.section-sub { font-size: 14px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
+.section-sub { font-size: 16px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; font-family: 'Inter Display', 'Inter', sans-serif; }
 
 /* Search */
 .search-wrap { position: relative; margin-bottom: 16px; }
@@ -93,19 +94,19 @@
 .search-input {
   width: 100%; padding: 13px 16px 13px 44px;
   border: 1.5px solid #e5e7eb; border-radius: 12px;
-  font-size: 15px; font-family: 'Inter', sans-serif; color: #132147;
+  font-size: 16px; font-family: 'Inter Display', 'Inter', sans-serif; color: #132147;
   outline: none; transition: border-color 0.2s; background: #ffffff; height: auto;
 }
 .search-input:focus { border-color: #132147; }
 
 /* Area chips */
-.popular-label { font-size: 13px; color: #9ca3af; margin-bottom: 10px; }
+.popular-label { font-size: 12px; color: #9ca3af; margin-bottom: 10px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 .area-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .area-chip {
   padding: 9px 18px; border-radius: 50px;
   border: 1.5px solid #e5e7eb; background: #ffffff;
-  font-size: 13px; font-weight: 500; color: #6b7280;
-  cursor: pointer; font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 500; color: #6b7280;
+  cursor: pointer; font-family: 'Inter Display', 'Inter', sans-serif;
   transition: all 0.2s; float: none; width: auto;
 }
 .area-chip.selected,
@@ -117,29 +118,29 @@
   display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
 }
 .city-card-info { flex: 1; min-width: 0; }
-.city-card-name { font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 3px; }
-.city-card-desc { font-size: 12px; color: rgba(255,255,255,0.6); }
+.city-card-name { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 3px; font-family: 'Inter Display', 'Inter', sans-serif; }
+.city-card-desc { font-size: 12px; color: rgba(255,255,255,0.6); font-family: 'Inter Display', 'Inter', sans-serif; }
 .city-card-stats { display: flex; flex-shrink: 0; }
 .city-stat { text-align: center; padding: 0 14px; border-left: 1px solid rgba(255,255,255,0.15); }
-.city-stat-val { font-size: 16px; font-weight: 700; color: #ffffff; }
+.city-stat-val { font-size: 16px; font-weight: 700; color: #ffffff; font-family: 'Inter Display', 'Inter', sans-serif; }
 .city-stat-lbl { font-size: 9px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
 /* Buyer status card */
 .buyer-card {
   border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 20px;
 }
-.buyer-card-title { font-size: 15px; font-weight: 600; color: #132147; margin-bottom: 3px; }
-.buyer-card-sub { font-size: 12px; color: #9ca3af; margin-bottom: 16px; }
+.buyer-card-title { font-size: 1.0rem; font-weight: 600; color: #132147; margin-bottom: 3px; font-family: 'Inter Display', 'Inter', sans-serif; line-height: 1.4em; }
+.buyer-card-sub { font-size: 12px; color: #9ca3af; margin-bottom: 16px; font-family: 'Inter Display', 'Inter', sans-serif; }
 .buyer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .buyer-row-labels { flex: 1; min-width: 160px; }
-.buyer-row-label-main { font-size: 14px; font-weight: 500; color: #132147; }
-.buyer-row-label-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+.buyer-row-label-main { font-size: 1.0rem; font-weight: 500; color: #132147; font-family: 'Inter Display', 'Inter', sans-serif; line-height: 1.4em; }
+.buyer-row-label-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 
 /* Toggle pair */
 .toggle-pair { display: flex; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
 .toggle-opt {
-  padding: 12px 18px; font-size: 13px; font-weight: 500; color: #9ca3af;
-  cursor: pointer; font-family: 'Inter', sans-serif;
+  padding: 12px 18px; font-size: 16px; font-weight: 500; color: #9ca3af;
+  cursor: pointer; font-family: 'Inter Display', 'Inter', sans-serif;
   background: #ffffff; border: none; transition: all 0.2s; white-space: nowrap;
   float: none; width: auto;
 }
@@ -148,7 +149,7 @@
 
 /* Progress */
 .progress-wrap { margin-bottom: 24px; }
-.progress-label { display: block; text-align: right; font-size: 11px; color: #9ca3af; margin-top: 6px; }
+.progress-label { display: block; text-align: right; font-size: 11px; color: #9ca3af; margin-top: 6px; font-family: 'Inter Display', 'Inter', sans-serif; }
 
 /* Nav buttons */
 .panel-nav {
@@ -157,16 +158,16 @@
 }
 .btn-back-outline {
   padding: 14px; border-radius: 12px; border: 1.5px solid #e5e7eb;
-  background: #ffffff; font-size: 15px; font-weight: 500; color: #6b7280;
-  cursor: pointer; font-family: 'Inter', sans-serif;
+  background: #ffffff; font-size: 16px; font-weight: 500; color: #6b7280;
+  cursor: pointer; font-family: 'Inter Display', 'Inter', sans-serif;
   display: flex; align-items: center; justify-content: center; gap: 8px;
   transition: all 0.2s; float: none; width: auto;
 }
 .btn-back-outline:hover { border-color: #132147; color: #132147; }
 .btn-continue {
   padding: 14px; border-radius: 12px; background: #9ca3af;
-  border: none; color: #ffffff; font-size: 15px; font-weight: 600;
-  font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s;
+  border: none; color: #ffffff; font-size: 16px; font-weight: 600;
+  font-family: 'Inter Display', 'Inter', sans-serif; cursor: pointer; transition: background 0.2s;
   display: flex; align-items: center; justify-content: center; gap: 8px;
   float: none; width: auto;
 }
@@ -174,35 +175,43 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .property-select-page { grid-template-columns: 1fr; }
-  .panel-left { min-height: 260px; }
-  .panel-left-content { min-height: 260px; padding: 24px; }
-  .panel-right { max-height: none; }
-  .panel-right-inner { padding: 24px 20px; }
+  .property-select-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  .panel-left-content {
+    height: 100%; min-height: 0; padding: 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .panel-logo { display: flex; flex-shrink: 0; }
+  .panel-logo-img { height: 22px; }
+  .panel-hero-card {
+    padding: 10px 12px; margin-top: 0;
+    display: flex; flex-direction: column;
+  }
+  .panel-hero-title { font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
+  .panel-hero-sub { margin-bottom: 8px; font-size: 11px; line-height: 1.3; }
+  .panel-stats { padding-top: 8px; align-items: center; }
+  .panel-stat-val { font-size: 14px; }
+  .panel-stat-lbl { font-size: 8px; }
+  .panel-right { flex: 1; overflow-y: auto; max-height: none; min-height: 0; }
+  .panel-right-inner { padding: 16px 16px 28px; }
   .panel-nav { grid-template-columns: 1fr 1fr; }
-  .city-card { flex-direction: column; align-items: flex-start; }
-  .city-card-stats { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; width: 100%; }
-  .city-stat { border-left: none; padding: 0 12px 0 0; }
   .buyer-row { flex-direction: column; align-items: flex-start; }
 }
 
-@media (max-width: 480px) {
-  .panel-left-content { padding: 20px 16px; min-height: 200px; }
-  .panel-hero-card { padding: 20px; }
-  .panel-hero-title { font-size: 20px; }
-  .panel-stat-val { font-size: 18px; }
-  .panel-right-inner { padding: 20px 16px; }
-  .panel-topbar { margin-bottom: 20px; }
-  .section-title { font-size: 1.3rem; }
-  .section-sub { font-size: 13px; margin-bottom: 16px; }
+@media (max-width: 810px) {
+  .panel-topbar { margin-bottom: 16px; }
+  .section-title { font-size: 1.6rem; }
+  .section-sub { font-size: 12px; margin-bottom: 16px; }
   .search-input { padding: 11px 16px 11px 40px; font-size: 14px; }
   .area-chip { padding: 7px 14px; font-size: 12px; }
-  .city-card { padding: 16px; }
-  .city-card-name { font-size: 16px; }
-  .city-stat-val { font-size: 14px; }
   .panel-nav { gap: 8px; padding-top: 20px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
-  .toggle-opt { padding: 10px 14px; font-size: 12px; }
+  .toggle-opt { padding: 10px 14px; font-size: 14px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }
 }
 

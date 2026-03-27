@@ -54,6 +54,11 @@ export class Cashflowstep2Component implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.propertyValueDisplay) {
+      this.propertyValueDisplay = '280,000';
+      this.propertyValue = 280000;
+    }
+    if (!this.interestRate) this.interestRate = '5%';
     this.updatePreview();
   }
 

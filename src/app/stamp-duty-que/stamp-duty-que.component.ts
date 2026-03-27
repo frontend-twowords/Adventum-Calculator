@@ -45,6 +45,11 @@ export class StampDutyQueComponent implements OnInit {
     if (!this.dataService.EmptyNullOrUndefined(this.calcData.ForeignBuyer)) {
       this.foreignbuyer = this.calcData.ForeignBuyer;
     }
+
+    // Pre-fill defaults if not already set
+    if (!this.PropertyValue) this.PropertyValue = '280,000';
+    if (!this.PurchaseType) this.PurchaseType = 'investment';
+    this.calcLive();
   }
 
   @HostListener('document:click', ['$event'])

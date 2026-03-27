@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 /* ===== Left Panel ===== */
@@ -73,7 +73,8 @@
   backdrop-filter: blur(12px);
 }
 .sdlt-card-title {
-  font-size: 20px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  font-size: 1.2rem;
   font-weight: 300;
   color: #fff;
   margin: 0 0 4px;
@@ -111,7 +112,7 @@
   margin-bottom: 8px;
 }
 .sdlt-stat-val {
-  font-size: 22px;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #fff;
   word-break: break-all;
@@ -162,7 +163,7 @@
   padding: 8px 16px;
   border: 1.5px solid #e5e7eb;
   border-radius: 50px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #132147;
 }
@@ -177,14 +178,15 @@
   line-height: 1.2;
 }
 .sdlt-subtitle {
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.6em;
   color: #6b7280;
   margin: 0 0 28px;
 }
 
 /* Section label */
 .sdlt-sec-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -204,7 +206,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #132147;
   margin-bottom: 8px;
@@ -244,7 +246,7 @@
 .sdlt-input-pre {
   padding: 13px 14px;
   background: #f9fafb;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #6b7280;
   border-right: 1px solid #e5e7eb;
@@ -256,11 +258,11 @@
   border: none;
   outline: none;
   padding: 13px 16px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
   background: transparent;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   min-width: 0;
 }
 
@@ -276,12 +278,12 @@
   border-radius: 12px;
   background: #fff;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
   transition: border-color 0.2s;
   user-select: none;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   box-sizing: border-box;
 }
 .sdlt-custom-select--open .sdlt-custom-trigger { border-color: #132147; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
@@ -326,10 +328,10 @@
   flex: 1;
   padding: 13px 16px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   transition: all 0.2s;
   background: #fff;
   color: #6b7280;
@@ -369,7 +371,7 @@
   margin-bottom: 6px;
 }
 .sdlt-preview-val {
-  font-size: 22px;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #132147;
 }
@@ -396,11 +398,11 @@
   border-radius: 12px;
   background: #fff;
   color: #6b7280;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.2s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 .sdlt-btn-back:hover { border-color: #132147; color: #132147; }
 .sdlt-btn-continue {
@@ -411,11 +413,11 @@
   border: none !important;
   border-radius: 12px;
   color: #fff !important;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -425,28 +427,38 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  :host { height: auto; overflow: visible; }
-  .sdlt-page { grid-template-columns: 1fr; height: auto; }
-  .sdlt-panel-left { height: 260px; }
-  .sdlt-panel-right { height: auto; overflow: visible; }
-  .sdlt-panel-right-inner { overflow: visible; padding: 24px 20px; }
-  .sdlt-actions { padding: 16px 20px; }
+  :host { height: 100vh; overflow: hidden; }
+  .sdlt-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .sdlt-panel-left { height: 30vh; min-height: 200px; flex-shrink: 0; overflow: hidden; }
+  .sdlt-panel-left-inner {
+    height: 100%; padding: 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .panel-logo, .sdlt-logo-wrap { display: flex; flex-shrink: 0; }
+  .panel-logo-img { height: 22px; }
+  .sdlt-card {
+    margin-top: 0; padding: 10px 12px;
+    display: flex; flex-direction: column;
+  }
+  .sdlt-card-title { font-size: 13px; margin: 0 0 4px; }
+  .sdlt-card-sub { display: none; }
+  .sdlt-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+  .sdlt-stat { padding: 7px 9px; }
+  .sdlt-stat-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
+  .sdlt-stat-val { font-size: 14px; }
+  .sdlt-panel-right { flex: 1; height: auto; overflow: hidden; min-height: 0; }
+  .sdlt-panel-right-inner { overflow-y: auto; padding: 16px 16px 28px; }
+  .sdlt-actions { padding: 12px 16px 20px; }
 }
 
-@media (max-width: 480px) {
-  .sdlt-left-inner { padding: 20px 16px; min-height: 200px; }
-  .sdlt-right-inner { padding: 20px 16px; }
+@media (max-width: 810px) {
   .sdlt-title { font-size: 1.3rem; }
-  .sdlt-sub { font-size: 13px; }
-  .sdlt-field-label { font-size: 13px; }
-  .sdlt-input, .sdlt-select { font-size: 14px; padding: 10px 14px; height: 44px; }
-  .sdlt-toggle-btn { padding: 10px; font-size: 13px; }
-  .sdlt-hero-card { padding: 20px; }
-  .sdlt-hero-title { font-size: 20px; }
-  .sdlt-stat-val { font-size: 18px; }
-  .sdlt-btn-back, .sdlt-btn-calc { padding: 12px; font-size: 14px; }
-  .sdlt-nav { gap: 8px; }
-  .sdlt-pill { padding: 6px 12px; font-size: 12px; }
+  .sdlt-subtitle { font-size: 14px; }
+  .sdlt-label { font-size: 12px; }
+  .sdlt-inp, .sdlt-input-pre { font-size: 14px; padding: 10px 14px; }
+  .sdlt-toggle-btn { padding: 10px; font-size: 14px; }
+  .sdlt-btn-back, .sdlt-btn-continue { font-size: 14px; }
+  .sdlt-location-pill { padding: 6px 12px; font-size: 12px; }
 }
 
 @media (min-width: 810px) {

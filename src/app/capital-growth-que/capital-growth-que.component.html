@@ -155,24 +155,6 @@
       </div>
 
 
-      <!-- Live Summary Cards -->
-      <div class="cg-summary-row" *ngIf="previewExitGBP">
-        <div class="cg-summary-card">
-          <div class="cg-summary-lbl">Current Value</div>
-          <div class="cg-summary-val">£ {{previewCurrentGBP | number:'1.0-0'}}</div>
-          <div class="cg-summary-sub">{{previewCurrentHomeCr}}</div>
-        </div>
-        <div class="cg-summary-card">
-          <div class="cg-summary-lbl">Exit Value ({{investedTenure}}yr)</div>
-          <div class="cg-summary-val">£ {{previewExitGBP | number:'1.0-0'}}</div>
-          <div class="cg-summary-sub">{{previewExitHomeCr}}</div>
-        </div>
-        <div class="cg-summary-card">
-          <div class="cg-summary-lbl">Total {{homecurrencyText}} Growth</div>
-          <div class="cg-summary-val cg-summary-val--green">{{previewTotalReturn}}%</div>
-        </div>
-      </div>
-
       <!-- Actions -->
       <div class="cg-actions">
         <a [routerLink]="['/capital-growth-calculator/step1']" class="cg-btn-back">

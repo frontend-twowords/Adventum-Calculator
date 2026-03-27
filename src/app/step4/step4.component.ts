@@ -130,7 +130,7 @@ export class Step4Component implements OnInit {
     if(!this.groundRent) this.groundRent = '1,500';
     if(!this.miscelleneousExpense) this.miscelleneousExpense = '0';
     if(!this.letteingManagFee) this.letteingManagFee = this.PropertyLondon == 1 ? '12' : '10';
-    if(!this.serviceCharges) this.serviceCharges = this.PropertyLondon == 1 ? '3,000' : '1,000';
+    if(!this.serviceCharges) this.serviceCharges = this.autoServiceCharge();
     if(!this.rentalGrowthEscalation) this.rentalGrowthEscalation = '3%';
 
     const apiCountry = this.resolveApiCountry(this.country);
@@ -186,6 +186,12 @@ export class Step4Component implements OnInit {
 
     const yr1 = acqTotal + annualTotal;
     this.year1Total = yr1 > 0 ? this.validation.amountWithComma(Math.round(yr1).toString()) : '';
+  }
+
+  autoServiceCharge(): string {
+    const pv = parseFloat((this.PropertyValue + '').replace(/,/g, '')) || 0;
+    const charge = pv < 360000 ? 3.5 * 500 : 3.5 * 750;
+    return this.validation.amountWithComma(charge.toString());
   }
 
   next() {

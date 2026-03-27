@@ -87,10 +87,8 @@
   <!-- ── SCROLLABLE BODY ── -->
   <div class="rp-body">
 
-    <!-- Section 1: Returns Breakdown + Investment Journey -->
-    <div class="rp-two-col rp-section">
-
-      <!-- Where Your Returns Come From (donut) -->
+    <!-- Section 1a: Returns Breakdown (donut) — full width -->
+    <div class="rp-section">
       <div class="rp-card rp-donut-card">
         <div class="rp-donut-header">
           <div class="rp-donut-title">Where Your Returns Come From</div>
@@ -107,48 +105,42 @@
           <canvas id="can" width="270" height="270"></canvas>
         </div>
       </div>
+    </div>
 
-      <!-- Investment Journey -->
+    <!-- Section 1b: Investment Journey — full width vertical stacked bar -->
+    <div class="rp-section">
       <div class="rp-card">
         <div class="rp-card-header">
           <h3>Investment Journey</h3>
-          <p>From initial outlay to exit value over {{calcData?.investedTenure}} years</p>
+          <p>Total profit breakdown over {{calcData?.investedTenure}} years</p>
         </div>
-        <div class="journey-items">
-          <div class="journey-row">
-            <div class="journey-row-top">
-              <span class="journey-label">Initial Investment</span>
-              <span class="journey-val">{{formatCurrency(-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
-            </div>
-            <div class="journey-bar-bg"><div class="journey-bar" style="background:#586882;width:20%"></div></div>
+        <div class="rp-journey-chart-wrap">
+          <canvas id="journeyBar"></canvas>
+        </div>
+        <div class="rp-journey-legend">
+          <div class="rp-journey-legend-item">
+            <span class="rp-journey-dot" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2)"></span>
+            <span class="rp-journey-lbl">Initial Investment</span>
+            <span class="rp-journey-val">{{formatCurrency(-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
           </div>
-          <div class="journey-row">
-            <div class="journey-row-top">
-              <span class="journey-label">Capital Growth</span>
-              <span class="journey-val">{{formatCurrency(capitalAppreciation, homecurrencyText)}}</span>
-            </div>
-            <div class="journey-bar-bg"><div class="journey-bar" style="background:#586882;" [style.width.%]="(capitalAppreciation/makePositive(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency))*80"></div></div>
+          <div class="rp-journey-legend-item">
+            <span class="rp-journey-dot" style="background:#506E9C"></span>
+            <span class="rp-journey-lbl">Capital Growth</span>
+            <span class="rp-journey-val">{{formatCurrency(capitalAppreciation, homecurrencyText)}}</span>
           </div>
-          <div class="journey-row">
-            <div class="journey-row-top">
-              <span class="journey-label">FX Appreciation</span>
-              <span class="journey-val">{{formatCurrency(TotalReturnOfInvestment-capitalAppreciation-RentalIncome, homecurrencyText)}}</span>
-            </div>
-            <div class="journey-bar-bg"><div class="journey-bar" style="background:#586882;" [style.width.%]="((TotalReturnOfInvestment-capitalAppreciation-RentalIncome)/makePositive(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency))*80"></div></div>
+          <div class="rp-journey-legend-item">
+            <span class="rp-journey-dot" style="background:rgba(45,97,237,0.80)"></span>
+            <span class="rp-journey-lbl">FX Appreciation</span>
+            <span class="rp-journey-val">{{formatCurrency(TotalReturnOfInvestment-capitalAppreciation-RentalIncome, homecurrencyText)}}</span>
           </div>
-          <div class="journey-row">
-            <div class="journey-row-top">
-              <span class="journey-label">Net Rental Income</span>
-              <span class="journey-val">{{formatCurrency(RentalIncome, homecurrencyText)}}</span>
-            </div>
-            <div class="journey-bar-bg"><div class="journey-bar" style="background:#586882;" [style.width.%]="(RentalIncome/makePositive(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency))*80"></div></div>
+          <div class="rp-journey-legend-item">
+            <span class="rp-journey-dot" style="background:rgba(255,255,255,0.20);border:1px solid rgba(255,255,255,0.3)"></span>
+            <span class="rp-journey-lbl">Net Rental Income</span>
+            <span class="rp-journey-val">{{formatCurrency(RentalIncome, homecurrencyText)}}</span>
           </div>
-          <div class="journey-exit-row">
-            <div class="journey-exit-top">
-              <span class="journey-exit-lbl">Value at Exit</span>
-              <span class="journey-exit-val">{{formatCurrency(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
-            </div>
-            <div class="journey-bar-bg journey-bar-bg--exit"><div class="journey-bar journey-bar--exit" style="width:100%"></div></div>
+          <div class="rp-journey-legend-item rp-journey-legend-total">
+            <span class="rp-journey-lbl" style="color:rgba(255,255,255,0.6);font-weight:500">Value at Exit</span>
+            <span class="rp-journey-val" style="color:#24B14B;font-size:22px;font-weight:700;letter-spacing:-0.5px">{{formatCurrency(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
           </div>
         </div>
       </div>
@@ -173,49 +165,82 @@
               </div>
             </div>
           </div>
-          <div class="bench-row">
-            <span class="bench-row-label">Nifty 50 (10yr avg)</span>
-            <div class="bench-bar-bg">
-              <div class="bench-bar" [style.width.%]="benchMax > 0 ? (12.1 / benchMax * 100) : 77">
-                <span>12.1%</span>
+          <!-- India benchmarks -->
+          <ng-container *ngIf="homecurrencyText === 'INR'">
+            <div class="bench-row">
+              <span class="bench-row-label">Nifty 50 (10yr avg)</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (12.1 / benchMax * 100) : 77">
+                  <span>12.1%</span>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- <div class="bench-row">
-            <span class="bench-row-label">Gold (INR, 10yr)</span>
-            <div class="bench-bar-bg">
-              <div class="bench-bar" [style.width.%]="benchMax > 0 ? (10.2 / benchMax * 100) : 65">
-                <span>10.2%</span>
+            <div class="bench-row">
+              <span class="bench-row-label">Indian Real Estate</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (8.5 / benchMax * 100) : 54">
+                  <span>8.5%</span>
+                </div>
               </div>
             </div>
-          </div> -->
-          <div class="bench-row">
-            <span class="bench-row-label">Indian Real Estate</span>
-            <div class="bench-bar-bg">
-              <div class="bench-bar" [style.width.%]="benchMax > 0 ? (8.5 / benchMax * 100) : 54">
-                <span>8.5%</span>
+            <div class="bench-row">
+              <span class="bench-row-label">NRI Fixed Deposit</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (7.5 / benchMax * 100) : 48">
+                  <span>7.5%</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="bench-row">
-            <span class="bench-row-label">NRI Fixed Deposit</span>
-            <div class="bench-bar-bg">
-              <div class="bench-bar" [style.width.%]="benchMax > 0 ? (7.5 / benchMax * 100) : 48">
-                <span>7.5%</span>
+            <div class="bench-row">
+              <span class="bench-row-label">Bank FD (India)</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (7 / benchMax * 100) : 44">
+                  <span>7%</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="bench-row">
-            <span class="bench-row-label">Bank FD (India)</span>
-            <div class="bench-bar-bg">
-              <div class="bench-bar" [style.width.%]="benchMax > 0 ? (7 / benchMax * 100) : 44">
-                <span>7%</span>
+          </ng-container>
+          <!-- UK / rest-of-world benchmarks -->
+          <ng-container *ngIf="homecurrencyText !== 'INR'">
+            <div class="bench-row">
+              <span class="bench-row-label">FTSE 100 (10yr avg)</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (7.2 / benchMax * 100) : 60">
+                  <span>7.2%</span>
+                </div>
               </div>
             </div>
-          </div>
+            <div class="bench-row">
+              <span class="bench-row-label">UK Real Estate (avg)</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (5.5 / benchMax * 100) : 46">
+                  <span>5.5%</span>
+                </div>
+              </div>
+            </div>
+            <div class="bench-row">
+              <span class="bench-row-label">UK Government Gilts</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (3.5 / benchMax * 100) : 29">
+                  <span>3.5%</span>
+                </div>
+              </div>
+            </div>
+            <div class="bench-row">
+              <span class="bench-row-label">UK Cash ISA</span>
+              <div class="bench-bar-bg">
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (2.8 / benchMax * 100) : 23">
+                  <span>2.8%</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
         </div>
-        <div class="bench-note">
+        <div class="bench-note" *ngIf="homecurrencyText === 'INR'">
           At <strong style="color:#fff">{{IrrInHomeCurrency | number:'1.2-2'}}% IRR</strong>, this property outperforms major asset classes over a comparable {{calcData?.investedTenure}}-year horizon. The FX tailwind adds ~{{calcData?.fxgrowth}}% p.a. that domestic investments don't capture.
+        </div>
+        <div class="bench-note" *ngIf="homecurrencyText !== 'INR'">
+          At <strong style="color:#fff">{{IrrInHomeCurrency | number:'1.2-2'}}% IRR ({{homecurrencyText}})</strong>, this property outperforms major UK asset classes over a comparable {{calcData?.investedTenure}}-year horizon — delivering returns that equities and property funds rarely match on a risk-adjusted basis.
         </div>
       </div>
     </div>
@@ -234,17 +259,6 @@
           <span><i style="background:#506E9C;display:inline-block;height:11px;width:29px;border-radius:2px;vertical-align:middle"></i> GBP IRR</span>
           <span><i style="background:#24B14B;display:inline-block;height:11px;width:29px;border-radius:2px;vertical-align:middle"></i> {{homecurrencyText}} IRR</span>
         </div>
-        <!-- Country tabs -->
-        <div class="country-tabs">
-          <button
-            *ngFor="let c of countryList"
-            class="country-tab"
-            [class.active]="selectedCountry === c"
-            (click)="selectCountry(c)">
-            {{c}}
-          </button>
-        </div>
-
         <!-- IRR note -->
         <div class="rp-irr-note-card">
           Early years show negative IRR because upfront costs (SDLT, fees) drag the annualised return. By Year 3, compounding rental income and capital growth overcome the initial drag. The gap between GBP and {{homecurrencyText}} widens as FX appreciation compounds.
@@ -588,41 +602,41 @@
             <!-- Row: Manchester -->
             <div class="rp-comp-row">
               <div class="rp-comp-cell rp-comp-col-city rp-comp-city--highlight">Manchester (M1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield rp-comp-val--green rp-comp-val--bold">6.6–6.8%</div>
-              <div class="rp-comp-cell rp-comp-col-growth rp-comp-val--bold">+4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price rp-comp-val--bold">£252k</div>
+              <div class="rp-comp-cell rp-comp-col-yield rp-comp-val--green rp-comp-val--bold" data-label="Avg. Yield">6.6–6.8%</div>
+              <div class="rp-comp-cell rp-comp-col-growth rp-comp-val--bold" data-label="2026 Growth">+4.0%</div>
+              <div class="rp-comp-cell rp-comp-col-price rp-comp-val--bold" data-label="Avg. Price">£252k</div>
               <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--green-outline">Strong Buy</span></div>
             </div>
             <!-- Row: Birmingham -->
             <div class="rp-comp-row">
               <div class="rp-comp-cell rp-comp-col-city">Birmingham (B1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield">6.0–6.2%</div>
-              <div class="rp-comp-cell rp-comp-col-growth">+5.0–7.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price">£220k</div>
+              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">6.0–6.2%</div>
+              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+5.0–7.0%</div>
+              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£220k</div>
               <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Strong Buy</span></div>
             </div>
             <!-- Row: Liverpool -->
             <div class="rp-comp-row">
               <div class="rp-comp-cell rp-comp-col-city">Liverpool (L1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield">8.0–8.5%</div>
-              <div class="rp-comp-cell rp-comp-col-growth">+3.5%</div>
-              <div class="rp-comp-cell rp-comp-col-price">£195k</div>
+              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">8.0–8.5%</div>
+              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+3.5%</div>
+              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£195k</div>
               <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Buy</span></div>
             </div>
             <!-- Row: Leeds -->
             <div class="rp-comp-row">
               <div class="rp-comp-cell rp-comp-col-city">Leeds (LS1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield">6.0–6.5%</div>
-              <div class="rp-comp-cell rp-comp-col-growth">+4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price">£235k</div>
+              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">6.0–6.5%</div>
+              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+4.0%</div>
+              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£235k</div>
               <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Buy</span></div>
             </div>
             <!-- Row: London -->
             <div class="rp-comp-row rp-comp-row--last">
               <div class="rp-comp-cell rp-comp-col-city">London (E1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield">3.5–4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-growth">+2.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price">£520k</div>
+              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">3.5–4.0%</div>
+              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+2.0%</div>
+              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£520k</div>
               <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Hold</span></div>
             </div>
           </div>

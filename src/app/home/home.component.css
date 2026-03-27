@@ -197,7 +197,17 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .landing-content { padding: 36px 24px 48px; }
+  .landing-content {
+    padding: 32px 24px 48px;
+    justify-content: flex-start;
+  }
+  .landing-logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-bottom: 28px;
+  }
   .calc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .landing-tagline { font-size: 16px; }
 }
@@ -206,11 +216,12 @@
   .calc-grid { grid-template-columns: 1fr; }
   .landing-logo-wordmark { font-size: 26px; }
   .landing-tagline { font-size: 15px; margin-bottom: 32px; }
-  .landing-content { padding: 32px 16px 48px; }
+  .landing-content { padding: 28px 16px 48px; }
 }
 
 @media (max-width: 480px) {
   .landing-content { padding: 24px 12px 40px; }
+  .landing-logo { margin-bottom: 20px; }
   .landing-logo-img { height: 44px; }
   .landing-logo-wordmark { font-size: 22px; letter-spacing: 2px; }
   .landing-logo-sub { font-size: 8px; letter-spacing: 2px; }

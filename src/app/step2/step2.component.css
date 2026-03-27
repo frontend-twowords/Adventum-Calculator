@@ -81,20 +81,23 @@
 }
 
 .panel-hero-title {
-  font-size: 26px;
+  font-size: 1.5rem;
   font-weight: 300;
   color: #ffffff;
   line-height: 1.3;
   margin-bottom: 8px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 .panel-hero-title strong { font-weight: 700; }
 
 .panel-hero-sub {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255,255,255,0.6);
   margin-bottom: 24px;
   line-height: 1.6;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .panel-stats {
@@ -114,9 +117,10 @@
 }
 
 .panel-stat-val {
-  font-size: 22px;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 .panel-stat-lbl {
@@ -125,6 +129,7 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
   margin-top: 2px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 /* ── RIGHT PANEL ── */
@@ -176,9 +181,11 @@
   border: 1px solid #e5e7eb;
   border-radius: 50px;
   padding: 8px 16px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #132147;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Section heading */
@@ -192,10 +199,11 @@
 }
 
 .section-sub {
-  font-size: 14px;
+  font-size: 16px;
   color: #6b7280;
   margin-bottom: 28px;
   line-height: 1.5;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 /* Field group */
@@ -211,9 +219,11 @@
 }
 
 .field-label {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: #132147;
+  font-family: 'Inter Display', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .field-hint {
@@ -226,10 +236,10 @@
   outline: 1px rgba(36,177,75,0.20) solid;
   outline-offset: -1px;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   color: rgba(51,58,68,0.70);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   line-height: 20px;
 }
 
@@ -277,7 +287,7 @@
   font-size: 16px;
   font-weight: 500;
   color: #132147;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   background: #ffffff;
   height: auto;
 }
@@ -299,11 +309,11 @@
 .toggle-opt {
   padding: 14px;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #9ca3af;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   background: #ffffff;
   border: none;
   transition: all 0.2s;
@@ -335,11 +345,11 @@
   border-radius: 50px;
   border: 1.5px solid #e5e7eb;
   background: #ffffff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #6b7280;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   transition: all 0.2s;
 }
 
@@ -366,10 +376,10 @@
   padding: 14px 40px 14px 16px;
   border: 1.5px solid #e5e7eb;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   background: #ffffff;
   appearance: none;
   -webkit-appearance: none;
@@ -419,13 +429,15 @@
   letter-spacing: 0.8px;
   color: rgba(255,255,255,0.45);
   margin-bottom: 8px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 .summary-card-val {
-  font-size: 22px;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.1;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 .summary-card-val--green {
@@ -433,9 +445,10 @@
 }
 
 .summary-card-note {
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(255,255,255,0.4);
   margin-top: 4px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 /* Progress — sits at top of form, above heading */
@@ -449,6 +462,7 @@
   font-size: 11px;
   color: #9ca3af;
   margin-top: 6px;
+  font-family: 'Inter Display', 'Inter', sans-serif;
 }
 
 /* Nav buttons */
@@ -467,11 +481,11 @@
   border-radius: 12px;
   border: 1.5px solid #e5e7eb;
   background: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #6b7280;
   cursor: pointer;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -492,9 +506,9 @@
   background: #9ca3af;
   border: none;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Display', 'Inter', sans-serif;
   cursor: pointer;
   transition: background 0.2s;
   display: flex;
@@ -513,47 +527,54 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .financing-page {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
   }
-
   .panel-left {
-    min-height: 260px;
+    height: 30vh;
+    min-height: 0;
+    flex-shrink: 0;
+    overflow: hidden;
   }
-
   .panel-left-content {
-    min-height: 260px;
-    padding: 24px;
+    height: 100%;
+    min-height: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-
-  .panel-right {
-    max-height: none;
+  .panel-logo { display: flex; flex-shrink: 0; }
+  .panel-logo-img { height: 22px; }
+  .panel-hero-card {
+    margin-top: 0;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
   }
-
-  .panel-right-inner {
-    padding: 24px 20px;
-  }
-
-  .panel-nav {
-    grid-template-columns: 1fr 1fr;
-  }
+  .panel-hero-title { font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
+  .panel-hero-sub { display: none; }
+  .summary-grid { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+  .summary-card { padding: 7px 9px; }
+  .summary-card-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
+  .summary-card-val { font-size: 14px; line-height: 1.1; }
+  .summary-card-note { font-size: 8px; margin-top: 2px; }
+  .panel-right { flex: 1; overflow-y: auto; max-height: none; min-height: 0; }
+  .panel-right-inner { padding: 16px 16px 28px; min-height: 100%; }
+  .panel-nav { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 480px) {
-  .panel-left-content { padding: 20px 16px; min-height: 200px; }
-  .panel-hero-card { padding: 20px; }
-  .panel-hero-title { font-size: 20px; }
-  .panel-stat-val { font-size: 18px; }
-  .panel-right-inner { padding: 20px 16px; }
-  .section-title { font-size: 1.3rem; }
-  .section-sub { font-size: 13px; }
-  .field-label { font-size: 13px; }
+@media (max-width: 810px) {
+  .section-title { font-size: 1.6rem; }
+  .section-sub { font-size: 12px; }
+  .field-label { font-size: 12px; }
   .field-input { padding: 11px 14px; font-size: 14px; }
   .field-prefix { padding: 11px 12px; }
   .field-hint { padding: 8px 16px; font-size: 12px; gap: 6px; }
-  .toggle-opt { padding: 10px; font-size: 13px; }
+  .toggle-opt { padding: 10px; font-size: 14px; }
   .pill-btn { padding: 8px 14px; font-size: 12px; }
-  .summary-grid { grid-template-columns: 1fr; gap: 8px; }
-  .summary-card-val { font-size: 18px; }
   .panel-nav { gap: 8px; padding-top: 20px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }

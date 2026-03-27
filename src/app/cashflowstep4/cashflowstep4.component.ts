@@ -65,6 +65,14 @@ export class Cashflowstep4Component implements OnInit {
 
   ngOnInit(): void {
     this.PropertyLondon = localStorage.getItem('PropertyLondon');
+
+    // Pre-fill defaults based on location
+    if (!this.loanOriginationFee && this.calcData.optmortgage !== '0') this.loanOriginationFee = '1%';
+    if (!this.letteingManagFee) this.letteingManagFee = this.PropertyLondon == '1' ? '12%' : '10%';
+    if (!this.groundRent) this.groundRent = this.PropertyLondon == '1' ? '500' : '350';
+    if (!this.serviceCharges) this.serviceCharges = this.autoServiceCharge();
+    if (!this.miscelleneousExpense) this.miscelleneousExpense = '1,000';
+
     if (!this.stampDutyLandTax && this.PropertyValue) {
       this.calculatestampduty();
     }
@@ -93,7 +101,7 @@ export class Cashflowstep4Component implements OnInit {
           );
         }
       },
-      (_err) => {
+      (_err: any) => {
         const pv2 = parseFloat(this.PropertyValue.toString().replace(/,/g, '')) || 0;
         this.stampDutyLandTax = this.validation.amountWithComma(
           this.calculateSdltFallback(pv2, this.foreignbuyer === '1').toString()
@@ -121,14 +129,16 @@ export class Cashflowstep4Component implements OnInit {
     return Math.round(sdlt);
   }
 
+  autoServiceCharge(): string {
+    const pv = parseFloat((this.PropertyValue + '').replace(/,/g, '')) || 0;
+    const charge = pv < 360000 ? 3.5 * 500 : 3.5 * 750;
+    return this.validation.amountWithComma(charge.toString());
+  }
+
   next() {
     let flag = true;
 
-    if (!this.dataService.EmptyNullOrUndefined(this.foreignbuyer)) {
-      this.calcData.foreignbuyer = this.foreignbuyer;
-    } else {
-      flag = false;
-    }
+    this.calcData.foreignbuyer = this.foreignbuyer || '0';
     if (!this.dataService.EmptyNullOrUndefined(this.stampDutyLandTax)) {
       this.calcData.stampDutyLandTax = parseFloat(this.stampDutyLandTax.replace(/,/g, '')) || 0;
     } else {

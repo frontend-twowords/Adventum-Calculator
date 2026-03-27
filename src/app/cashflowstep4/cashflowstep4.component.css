@@ -50,15 +50,15 @@
   padding: 28px;
   margin-top: auto;
 }
-.cf-card-pre { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
-.cf-card-title { font-size: 20px; font-weight: 300; color: #fff; margin-bottom: 4px; }
+.cf-card-pre { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+.cf-card-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.5rem; font-weight: 300; line-height: 1.4em; color: #fff; margin-bottom: 4px; }
 .cf-card-title strong { font-weight: 700; }
-.cf-card-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+.cf-card-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
 .cf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .cfs { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; }
 .cfs.acc { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.15); }
-.cfs-l { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
-.cfs-v { font-size: 18px; font-weight: 700; color: #fff; }
+.cfs-l { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+.cfs-v { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4em; color: #fff; }
 .cfs.acc .cfs-v { color: #22c55e; }
 
 /* ── RIGHT PANEL ── */
@@ -88,32 +88,32 @@
 .loc-pill {
   display: flex; align-items: center; gap: 6px;
   border: 1.5px solid #e5e7eb; border-radius: 50px;
-  padding: 8px 16px; font-size: 13px; font-weight: 500; color: #132147;
+  padding: 8px 16px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #132147;
 }
 
-.step-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.6rem; font-weight: 400; color: #132147; margin-bottom: 6px; line-height: 1.2; }
-.step-sub { font-size: 14px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
+.step-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 2rem; font-weight: 400; line-height: 1.4em; color: #132147; margin-bottom: 6px; }
+.step-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #6b7280; margin-bottom: 20px; }
 
 /* Section label */
 .sec-label {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 1.2px; color: #9ca3af; margin-bottom: 14px; margin-top: 4px;
 }
 
 /* Fields */
 .field { margin-bottom: 16px; }
 .field-label {
-  font-size: 13px; font-weight: 500; color: #132147; margin-bottom: 8px;
+  font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 500; line-height: 1.6em; letter-spacing: -0.02em; color: #132147; margin-bottom: 8px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.field-sub { font-size: 11px; color: #9ca3af; margin-top: 5px; }
+.field-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; margin-top: 5px; }
 
 /* Input */
 .iw { display: flex; align-items: center; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; transition: border 0.2s; }
 .iw:focus-within { border-color: #132147; }
-.ipre { padding: 12px 14px; background: #f9fafb; font-size: 14px; font-weight: 500; color: #6b7280; border-right: 1px solid #e5e7eb; flex-shrink: 0; }
-.isuf { padding: 12px 14px; background: #f9fafb; font-size: 13px; color: #6b7280; border-left: 1px solid #e5e7eb; flex-shrink: 0; }
-.inp { flex: 1; border: none; outline: none; padding: 12px 14px; font-size: 15px; font-weight: 500; color: #132147; font-family: inherit; background: #fff; }
+.ipre { padding: 12px 14px; background: #f9fafb; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #6b7280; border-right: 1px solid #e5e7eb; flex-shrink: 0; }
+.isuf { padding: 12px 14px; background: #f9fafb; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #6b7280; border-left: 1px solid #e5e7eb; flex-shrink: 0; }
+.inp { flex: 1; border: none; outline: none; padding: 12px 14px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #132147; background: #fff; }
 
 /* SDLT Banner */
 .sdlt-card {
@@ -127,12 +127,11 @@
   margin-bottom: 14px;
 }
 .sdlt-card-left { display: flex; flex-direction: column; gap: 3px; }
-.sdlt-card-name { color: white; font-size: 14px; font-weight: 600; }
-.sdlt-card-note { color: rgba(255,255,255,0.60); font-size: 12px; font-weight: 400; }
+.sdlt-card-name { color: white; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.6em; letter-spacing: 0; }
+.sdlt-card-note { color: rgba(255,255,255,0.60); font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; }
 .sdlt-card-val {
   color: white;
-  font-size: 18px;
-  font-weight: 700;
+  font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4em;
   padding: 8px 14px;
   background: rgba(255,255,255,0.12);
   border-radius: 10px;
@@ -145,8 +144,8 @@
 /* Toggle pair */
 .toggle-pair { display: flex; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
 .topt {
-  flex: 1; padding: 12px 16px; text-align: center; font-size: 14px; font-weight: 500;
-  cursor: pointer; font-family: inherit; background: #fff; color: #6b7280; border: none; outline: none; transition: all 0.2s;
+  flex: 1; padding: 12px 16px; text-align: center; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0;
+  cursor: pointer; background: #fff; color: #6b7280; border: none; outline: none; transition: all 0.2s;
 }
 .topt + .topt { border-left: 1px solid #e5e7eb; }
 .topt.active { background: #132147; color: #fff; font-weight: 600; }
@@ -164,11 +163,11 @@
   margin-bottom: 18px;
 }
 .tax-alert-title {
-  color: #132147; font-size: 16px; font-weight: 500;
-  text-transform: capitalize; line-height: 20px;
+  color: #132147; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0;
+  text-transform: capitalize;
 }
 .tax-alert-body {
-  color: rgba(51,58,68,0.70); font-size: 16px; font-weight: 300; line-height: 20px;
+  color: rgba(51,58,68,0.70); font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.6em; letter-spacing: 0;
 }
 
 /* 3-col row */
@@ -181,56 +180,78 @@
 }
 .btn-back {
   flex: 1; padding: 13px; border-radius: 12px; border: 1.5px solid #e5e7eb;
-  background: #fff; font-size: 14px; font-weight: 500; color: #6b7280;
-  cursor: pointer; font-family: inherit;
+  background: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #6b7280;
+  cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;
 }
 .btn-back:hover { border-color: #132147; color: #132147; }
 .btn-calc {
   flex: 2; padding: 13px; border-radius: 12px;
   background: #23B14B;
-  border: none; color: #fff; font-size: 14px; font-weight: 600;
-  font-family: inherit; cursor: pointer; transition: opacity 0.2s;
+  border: none; color: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.6em; letter-spacing: 0;
+  cursor: pointer; transition: opacity 0.2s;
 }
 .btn-calc:hover { opacity: 0.9; }
 
 .error-input { border: 1.5px solid #f87171 !important; }
 
+@media (max-width: 1200px) {
+  .step-title { font-size: 1.8rem; }
+  .cf-card-title { font-size: 1.3rem; }
+  .cfs-v { font-size: 1.1rem; }
+  .step-sub { font-size: 14px; }
+  .field-lbl, .field-label { font-size: 12px; }
+  .inp { font-size: 14px; }
+  .ipre { font-size: 14px; }
+  .isuf { font-size: 14px; }
+  .topt { font-size: 14px; }
+  .sdlt-card-val { font-size: 1.1rem; }
+  .btn-back, .btn-calc { font-size: 14px; }
+}
+
 @media (max-width: 900px) {
-  .cf-page { grid-template-columns: 1fr; }
-  .panel-left { min-height: 280px; }
-  .pl-inner { min-height: 280px; padding: 24px; }
-  .panel-right { height: auto; }
-  .pr-inner { padding: 24px 20px; }
+  .cf-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  .pl-inner {
+    height: 100%; min-height: 0; padding: 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .logo-wrap { flex-shrink: 0; }
+  .panel-logo-img { height: 22px; }
+  .cf-card { margin-top: 0; padding: 10px 12px; }
+  .cf-card-pre { display: none; }
+  .cf-card-title { font-size: 13px; margin-bottom: 3px; }
+  .cf-card-sub { display: none; }
+  .cf-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+  .cfs { padding: 7px 9px; }
+  .cfs-l { font-size: 8px; margin-bottom: 2px; }
+  .cfs-v { font-size: 14px; }
+  .panel-right { flex: 1; height: auto; overflow-y: auto; min-height: 0; }
+  .pr-inner { padding: 16px 16px 28px; }
   .row3 { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 480px) {
-  .pl-inner { padding: 20px 16px; min-height: 200px; }
-  .pr-inner { padding: 20px 16px; }
-  .step-title { font-size: 1.3rem; }
-  .step-sub { font-size: 13px; }
+@media (max-width: 810px) {
+  .step-title { font-size: 1.6rem; }
+  .cf-card-title { font-size: 1.2rem; }
+  .cfs-v { font-size: 1.0rem; }
+  .step-sub { font-size: 12px; }
   .loc-pill { padding: 6px 12px; font-size: 11px; }
-  .field-lbl, .field-label { font-size: 13px; }
-  .iw .inp, .field-input { padding: 10px 12px; font-size: 14px; }
-  .ipre, .field-prefix { padding: 10px; }
+  .field-lbl, .field-label { font-size: 12px; }
+  .iw .inp, .field-input { padding: 10px 12px; font-size: 12px; }
+  .ipre, .field-prefix { padding: 10px; font-size: 12px; }
   .isuf, .field-suffix { padding: 10px; font-size: 12px; }
+  .topt { font-size: 12px; }
   .row3 { grid-template-columns: 1fr; }
   .sdlt-banner { flex-direction: column; align-items: flex-start; padding: 12px; }
   .sdlt-val { font-size: 16px; }
+  .sdlt-card-val { font-size: 1.0rem; }
   .tax-alert { padding: 16px; }
   .tax-alert-title { font-size: 14px; }
-  .tax-alert-text { font-size: 13px; }
-  .btn-back, .btn-calc { padding: 12px; font-size: 14px; }
+  .tax-alert-text { font-size: 12px; }
+  .btn-back, .btn-calc { padding: 12px; font-size: 12px; }
   .actions { gap: 8px; padding-top: 16px; }
   .cf-card { padding: 20px; }
   .cf-title { font-size: 20px; }
   .cf-val { font-size: 18px; }
-}
-
-@media (min-width: 810px) {
-  .step-title { font-size: 1.8rem; }
-}
-@media (min-width: 1200px) {
-  .step-title { font-size: 2.0rem; }
 }
