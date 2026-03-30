@@ -637,12 +637,12 @@
   .assumptions-page {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100svh;
     overflow: hidden;
   }
-  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  .panel-left { height: 30svh; min-height: 200px; flex-shrink: 0; overflow: hidden; }
   .panel-left-content {
-    height: 100%; min-height: 0; padding: 16px;
+    height: 100%; min-height: 0; padding: 16px; overflow: hidden;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .panel-logo { display: flex; flex-shrink: 0; }
@@ -659,9 +659,9 @@
   .summary-card-val { font-size: 14px; line-height: 1.1; }
   .summary-card-note { font-size: 8px; margin-top: 2px; }
   .foreign-notice { display: none; }
-  .panel-right { flex: 1; overflow-y: auto; max-height: none; min-height: 0; }
-  .panel-right-inner { padding: 16px 16px 28px; min-height: 100%; }
-  .panel-nav { grid-template-columns: 1fr 1fr; }
+  .panel-right { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; }
+  .panel-right-inner { flex: 1; display: flex; flex-direction: column; padding: 16px 16px 0; }
+  .panel-nav { grid-template-columns: 1fr 1fr; margin-bottom: 24px; }
 }
 
 @media (max-width: 810px) {
