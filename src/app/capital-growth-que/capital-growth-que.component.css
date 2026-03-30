@@ -410,8 +410,17 @@
   .cg-preview-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
   .cg-preview-val { font-size: 14px; }
   .cg-preview-note { font-size: 8px; margin-top: 1px; }
-  .cg-panel-right { flex: 1; min-height: 0; overflow-y: auto; }
-  .cg-panel-right-inner { padding: 16px 16px 28px; }
+  .cg-panel-right { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .cg-panel-right-inner { flex: 1; overflow-y: auto; padding: 16px 16px 90px; }
+  .cg-actions {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 20;
+    background: #fff;
+    border-top: 1px solid #f3f4f6;
+    padding: 12px 16px 20px;
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 810px) {
@@ -422,7 +431,7 @@
   .cg-summary-val { font-size: 1.1rem; }
   .cg-inp { padding: 11px 14px; font-size: 14px; }
   .cg-input-pre { padding: 11px 12px; font-size: 14px; }
-  .cg-actions { gap: 8px; padding-top: 16px; }
+  .cg-actions { gap: 8px; }
   .cg-btn-back, .cg-btn-continue { padding: 12px; font-size: 14px; }
   .cg-location-pill { padding: 6px 12px; font-size: 12px; }
 }
