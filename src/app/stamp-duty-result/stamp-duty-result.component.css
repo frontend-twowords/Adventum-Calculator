@@ -107,16 +107,17 @@
   padding: 0 40px 64px;
 }
 .sdlt-kpi {
-  height: 207px;
-  padding: 24px 32px;
+  height: 172px;
+  padding: 24px 20px;
   background: linear-gradient(137deg, rgba(185,204,255,0.04) 0%, rgba(255,255,255,0.06) 100%);
   border-radius: 10px;
   outline: 1px solid rgba(255,255,255,0.15);
   outline-offset: -1px;
   display: flex;
   align-items: center;
-  gap: 64px;
-  overflow: visible;
+  gap: 20px;
+  overflow: hidden;
+  min-width: 0;
 }
 .sdlt-kpi--feat {
   background: linear-gradient(315deg, rgba(44.50,96.85,237.35,0.20) 0%, rgba(16,24,43,0.20) 100%);
@@ -124,45 +125,45 @@
   outline-offset: -1px;
 }
 .sdlt-kpi-icon {
-  width: 119px;
-  height: 119px;
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
 }
 .sdlt-kpi-icon img {
-  width: 201px;
-  height: 201px;
-  left: -32px;
-  top: -32px;
+  width: 168px;
+  height: 168px;
+  left: -27px;
+  top: -27px;
   position: absolute;
 }
 .sdlt-kpi-icon-blob1 {
-  width: 28px;
-  height: 11px;
-  left: 17px;
-  top: 90px;
+  width: 24px;
+  height: 10px;
+  left: 14px;
+  top: 75px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(7px);
 }
 .sdlt-kpi-icon-blob2 {
-  width: 39px;
-  height: 11px;
-  left: 71px;
-  top: 98px;
+  width: 33px;
+  height: 10px;
+  left: 59px;
+  top: 82px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(7px);
 }
 .sdlt-kpi-inner {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-self: stretch;
-  padding: 4px 0;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
 }
 .sdlt-kpi-lbl {
   font-size: 12px;
@@ -173,11 +174,11 @@
   line-height: 1.6em;
 }
 .sdlt-kpi-val {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.4em;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 .sdlt-kpi-val--blue { color: #DAE3FD; }
 .sdlt-kpi-note {
@@ -212,8 +213,8 @@
 }
 .sdlt-card-title {
   font-family: 'Inter Display', 'Inter', sans-serif;
-  font-size: 1.0rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #fff;
   line-height: 1.4em;
 }
@@ -364,13 +365,42 @@
   .sdlt-kpi { height: auto; gap: 20px; }
   .sdlt-body { padding: 0 20px; gap: 24px; }
   .rp-footer { padding: 12px 16px; gap: 8px; }
-  .rp-footer-btn { font-size: 14px; padding: 14px; }
+  .rp-footer-btn { font-size: 16px; padding: 14px; }
 }
 
 @media (max-width: 810px) {
   .sdlt-title { font-size: 1.6rem; }
   .sdlt-sub { font-size: 12px; }
   .sdlt-arow-lbl, .sdlt-arow-val { font-size: 12px; }
-  .sdlt-tbl td { font-size: 12px; }
-  .rp-footer-btn { font-size: 12px; padding: 12px; }
+  .rp-footer-btn { font-size: 16px; padding: 12px; }
+
+  /* Band table → stacked cards on mobile */
+  .sdlt-tbl thead { display: none; }
+  .sdlt-tbl tbody tr {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(231,234,238,0.15);
+  }
+  .sdlt-tbl tbody tr:last-child { border-bottom: none; }
+  .sdlt-tbl tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    border-bottom: none;
+    font-size: 13px;
+  }
+  .sdlt-tbl tbody td::before {
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .sdlt-tbl tbody td:nth-child(1)::before { content: "Band"; }
+  .sdlt-tbl tbody td:nth-child(2)::before { content: "Rate"; }
+  .sdlt-tbl tbody td:nth-child(3)::before { content: "Taxable Amount"; }
+  .sdlt-tbl tbody td:nth-child(4)::before { content: "Tax"; }
+
+  /* Footer total row */
+  .sdlt-tbl tfoot .sdlt-tbl-total { display: flex; justify-content: space-between; align-items: center; }
+  .sdlt-tbl tfoot .sdlt-tbl-total td { display: block; padding: 16px 0 4px; border: none; font-size: 14px; }
 }
