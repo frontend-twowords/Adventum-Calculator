@@ -382,9 +382,9 @@
     height: 100vh;
     overflow: hidden;
   }
-  .panel-left { height: 30vh; min-height: 200px; flex-shrink: 0; overflow: hidden; }
+  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
   .panel-left-content {
-    height: 100%; padding: 16px; overflow: hidden;
+    height: 100%; padding: 16px; overflow-y: auto;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .panel-logo { display: flex; flex-shrink: 0; }
@@ -399,9 +399,9 @@
   .summary-block-total { font-size: 12px; }
   .summary-row { font-size: 10px; padding: 2px 0; }
   .summary-row-val { font-size: 10px; }
-  .panel-right { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; }
-  .panel-right-inner { flex: 1; display: flex; flex-direction: column; padding: 16px 16px 0; }
-  .panel-nav { grid-template-columns: 1fr 1fr; margin-bottom: 24px; }
+  .panel-right { flex: 1; height: auto; overflow-y: auto; min-height: 0; }
+  .panel-right-inner { padding: 16px 16px 28px; min-height: 100%; }
+  .panel-nav { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 810px) {
