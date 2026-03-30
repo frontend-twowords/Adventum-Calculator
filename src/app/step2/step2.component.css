@@ -529,12 +529,12 @@
   .financing-page {
     display: flex;
     flex-direction: column;
-    height: 100svh;
+    height: 100vh;
     overflow: hidden;
   }
   .panel-left {
-    height: 30svh;
-    min-height: 200px;
+    height: 30vh;
+    min-height: 0;
     flex-shrink: 0;
     overflow: hidden;
   }
@@ -542,7 +542,6 @@
     height: 100%;
     min-height: 0;
     padding: 16px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -562,9 +561,9 @@
   .summary-card-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
   .summary-card-val { font-size: 14px; line-height: 1.1; }
   .summary-card-note { font-size: 8px; margin-top: 2px; }
-  .panel-right { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; }
-  .panel-right-inner { flex: 1; display: flex; flex-direction: column; padding: 16px 16px 0; }
-  .panel-nav { grid-template-columns: 1fr 1fr; margin-bottom: 24px; }
+  .panel-right { flex: 1; overflow-y: auto; max-height: none; min-height: 0; }
+  .panel-right-inner { padding: 16px 16px 28px; min-height: 100%; }
+  .panel-nav { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 810px) {
