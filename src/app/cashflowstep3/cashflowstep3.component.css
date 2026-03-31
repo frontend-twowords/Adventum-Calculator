@@ -169,23 +169,25 @@
 }
 
 @media (max-width: 900px) {
-  .cf-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-  .panel-left { height: 30vh; min-height: 0; flex-shrink: 0; overflow: hidden; }
+  :host { height: auto; overflow: visible; }
+  .cf-page { display: block; }
+  .panel-left { position: fixed; top: 0; left: 0; right: 0; height: 30vh; min-height: 0; z-index: 10; overflow: hidden; }
   .pl-inner {
     height: 100%; min-height: 0; padding: 16px;
     display: flex; flex-direction: column; justify-content: space-between;
+    overflow: hidden;
   }
   .logo-wrap { flex-shrink: 0; }
   .panel-logo-img { height: 22px; }
   .cf-card { margin-top: 0; padding: 10px 12px; }
-  .cf-card-title { font-size: 13px; margin-bottom: 3px; }
+  .cf-card-title { font-size: 12px; margin-bottom: 3px; }
   .cf-card-sub { display: none; }
   .cf-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
-  .cfs { padding: 7px 9px; }
+  .cfs { padding: 6px 9px; }
   .cfs-l { font-size: 8px; margin-bottom: 2px; }
-  .cfs-v { font-size: 14px; }
-  .panel-right { flex: 1; height: auto; overflow-y: auto; min-height: 0; }
-  .pr-inner { padding: 16px 16px 28px; }
+  .cfs-v { font-size: 13px; }
+  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; height: auto; overflow-y: auto; }
+  .pr-inner { padding: 16px 16px 28px; min-height: 100%; display: flex; flex-direction: column; }
   .fields-row { flex-direction: column; }
   .preview-row { grid-template-columns: 1fr; }
 }
