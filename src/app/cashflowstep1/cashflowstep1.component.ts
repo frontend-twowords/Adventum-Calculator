@@ -9,7 +9,7 @@ import { ValidationService } from '../validation.service';
   styleUrls: ['./cashflowstep1.component.css']
 })
 export class CashflowStep1Component implements OnInit {
-  City: string = '';
+  City: string = 'Manchester';
   Pincode: string = '';
   searchQuery: string = '';
   PropertyValue: string = '';

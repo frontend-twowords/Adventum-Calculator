@@ -194,8 +194,8 @@
 
 @media (max-width: 810px) {
   .step-title { font-size: 1.6rem; }
-  .cf-card-title { font-size: 1.2rem; }
-  .cfs-v { font-size: 1.0rem; }
+  .cf-card-title { font-size: 12px; }
+  .cfs-v { font-size: 13px; }
   .step-sub { font-size: 12px; }
   .loc-pill { padding: 6px 12px; font-size: 11px; }
   .field-lbl { font-size: 12px; }

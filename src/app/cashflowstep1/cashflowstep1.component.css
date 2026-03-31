@@ -198,6 +198,7 @@
   cursor: pointer; transition: background 0.2s;
 }
 .btn-cont:hover { background: #0d1730; }
+.btn-cont--disabled { background: #9ca3af !important; cursor: not-allowed; }
 
 /* Responsive */
 @media (max-width: 1200px) {
@@ -237,8 +238,8 @@
 
 @media (max-width: 810px) {
   .step-title { font-size: 1.6rem; }
-  .hero-title { font-size: 1.6rem; }
-  .hstat-v { font-size: 1.2rem; }
+  .hero-title { font-size: 13px; }
+  .hstat-v { font-size: 13px; }
   .step-sub { font-size: 12px; }
   .loc-pill { padding: 6px 12px; font-size: 11px; }
   .search-bar { padding: 11px 16px 11px 40px; font-size: 14px; }
