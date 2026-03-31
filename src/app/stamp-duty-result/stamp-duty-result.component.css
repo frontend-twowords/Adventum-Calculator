@@ -128,35 +128,18 @@
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .sdlt-kpi-icon img {
-  width: 168px;
-  height: 168px;
-  left: -27px;
-  top: -27px;
-  position: absolute;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
-.sdlt-kpi-icon-blob1 {
-  width: 24px;
-  height: 10px;
-  left: 14px;
-  top: 75px;
-  position: absolute;
-  background: black;
-  border-radius: 9999px;
-  filter: blur(7px);
-}
-.sdlt-kpi-icon-blob2 {
-  width: 33px;
-  height: 10px;
-  left: 59px;
-  top: 82px;
-  position: absolute;
-  background: black;
-  border-radius: 9999px;
-  filter: blur(7px);
+.sdlt-kpi-icon-lg {
+  width: 130px !important;
+  height: 130px !important;
 }
 .sdlt-kpi-inner {
   display: flex;
@@ -388,7 +371,7 @@
     align-items: center;
     padding: 3px 0;
     border-bottom: none;
-    font-size: 13px;
+    font-size: 12px;
   }
   .sdlt-tbl tbody td::before {
     color: rgba(255,255,255,0.5);
