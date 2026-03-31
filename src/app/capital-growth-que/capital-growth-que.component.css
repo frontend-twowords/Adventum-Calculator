@@ -388,13 +388,10 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .cg-page {
-    display: flex; flex-direction: column;
-    height: 100vh; overflow: hidden;
-  }
-  .cg-panel-left { height: 30vh; min-height: 200px; flex-shrink: 0; overflow: hidden; }
+  .cg-page { display: block; }
+  .cg-panel-left { position: fixed; top: 0; left: 0; right: 0; height: 30vh; min-height: 0; z-index: 10; overflow: hidden; }
   .cg-panel-left-inner {
-    height: 100%; padding: 16px;
+    height: 100%; padding: 16px; overflow: hidden;
     display: flex; flex-direction: column; justify-content: space-between;
   }
   .panel-logo, .cg-logo-wrap { display: flex; flex-shrink: 0; }
@@ -410,7 +407,7 @@
   .cg-preview-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
   .cg-preview-val { font-size: 14px; }
   .cg-preview-note { font-size: 8px; margin-top: 1px; }
-  .cg-panel-right { flex: 1; min-height: 0; overflow-y: auto; }
+  .cg-panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; height: auto; min-height: 0; overflow-y: auto; }
   .cg-panel-right-inner { padding: 16px 16px 28px; }
 }
 

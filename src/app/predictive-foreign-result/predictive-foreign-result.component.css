@@ -95,10 +95,10 @@
   border-radius: 10px;
   outline: 1px solid rgba(255,255,255,0.15);
   outline-offset: -1px;
-  height: 207px;
+  height: 160px;
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 20px;
   min-width: 0;
   overflow: hidden;
 }
@@ -108,38 +108,38 @@
   outline-offset: -1px;
 }
 .pfxr-kpi__icon-wrap {
-  width: 119px;
-  height: 119px;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
 }
 .pfxr-kpi__icon-wrap img {
-  width: 201px;
-  height: 201px;
-  left: -32px;
-  top: -32px;
+  width: 135px;
+  height: 135px;
+  left: -22px;
+  top: -22px;
   position: absolute;
 }
 .pfxr-icon-blob1 {
-  width: 28px;
-  height: 11px;
-  left: 17px;
-  top: 90px;
+  width: 19px;
+  height: 8px;
+  left: 11px;
+  top: 60px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(6px);
 }
 .pfxr-icon-blob2 {
-  width: 39px;
-  height: 11px;
-  left: 71px;
-  top: 98px;
+  width: 26px;
+  height: 8px;
+  left: 48px;
+  top: 66px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(6px);
 }
 .pfxr-kpi__inner {
   display: flex;
@@ -157,11 +157,11 @@
   line-height: 1.6em;
 }
 .pfxr-kpi-val {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.4em;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 .pfxr-kpi-note {
   font-size: 12px;
@@ -355,8 +355,6 @@
   .pfxr-title { font-size: 1.8rem; }
   .pfxr-arow-lbl, .pfxr-arow-val { font-size: 14px; }
   .pfxr-srow { font-size: 14px; }
-  .pfxr-kpi { gap: 20px; }
-  .pfxr-kpi__icon-wrap { width: 80px; height: 80px; }
 }
 
 @media (max-width: 900px) {

@@ -534,15 +534,48 @@
   .rp-title { font-size: 1.8rem; }
   .rp-subtitle { font-size: 1.0rem; }
   .rp-kpi__value { font-size: 32px; }
-  .rp-table-header, .rp-table-row { grid-template-columns: 40px repeat(6, 1fr); overflow-x: auto; }
   .rp-header { padding: 20px 16px 0; }
   .rp-body { padding: 0 16px 100px; }
   .rp-kpi { height: auto; min-height: 140px; padding: 16px; }
   .rp-kpi__val { font-size: 22px; }
   .rp-kpi__label { font-size: 11px; }
   .rp-chart-wrap { height: 200px; }
-  .rp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .rp-table-header, .rp-table-body > div { min-width: 600px; }
   .rp-footer { padding: 12px 16px; }
   .rp-footer .btn-back, .rp-footer .btn-recalc { font-size: 13px; padding: 10px 16px; }
+
+  /* Year-by-Year: replace wide grid table with per-row cards */
+  .rp-table-header { display: none; }
+  .rp-table-body { gap: 10px; }
+  .rp-table-row {
+    display: block;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+  .rp-td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .rp-td:last-child { border-bottom: none; }
+  .rp-td::before {
+    color: rgba(255,255,255,0.50);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-family: 'Inter Display', 'Inter', sans-serif;
+  }
+  .rp-td:nth-child(1)::before { content: 'Year'; }
+  .rp-td:nth-child(2)::before { content: 'Gross Rent'; }
+  .rp-td:nth-child(3)::before { content: 'Lettings'; }
+  .rp-td:nth-child(4)::before { content: 'Expenses'; }
+  .rp-td:nth-child(5)::before { content: 'Mortgage'; }
+  .rp-td:nth-child(6)::before { content: 'Net Cashflow'; }
+  .rp-td:nth-child(7)::before { content: 'Net Yield'; }
 }

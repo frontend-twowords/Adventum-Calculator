@@ -68,10 +68,10 @@
   border-radius: 10px;
   outline: 1px solid rgba(255,255,255,0.15);
   outline-offset: -1px;
-  height: 207px;
+  height: 160px;
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 20px;
   min-width: 0;
   overflow: hidden;
 }
@@ -81,38 +81,38 @@
   outline-offset: -1px;
 }
 .cgr-kpi__icon-wrap {
-  width: 119px;
-  height: 119px;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
 }
 .cgr-kpi__icon-wrap img {
-  width: 201px;
-  height: 201px;
-  left: -32px;
-  top: -32px;
+  width: 135px;
+  height: 135px;
+  left: -22px;
+  top: -22px;
   position: absolute;
 }
 .cgr-icon-blob1 {
-  width: 28px;
-  height: 11px;
-  left: 17px;
-  top: 90px;
+  width: 19px;
+  height: 8px;
+  left: 11px;
+  top: 60px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(6px);
 }
 .cgr-icon-blob2 {
-  width: 39px;
-  height: 11px;
-  left: 71px;
-  top: 98px;
+  width: 26px;
+  height: 8px;
+  left: 48px;
+  top: 66px;
   position: absolute;
   background: black;
   border-radius: 9999px;
-  filter: blur(8.55px);
+  filter: blur(6px);
 }
 .cgr-kpi__inner {
   display: flex;
@@ -130,11 +130,11 @@
   line-height: 1.6em;
 }
 .cgr-kpi-val {
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.4em;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 .cgr-kpi-note {
   font-size: 12px;
@@ -155,8 +155,8 @@
 }
 .cgr-card-title {
   font-family: 'Inter Display', 'Inter', sans-serif;
-  font-size: 1.0rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #fff;
   margin: 0 0 4px;
   line-height: 1.4em;
@@ -252,7 +252,7 @@
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.cgr-modal-header h5 { font-size: 17px; font-weight: 700; margin: 0; }
+.cgr-modal-header h5 { font-size: 1rem; font-weight: 700; margin: 0; }
 .cgr-modal-close { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; padding: 4px; }
 .cgr-modal-body { padding: 20px 24px 8px; }
 .cgr-modal-label { font-size: 12px; color: rgba(255,255,255,0.55); display: block; margin-bottom: 8px; }
@@ -284,10 +284,9 @@
 /* ── Responsive ── */
 @media (max-width: 1200px) {
   .cgr-title { font-size: 1.8rem; }
+  .cgr-card-title { font-size: 1.3rem; }
   .cgr-assumption-lbl, .cgr-assumption-val { font-size: 14px; }
   .cgr-table td { font-size: 14px; }
-  .cgr-kpi { gap: 20px; }
-  .cgr-kpi__icon-wrap { width: 80px; height: 80px; }
 }
 
 @media (max-width: 900px) {
@@ -296,12 +295,13 @@
   .cgr-kpi { height: auto; gap: 20px; }
   .cgr-body { padding: 0 20px 40px; }
   .rp-footer { padding: 12px 16px; gap: 8px; }
-  .rp-footer-btn { font-size: 14px; padding: 14px; }
+  .rp-footer-btn { font-size: 16px; padding: 14px; }
 }
 
 @media (max-width: 810px) {
   .cgr-title { font-size: 1.6rem; }
-  .cgr-assumption-lbl, .cgr-assumption-val { font-size: 12px; }
-  .cgr-table td { font-size: 12px; }
-  .rp-footer-btn { font-size: 12px; padding: 12px; }
+  .cgr-card-title { font-size: 1.2rem; }
+  .cgr-assumption-lbl, .cgr-assumption-val { font-size: 14px; }
+  .cgr-table td { font-size: 14px; }
+  .rp-footer-btn { font-size: 16px; padding: 12px; }
 }

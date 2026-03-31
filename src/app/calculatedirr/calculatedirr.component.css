@@ -1218,10 +1218,10 @@
 @media (max-width: 810px) {
   .rp-header { padding: 16px 16px 0; }
   .rp-body { padding: 0 12px 80px; }
-  .rp-kpi-row { grid-template-columns: 1fr; padding: 12px; gap: 8px; }
-  .rp-kpi { height: auto; min-height: 110px; }
-  .rp-kpi-img-wrap { width: 90px; height: 110px; }
-  .rp-kpi-text-col { padding: 12px 12px; }
+  .rp-kpi-row { grid-template-columns: 1fr; padding: 0 12px 20px; gap: 16px; }
+  .rp-kpi { height: auto; min-height: 110px; padding-left: 16px; }
+  .rp-kpi-img-wrap { width: 72px; height: 88px; }
+  .rp-kpi-text-col { padding: 16px 16px 16px 12px; }
   .rp-kpi-currency-symbol { font-size: 48px; }
   .rp-inputs-grid { grid-template-columns: 1fr; }
   .rp-input-row { border-right: none; }
@@ -1334,8 +1334,9 @@
   .rp-title { font-size: 1.6rem; }
   .rp-subtitle { font-size: 12px; }
   .rp-kpi-val--64 { font-size: 1.6rem; }
-  .rp-kpi-val--48 { font-size: 1.2rem; }
+  .rp-kpi-val--48 { font-size: 1.4rem; }
   .rp-kpi-lbl { font-size: 12px; }
+  .rp-kpi-note { font-size: 12px; }
   .rp-kpi-note--lg { font-size: 12px; }
   .rp-card-header h3, .rp-donut-title, .rp-ann-card-title, .rp-outlook-title, .rp-cat-title { font-size: 1.2rem; }
   .rp-card-header p, .rp-donut-sub, .rp-ann-card-sub, .rp-annexure-section-sub, .rp-annexure-body, .rp-outlook-body, .rp-cat-body, .rp-ann-row-lbl, .rp-ann-row-val, .bench-row-label, .rp-ann-disclaimer-body { font-size: 12px; }
