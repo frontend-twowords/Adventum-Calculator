@@ -51,7 +51,7 @@
       </div>
       <div class="rp-kpi-text-col">
         <div class="rp-kpi-lbl">Total Profit</div>
-        <div class="rp-kpi-val rp-kpi-val--48">{{formatCurrency(TotalReturnOfInvestment, homecurrencyText)}}</div>
+        <div class="rp-kpi-val rp-kpi-val--64">{{formatCurrency(TotalReturnOfInvestment, homecurrencyText)}}</div>
         <div class="rp-kpi-note rp-kpi-note--lg">ROE <span class="rp-kpi-green">{{returnOnEquity|number:'1.0-0'}}%</span></div>
       </div>
     </div>
@@ -210,7 +210,7 @@
                 </div>
               </div>
             </div>
-            <div class="bench-row">
+            <div class="bench-row" *ngIf="calcData?.ForeignBuyer === '1'">
               <span class="bench-row-label">UK Real Estate (avg)</span>
               <div class="bench-bar-bg">
                 <div class="bench-bar" [style.width.%]="benchMax > 0 ? (5.5 / benchMax * 100) : 46">
@@ -523,7 +523,7 @@
 
         <!-- 5. Catalysts -->
         <div class="rp-annexure-section">
-          <div class="rp-annexure-section-title">5. Positive Financial News &amp; Catalysts</div>
+          <div class="rp-annexure-section-title">5. Financial News</div>
           <p class="rp-annexure-section-sub">Key macro and structural drivers supporting Manchester M1 investment in 2026</p>
           <div class="rp-cat-grid">
             <!-- Left column -->

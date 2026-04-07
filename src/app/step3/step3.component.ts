@@ -298,10 +298,9 @@ export class Step3Component implements OnInit {
       document.getElementById("rentalYeild")?.classList.add("error-input");
       flag=false;
     }
-    // rentalGrowthEscalation defaults to capitalgrowth if not separately set
+    this.calcData.rentalGrowthEscalation = this.rentalGrowthEscalation ? this.rentalGrowthEscalation.replace('%', '') : '3';
     if(!this.dataService.EmptyNullOrUndefined(this.capitalgrowth)){
       this.calcData.capitalgrowth=this.capitalgrowth.replace("%",'');
-      // rentalGrowthEscalation is set independently in step4 — do not default it here
     }else{
       document.getElementById("capitalgrowth")?.classList.add("error-input");
       flag=false;

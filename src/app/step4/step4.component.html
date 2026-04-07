@@ -214,25 +214,6 @@
         </div>
       </div>
 
-      <!-- Rental Escalation -->
-      <div class="field-group">
-        <div class="field-label-row">
-          <span class="field-label">Rental Escalation p.a.</span>
-          <span class="app-hint">UK avg: 3–5%</span>
-        </div>
-        <div class="field-input-wrap">
-          <input
-            class="field-input"
-            type="text"
-            id="rentalGrowthEscalation"
-            autocomplete="off"
-            placeholder="e.g. 3"
-            [(ngModel)]="rentalGrowthEscalation"
-            (keyup)="rentalGrowthEscalation=validation.appendPercent($event,rentalGrowthEscalation)"
-            (keypress)="validation.DesimalOnly($event,rentalGrowthEscalation)">
-        </div>
-      </div>
-
       <!-- Nav buttons -->
       <div class="panel-nav">
         <button class="btn-back-outline" [routerLink]="['/step3']">

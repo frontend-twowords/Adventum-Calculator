@@ -139,7 +139,7 @@
 
 /* Image container — full card height, square */
 .rp-kpi-img-wrap {
-  width: 120px;
+  width: 90px;
   height: 120px;
   flex-shrink: 0;
   overflow: hidden;
@@ -199,12 +199,12 @@
   gap: 4px;
   flex: 1;
   min-width: 0;
-  padding: 16px 20px;
+  padding: 16px 14px;
 }
 .rp-kpi-text-col--wealth {
   justify-content: center;
   gap: 4px;
-  padding: 16px 20px;
+  padding: 16px 14px;
 }
 
 /* Labels */
@@ -225,8 +225,8 @@
   color: #ffffff;
   line-height: 1.1;
 }
-.rp-kpi-val--64 { font-size: 2rem; font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
-.rp-kpi-val--48 { font-size: 1.5rem; font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
+.rp-kpi-val--64 { font-size: clamp(1.4rem, 1.4vw, 1.8rem); font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
+.rp-kpi-val--48 { font-size: clamp(1.2rem, 1.2vw, 1.5rem); font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
 .rp-kpi-val--blue { color: #DAE3FD; }
 
 /* Notes */
@@ -1206,8 +1206,6 @@
   .rp-annexure-section--two-col { flex-direction: column; }
   /* Font overrides — S (1200px) */
   .rp-title { font-size: 1.8rem; }
-  .rp-kpi-val--64 { font-size: 1.8rem; }
-  .rp-kpi-val--48 { font-size: 1.3rem; }
   .rp-card-header h3, .rp-donut-title, .rp-ann-card-title, .rp-outlook-title, .rp-cat-title { font-size: 1.3rem; }
   .rp-card-header p, .rp-donut-sub, .rp-ann-card-sub, .rp-annexure-section-sub, .rp-annexure-body, .rp-outlook-body, .rp-cat-body, .rp-ann-row-lbl, .rp-ann-row-val, .bench-row-label, .rp-ann-disclaimer-body { font-size: 14px; }
   .rp-annexure-title, .rp-stat-val { font-size: 1.8rem; }
@@ -1333,8 +1331,8 @@
   /* Font overrides — XS (810px) */
   .rp-title { font-size: 1.6rem; }
   .rp-subtitle { font-size: 12px; }
-  .rp-kpi-val--64 { font-size: 1.6rem; }
-  .rp-kpi-val--48 { font-size: 1.4rem; }
+  .rp-kpi-val--64 { font-size: 1.4rem; }
+  .rp-kpi-val--48 { font-size: 1.2rem; }
   .rp-kpi-lbl { font-size: 12px; }
   .rp-kpi-note { font-size: 12px; }
   .rp-kpi-note--lg { font-size: 12px; }

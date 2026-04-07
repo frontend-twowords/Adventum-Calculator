@@ -176,7 +176,7 @@
 /* Actions */
 .actions {
   display: flex; gap: 10px; padding-top: 20px;
-  margin-top: auto; margin-bottom: 2px; border-top: 1px solid #f3f4f6;
+  margin-top: auto; margin-bottom: 0; padding-bottom: 20px; border-top: 1px solid #f3f4f6;
 }
 .btn-back {
   flex: 1; padding: 13px; border-radius: 12px; border: 1.5px solid #e5e7eb;

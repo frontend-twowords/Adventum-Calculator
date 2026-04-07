@@ -131,7 +131,6 @@ export class Step4Component implements OnInit {
     if(!this.miscelleneousExpense) this.miscelleneousExpense = '0';
     if(!this.letteingManagFee) this.letteingManagFee = this.PropertyLondon == 1 ? '12' : '10';
     if(!this.serviceCharges) this.serviceCharges = this.autoServiceCharge();
-    if(!this.rentalGrowthEscalation) this.rentalGrowthEscalation = '3%';
 
     const apiCountry = this.resolveApiCountry(this.country);
 
@@ -202,7 +201,6 @@ export class Step4Component implements OnInit {
     this.calcData.serviceCharges = this.serviceCharges ? this.serviceCharges.replace(/,/g, '') : '0';
     this.calcData.miscelleneousExpense = this.miscelleneousExpense ? this.miscelleneousExpense.replace(/,/g, '') : '0';
     this.calcData.legalFees = '0';
-    this.calcData.rentalGrowthEscalation = (this.rentalGrowthEscalation || '0').replace('%', '');
     this.calcData.reportSavedOnServer = false;
     localStorage.setItem("calcData", JSON.stringify(this.calcData));
     this.router.navigate(['/calculated-irr']);
