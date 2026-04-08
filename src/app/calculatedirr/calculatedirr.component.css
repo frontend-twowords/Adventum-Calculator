@@ -406,17 +406,19 @@
 
 /* ── JOURNEY PERFORMANCE VIEW ── */
 .rp-journey-performance {
-  display: grid;
-  grid-template-columns: 1.5fr 80px 1.7fr;
-  gap: 20px;
-  align-items: stretch;
-}
-.rp-journey-labels,
-.rp-journey-values {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  min-height: 300px;
+  align-items: stretch;
+  width: 540px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 450px;
+}
+.rp-journey-grid-row {
+  display: grid;
+  grid-template-columns: 260px 86px 170px;
+  column-gap: 12px;
+  align-items: center;
 }
 .rp-journey-row {
   display: flex;
@@ -426,46 +428,38 @@
   font-weight: 500;
   color: rgba(255,255,255,0.75);
   line-height: 1.4em;
-}
-.rp-journey-values {
-  justify-items: start;
+  white-space: nowrap;
 }
 .rp-journey-val-row {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   font-size: 16px;
   font-weight: 700;
   color: #dae3fd;
   line-height: 1.4em;
+  white-space: nowrap;
+  text-align: left;
 }
 .rp-journey-val-row--exit {
   color: #24B14B;
   font-size: 18px;
 }
-.rp-journey-pillars {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  background: rgba(255,255,255,0.10);
-  border-radius: 18px;
-  padding: 0;
-  min-height: 300px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.12);
-}
 .rp-journey-pill {
-  border-radius: 0;
+  align-self: stretch;
   min-height: 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-left: 1px solid rgba(255,255,255,0.12);
+  border-right: 1px solid rgba(255,255,255,0.12);
 }
-.rp-journey-pill:first-child {
-  border-top-left-radius: 17px;
-  border-top-right-radius: 17px;
+.rp-journey-pill--first {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
 }
-.rp-journey-pill:last-child {
-  border-bottom-left-radius: 17px;
-  border-bottom-right-radius: 17px;
-  border-bottom: none;
+.rp-journey-pill--last {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
 }
 .rp-journey-pill--exit { background: rgba(255,255,255,0.42); }
 .rp-journey-pill--profit { background: rgba(255,255,255,0.30); }
@@ -1295,6 +1289,12 @@
   .rp-input-row { border-right: none; }
   .rp-header-actions { display: none; }
   .rp-card { padding: 16px; }
+  .rp-card--journey {
+    padding: 20px 18px;
+  }
+  .rp-card--journey .rp-card-header {
+    margin-bottom: 16px;
+  }
   /* Benchmark section */
   .bench-bar-bg { height: 47px; }
   .rp-card-bench-header { flex-direction: column; gap: 10px; align-items: flex-start; }
@@ -1304,17 +1304,25 @@
   .rp-journey-legend-total { margin-left: 0; padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 12px; width: 100%; }
   .rp-journey-chart-wrap { height: 260px; }
   .rp-journey-performance {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    min-height: 260px;
+    padding: 0 4px;
   }
-  .rp-journey-labels,
-  .rp-journey-values {
-    min-height: 180px;
+  .rp-journey-grid-row {
+    grid-template-columns: 150px 54px 120px;
+    column-gap: 8px;
   }
-  .rp-journey-row { justify-content: flex-start; font-size: 13px; }
-  .rp-journey-val-row { font-size: 14px; }
-  .rp-journey-val-row--exit { font-size: 16px; }
-  .rp-journey-pillars { min-height: 180px; }
+  .rp-journey-row {
+    justify-content: flex-end;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .rp-journey-val-row {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .rp-journey-val-row--exit { font-size: 13px; }
+  .rp-journey-pill--first { border-top-left-radius: 14px; border-top-right-radius: 14px; }
+  .rp-journey-pill--last { border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; }
   /* Other */
   .rp-stat-grid { flex-direction: column; gap: 10px; }
   .rp-stat-card { flex: 1 1 100%; padding: 18px 16px; gap: 8px; }
@@ -1405,9 +1413,20 @@
   .bench-list { gap: 12px; }
   .rp-journey-chart-wrap { height: 220px; }
   .rp-journey-legend-item { flex-wrap: wrap; }
-  .rp-journey-pillars { min-height: 150px; }
-  .rp-journey-labels,
-  .rp-journey-values { min-height: 150px; }
+  .rp-journey-performance {
+    min-height: 300px;
+    width: 100%;
+    padding: 0 40px;
+  }
+  .rp-journey-grid-row {
+    grid-template-columns: 120px 46px 96px;
+    column-gap: 6px;
+  }
+  .rp-journey-row { font-size: 11px; }
+  .rp-journey-val-row { font-size: 11px; }
+  .rp-journey-val-row--exit { font-size: 12px; }
+  .rp-journey-pill--first { border-top-left-radius: 12px; border-top-right-radius: 12px; }
+  .rp-journey-pill--last { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
   .rp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .rp-table-header, .rp-table-row { min-width: 600px; }
   .rp-footer { padding: 12px 16px; }

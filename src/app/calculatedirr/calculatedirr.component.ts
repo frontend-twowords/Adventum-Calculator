@@ -113,6 +113,17 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     return (value < 0 ? '-' : '') + sym + formatted;
   }
 
+  formatCurrencyFull(value: number, currencyCode: string): string {
+    if (value === null || value === undefined || isNaN(value)) return '0';
+    const sym = this.getCurrencySymbol(currencyCode);
+    const abs = Math.abs(value);
+    const formatted =
+      currencyCode === 'INR'
+        ? Math.round(abs).toLocaleString('en-IN')
+        : Math.round(abs).toLocaleString('en-US');
+    return (value < 0 ? '-' : '') + sym + formatted;
+  }
+
   // Approximate GBP → currency rates and typical annual FX growth vs GBP
   countryFxMap: any = {
     'India':      { rate: 107,  fxGrowth: 2.5,  currency: 'INR' },

@@ -109,37 +109,41 @@
 
     <!-- Section 1b: Investment Journey — full width vertical stacked bar -->
     <div class="rp-section">
-      <div class="rp-card">
+      <div class="rp-card rp-card--journey">
         <div class="rp-card-header">
           <h3>Investment Journey</h3>
           <p>Total profit breakdown over {{calcData?.investedTenure}} years</p>
         </div>
         <div class="rp-journey-performance">
-          <div class="rp-journey-labels">
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyValueAtExit())">Value at Exit</div>
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyTotalProfit())">Total Profit</div>
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyFxAppreciation())">FX Appreciation</div>
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyCapitalGrowth())">Capital Growth</div>
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyNetRental())">Net Rental Income</div>
-            <div class="rp-journey-row" [style.flex]="getJourneyFlex(getJourneyInitialInvestment())">Initial Investment</div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyValueAtExit())">
+            <div class="rp-journey-row">Value at Exit</div>
+            <div class="rp-journey-pill rp-journey-pill--exit rp-journey-pill--first"></div>
+            <div class="rp-journey-val-row rp-journey-val-row--exit">{{formatCurrencyFull(getJourneyValueAtExit(), homecurrencyText)}}</div>
           </div>
-
-          <div class="rp-journey-pillars">
-            <div class="rp-journey-pill rp-journey-pill--exit" [style.flex]="getJourneyFlex(getJourneyValueAtExit())"></div>
-            <div class="rp-journey-pill rp-journey-pill--profit" [style.flex]="getJourneyFlex(getJourneyTotalProfit())"></div>
-            <div class="rp-journey-pill rp-journey-pill--fx" [style.flex]="getJourneyFlex(getJourneyFxAppreciation())"></div>
-            <div class="rp-journey-pill rp-journey-pill--capital" [style.flex]="getJourneyFlex(getJourneyCapitalGrowth())"></div>
-            <div class="rp-journey-pill rp-journey-pill--rental" [style.flex]="getJourneyFlex(getJourneyNetRental())"></div>
-            <div class="rp-journey-pill rp-journey-pill--initial" [style.flex]="getJourneyFlex(getJourneyInitialInvestment())"></div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyTotalProfit())">
+            <div class="rp-journey-row">Total Profit</div>
+            <div class="rp-journey-pill rp-journey-pill--profit"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyTotalProfit(), homecurrencyText)}}</div>
           </div>
-
-          <div class="rp-journey-values">
-            <div class="rp-journey-val-row rp-journey-val-row--exit" [style.flex]="getJourneyFlex(getJourneyValueAtExit())">{{formatCurrency(getJourneyValueAtExit(), homecurrencyText)}}</div>
-            <div class="rp-journey-val-row" [style.flex]="getJourneyFlex(getJourneyTotalProfit())">{{formatCurrency(getJourneyTotalProfit(), homecurrencyText)}}</div>
-            <div class="rp-journey-val-row" [style.flex]="getJourneyFlex(getJourneyFxAppreciation())">{{formatCurrency(getJourneyFxAppreciation(), homecurrencyText)}}</div>
-            <div class="rp-journey-val-row" [style.flex]="getJourneyFlex(getJourneyCapitalGrowth())">{{formatCurrency(getJourneyCapitalGrowth(), homecurrencyText)}}</div>
-            <div class="rp-journey-val-row" [style.flex]="getJourneyFlex(getJourneyNetRental())">{{formatCurrency(getJourneyNetRental(), homecurrencyText)}}</div>
-            <div class="rp-journey-val-row" [style.flex]="getJourneyFlex(getJourneyInitialInvestment())">{{formatCurrency(getJourneyInitialInvestment(), homecurrencyText)}}</div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyFxAppreciation())">
+            <div class="rp-journey-row">FX Appreciation</div>
+            <div class="rp-journey-pill rp-journey-pill--fx"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyFxAppreciation(), homecurrencyText)}}</div>
+          </div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyCapitalGrowth())">
+            <div class="rp-journey-row">Capital Growth</div>
+            <div class="rp-journey-pill rp-journey-pill--capital"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyCapitalGrowth(), homecurrencyText)}}</div>
+          </div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyNetRental())">
+            <div class="rp-journey-row">Net Rental Income</div>
+            <div class="rp-journey-pill rp-journey-pill--rental"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyNetRental(), homecurrencyText)}}</div>
+          </div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyInitialInvestment())">
+            <div class="rp-journey-row">Initial Investment</div>
+            <div class="rp-journey-pill rp-journey-pill--initial rp-journey-pill--last"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyInitialInvestment(), homecurrencyText)}}</div>
           </div>
         </div>
       </div>
