@@ -1308,17 +1308,23 @@
     padding: 0 4px;
   }
   .rp-journey-grid-row {
-    grid-template-columns: 150px 54px 120px;
+    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
     column-gap: 8px;
   }
   .rp-journey-row {
     justify-content: flex-end;
     font-size: 12px;
     line-height: 1.35;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .rp-journey-val-row {
     font-size: 12px;
     line-height: 1.35;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .rp-journey-val-row--exit { font-size: 13px; }
   .rp-journey-pill--first { border-top-left-radius: 14px; border-top-right-radius: 14px; }
@@ -1416,10 +1422,10 @@
   .rp-journey-performance {
     min-height: 300px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 4px;
   }
   .rp-journey-grid-row {
-    grid-template-columns: 120px 46px 96px;
+    grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
     column-gap: 6px;
   }
   .rp-journey-row { font-size: 11px; }
@@ -1449,6 +1455,23 @@
   .rp-journey-val { font-size: 12px !important; }
   .rp-journey-val-row { font-size: 13px; }
   .rp-journey-val-row--exit { font-size: 14px; }
+}
+
+@media (max-width: 420px) {
+  .rp-card--journey {
+    padding: 16px 12px;
+  }
+  .rp-journey-performance {
+    min-height: 250px;
+    padding: 0 2px;
+  }
+  .rp-journey-grid-row {
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 0.95fr);
+    column-gap: 4px;
+  }
+  .rp-journey-row { font-size: 10px; }
+  .rp-journey-val-row { font-size: 10px; }
+  .rp-journey-val-row--exit { font-size: 11px; }
 }
 
 /* Country tabs under IRR chart */
