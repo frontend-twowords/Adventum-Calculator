@@ -37,6 +37,7 @@
   <!-- RIGHT PANEL -->
   <div class="panel-right">
     <div class="panel-right-inner">
+      <div class="panel-scroll">
 
       <!-- Top bar -->
       <div class="panel-topbar">
@@ -72,7 +73,7 @@
         <button class="area-chip" [class.selected]="City==='Liverpool'" (click)="selectCity('Liverpool','L1 1AA',53.4084,-2.9916)">Liverpool</button>
         <button class="area-chip" [class.selected]="City==='Manchester'" (click)="selectCity('Manchester','M1 1AA',53.4808,-2.2426)">Manchester</button>
         <button class="area-chip" [class.selected]="City==='Birmingham'" (click)="selectCity('Birmingham','B1 1AA',52.4862,-1.8904)">Birmingham</button>
-        <button class="area-chip" [class.selected]="City==='Others'" (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
+        <!-- <button class="area-chip" [class.selected]="City==='Others'" (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button> -->
       </div>
 
       <!-- Buyer Status card (shown when city selected) -->
@@ -89,6 +90,7 @@
             <button class="toggle-opt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
           </div>
         </div>
+      </div>
       </div>
 
       <!-- Nav buttons -->

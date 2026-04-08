@@ -65,14 +65,21 @@
   background: #fff;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: hidden;
   height: 100vh;
 }
 .pr-inner {
-  padding: 36px 48px;
-  flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 36px 48px 20px;
 }
 
 /* Topbar */
@@ -166,18 +173,24 @@
 
 /* Actions */
 .actions {
-  display: flex; gap: 10px; padding-top: 20px;
-  margin-top: auto; margin-bottom: 0; padding-bottom: 20px; border-top: 1px solid #f3f4f6;
+  display: flex; gap: 10px;
+  margin-top: 0;
+  padding: 16px 48px 20px;
+  border-top: 1px solid #f3f4f6;
+  background: #fff;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
 }
 .btn-back {
-  flex: 1; padding: 13px; border-radius: 12px; border: 1.5px solid #e5e7eb;
+  flex: 1; padding: 14px; border-radius: 12px; border: 1.5px solid #e5e7eb;
   background: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: 0; color: #6b7280;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;
 }
 .btn-back:hover { border-color: #132147; color: #132147; }
 .btn-cont {
-  flex: 2; padding: 13px; border-radius: 12px; background: #132147;
+  flex: 1.8; padding: 14px; border-radius: 12px; background: #132147;
   border: none; color: #fff; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.6em; letter-spacing: 0;
   cursor: pointer; transition: background 0.2s;
 }
@@ -218,8 +231,9 @@
   .cfs { padding: 6px 9px; }
   .cfs-l { font-size: 8px; margin-bottom: 2px; }
   .cfs-v { font-size: 13px; }
-  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; height: auto; overflow-y: auto; }
-  .pr-inner { padding: 16px 16px 28px; min-height: 100%; display: flex; flex-direction: column; }
+  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; height: auto; overflow: hidden; }
+  .pr-inner { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+  .panel-scroll { padding: 16px 16px 12px; }
   .row3 { grid-template-columns: 1fr; }
   .preview2 { grid-template-columns: 1fr; }
 }
@@ -240,8 +254,8 @@
   .preview3 { grid-template-columns: 1fr; gap: 8px; }
   .prev-box .prev-val { font-size: 1.2rem; }
   .prev2-val { font-size: 1.2rem; }
-  .btn-back, .btn-cont { padding: 12px; font-size: 12px; }
-  .actions { gap: 8px; padding-top: 20px; }
+  .btn-back, .btn-cont { padding: 12px; font-size: 14px; }
+  .actions { gap: 8px; padding: 12px 16px 16px; }
   .cf-card { padding: 20px; }
   .cf-title { font-size: 20px; }
   .cf-val { font-size: 18px; }

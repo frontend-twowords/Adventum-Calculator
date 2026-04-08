@@ -8,10 +8,9 @@
         overflow-x: hidden;
       }
    
-      @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
       body{
        color:#444854;
-       font-family: inter;
+       font-family: var(--font-primary);
      }
      .navbar-light .navbar-nav .nav-link{
        color:#444854;

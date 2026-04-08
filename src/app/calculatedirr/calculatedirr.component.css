@@ -404,6 +404,76 @@
   border-left: 1px solid rgba(255,255,255,0.12);
 }
 
+/* ── JOURNEY PERFORMANCE VIEW ── */
+.rp-journey-performance {
+  display: grid;
+  grid-template-columns: 1.5fr 80px 1.7fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.rp-journey-labels,
+.rp-journey-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 300px;
+}
+.rp-journey-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4em;
+}
+.rp-journey-values {
+  justify-items: start;
+}
+.rp-journey-val-row {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #dae3fd;
+  line-height: 1.4em;
+}
+.rp-journey-val-row--exit {
+  color: #24B14B;
+  font-size: 18px;
+}
+.rp-journey-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 0;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.rp-journey-pill {
+  border-radius: 0;
+  min-height: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.rp-journey-pill:first-child {
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
+}
+.rp-journey-pill:last-child {
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  border-bottom: none;
+}
+.rp-journey-pill--exit { background: rgba(255,255,255,0.42); }
+.rp-journey-pill--profit { background: rgba(255,255,255,0.30); }
+.rp-journey-pill--fx { background: rgba(45,97,237,0.78); }
+.rp-journey-pill--capital { background: rgba(80,110,156,0.88); }
+.rp-journey-pill--rental { background: rgba(255,255,255,0.24); }
+.rp-journey-pill--initial { background: rgba(255,255,255,0.16); }
+
 /* ── LINE CHART ── */
 .rp-chart-wrap { height: 240px; position: relative; }
 .rp-chart-legend {
@@ -1233,6 +1303,18 @@
   .rp-journey-legend { flex-direction: column; gap: 10px; }
   .rp-journey-legend-total { margin-left: 0; padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 12px; width: 100%; }
   .rp-journey-chart-wrap { height: 260px; }
+  .rp-journey-performance {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .rp-journey-labels,
+  .rp-journey-values {
+    min-height: 180px;
+  }
+  .rp-journey-row { justify-content: flex-start; font-size: 13px; }
+  .rp-journey-val-row { font-size: 14px; }
+  .rp-journey-val-row--exit { font-size: 16px; }
+  .rp-journey-pillars { min-height: 180px; }
   /* Other */
   .rp-stat-grid { flex-direction: column; gap: 10px; }
   .rp-stat-card { flex: 1 1 100%; padding: 18px 16px; gap: 8px; }
@@ -1323,6 +1405,9 @@
   .bench-list { gap: 12px; }
   .rp-journey-chart-wrap { height: 220px; }
   .rp-journey-legend-item { flex-wrap: wrap; }
+  .rp-journey-pillars { min-height: 150px; }
+  .rp-journey-labels,
+  .rp-journey-values { min-height: 150px; }
   .rp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .rp-table-header, .rp-table-row { min-width: 600px; }
   .rp-footer { padding: 12px 16px; }
@@ -1343,6 +1428,8 @@
   .rp-card-bench-header h3 { font-size: 1.2rem; }
   .rp-card-bench-header p { font-size: 12px; }
   .rp-journey-val { font-size: 12px !important; }
+  .rp-journey-val-row { font-size: 13px; }
+  .rp-journey-val-row--exit { font-size: 14px; }
 }
 
 /* Country tabs under IRR chart */

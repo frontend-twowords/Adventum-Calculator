@@ -23,6 +23,7 @@
   <!-- RIGHT PANEL -->
   <div class="panel-right">
     <div class="pr-inner">
+      <div class="panel-scroll">
 
       <!-- Topbar -->
       <div class="topbar">
@@ -50,7 +51,7 @@
         <button class="ap" *ngIf="'Liverpool' | cityFilter:searchQuery" [class.active]="City==='Liverpool'"  (click)="selectCity('Liverpool','L1 1AA',53.4084,-2.9916)">Liverpool</button>
         <button class="ap" *ngIf="'Manchester'| cityFilter:searchQuery" [class.active]="City==='Manchester'" (click)="selectCity('Manchester','M1 1AA',53.4808,-2.2426)">Manchester</button>
         <button class="ap" *ngIf="'Birmingham'| cityFilter:searchQuery" [class.active]="City==='Birmingham'" (click)="selectCity('Birmingham','B1 1AA',52.4862,-1.8904)">Birmingham</button>
-        <button class="ap" *ngIf="'Others'    | cityFilter:searchQuery" [class.active]="City==='Others'"     (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button>
+        <!-- <button class="ap" *ngIf="'Others'    | cityFilter:searchQuery" [class.active]="City==='Others'"     (click)="selectCity('Others','HA87DB',51.6112486,-0.2806403)">Others</button> -->
       </div>
 
       <!-- Buyer Status card -->
@@ -67,6 +68,7 @@
             <button class="toggle-opt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
           </div>
         </div>
+      </div>
       </div>
 
       <!-- Actions -->

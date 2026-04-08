@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap');
-
 /* ── FINANCING PAGE LAYOUT ── */
 .financing-page {
   display: grid;
@@ -137,15 +135,22 @@
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  max-height: 100vh;
+  overflow: hidden;
+  height: 100vh;
 }
 
 .panel-right-inner {
-  padding: 36px 48px 64px;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 36px 48px 20px;
 }
 
 /* Top bar */
@@ -470,11 +475,13 @@
   display: grid;
   grid-template-columns: 1fr 1.8fr;
   gap: 12px;
-  margin-top: auto;
-  padding-top: 28px;
+  margin-top: 0;
+  padding: 16px 48px 20px;
   border-top: 1px solid #f3f4f6;
-  margin-bottom: 0;
-  padding-bottom: 28px;
+  background: #ffffff;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
 }
 
 .btn-back-outline {
@@ -543,9 +550,10 @@
   .summary-card-lbl { font-size: 8px; margin-bottom: 2px; letter-spacing: 0.4px; }
   .summary-card-val { font-size: 13px; line-height: 1.1; }
   .summary-card-note { display: none; }
-  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; overflow-y: auto; }
-  .panel-right-inner { padding: 16px 16px 56px; min-height: 100%; display: flex; flex-direction: column; }
-  .panel-nav { grid-template-columns: 1fr 1fr; margin-top: auto; padding-top: 16px; }
+  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; overflow: hidden; }
+  .panel-right-inner { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+  .panel-scroll { padding: 16px 16px 12px; }
+  .panel-nav { grid-template-columns: 1fr 1fr; padding: 12px 16px 16px; }
 }
 
 @media (max-width: 810px) {
@@ -557,7 +565,7 @@
   .field-hint { padding: 8px 16px; font-size: 12px; gap: 6px; }
   .toggle-opt { padding: 10px; font-size: 14px; }
   .pill-btn { padding: 8px 14px; font-size: 12px; }
-  .panel-nav { gap: 8px; padding-top: 20px; }
+  .panel-nav { gap: 8px; padding: 12px 16px 16px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .location-pill { padding: 6px 12px; font-size: 12px; }
 }

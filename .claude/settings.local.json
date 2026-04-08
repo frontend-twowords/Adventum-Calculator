@@ -1,7 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(ls \"c:\\\\Users\\\\sattv\\\\Downloads\\\\adventum-calculators-angular-front-master\\\\adventum-calculators-angular-front-master\\\\src\\\\app\"\" | grep -i \"capital \")"
-    ]
+    "allow": []
   }
 }
