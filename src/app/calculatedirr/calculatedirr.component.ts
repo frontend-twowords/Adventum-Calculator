@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Finance } from 'financejs';
 import { DataService } from '../data.service';
 import { ValidationService } from '../validation.service'
@@ -8,7 +9,7 @@ const finance = new Finance();
 declare var $: any;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { CITY_ANNEXURE_DATA, CityAnnexureData } from './annexure-market-data';
+import { CityAnnexureData, CityAnnexureDataMap } from './annexure-market-data';
 @Component({
   selector: 'app-calculatedirr',
   templateUrl: './calculatedirr.component.html',
@@ -50,7 +51,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   selectedCountry: string = '';
   countryList: string[] = ['India', 'USA', 'Hong Kong', 'UAE', 'Europe', 'Nigeria', 'Bangladesh', 'Pakistan'];
   irrChart: any = null;
-  annexureData: CityAnnexureData = CITY_ANNEXURE_DATA.Manchester;
+  annexureData: CityAnnexureData = this.getDefaultAnnexureData();
 
   private resolveAnnexureCityKey(rawCity: string): string {
     const city = (rawCity || '').trim().toLowerCase();
@@ -136,7 +137,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     'Pakistan':   { rate: 355,  fxGrowth: 7.0,  currency: 'PKR' }
   };
   //lineChartData: ChartDataSets[];
-  constructor(private router: Router, private dataService: DataService, public validation: ValidationService) {
+  constructor(private router: Router, private dataService: DataService, public validation: ValidationService, private http: HttpClient) {
     this.calcData = JSON.parse(localStorage.getItem("calcData"));
     if (!this.calcData.reportSavedOnServer)
       this.calcData.reportSavedOnServer = false;
@@ -407,8 +408,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    const cityKey = this.resolveAnnexureCityKey(this.calcData?.City);
-    this.annexureData = CITY_ANNEXURE_DATA[cityKey] || CITY_ANNEXURE_DATA.Manchester;
+    this.loadAnnexureData();
 
     // Ensure all numeric fields are parsed as numbers
     this.calcData.PropertyValue = parseFloat(this.calcData.PropertyValue) || 0;
@@ -538,6 +538,37 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
       this.yearlyGBPIRR[this.yearlyGBPIRR.length - 1] = parseFloat((this.IrrInGBP || 0).toFixed(2));
       this.yearlyHomeCurrencyIRR[this.yearlyHomeCurrencyIRR.length - 1] = parseFloat((this.IrrInHomeCurrency || 0).toFixed(2));
     }
+  }
+
+  private loadAnnexureData(): void {
+    const cityKey = this.resolveAnnexureCityKey(this.calcData?.City);
+    this.http.get<CityAnnexureDataMap>('assets/annexure-market-data.json').subscribe(
+      (data) => {
+        this.annexureData = data?.[cityKey] || data?.Manchester || this.getDefaultAnnexureData();
+      },
+      () => {
+        this.annexureData = this.getDefaultAnnexureData();
+      }
+    );
+  }
+
+  private getDefaultAnnexureData(): CityAnnexureData {
+    return {
+      executiveStats: [],
+      executiveParagraphs: [],
+      boeRows: [],
+      boeNote: '',
+      mortgageRows: [],
+      mortgageNote: '',
+      outlookTitle: '',
+      outlookSub: '',
+      outlookCards: [],
+      financialNewsSub: '',
+      financialNewsLeft: [],
+      financialNewsRight: [],
+      comparablesSub: '',
+      comparables: []
+    };
   }
   
 

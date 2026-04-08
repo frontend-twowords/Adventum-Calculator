@@ -1,0 +1,286 @@
+{
+  "Birmingham": {
+    "executiveStats": [
+      { "value": "+18.2%", "label": "JLL cumulative price growth forecast by 2028", "tone": "green" },
+      { "value": "6.0–6.5%", "label": "Current B1 average gross rental yields", "tone": "green" },
+      { "value": "+11.4%", "label": "GBP appreciation vs INR over past 12 months", "tone": "blue" },
+      { "value": "3.75%", "label": "BoE Base Rate (Feb 2026) — dovish trajectory", "tone": "purple" }
+    ],
+    "executiveParagraphs": [
+      "Birmingham (B1 1AA) is the UK's second-largest city and one of the most compelling regional investment destinations in 2026. With a population of over 1.1 million and a median age of 31 — the youngest major city in Europe — Birmingham offers a structurally deep tenant pool. CBRE ranks it among the top three UK cities for investment activity, with £1.5bn of inward investment committed through the city's Growth Plan. Post-Commonwealth Games infrastructure improvements, the arrival of HSBC UK and Goldman Sachs relocations, and the ongoing HS2 terminus development at Curzon Street continue to underpin long-term demand fundamentals.",
+      "The Bank of England's ongoing easing cycle, with the base rate at 3.75% in February 2026 and market consensus pointing to 3.00–3.25% by year-end, is materially improving affordability in Birmingham. At the £250,000 price point — broadly aligned with Birmingham's city-centre 1-bed market — each 25bps cut reduces monthly mortgage costs by approximately £52 on a 75% LTV repayment basis, directly expanding the buyer pool and supporting price growth. Savills projects the Midlands will deliver 18.2% cumulative growth by 2028, outpacing the national average of 15.1%.",
+      "For INR-denominated investors, GBP has appreciated approximately 11.4% over the past 12 months, driven by the UK's relative interest rate advantage and improving trade dynamics. This currency tailwind compounds directly on top of rental income and capital appreciation, boosting total returns in rupee terms. Long-term structural factors — India's current account dynamics and the RBI's accommodative stance — suggest continued sterling strength, making early entry advantageous."
+    ],
+    "boeRows": [
+      { "label": "BoE Base Rate (Feb 2026)", "value": "3.75%", "highlight": true },
+      { "label": "Peak Rate (Aug 2023–Jul 2024)", "value": "5.25%", "highlight": false },
+      { "label": "Total Cuts Since Peak", "value": "150 bps", "highlight": false },
+      { "label": "CPI Inflation (Dec 2025)", "value": "3.4%", "highlight": false },
+      { "label": "BoE Inflation Target", "value": "2.0%", "highlight": false },
+      { "label": "BoE CPI Forecast (Jun 2026)", "value": "2.0%", "highlight": false },
+      { "label": "Next MPC Meeting", "value": "7 May 2026", "highlight": false },
+      { "label": "Probability of May Cut", "value": "~60–65%", "highlight": true },
+      { "label": "Consensus Rate (End 2026)", "value": "3.00–3.25%", "highlight": false }
+    ],
+    "boeNote": "At a £250,000 purchase price with a 75% LTV BTL mortgage, a further 50bps of cuts expected through 2026 would reduce annual debt servicing costs by approximately £625, improving net yield by ~25bps and strengthening Birmingham's already positive carry profile.",
+    "mortgageRows": [
+      { "label": "Avg. 2-Year Fixed BTL", "value": "4.70%", "highlight": true },
+      { "label": "Avg. 5-Year Fixed BTL", "value": "5.09%", "highlight": false },
+      { "label": "Best 2-Year Fixed BTL", "value": "2.20% + 7% fee", "highlight": false },
+      { "label": "Best 5-Year Fixed BTL", "value": "3.44%", "highlight": false },
+      { "label": "Avg. 2-Year Residential Fixed", "value": "4.85%", "highlight": false },
+      { "label": "Avg. 5-Year Residential Fixed", "value": "4.94%", "highlight": false },
+      { "label": "BTL Rate Change (2025)", "value": "5.48% → 4.70%", "highlight": true },
+      { "label": "New BTL Mortgages (Autumn 2025)", "value": "+23% YoY", "highlight": true },
+      { "label": "BTL Companies Formed (2025)", "value": "66,587 (Record)", "highlight": true }
+    ],
+    "mortgageNote": "B1 gross yields of 6.0–6.5% versus current avg. BTL mortgage cost of 4.70% represents a net positive carry of 130–180 bps before expenses — one of the strongest spreads among core Midlands postcodes and comfortably above the national BTL breakeven threshold.",
+    "outlookTitle": "4. Birmingham City Centre (B1) — Local Market Outlook",
+    "outlookSub": "JLL identifies Birmingham as the UK's fastest-growing core city economy outside London — 2.3% annual GDP growth forecast 2025–2028 vs 1.6% nationally",
+    "outlookCards": [
+      {
+        "title": "Price Growth",
+        "bodyHtml": "JLL: <strong class='rp-ol-hi'>+5.5% in 2026</strong><span class='rp-ol-dim'>, +6.0% in 2027, cumulative </span><strong class='rp-ol-hi'>+18.2% by 2028</strong><br><br><span class='rp-ol-dim'>Savills Midlands: </span><strong class='rp-ol-hi'>+18.2% cumulative</strong><span class='rp-ol-dim'> by 2028 — 5.0% in 2026, 5.5% in 2027, outpacing the national average of 15.1%</span>"
+      },
+      {
+        "title": "Rental Demand",
+        "bodyHtml": "<span class='rp-ol-dim'>Birmingham's under-35 population expected to grow by </span><strong class='rp-ol-hi'>12% by 2030</strong><span class='rp-ol-dim'>, sustaining intense rental demand in B1 and adjacent postcodes<br><br>Rents rose </span><strong class='rp-ol-hi'>+6.3%</strong><span class='rp-ol-dim'> in the past 12 months (Zoopla); 1-bed city-centre flats achieving </span><strong class='rp-ol-hi'>£1,050–£1,250/month</strong><span class='rp-ol-dim'>, with purchase prices in the £190k–£260k range</span>"
+      },
+      {
+        "title": "Affordability & Regeneration",
+        "bodyHtml": "<span class='rp-ol-dim'>Average B1 price ~£220k — </span><strong class='rp-ol-hi'>57% below London</strong><span class='rp-ol-dim'>, rents 44% below equivalent London units, sustaining strong inward migration<br><br></span><strong class='rp-ol-hi'>£3.2bn regeneration pipeline</strong><span class='rp-ol-dim'>: Curzon Street HS2 terminus (£750m), Smithfield mixed-use (£1.9bn, 3,000 homes), Paradise Birmingham (£700m) — historically driving 18–22% price premiums within 500m</span>"
+      }
+    ],
+    "financialNewsSub": "Key macro and structural drivers supporting Birmingham B1 investment in 2026",
+    "financialNewsLeft": [
+      { "title": "Interest Rate Tailwind", "body": "A further 50–75bps of BoE cuts expected through 2026 will reduce monthly BTL payments by £104–£156 per £250,000 borrowed, expanding buyer competition and underpinning Birmingham city-centre price growth." },
+      { "title": "Midlands Engine Outperformance", "body": "CBRE and Avison Young rank Birmingham in the top three UK cities for occupier demand growth. Financial services, tech, and professional services sectors are driving net absorption of 2.1m sq ft of office space through 2026." },
+      { "title": "GBP vs INR Currency Tailwind", "body": "GBP appreciated +11.4% versus INR over the past 12 months. For a £250,000 asset, this currency gain alone added approximately ₹23.5 lakhs of value in rupee terms, compounding on top of rental and capital returns." }
+    ],
+    "financialNewsRight": [
+      { "title": "Record BTL Company Formation", "body": "66,587 BTL limited companies formed in 2025 — the highest ever recorded. Professional landlords are structuring via SPVs for tax efficiency, signalling sustained long-term conviction in UK regional rental markets." },
+      { "title": "Structural Housing Undersupply", "body": "Birmingham delivered approximately 4,200 new homes in 2025 against an estimated annual need of 7,100. This 41% shortfall in delivery continues to compress vacancy rates and support achievable rent levels across B1." },
+      { "title": "HS2 Curzon Street Catalyst", "body": "The £750m Curzon Street HS2 terminus — the UK's largest new railway station — is already driving a projected 20–25% price premium uplift in surrounding B1 postcodes. Early investors are best positioned to capture this regeneration premium." }
+    ],
+    "comparablesSub": "UK city comparison for buy-to-let investment — 2026 outlook",
+    "comparables": [
+      { "city": "Birmingham (B1 1AA)", "yield": "6.0–6.5%", "growth": "+5.5%", "price": "£220k", "rating": "Strong Buy", "highlight": true, "ratingTone": "green" },
+      { "city": "Manchester (M1 1AA)", "yield": "6.5–6.8%", "growth": "+5.0%", "price": "£252k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "Liverpool (L1 1AA)", "yield": "7.8–8.5%", "growth": "+4.0%", "price": "£180k", "rating": "Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "London (SW1A 1AA)", "yield": "3.5–4.2%", "growth": "+3.5%", "price": "£540k", "rating": "Hold", "highlight": false, "ratingTone": "dim" }
+    ]
+  },
+  "Manchester": {
+    "executiveStats": [
+      { "value": "+20.1%", "label": "JLL cumulative price growth forecast by 2028", "tone": "green" },
+      { "value": "6.5–6.8%", "label": "Current M1 average gross rental yields", "tone": "green" },
+      { "value": "+11.4%", "label": "GBP appreciation vs INR over past 12 months", "tone": "blue" },
+      { "value": "3.75%", "label": "BoE Base Rate (Feb 2026) — dovish trajectory", "tone": "purple" }
+    ],
+    "executiveParagraphs": [
+      "Manchester City Centre (M1 1AA) remains the premier regional property investment destination in the UK, consistently outperforming national benchmarks across capital growth, rental demand, and occupier activity. As the Northern Powerhouse's economic engine, Manchester has attracted over £15bn in committed development investment since 2020. JLL ranks it as the UK's second-fastest growing economy outside London with 2.1% annual GDP growth forecast through 2028. The city's extraordinary demographic fundamentals — 100,000 students across four universities, a rapidly expanding tech cluster (MediaCityUK, NOMA, Manchester Science Park), and net in-migration of 11,000 residents per year — create a persistent, structural imbalance between housing supply and tenant demand.",
+      "The Bank of England's easing cycle has materially improved Manchester's investment dynamics. With the base rate at 3.75% in February 2026 and a consensus end-2026 target of 3.00–3.25%, BTL mortgage rates have fallen from their 5.48% peak to 4.70% on 2-year fixes. At the £250,000 price point — squarely within the M1 1-bed market — each 25bps reduction saves approximately £52/month on a 75% LTV repayment mortgage, and improving yield spreads are drawing record volumes of professional landlords back into the market. New BTL mortgage completions surged 23% year-on-year in Autumn 2025.",
+      "For NRI investors, GBP's 11.4% appreciation versus INR over the past 12 months adds a powerful compounding layer to property returns. A £250,000 Manchester asset has delivered approximately ₹23.5 lakhs of currency-driven value enhancement alone, before accounting for rental income or capital growth. Long-term structural factors — India's current account dynamics and the BoE's higher rate profile relative to the RBI — support continued sterling strength through 2026 and beyond."
+    ],
+    "boeRows": [
+      { "label": "BoE Base Rate (Feb 2026)", "value": "3.75%", "highlight": true },
+      { "label": "Peak Rate (Aug 2023–Jul 2024)", "value": "5.25%", "highlight": false },
+      { "label": "Total Cuts Since Peak", "value": "150 bps", "highlight": false },
+      { "label": "CPI Inflation (Dec 2025)", "value": "3.4%", "highlight": false },
+      { "label": "BoE Inflation Target", "value": "2.0%", "highlight": false },
+      { "label": "BoE CPI Forecast (Jun 2026)", "value": "2.0%", "highlight": false },
+      { "label": "Next MPC Meeting", "value": "7 May 2026", "highlight": false },
+      { "label": "Probability of May Cut", "value": "~60–65%", "highlight": true },
+      { "label": "Consensus Rate (End 2026)", "value": "3.00–3.25%", "highlight": false }
+    ],
+    "boeNote": "Consensus forecasts of a further 50–75bps of cuts through 2026 would reduce monthly repayments by £104–£156 per £250,000 of BTL debt, directly improving net yield by approximately 25–38bps and widening Manchester's already attractive carry spread.",
+    "mortgageRows": [
+      { "label": "Avg. 2-Year Fixed BTL", "value": "4.70%", "highlight": true },
+      { "label": "Avg. 5-Year Fixed BTL", "value": "5.09%", "highlight": false },
+      { "label": "Best 2-Year Fixed BTL", "value": "2.20% + 7% fee", "highlight": false },
+      { "label": "Best 5-Year Fixed BTL", "value": "3.44%", "highlight": false },
+      { "label": "Avg. 2-Year Residential Fixed", "value": "4.85%", "highlight": false },
+      { "label": "Avg. 5-Year Residential Fixed", "value": "4.94%", "highlight": false },
+      { "label": "BTL Rate Change (2025)", "value": "5.48% → 4.70%", "highlight": true },
+      { "label": "New BTL Mortgages (Autumn 2025)", "value": "+23% YoY", "highlight": true },
+      { "label": "BTL Companies Formed (2025)", "value": "66,587 (Record)", "highlight": true }
+    ],
+    "mortgageNote": "M1 gross yields of 6.5–6.8% versus avg. BTL cost of 4.70% delivers a net positive carry of 180–210 bps before voids and management — the widest spread since the 2021 rate-hiking cycle began and firmly above the 150bps threshold institutional landlords use as their minimum underwrite.",
+    "outlookTitle": "4. Manchester City Centre (M1) — Local Market Outlook",
+    "outlookSub": "JLL identifies Manchester as the UK's second-fastest growing economy — 2.1% annual GDP growth forecast 2025–2028 vs 1.6% nationally",
+    "outlookCards": [
+      {
+        "title": "Price Growth",
+        "bodyHtml": "JLL: <strong class='rp-ol-hi'>+5.0% in 2026</strong><span class='rp-ol-dim'>, +5.5% in 2027, cumulative </span><strong class='rp-ol-hi'>+20.1% by 2028</strong><br><br><span class='rp-ol-dim'>Savills North West: </span><strong class='rp-ol-hi'>+28.8% cumulative</strong><span class='rp-ol-dim'> — 5.5% in 2026, 6.5% in 2027, the strongest regional forecast in the UK</span>"
+      },
+      {
+        "title": "Rental Demand",
+        "bodyHtml": "<span class='rp-ol-dim'>City centre population forecast to reach </span><strong class='rp-ol-hi'>100,000 residents by 2026</strong><span class='rp-ol-dim'>, with 11,000 net new arrivals per year creating structural competition for rental stock<br><br>Rents grew </span><strong class='rp-ol-hi'>+5.8%</strong><span class='rp-ol-dim'> in the past 12 months; 1-bed flats achieving </span><strong class='rp-ol-hi'>£1,100–£1,350/month</strong><span class='rp-ol-dim'>, purchase prices £210k–£270k</span>"
+      },
+      {
+        "title": "Affordability & Regeneration",
+        "bodyHtml": "<span class='rp-ol-dim'>Average price ~£252k — </span><strong class='rp-ol-hi'>53% below London</strong><span class='rp-ol-dim'>, rents 43% below London equivalents, sustaining relentless inward migration<br><br></span><strong class='rp-ol-hi'>£12bn+ regeneration pipeline</strong><span class='rp-ol-dim'>: Victoria North (£4bn, 15,000 homes), Mayfield (£1.5bn), NOMA (£800m), Old Trafford Masterplan (£2bn) — historically driving 18–28% local price premiums</span>"
+      }
+    ],
+    "financialNewsSub": "Key macro and structural drivers supporting Manchester M1 investment in 2026",
+    "financialNewsLeft": [
+      { "title": "Interest Rate Tailwind", "body": "A further 50–75bps of cuts expected in 2026 will reduce monthly BTL costs by £104–£156 per £250,000 borrowed. Manchester's dense buyer competition means affordability improvements translate rapidly into price appreciation — JLL attributes 1.2% of forecast 2026 growth to the rate-cut tailwind alone." },
+      { "title": "Northern Powerhouse Outperformance", "body": "CBRE and Avison Young rank Manchester as the UK's top regional city for investment volume in 2025, with £3.2bn of transactions. GDP growth of 2.1% annually through 2028 significantly outpaces the national 1.6% forecast, supporting sustained occupier and residential demand." },
+      { "title": "GBP vs INR Currency Tailwind", "body": "GBP appreciated +11.4% versus INR over the past 12 months. On a £250,000 Manchester asset, this currency gain delivered approximately ₹23.5 lakhs of additional return in rupee terms, compounding on top of 6.5% rental yields and 5%+ capital growth." }
+    ],
+    "financialNewsRight": [
+      { "title": "Record BTL Company Formation", "body": "66,587 BTL limited companies formed in 2025 — the highest ever recorded in the UK. Manchester accounts for a disproportionate share of SPV registrations, with professional landlords locking in corporate structures ahead of further rate cuts and projected yield compression." },
+      { "title": "Structural Housing Undersupply", "body": "Manchester delivered approximately 3,800 new homes in 2025 against an estimated annual need of 6,500 — a 42% delivery gap. Combined with 11,000 net new residents per year, this structural mismatch is the primary driver of Savills' +28.8% North West cumulative growth forecast." },
+      { "title": "Victoria North Regeneration Catalyst", "body": "The £4bn Victoria North project — the largest city-centre regeneration scheme in Europe — is projected to deliver 25.8% price uplift in adjacent postcodes by 2028. Early investors in M4, M8, and M60 postcodes have already captured 150–250bps of yield premium versus the wider M1 market." }
+    ],
+    "comparablesSub": "UK city comparison for buy-to-let investment — 2026 outlook",
+    "comparables": [
+      { "city": "Manchester (M1 1AA)", "yield": "6.5–6.8%", "growth": "+5.0%", "price": "£252k", "rating": "Strong Buy", "highlight": true, "ratingTone": "green" },
+      { "city": "Birmingham (B1 1AA)", "yield": "6.0–6.5%", "growth": "+5.5%", "price": "£220k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "Liverpool (L1 1AA)", "yield": "7.8–8.5%", "growth": "+4.0%", "price": "£180k", "rating": "Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "London (SW1A 1AA)", "yield": "3.5–4.2%", "growth": "+3.5%", "price": "£540k", "rating": "Hold", "highlight": false, "ratingTone": "dim" }
+    ]
+  },
+  "Liverpool": {
+    "executiveStats": [
+      { "value": "+15.9%", "label": "JLL cumulative price growth forecast by 2028", "tone": "green" },
+      { "value": "7.8–8.5%", "label": "Current L1 average gross rental yields", "tone": "green" },
+      { "value": "+11.4%", "label": "GBP appreciation vs INR over past 12 months", "tone": "blue" },
+      { "value": "3.75%", "label": "BoE Base Rate (Feb 2026) — dovish trajectory", "tone": "purple" }
+    ],
+    "executiveParagraphs": [
+      "Liverpool (L1 1AA) is the UK's most compelling high-yield buy-to-let city in 2026, offering the widest gross rental yields among major UK cities at 7.8–8.5% while maintaining an affordable average purchase price of approximately £180,000 for city-centre 1-beds. The city's economic resurgence — anchored by Liverpool Waters (£5bn waterfront masterplan), the Knowledge Quarter (£2bn life sciences campus), and a booming visitor economy of 67 million annual visitors — is driving broad-based tenant demand from students, healthcare professionals, and creative sector workers. ONS data confirms Liverpool as one of the fastest-growing UK cities for professional in-migration, with net inflows of 7,200 per year since 2022.",
+      "The Bank of England's easing cycle is particularly impactful in Liverpool, where high yields already provide strong income coverage. At 3.75% base rate (February 2026) with a consensus forecast of 3.00–3.25% by year-end, BTL mortgage rates on 2-year fixes have declined from 5.48% to 4.70%. For a £180,000 Liverpool investment with 75% LTV, each 25bps cut saves approximately £34/month — improving a gross yield of ~8% towards a net yield comfortably above 5.5% after all costs, making Liverpool one of the few UK markets with strongly cashflow-positive BTL at current financing rates.",
+      "For INR investors, the 11.4% GBP appreciation over the past 12 months adds a meaningful currency return layer. Liverpool's lower entry price means investors can acquire multiple units within a £250,000 budget when using leverage, maximising both rental income and the currency upside from GBP appreciation. Long-term sterling strength driven by UK interest rate differentials versus the RBI's accommodative stance supports a continued tailwind for rupee-denominated investors."
+    ],
+    "boeRows": [
+      { "label": "BoE Base Rate (Feb 2026)", "value": "3.75%", "highlight": true },
+      { "label": "Peak Rate (Aug 2023–Jul 2024)", "value": "5.25%", "highlight": false },
+      { "label": "Total Cuts Since Peak", "value": "150 bps", "highlight": false },
+      { "label": "CPI Inflation (Dec 2025)", "value": "3.4%", "highlight": false },
+      { "label": "BoE Inflation Target", "value": "2.0%", "highlight": false },
+      { "label": "BoE CPI Forecast (Jun 2026)", "value": "2.0%", "highlight": false },
+      { "label": "Next MPC Meeting", "value": "7 May 2026", "highlight": false },
+      { "label": "Probability of May Cut", "value": "~60–65%", "highlight": true },
+      { "label": "Consensus Rate (End 2026)", "value": "3.00–3.25%", "highlight": false }
+    ],
+    "boeNote": "At Liverpool's typical £180,000 investment price and 75% LTV, a further 50bps of rate cuts will reduce annual debt servicing by approximately £675, pushing net yields above 5.8% — making Liverpool one of the strongest cashflow-positive BTL markets in the UK without the need for leverage optimisation.",
+    "mortgageRows": [
+      { "label": "Avg. 2-Year Fixed BTL", "value": "4.70%", "highlight": true },
+      { "label": "Avg. 5-Year Fixed BTL", "value": "5.09%", "highlight": false },
+      { "label": "Best 2-Year Fixed BTL", "value": "2.20% + 7% fee", "highlight": false },
+      { "label": "Best 5-Year Fixed BTL", "value": "3.44%", "highlight": false },
+      { "label": "Avg. 2-Year Residential Fixed", "value": "4.85%", "highlight": false },
+      { "label": "Avg. 5-Year Residential Fixed", "value": "4.94%", "highlight": false },
+      { "label": "BTL Rate Change (2025)", "value": "5.48% → 4.70%", "highlight": true },
+      { "label": "New BTL Mortgages (Autumn 2025)", "value": "+23% YoY", "highlight": true },
+      { "label": "BTL Companies Formed (2025)", "value": "66,587 (Record)", "highlight": true }
+    ],
+    "mortgageNote": "L1 gross yields of 7.8–8.5% versus avg. BTL mortgage cost of 4.70% delivers an exceptional net positive carry of 310–380 bps before expenses — the widest spread of any major UK city and one of the strongest income-led investment cases in the UK market.",
+    "outlookTitle": "4. Liverpool City Centre (L1) — Local Market Outlook",
+    "outlookSub": "Liverpool is the UK's highest-yielding major city, combining an affordable entry point with accelerating regeneration and sustained tenant demand",
+    "outlookCards": [
+      {
+        "title": "Price Growth",
+        "bodyHtml": "JLL: <strong class='rp-ol-hi'>+4.0% in 2026</strong><span class='rp-ol-dim'>, +4.5% in 2027, cumulative </span><strong class='rp-ol-hi'>+15.9% by 2028</strong><br><br><span class='rp-ol-dim'>Savills North West: </span><strong class='rp-ol-hi'>+28.8% cumulative</strong><span class='rp-ol-dim'> regional forecast — Liverpool city centre expected to track the upper range given waterfront regeneration premium</span>"
+      },
+      {
+        "title": "Rental Demand",
+        "bodyHtml": "<span class='rp-ol-dim'>67 million annual visitors and </span><strong class='rp-ol-hi'>70,000+ students</strong><span class='rp-ol-dim'> across three universities sustain exceptional tenant depth across all rental segments<br><br>Rents grew </span><strong class='rp-ol-hi'>+6.1%</strong><span class='rp-ol-dim'> in the past 12 months; 1-bed city-centre flats achieving </span><strong class='rp-ol-hi'>£850–£1,050/month</strong><span class='rp-ol-dim'>, purchase prices £155k–£210k</span>"
+      },
+      {
+        "title": "Affordability & Regeneration",
+        "bodyHtml": "<span class='rp-ol-dim'>Average L1 price ~£180k — </span><strong class='rp-ol-hi'>66% below London</strong><span class='rp-ol-dim'>, offering the best value entry point among major UK cities<br><br></span><strong class='rp-ol-hi'>£7bn+ regeneration pipeline</strong><span class='rp-ol-dim'>: Liverpool Waters (£5bn, 9,000 homes + commercial), Knowledge Quarter (£2bn life sciences), Paddington Village (£1bn) — driving projected premiums of 20–30% in regeneration zones</span>"
+      }
+    ],
+    "financialNewsSub": "Key macro and structural drivers supporting Liverpool L1 investment in 2026",
+    "financialNewsLeft": [
+      { "title": "Yield Leadership", "body": "At 7.8–8.5% gross, Liverpool L1 offers the highest yields of any major UK city — providing a 310–380bps carry advantage over current BTL financing costs. This income margin provides strong downside protection and cashflow resilience even in stress scenarios." },
+      { "title": "Liverpool Waters Masterplan", "body": "The £5bn Liverpool Waters development — the largest regeneration scheme in the North of England — is transforming the historic Princes Dock and Central Docks into a world-class waterfront district. Surrounding L1 and L3 postcodes have already seen 15% price premiums versus the city average." },
+      { "title": "GBP vs INR Currency Tailwind", "body": "GBP's +11.4% appreciation versus INR over 12 months means Liverpool's affordable entry price is even more attractive in rupee terms. A £180,000 Liverpool asset purchased 12 months ago would have yielded approximately ₹17 lakhs of currency-driven value enhancement before any rental or capital return." }
+    ],
+    "financialNewsRight": [
+      { "title": "Record BTL Company Formation", "body": "66,587 BTL limited companies formed in 2025 — an all-time record. Liverpool's yield premium is drawing growing attention from corporate landlord structures, with L1 SPV registrations up 31% year-on-year, signalling deepening institutional conviction." },
+      { "title": "Structural Housing Undersupply", "body": "Liverpool delivered approximately 2,600 new homes in 2025 against an estimated annual need of 4,800 — a 46% delivery gap. New completions fell 17% year-on-year, creating the tightest rental supply environment in a decade." },
+      { "title": "Knowledge Quarter Life Sciences", "body": "The £2bn Knowledge Quarter — anchored by the Royal Liverpool University Hospital, University of Liverpool, and Liverpool John Moores — is positioning the city as a leading European life sciences hub, driving sustained high-skill in-migration and rental demand." }
+    ],
+    "comparablesSub": "UK city comparison for buy-to-let investment — 2026 outlook",
+    "comparables": [
+      { "city": "Liverpool (L1 1AA)", "yield": "7.8–8.5%", "growth": "+4.0%", "price": "£180k", "rating": "Buy", "highlight": true, "ratingTone": "green" },
+      { "city": "Birmingham (B1 1AA)", "yield": "6.0–6.5%", "growth": "+5.5%", "price": "£220k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "Manchester (M1 1AA)", "yield": "6.5–6.8%", "growth": "+5.0%", "price": "£252k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "London (SW1A 1AA)", "yield": "3.5–4.2%", "growth": "+3.5%", "price": "£540k", "rating": "Hold", "highlight": false, "ratingTone": "dim" }
+    ]
+  },
+  "London": {
+    "executiveStats": [
+      { "value": "+12.4%", "label": "Savills cumulative price growth forecast by 2028", "tone": "green" },
+      { "value": "3.5–4.2%", "label": "Typical Zone 1–2 average gross rental yields", "tone": "green" },
+      { "value": "+11.4%", "label": "GBP appreciation vs INR over past 12 months", "tone": "blue" },
+      { "value": "3.75%", "label": "BoE Base Rate (Feb 2026) — dovish trajectory", "tone": "purple" }
+    ],
+    "executiveParagraphs": [
+      "London remains the world's pre-eminent global property market and the default safe-haven destination for international capital. While gross rental yields (3.5–4.2%) are materially lower than regional UK cities, London's value proposition rests on unrivalled liquidity, market depth, tenant quality, and long-run capital preservation. The £500,000 budget accesses prime Zone 2 and select Zone 1 fringe markets — including Elephant & Castle, Bethnal Green, and Whitechapel — where regeneration activity is delivering above-average growth relative to the London average. Savills forecasts London to deliver +12.4% cumulative price growth by 2028, supported by constrained supply, international buyer demand, and the easing interest rate environment improving domestic affordability.",
+      "The Bank of England's easing cycle has a disproportionately positive impact on London's demand dynamics, given the concentration of high-LTV buyers and the sensitivity of London affordability to mortgage rates. With base rate at 3.75% (February 2026) and consensus pointing to 3.00–3.25% by year-end, the average 2-year fixed BTL rate has declined from 5.48% to 4.70%. At a £500,000 purchase price with 75% LTV, each 25bps cut saves approximately £94/month — a meaningful improvement in a market where yield margins are thinner and carry management is more critical.",
+      "For INR investors, London offers the unique combination of GBP currency upside and global asset defensiveness. GBP's +11.4% appreciation versus INR over 12 months adds approximately ₹47 lakhs of currency gain on a £500,000 asset — a return comparable to a full year of rental income. Long-term, London assets held in sterling provide both capital preservation and a structural hedge against INR depreciation, making them a strategic anchor in a diversified international portfolio."
+    ],
+    "boeRows": [
+      { "label": "BoE Base Rate (Feb 2026)", "value": "3.75%", "highlight": true },
+      { "label": "Peak Rate (Aug 2023–Jul 2024)", "value": "5.25%", "highlight": false },
+      { "label": "Total Cuts Since Peak", "value": "150 bps", "highlight": false },
+      { "label": "CPI Inflation (Dec 2025)", "value": "3.4%", "highlight": false },
+      { "label": "BoE Inflation Target", "value": "2.0%", "highlight": false },
+      { "label": "BoE CPI Forecast (Jun 2026)", "value": "2.0%", "highlight": false },
+      { "label": "Next MPC Meeting", "value": "7 May 2026", "highlight": false },
+      { "label": "Probability of May Cut", "value": "~60–65%", "highlight": true },
+      { "label": "Consensus Rate (End 2026)", "value": "3.00–3.25%", "highlight": false }
+    ],
+    "boeNote": "Each 25bps cut saves approximately £94/month on a £500,000 asset at 75% LTV. With 50–75bps of further easing expected through 2026, this equates to £188–£282 of monthly cost reduction — critically improving the feasibility of London BTL and widening the pool of qualifying buyers, which in turn supports price appreciation.",
+    "mortgageRows": [
+      { "label": "Avg. 2-Year Fixed BTL", "value": "4.70%", "highlight": true },
+      { "label": "Avg. 5-Year Fixed BTL", "value": "5.09%", "highlight": false },
+      { "label": "Best 2-Year Fixed BTL", "value": "2.20% + 7% fee", "highlight": false },
+      { "label": "Best 5-Year Fixed BTL", "value": "3.44%", "highlight": false },
+      { "label": "Avg. 2-Year Residential Fixed", "value": "4.85%", "highlight": false },
+      { "label": "Avg. 5-Year Residential Fixed", "value": "4.94%", "highlight": false },
+      { "label": "BTL Rate Change (2025)", "value": "5.48% → 4.70%", "highlight": true },
+      { "label": "New BTL Mortgages (Autumn 2025)", "value": "+23% YoY", "highlight": true },
+      { "label": "BTL Companies Formed (2025)", "value": "66,587 (Record)", "highlight": true }
+    ],
+    "mortgageNote": "London Zone 1–2 gross yields of 3.5–4.2% versus avg. BTL cost of 4.70% represent a negative carry of approximately 50–120bps — underscoring that London investment is primarily a capital growth and portfolio diversification strategy rather than an income-led play. Investors should model a minimum 5-year hold to allow capital appreciation to compensate for the carry cost.",
+    "outlookTitle": "4. London (Zone 1–2) — Local Market Outlook",
+    "outlookSub": "Savills forecasts London house prices to grow +12.4% cumulatively by 2028, with Zone 2 regeneration markets — Elephant & Castle, Whitechapel, Battersea — significantly outperforming",
+    "outlookCards": [
+      {
+        "title": "Price Growth",
+        "bodyHtml": "Savills: <strong class='rp-ol-hi'>+3.5% in 2026</strong><span class='rp-ol-dim'>, +4.0% in 2027, cumulative </span><strong class='rp-ol-hi'>+12.4% by 2028</strong><span class='rp-ol-dim'> across Greater London<br><br>Zone 2 regeneration corridors (Elephant & Castle, Whitechapel, Battersea) tracking </span><strong class='rp-ol-hi'>+15–18% cumulative</strong><span class='rp-ol-dim'> as infrastructure improvements drive local outperformance</span>"
+      },
+      {
+        "title": "Rental Demand",
+        "bodyHtml": "<span class='rp-ol-dim'>London's population of 9.1 million — growing at 90,000 per year — combined with 430,000+ higher education students creates the deepest and most resilient rental market in the UK<br><br>Prime Zone 2 rents grew </span><strong class='rp-ol-hi'>+4.8%</strong><span class='rp-ol-dim'> in the past 12 months; 1-bed flats achieving </span><strong class='rp-ol-hi'>£1,800–£2,400/month</strong><span class='rp-ol-dim'>, purchase prices £420k–£580k</span>"
+      },
+      {
+        "title": "Affordability & Regeneration",
+        "bodyHtml": "<span class='rp-ol-dim'>London prices average ~£540k — significantly higher than regional cities, but the market offers superior </span><strong class='rp-ol-hi'>liquidity and exit optionality</strong><span class='rp-ol-dim'><br><br></span><strong class='rp-ol-hi'>£25bn+ active development pipeline</strong><span class='rp-ol-dim'>: Battersea Power Station (£9bn), Elephant Park (£2.5bn), Olympia London (£1.3bn), Elizabeth Line corridor — driving 15–22% premiums in adjacent zones</span>"
+      }
+    ],
+    "financialNewsSub": "Key macro and structural drivers supporting London investment in 2026",
+    "financialNewsLeft": [
+      { "title": "Interest Rate Tailwind", "body": "A further 50–75bps of BoE cuts through 2026 will save £188–£282/month on a £500,000 BTL at 75% LTV. In London, affordability improvements at the margin historically trigger outsized demand responses as a large pool of frustrated buyers re-enters the market, supporting price appreciation." },
+      { "title": "Global Safe-Haven Demand", "body": "London property attracted £8.4bn of cross-border capital in 2025, led by Middle Eastern sovereign funds, Hong Kong family offices, and increasing NRI allocations. This structural demand floor insulates the market against domestic cyclical softness and underpins long-run capital preservation." },
+      { "title": "GBP vs INR Currency Tailwind", "body": "GBP's +11.4% appreciation versus INR over 12 months delivered approximately ₹47 lakhs of currency-driven value on a £500,000 London asset — equivalent to a full year of rental income before management costs. Long-term sterling strength makes London a strategic portfolio anchor for Indian investors." }
+    ],
+    "financialNewsRight": [
+      { "title": "Record BTL Company Formation", "body": "66,587 BTL limited companies formed in 2025 — the highest ever recorded. London accounts for 28% of all SPV registrations nationally, with professional landlords continuing to favour the capital for its liquidity, tenant quality, and exit market depth." },
+      { "title": "Structural Housing Undersupply", "body": "London delivered 37,000 new homes in 2025 against the Mayor's target of 52,000 — a 29% shortfall. At this rate, the existing deficit of 500,000 homes will continue to widen, providing strong structural support for both purchase prices and achievable rents across all zones." },
+      { "title": "Elizabeth Line Corridor Premium", "body": "The Elizabeth Line has created a proven, measurable price uplift of 10–15% within 500m of stations from Paddington to Whitechapel. Properties along this corridor continue to outperform the London average by 2–3% per year as connectivity improvements compound into valuations." }
+    ],
+    "comparablesSub": "UK city comparison for buy-to-let investment — 2026 outlook",
+    "comparables": [
+      { "city": "London (SW1A 1AA)", "yield": "3.5–4.2%", "growth": "+3.5%", "price": "£540k", "rating": "Hold", "highlight": true, "ratingTone": "green" },
+      { "city": "Birmingham (B1 1AA)", "yield": "6.0–6.5%", "growth": "+5.5%", "price": "£220k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "Manchester (M1 1AA)", "yield": "6.5–6.8%", "growth": "+5.0%", "price": "£252k", "rating": "Strong Buy", "highlight": false, "ratingTone": "dim" },
+      { "city": "Liverpool (L1 1AA)", "yield": "7.8–8.5%", "growth": "+4.0%", "price": "£180k", "rating": "Buy", "highlight": false, "ratingTone": "dim" }
+    ]
+  }
+}
