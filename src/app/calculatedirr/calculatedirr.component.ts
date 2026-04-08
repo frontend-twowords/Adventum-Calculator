@@ -8,6 +8,7 @@ const finance = new Finance();
 declare var $: any;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { CITY_ANNEXURE_DATA, CityAnnexureData } from './annexure-market-data';
 @Component({
   selector: 'app-calculatedirr',
   templateUrl: './calculatedirr.component.html',
@@ -49,6 +50,22 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   selectedCountry: string = '';
   countryList: string[] = ['India', 'USA', 'Hong Kong', 'UAE', 'Europe', 'Nigeria', 'Bangladesh', 'Pakistan'];
   irrChart: any = null;
+  annexureData: CityAnnexureData = CITY_ANNEXURE_DATA.Manchester;
+
+  private resolveAnnexureCityKey(rawCity: string): string {
+    const city = (rawCity || '').trim().toLowerCase();
+    if (city.includes('manchester')) return 'Manchester';
+    if (city.includes('liverpool')) return 'Liverpool';
+    if (city.includes('birmingham')) return 'Birmingham';
+    if (city.includes('london')) return 'London';
+    return 'Manchester';
+  }
+
+  isComparableSelected(cityLabel: string): boolean {
+    const selected = (this.calcData?.City || '').trim().toLowerCase();
+    const rowCity = (cityLabel || '').split('(')[0].trim().toLowerCase();
+    return !!selected && rowCity.includes(selected);
+  }
 
   // Comprehensive currency symbol map
   currencySymbolMap: any = {
@@ -93,6 +110,17 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     } else {
       formatted = Math.round(abs).toLocaleString('en-US');
     }
+    return (value < 0 ? '-' : '') + sym + formatted;
+  }
+
+  formatCurrencyFull(value: number, currencyCode: string): string {
+    if (value === null || value === undefined || isNaN(value)) return '0';
+    const sym = this.getCurrencySymbol(currencyCode);
+    const abs = Math.abs(value);
+    const formatted =
+      currencyCode === 'INR'
+        ? Math.round(abs).toLocaleString('en-IN')
+        : Math.round(abs).toLocaleString('en-US');
     return (value < 0 ? '-' : '') + sym + formatted;
   }
 
@@ -312,11 +340,13 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     });
 
 
-    // Investment Journey — vertical stacked bar chart
-    const ctxJourney = ($('#journeyBar')[0] as HTMLCanvasElement).getContext('2d');
+    // Investment Journey chart (kept for backward compatibility if canvas exists)
+    const journeyCanvas = $('#journeyBar')[0] as HTMLCanvasElement;
+    const ctxJourney = journeyCanvas ? journeyCanvas.getContext('2d') : null;
     const fxVal = Math.max(this.TotalReturnOfInvestment - this.capitalAppreciation - this.RentalIncome, 0);
     const self = this;
-    new Chart(ctxJourney, {
+    if (ctxJourney) {
+      new Chart(ctxJourney, {
       type: 'bar',
       data: {
         labels: ['Your Returns'],
@@ -369,6 +399,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
         }
       }
     } as any);
+    }
 
     if (!this.calcData.reportSavedOnServer && !this.validation.isNullEmptyUndefined(sessionStorage.getItem('UserId'))) {
       this.reportSaveToServer();
@@ -376,6 +407,9 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    const cityKey = this.resolveAnnexureCityKey(this.calcData?.City);
+    this.annexureData = CITY_ANNEXURE_DATA[cityKey] || CITY_ANNEXURE_DATA.Manchester;
+
     // Ensure all numeric fields are parsed as numbers
     this.calcData.PropertyValue = parseFloat(this.calcData.PropertyValue) || 0;
     this.calcData.capitalgrowth = parseFloat(this.calcData.capitalgrowth) || 0;
@@ -510,6 +544,49 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   makePositive(value){
     return Math.abs(value);
   }
+
+  getJourneyInitialInvestment(): number {
+    return Math.abs(this.graphInitialInvestmentInHomeCurrency || 0);
+  }
+
+  getJourneyNetRental(): number {
+    return Math.max(this.RentalIncome || 0, 0);
+  }
+
+  getJourneyCapitalGrowth(): number {
+    return Math.max(this.capitalAppreciation || 0, 0);
+  }
+
+  getJourneyFxAppreciation(): number {
+    return Math.max((this.TotalReturnOfInvestment || 0) - (this.capitalAppreciation || 0) - (this.RentalIncome || 0), 0);
+  }
+
+  getJourneyTotalProfit(): number {
+    return Math.max(this.TotalReturnOfInvestment || 0, 0);
+  }
+
+  getJourneyValueAtExit(): number {
+    return Math.max((this.TotalReturnOfInvestment || 0) - (this.graphInitialInvestmentInHomeCurrency || 0), 0);
+  }
+
+  getJourneyMax(): number {
+    return Math.max(
+      this.getJourneyInitialInvestment(),
+      this.getJourneyNetRental(),
+      this.getJourneyCapitalGrowth(),
+      this.getJourneyFxAppreciation(),
+      this.getJourneyTotalProfit(),
+      this.getJourneyValueAtExit(),
+      1
+    );
+  }
+
+  getJourneyFlex(value: number): string {
+    const max = this.getJourneyMax();
+    const normalized = Math.max(value / max, 0.06);
+    return normalized.toFixed(3);
+  }
+
   ReturnIRR(InitialInvestMent: number, index: number): number {
     let cashFlow = [];
     for (let i = 0; i <= index; i++) {

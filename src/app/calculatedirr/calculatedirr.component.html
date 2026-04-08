@@ -109,38 +109,41 @@
 
     <!-- Section 1b: Investment Journey — full width vertical stacked bar -->
     <div class="rp-section">
-      <div class="rp-card">
+      <div class="rp-card rp-card--journey">
         <div class="rp-card-header">
           <h3>Investment Journey</h3>
           <p>Total profit breakdown over {{calcData?.investedTenure}} years</p>
         </div>
-        <div class="rp-journey-chart-wrap">
-          <canvas id="journeyBar"></canvas>
-        </div>
-        <div class="rp-journey-legend">
-          <div class="rp-journey-legend-item">
-            <span class="rp-journey-dot" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2)"></span>
-            <span class="rp-journey-lbl">Initial Investment</span>
-            <span class="rp-journey-val">{{formatCurrency(-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
+        <div class="rp-journey-performance">
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyValueAtExit())">
+            <div class="rp-journey-row">Value at Exit</div>
+            <div class="rp-journey-pill rp-journey-pill--exit rp-journey-pill--first"></div>
+            <div class="rp-journey-val-row rp-journey-val-row--exit">{{formatCurrencyFull(getJourneyValueAtExit(), homecurrencyText)}}</div>
           </div>
-          <div class="rp-journey-legend-item">
-            <span class="rp-journey-dot" style="background:#506E9C"></span>
-            <span class="rp-journey-lbl">Capital Growth</span>
-            <span class="rp-journey-val">{{formatCurrency(capitalAppreciation, homecurrencyText)}}</span>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyTotalProfit())">
+            <div class="rp-journey-row">Total Profit</div>
+            <div class="rp-journey-pill rp-journey-pill--profit"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyTotalProfit(), homecurrencyText)}}</div>
           </div>
-          <div class="rp-journey-legend-item">
-            <span class="rp-journey-dot" style="background:rgba(45,97,237,0.80)"></span>
-            <span class="rp-journey-lbl">FX Appreciation</span>
-            <span class="rp-journey-val">{{formatCurrency(TotalReturnOfInvestment-capitalAppreciation-RentalIncome, homecurrencyText)}}</span>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyFxAppreciation())">
+            <div class="rp-journey-row">FX Appreciation</div>
+            <div class="rp-journey-pill rp-journey-pill--fx"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyFxAppreciation(), homecurrencyText)}}</div>
           </div>
-          <div class="rp-journey-legend-item">
-            <span class="rp-journey-dot" style="background:rgba(255,255,255,0.20);border:1px solid rgba(255,255,255,0.3)"></span>
-            <span class="rp-journey-lbl">Net Rental Income</span>
-            <span class="rp-journey-val">{{formatCurrency(RentalIncome, homecurrencyText)}}</span>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyCapitalGrowth())">
+            <div class="rp-journey-row">Capital Growth</div>
+            <div class="rp-journey-pill rp-journey-pill--capital"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyCapitalGrowth(), homecurrencyText)}}</div>
           </div>
-          <div class="rp-journey-legend-item rp-journey-legend-total">
-            <span class="rp-journey-lbl" style="color:rgba(255,255,255,0.6);font-weight:500">Value at Exit</span>
-            <span class="rp-journey-val" style="color:#24B14B;font-size:22px;font-weight:700;letter-spacing:-0.5px">{{formatCurrency(TotalReturnOfInvestment-graphInitialInvestmentInHomeCurrency, homecurrencyText)}}</span>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyNetRental())">
+            <div class="rp-journey-row">Net Rental Income</div>
+            <div class="rp-journey-pill rp-journey-pill--rental"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyNetRental(), homecurrencyText)}}</div>
+          </div>
+          <div class="rp-journey-grid-row" [style.flex]="getJourneyFlex(getJourneyInitialInvestment())">
+            <div class="rp-journey-row">Initial Investment</div>
+            <div class="rp-journey-pill rp-journey-pill--initial rp-journey-pill--last"></div>
+            <div class="rp-journey-val-row">{{formatCurrencyFull(getJourneyInitialInvestment(), homecurrencyText)}}</div>
           </div>
         </div>
       </div>
@@ -424,27 +427,20 @@
           <div class="rp-annexure-section-title">1. Executive Summary</div>
           <p class="rp-annexure-section-sub">Key market indicators at a glance</p>
           <div class="rp-stat-grid">
-            <div class="rp-stat-card rp-stat-green">
-              <div class="rp-stat-val">+19.3%</div>
-              <div class="rp-stat-lbl">JLL cumulative price growth forecast by 2028</div>
-            </div>
-            <div class="rp-stat-card rp-stat-green">
-              <div class="rp-stat-val">6.5–6.8%</div>
-              <div class="rp-stat-lbl">Current M1 average gross rental yields</div>
-            </div>
-            <div class="rp-stat-card rp-stat-blue">
-              <div class="rp-stat-val">+12.9%</div>
-              <div class="rp-stat-lbl">GBP appreciation vs INR over past 12 months</div>
-            </div>
-            <div class="rp-stat-card rp-stat-purple">
-              <div class="rp-stat-val">3.75%</div>
-              <div class="rp-stat-lbl">BoE Base Rate (Feb 2026) — dovish trajectory</div>
+            <div
+              *ngFor="let stat of annexureData.executiveStats"
+              class="rp-stat-card"
+              [ngClass]="{
+                'rp-stat-green': stat.tone === 'green',
+                'rp-stat-blue': stat.tone === 'blue',
+                'rp-stat-purple': stat.tone === 'purple'
+              }">
+              <div class="rp-stat-val">{{stat.value}}</div>
+              <div class="rp-stat-lbl">{{stat.label}}</div>
             </div>
           </div>
           <div class="rp-annexure-body-note">
-            <p class="rp-annexure-body">Manchester City Centre (M1) continues to present one of the most compelling property investment opportunities in the United Kingdom. As the economic engine of the Northern Powerhouse, Manchester has consistently outperformed national averages across rental growth, capital appreciation, and investor demand.</p>
-            <p class="rp-annexure-body">With the Bank of England easing monetary policy through 2025 into 2026, borrowing costs have materially reduced, improving yield spreads and making leveraged returns more attractive. Savills projects the North West will see 28.8% cumulative growth by 2028, significantly outpacing the national average.</p>
-            <p class="rp-annexure-body">For NRI investors, the structural GBP appreciation against INR adds a currency tailwind. Over the past 12 months, GBP has appreciated 12.9% versus INR, and long-term trends favour continued sterling strength driven by interest rate differentials and trade balance dynamics.</p>
+            <p class="rp-annexure-body" *ngFor="let paragraph of annexureData.executiveParagraphs">{{paragraph}}</p>
           </div>
         </div>
 
@@ -458,21 +454,16 @@
               <div class="rp-ann-card-sub">MPC trajectory — current stance and forward guidance</div>
             </div>
             <div class="rp-ann-table-header">
-              <span class="rp-ann-col-lbl">Property Value</span>
+              <span class="rp-ann-col-lbl">Indicator</span>
               <span class="rp-ann-col-lbl">Value</span>
             </div>
             <div class="rp-ann-rows">
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">BoE Base Rate (Feb 2026)</span><span class="rp-ann-row-val rp-ann-green">3.75%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Peak Rate (Aug 2023–Jul 2024)</span><span class="rp-ann-row-val">5.25%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Total Cuts Since Peak</span><span class="rp-ann-row-val">150 bps</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">CPI Inflation (Dec 2025)</span><span class="rp-ann-row-val">3.4%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">BoE Inflation Target</span><span class="rp-ann-row-val">2.0%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">BoE CPI Forecast (Jun 2026)</span><span class="rp-ann-row-val">2.0%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Next MPC Meeting</span><span class="rp-ann-row-val">19 Mar 2026</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Probability of Mar Cut</span><span class="rp-ann-row-val rp-ann-green">~65–70%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Consensus Rate (End 2026)</span><span class="rp-ann-row-val">3.00–3.25%</span></div>
+              <div class="rp-ann-row" *ngFor="let row of annexureData.boeRows">
+                <span class="rp-ann-row-lbl">{{row.label}}</span>
+                <span class="rp-ann-row-val" [class.rp-ann-green]="row.highlight">{{row.value}}</span>
+              </div>
             </div>
-            <div class="rp-ann-note">HSBC forecasts the base rate falling to 3.00% by end-2026. Each 25bps reduction translates to ~£25/month savings per £100,000 of variable-rate BTL mortgage debt, directly improving net cashflow.</div>
+            <div class="rp-ann-note">{{annexureData.boeNote}}</div>
           </div>
 
           <!-- 3. UK Mortgage Market & BTL Costs -->
@@ -486,37 +477,24 @@
               <span class="rp-ann-col-lbl">Rate / Value</span>
             </div>
             <div class="rp-ann-rows">
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Avg. 2-Year Fixed BTL</span><span class="rp-ann-row-val rp-ann-green">4.70%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Avg. 5-Year Fixed BTL</span><span class="rp-ann-row-val">5.09%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Best 2-Year Fixed BTL</span><span class="rp-ann-row-val">2.20% + 7% fee</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Best 5-Year Fixed BTL</span><span class="rp-ann-row-val">3.44%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Avg. 2-Year Residential Fixed</span><span class="rp-ann-row-val">4.85%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">Avg. 5-Year Residential Fixed</span><span class="rp-ann-row-val">4.94%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">BTL Rate Change (2025)</span><span class="rp-ann-row-val rp-ann-green">5.48% → 4.70%</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">New BTL Mortgages (Autumn 2025)</span><span class="rp-ann-row-val rp-ann-green">+23% YoY</span></div>
-              <div class="rp-ann-row"><span class="rp-ann-row-lbl">BTL Companies Formed (2025)</span><span class="rp-ann-row-val rp-ann-green">66,587 (Record)</span></div>
+              <div class="rp-ann-row" *ngFor="let row of annexureData.mortgageRows">
+                <span class="rp-ann-row-lbl">{{row.label}}</span>
+                <span class="rp-ann-row-val" [class.rp-ann-green]="row.highlight">{{row.value}}</span>
+              </div>
             </div>
-            <div class="rp-ann-note">M1 gross yields of 6.5–6.8% vs BTL mortgage costs of 4.70–5.09% = net positive carry of 140–210 bps before expenses. The healthiest spread since the 2021 rate-hiking cycle began.</div>
+            <div class="rp-ann-note">{{annexureData.mortgageNote}}</div>
           </div>
 
         </div>
 
-        <!-- 4. Manchester Outlook -->
+        <!-- 4. City Outlook -->
         <div class="rp-annexure-section">
-          <div class="rp-annexure-section-title">4. Manchester City Centre (M1) — Local Market Outlook</div>
-          <p class="rp-annexure-section-sub">JLL identifies Manchester as the UK's second fastest-growing economy — 2.1% annual GDP growth forecast 2025–2028 vs 1.6% nationally</p>
+          <div class="rp-annexure-section-title">{{annexureData.outlookTitle}}</div>
+          <p class="rp-annexure-section-sub">{{annexureData.outlookSub}}</p>
           <div class="rp-outlook-grid">
-            <div class="rp-outlook-card">
-              <div class="rp-outlook-title">Price Growth</div>
-              <p class="rp-outlook-body">JLL: +4.0% in 2026, +5.0% in 2027, cumulative <strong class="rp-ol-hi">+19.3% by 2028</strong><br><br><span class="rp-ol-dim">Savills:</span> <strong class="rp-ol-hi">+28.8% cumulative</strong><span class="rp-ol-dim"> for North West — 5.5% in 2026, 6.5% in 2027</span></p>
-            </div>
-            <div class="rp-outlook-card">
-              <div class="rp-outlook-title">Rental Demand</div>
-              <p class="rp-outlook-body"><span class="rp-ol-dim">City centre expected to house </span><strong class="rp-ol-hi">100,000 residents by 2026</strong><span class="rp-ol-dim">, creating intense competition for rental stock<br><br>Rents rose </span><strong class="rp-ol-hi">+5.1%</strong><span class="rp-ol-dim"> past 12 months; 1-bed flats at </span><strong class="rp-ol-hi">£1,000–1,300/month</strong><span class="rp-ol-dim">, purchase prices £180k–250k</span></p>
-            </div>
-            <div class="rp-outlook-card">
-              <div class="rp-outlook-title">Affordability &amp; Regeneration</div>
-              <p class="rp-outlook-body"><span class="rp-ol-dim">Average price ~£252k — </span><strong class="rp-ol-hi">50% below London</strong><span class="rp-ol-dim">, rents 41% below London equivalents ensuring continued inward migration<br><br></span><strong class="rp-ol-hi">£10bn regeneration</strong><span class="rp-ol-dim">: Mayfield (£1.5bn), Victoria North (£4bn, 15,000 new homes), Old Trafford (£2bn) — historically drives 15–25% local price premiums</span></p>
+            <div class="rp-outlook-card" *ngFor="let card of annexureData.outlookCards">
+              <div class="rp-outlook-title">{{card.title}}</div>
+              <p class="rp-outlook-body" [innerHTML]="card.bodyHtml"></p>
             </div>
           </div>
         </div>
@@ -524,61 +502,31 @@
         <!-- 5. Catalysts -->
         <div class="rp-annexure-section">
           <div class="rp-annexure-section-title">5. Financial News</div>
-          <p class="rp-annexure-section-sub">Key macro and structural drivers supporting Manchester M1 investment in 2026</p>
+          <p class="rp-annexure-section-sub">{{annexureData.financialNewsSub}}</p>
           <div class="rp-cat-grid">
             <!-- Left column -->
             <div class="rp-cat-col">
-              <div class="rp-cat-card">
+              <div class="rp-cat-card" *ngFor="let card of annexureData.financialNewsLeft; let i = index">
                 <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-                  <div class="rp-cat-title">Interest Rate Tailwind</div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 0"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 1"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 2"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 3"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <div class="rp-cat-title">{{card.title}}</div>
                 </div>
-                <p class="rp-cat-body">A 1% rate reduction improves purchasing power by 10–12% in Manchester. Consensus expects 50–75bps further cuts in 2026, expanding buyer affordability and supporting price appreciation.</p>
-              </div>
-              <div class="rp-cat-card">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                  <div class="rp-cat-title">Northern Powerhouse Outperformance</div>
-                </div>
-                <p class="rp-cat-body">CBRE and Avison Young identify Manchester, Birmingham, and Leeds as the top three performing regional cities. Manchester leads with a 2.1% annual GDP growth forecast.</p>
-              </div>
-              <div class="rp-cat-card">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                  <div class="rp-cat-title">GBP Currency Strength</div>
-                </div>
-                <p class="rp-cat-body">GBP appreciated +12.9% vs INR over the past year. This currency tailwind compounds on top of property capital gains and rental income, significantly boosting total returns in home currency terms.</p>
-              </div>
-              <div class="rp-cat-card">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                  <div class="rp-cat-title">Victoria North Regeneration</div>
-                </div>
-                <p class="rp-cat-body">The £4bn Victoria North project is driving projected price surges of 25.8% by 2026 in adjacent postcodes. Early investors in regeneration zones have historically captured 150–250bps of yield premium.</p>
+                <p class="rp-cat-body">{{card.body}}</p>
               </div>
             </div>
             <!-- Right column -->
             <div class="rp-cat-col">
-              <div class="rp-cat-card">
+              <div class="rp-cat-card" *ngFor="let card of annexureData.financialNewsRight; let i = index">
                 <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                  <div class="rp-cat-title">Record BTL Company Formation</div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 0"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 1"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><line x1="9" y1="22" x2="9" y2="12"/><line x1="15" y1="12" x2="15" y2="22"/></svg></div>
+                  <div class="rp-cat-icon-box" *ngIf="i === 2"><svg width="31" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                  <div class="rp-cat-title">{{card.title}}</div>
                 </div>
-                <p class="rp-cat-body">66,587 BTL limited companies formed in 2025 — the highest ever recorded. Professional landlords are locking in corporate structures for tax efficiency, signalling long-term confidence.</p>
-              </div>
-              <div class="rp-cat-card">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><line x1="9" y1="22" x2="9" y2="12"/><line x1="15" y1="12" x2="15" y2="22"/></svg></div>
-                  <div class="rp-cat-title">Structural Housing Undersupply</div>
-                </div>
-                <p class="rp-cat-body">UK delivers ~230,000 homes p.a. against a 300,000 target. 1.35 million households on social housing waiting lists. New completions fell 19% YoY — underpinning sustained rental growth.</p>
-              </div>
-              <div class="rp-cat-card">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box"><svg width="31" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                  <div class="rp-cat-title">India Budget 2026 NRI Reforms</div>
-                </div>
-                <p class="rp-cat-body">Union Budget 2026 introduced higher equity investment limits for NRIs and simplified property transaction compliance, signalling an increasingly investor-friendly environment for cross-border capital flows.</p>
+                <p class="rp-cat-body">{{card.body}}</p>
               </div>
             </div>
           </div>
@@ -588,7 +536,7 @@
         <div class="rp-annexure-section rp-comp-section">
           <div class="rp-comp-header">
             <div class="rp-annexure-section-title">6. Regional Comparables</div>
-            <div class="rp-annexure-section-sub">UK city comparison for buy-to-let investment — 2026 outlook</div>
+            <div class="rp-annexure-section-sub">{{annexureData.comparablesSub}}</div>
           </div>
           <div class="rp-comp-table">
             <!-- Column headers -->
@@ -599,45 +547,26 @@
               <div class="rp-comp-col-hdr rp-comp-col-price">Avg. Price</div>
               <div class="rp-comp-col-hdr rp-comp-col-rating">BTL Rating</div>
             </div>
-            <!-- Row: Manchester -->
-            <div class="rp-comp-row">
-              <div class="rp-comp-cell rp-comp-col-city rp-comp-city--highlight">Manchester (M1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield rp-comp-val--green rp-comp-val--bold" data-label="Avg. Yield">6.6–6.8%</div>
-              <div class="rp-comp-cell rp-comp-col-growth rp-comp-val--bold" data-label="2026 Growth">+4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price rp-comp-val--bold" data-label="Avg. Price">£252k</div>
-              <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--green-outline">Strong Buy</span></div>
-            </div>
-            <!-- Row: Birmingham -->
-            <div class="rp-comp-row">
-              <div class="rp-comp-cell rp-comp-col-city">Birmingham (B1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">6.0–6.2%</div>
-              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+5.0–7.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£220k</div>
-              <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Strong Buy</span></div>
-            </div>
-            <!-- Row: Liverpool -->
-            <div class="rp-comp-row">
-              <div class="rp-comp-cell rp-comp-col-city">Liverpool (L1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">8.0–8.5%</div>
-              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+3.5%</div>
-              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£195k</div>
-              <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Buy</span></div>
-            </div>
-            <!-- Row: Leeds -->
-            <div class="rp-comp-row">
-              <div class="rp-comp-cell rp-comp-col-city">Leeds (LS1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">6.0–6.5%</div>
-              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£235k</div>
-              <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Buy</span></div>
-            </div>
-            <!-- Row: London -->
-            <div class="rp-comp-row rp-comp-row--last">
-              <div class="rp-comp-cell rp-comp-col-city">London (E1)</div>
-              <div class="rp-comp-cell rp-comp-col-yield" data-label="Avg. Yield">3.5–4.0%</div>
-              <div class="rp-comp-cell rp-comp-col-growth" data-label="2026 Growth">+2.0%</div>
-              <div class="rp-comp-cell rp-comp-col-price" data-label="Avg. Price">£520k</div>
-              <div class="rp-comp-cell rp-comp-col-rating"><span class="rp-comp-pill rp-comp-pill--dim">Hold</span></div>
+            <div
+              class="rp-comp-row"
+              *ngFor="let row of annexureData.comparables; let last = last"
+              [class.rp-comp-row--last]="last">
+              <div class="rp-comp-cell rp-comp-col-city" [class.rp-comp-city--highlight]="row.highlight || isComparableSelected(row.city)">{{row.city}}</div>
+              <div
+                class="rp-comp-cell rp-comp-col-yield"
+                [class.rp-comp-val--green]="row.highlight || isComparableSelected(row.city)"
+                [class.rp-comp-val--bold]="row.highlight || isComparableSelected(row.city)"
+                data-label="Avg. Yield">{{row.yield}}</div>
+              <div class="rp-comp-cell rp-comp-col-growth" [class.rp-comp-val--bold]="row.highlight || isComparableSelected(row.city)" data-label="2026 Growth">{{row.growth}}</div>
+              <div class="rp-comp-cell rp-comp-col-price" [class.rp-comp-val--bold]="row.highlight || isComparableSelected(row.city)" data-label="Avg. Price">{{row.price}}</div>
+              <div class="rp-comp-cell rp-comp-col-rating">
+                <span
+                  class="rp-comp-pill"
+                  [ngClass]="{
+                    'rp-comp-pill--green-outline': row.ratingTone === 'green',
+                    'rp-comp-pill--dim': row.ratingTone !== 'green'
+                  }">{{row.rating}}</span>
+              </div>
             </div>
           </div>
         </div>
