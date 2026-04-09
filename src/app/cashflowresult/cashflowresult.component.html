@@ -138,40 +138,8 @@
       <div class="rp-card__heading-block">
         <h2 class="rp-card__heading">Annual Net Cashflow</h2>
       </div>
-      <div class="rp-chart-area">
-        <!-- Y-axis labels -->
-        <div class="rp-y-axis">
-          <span>£25,000</span>
-          <span>£20,000</span>
-          <span>£15,000</span>
-          <span>£10,000</span>
-          <span>£5,000</span>
-          <span>£0</span>
-        </div>
-        <!-- Grid + bars -->
-        <div class="rp-chart-body">
-          <div class="rp-grid-lines">
-            <div class="rp-grid-line"></div>
-            <div class="rp-grid-line"></div>
-            <div class="rp-grid-line"></div>
-            <div class="rp-grid-line"></div>
-            <div class="rp-grid-line"></div>
-            <div class="rp-grid-line"></div>
-          </div>
-          <div class="rp-bars-row">
-            <ng-container *ngFor="let row of cashflowdata; let i = index">
-              <div class="rp-bar-col">
-                <div class="rp-bar-track">
-                  <div class="rp-bar"
-                    [style.height.px]="getBarHeight(row.CashFlow)"
-                    [style.background]="'#506E9C'">
-                  </div>
-                </div>
-                <div class="rp-bar-label">{{i + 1}}</div>
-              </div>
-            </ng-container>
-          </div>
-        </div>
+      <div class="rp-chart-canvas-wrap">
+        <canvas #cfBarChart></canvas>
       </div>
     </div>
 

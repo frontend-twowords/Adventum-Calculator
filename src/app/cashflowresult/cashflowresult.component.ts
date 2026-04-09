@@ -463,7 +463,7 @@ export class CashflowresultComponent implements OnInit, AfterViewInit {
     const ctx = this.cfBarChartRef.nativeElement.getContext('2d');
     const labels = this.cashflowdata.map((_: any, i: number) => 'Year ' + (i + 1));
     const values = this.cashflowdata.map((row: any) => row.CashFlow);
-    const backgroundColors = values.map((v: number) => v >= 0 ? 'rgba(34,197,94,0.85)' : 'rgba(248,113,113,0.85)');
+    const backgroundColors = values.map((v: number) => v >= 0 ? 'rgba(45,97,237,0.80)' : '#506E9C');
 
     new (Chart as any)(ctx, {
       type: 'bar',
@@ -490,8 +490,8 @@ export class CashflowresultComponent implements OnInit, AfterViewInit {
             boxWidth: 14,
             generateLabels: () => [{
               text: 'Net Cashflow (£)',
-              fillStyle: 'rgba(248,113,113,0.85)',
-              strokeStyle: 'rgba(248,113,113,0.85)',
+              fillStyle: 'rgba(45,97,237,0.80)',
+              strokeStyle: 'rgba(45,97,237,0.80)',
               lineWidth: 0,
               hidden: false,
               index: 0,
@@ -554,11 +554,6 @@ export class CashflowresultComponent implements OnInit, AfterViewInit {
     return Math.abs(value);
   }
 
-  getBarHeight(cashFlow: number): number {
-    const maxCashFlow = Math.max(...this.cashflowdata.map((r: any) => Math.abs(r.CashFlow)));
-    if (maxCashFlow === 0) return 4;
-    return Math.max(4, Math.round((Math.abs(cashFlow) / maxCashFlow) * 186));
-  }
   ReturnIRR(InitialInvestMent: number, index: number): number {
     let cashFlow = [];
     for (let i = 0; i <= index; i++) {
