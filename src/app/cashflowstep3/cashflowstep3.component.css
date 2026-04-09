@@ -88,8 +88,8 @@
 .step-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6em; letter-spacing: 0; color: #6b7280; margin-bottom: 24px; }
 
 /* 3-col fields row */
-.fields-row { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 18px; }
-.field-col { flex: 1 1 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fields-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 18px; }
+.field-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .field-lbl { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 500; line-height: 1.6em; letter-spacing: -0.02em; color: #132147; }
 .field-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; }
 

@@ -69,7 +69,7 @@ export class Cashflowstep4Component implements OnInit {
     // Pre-fill defaults based on location
     if (!this.loanOriginationFee && this.calcData.optmortgage !== '0') this.loanOriginationFee = '1%';
     if (!this.letteingManagFee) this.letteingManagFee = this.PropertyLondon == '1' ? '12%' : '10%';
-    if (!this.groundRent) this.groundRent = this.PropertyLondon == '1' ? '500' : '350';
+    if (!this.groundRent) this.groundRent = '0';
     if (!this.serviceCharges) this.serviceCharges = this.autoServiceCharge();
     if (!this.miscelleneousExpense) this.miscelleneousExpense = '1,000';
 

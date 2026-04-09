@@ -9,12 +9,17 @@
       </div>
       <div class="hero-card">
         <p class="hero-pre">Cashflow Calculator</p>
-        <h2 class="hero-title">Invest in <strong>{{City || 'Manchester'}}</strong>'s Future</h2>
+        <h2 class="hero-title" *ngIf="City">Invest in <strong>{{City}}</strong>'s Future</h2>
+        <h2 class="hero-title" *ngIf="!City">Select a <strong>City</strong> to Begin</h2>
         <p class="hero-body">The UK's fastest-growing property market with 6-8% yields and strong capital appreciation.</p>
         <div class="hero-stats">
           <div class="hstat"><div class="hstat-v">{{getHeroYield()}}</div><div class="hstat-l">Avg. Yield</div></div>
           <div class="hstat"><div class="hstat-v">{{getHeroGrowth()}}</div><div class="hstat-l">5yr Growth</div></div>
           <div class="hstat"><div class="hstat-v">{{City === 'Manchester' ? '#1' : City === 'Liverpool' ? '#2' : City === 'Birmingham' ? '#3' : 'UK'}}</div><div class="hstat-l">UK BTL City</div></div>
+        </div>
+        <div class="exrate-card" *ngIf="foreignbuyer==='1' && homecurrencyText && homecurrency">
+          <div class="exrate-lbl">Exchange Rate</div>
+          <div class="exrate-val">£1 = {{homecurrency}} {{homecurrencyText}}</div>
         </div>
       </div>
     </div>
@@ -25,9 +30,6 @@
     <div class="pr-inner">
       <!-- Topbar -->
       <div class="topbar">
-        <button (click)="router.navigate(['/'])" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; align-items: center;">
-          <img src="/assets/Frame 1000003040.svg" alt="Back" width="44" height="44">
-        </button>
         <div class="loc-pill">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           {{City || 'United Kingdom'}}
@@ -64,6 +66,33 @@
           <div class="toggle-pair">
             <button class="toggle-opt" [class.active]="foreignbuyer!=='1'" (click)="foreignbuyer='0'">UK Resident</button>
             <button class="toggle-opt" [class.active]="foreignbuyer==='1'" (click)="foreignbuyer='1'">Foreign Buyer</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Currency (foreign buyers only) -->
+      <div class="buyer-card" *ngIf="foreignbuyer==='1'">
+        <div class="buyer-card-title">Home Currency</div>
+        <div class="buyer-card-sub">Select your home currency to see returns converted</div>
+        <div class="custom-select-wrap" id="currencySelectWrap">
+          <button type="button" class="custom-select-btn" (click)="currencyDropdownOpen=!currencyDropdownOpen" [class.open]="currencyDropdownOpen">
+            <span class="custom-select-val" [class.placeholder]="!homecurrencyText">
+              {{homecurrencyText ? getCurrencyLabel(homecurrencyText) : 'Select currency'}}
+            </span>
+            <svg class="custom-select-chevron" [class.rotated]="currencyDropdownOpen" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="custom-dropdown" *ngIf="currencyDropdownOpen">
+            <div class="custom-dropdown-search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="text" class="custom-dropdown-input" placeholder="Search currency..." [(ngModel)]="currencySearch" autocomplete="off" (click)="$event.stopPropagation()">
+            </div>
+            <div class="custom-dropdown-list">
+              <div *ngFor="let c of getFilteredCurrencies()" class="custom-dropdown-item" [class.selected]="homecurrencyText === c.code" (click)="selectCurrency(c.code)">
+                <span class="cdd-name">{{c.name}}</span>
+                <span class="cdd-code">{{c.code}}</span>
+              </div>
+              <div class="custom-dropdown-empty" *ngIf="getFilteredCurrencies().length === 0">No currencies found</div>
+            </div>
           </div>
         </div>
       </div>
