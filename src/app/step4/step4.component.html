@@ -21,8 +21,8 @@
         <div class="panel-hero-sub">Factor in all upfront and ongoing expenses to see your true net returns.</div>
 
         <!-- Acquisition Costs block -->
-        <div class="summary-block">
-          <div class="summary-block-header">
+        <div class="summary-block" [class.sb-open]="acqOpen">
+          <div class="summary-block-header" (click)="acqOpen = !acqOpen">
             <div class="summary-block-icon">
               <img src="/assets/Frame 1000003035.svg" alt="" width="38" height="38">
             </div>
@@ -30,28 +30,31 @@
               <span class="summary-block-title">Acquisition Costs</span>
               <span class="summary-block-total">£{{acquisitionTotal || '—'}}</span>
             </div>
+            <svg class="sb-chevron" [class.rotated]="acqOpen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
           </div>
-          <div class="summary-row">
-            <span class="summary-row-label">Stamp Duty &amp; Land Tax</span>
-            <span class="summary-row-val">£{{stampDutyLandTax || '—'}}</span>
-          </div>
-          <div class="summary-row" *ngIf="calcData?.optmortgage!='0'">
-            <span class="summary-row-label">Processing Fee ({{loanOriginationFee || '0'}}%)</span>
-            <span class="summary-row-val">£{{processingFeeAmount || '0'}}</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-row-label">Legal/Solicitor Fees</span>
-            <span class="summary-row-val">£{{groundRent || '0'}}</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-row-label">Other Expenses</span>
-            <span class="summary-row-val">£{{miscelleneousExpense || '0'}}</span>
+          <div class="summary-rows-wrap">
+            <div class="summary-row">
+              <span class="summary-row-label">Stamp Duty &amp; Land Tax</span>
+              <span class="summary-row-val">£{{stampDutyLandTax || '—'}}</span>
+            </div>
+            <div class="summary-row" *ngIf="calcData?.optmortgage!='0'">
+              <span class="summary-row-label">Processing Fee ({{loanOriginationFee || '0'}}%)</span>
+              <span class="summary-row-val">£{{processingFeeAmount || '0'}}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-row-label">Legal/Solicitor Fees</span>
+              <span class="summary-row-val">£{{groundRent || '0'}}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-row-label">Other Expenses</span>
+              <span class="summary-row-val">£{{miscelleneousExpense || '0'}}</span>
+            </div>
           </div>
         </div>
 
         <!-- Annual Running Costs block -->
-        <div class="summary-block">
-          <div class="summary-block-header">
+        <div class="summary-block" [class.sb-open]="runningOpen">
+          <div class="summary-block-header" (click)="runningOpen = !runningOpen">
             <div class="summary-block-icon">
               <img src="/assets/Frame 1000003035 (1).svg" alt="" width="38" height="38">
             </div>
@@ -59,14 +62,17 @@
               <span class="summary-block-title">Annual Running Costs</span>
               <span class="summary-block-total">~£{{runningCostTotal || '—'}}/yr</span>
             </div>
+            <svg class="sb-chevron" [class.rotated]="runningOpen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
           </div>
-          <div class="summary-row" *ngIf="letteingManagFee!=''">
-            <span class="summary-row-label">Lettings Fee</span>
-            <span class="summary-row-val">{{letteingManagFee}}% of rent</span>
-          </div>
-          <div class="summary-row" *ngIf="serviceCharges!=''">
-            <span class="summary-row-label">Service Charges</span>
-            <span class="summary-row-val">£{{serviceCharges}}</span>
+          <div class="summary-rows-wrap">
+            <div class="summary-row" *ngIf="letteingManagFee!=''">
+              <span class="summary-row-label">Lettings Fee</span>
+              <span class="summary-row-val">{{letteingManagFee}}% of rent</span>
+            </div>
+            <div class="summary-row" *ngIf="serviceCharges!=''">
+              <span class="summary-row-label">Service Charges</span>
+              <span class="summary-row-val">£{{serviceCharges}}</span>
+            </div>
           </div>
         </div>
 

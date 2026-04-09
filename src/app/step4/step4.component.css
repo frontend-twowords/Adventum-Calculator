@@ -377,27 +377,56 @@
 
 /* ── Responsive: mobile/stacked ── */
 @media (max-width: 900px) {
-  .costs-page { display: block; }
-  .panel-left { position: fixed; top: 0; left: 0; right: 0; height: 30vh; min-height: 0; z-index: 10; overflow: hidden; }
+  :host { display: block; height: 100vh; overflow: hidden; }
+  .costs-page { display: flex; flex-direction: column; height: 100vh; overflow-y: auto; overflow-x: hidden; }
+
+  /* Left panel: sticky inside the scrolling .costs-page */
+  .panel-left { position: sticky; top: 0; left: 0; right: 0; width: 100%; height: auto; min-height: 0; z-index: 10; overflow: visible; flex-shrink: 0; }
   .panel-left-content {
-    height: 100%; padding: 16px; overflow: hidden;
-    display: flex; flex-direction: column; justify-content: space-between;
+    height: auto; min-height: 0; padding: 12px 14px; overflow: visible;
+    display: flex; flex-direction: column; justify-content: flex-start; gap: 8px;
   }
-  .panel-logo { display: flex; flex-shrink: 0; }
+  .panel-logo { flex-shrink: 0; }
   .panel-logo-img { height: 22px; }
-  .panel-hero-card { margin-top: 0; margin-bottom: 0; padding: 8px 10px; gap: 8px; }
+  .panel-hero-card { margin-top: 0; margin-bottom: 0; padding: 8px 10px; gap: 6px; }
   .panel-hero-title { font-size: 12px; line-height: 1.3; }
   .panel-hero-sub { display: none; }
-  .summary-block { padding: 8px 10px; gap: 6px; }
-  .summary-block-header { gap: 8px; }
+
+  /* Summary blocks: collapsed by default on mobile */
+  .summary-block { padding: 8px 10px; gap: 0; }
+  .summary-block-header { gap: 8px; cursor: pointer; user-select: none; }
   .summary-block-icon { display: none; }
   .summary-block-title { font-size: 10px; }
   .summary-block-total { font-size: 12px; }
-  .summary-row { font-size: 10px; padding: 2px 0; }
+
+  /* Chevron: visible only on mobile */
+  .sb-chevron { display: block; color: rgba(255,255,255,0.6); flex-shrink: 0; transition: transform 0.25s ease; }
+  .sb-chevron.rotated { transform: rotate(180deg); }
+
+  /* Rows wrap: hidden by default, shown when open */
+  .summary-rows-wrap { display: none; }
+  .summary-block.sb-open .summary-rows-wrap { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+  .summary-row { padding: 2px 0; }
+  .summary-row-label { font-size: 10px; }
   .summary-row-val { font-size: 10px; }
-  .panel-right { position: fixed; top: 30vh; left: 0; right: 0; bottom: 0; height: auto; overflow-y: auto; }
-  .panel-right-inner { padding: 16px 16px 56px; min-height: 100%; display: flex; flex-direction: column; }
+
+  /* Year 1 banner: compact */
+  .year1-banner { padding: 8px 10px; gap: 2px; }
+  .year1-label { font-size: 10px; }
+  .year1-val { font-size: 1.1rem; }
+  .year1-note { font-size: 10px; }
+
+  /* Right panel: normal flow below sticky left panel */
+  .panel-right { position: relative; top: 0; left: 0; right: 0; bottom: 0; height: auto; overflow-y: visible; flex: 1; }
+  .panel-right-inner { padding: 16px 16px 80px; min-height: 0; display: flex; flex-direction: column; }
   .panel-nav { grid-template-columns: 1fr 1fr; margin-top: auto; padding-top: 16px; }
+}
+
+/* Desktop: always show rows, hide chevron */
+@media (min-width: 901px) {
+  .summary-rows-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .sb-chevron { display: none; }
+  .summary-block-header { cursor: default; }
 }
 
 @media (max-width: 810px) {

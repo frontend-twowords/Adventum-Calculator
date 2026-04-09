@@ -32,6 +32,10 @@ export class Step4Component implements OnInit {
   runningCostTotal: string = "";
   year1Total: string = "";
 
+  // Mobile accordion state
+  acqOpen = false;
+  runningOpen = false;
+
   constructor(
     private router: Router,
     private dataService: DataService,
