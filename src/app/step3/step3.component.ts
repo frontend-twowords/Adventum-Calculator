@@ -202,6 +202,7 @@ export class Step3Component implements OnInit {
 
     // Pre-fill defaults if not already set
     if(!this.rentalYeild) this.rentalYeild = this.PropertyLondon == 1 ? '4.5%' : '6.2%';
+    if(!this.rentalGrowthEscalation) this.rentalGrowthEscalation = '3%';
     if(!this.capitalgrowth) this.capitalgrowth = this.PropertyLondon == 1 ? '4.0%' : '4.8%';
     if(!this.fxgrowth) this.fxgrowth = '4.0%';
 
