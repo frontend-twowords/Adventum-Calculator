@@ -112,7 +112,7 @@
 
 /* Base KPI card */
 .rp-kpi {
-  height: 120px;
+  height: 148px;
   padding: 0;
   border-radius: 10px;
   overflow: hidden;
@@ -139,8 +139,8 @@
 
 /* Image container — full card height, square */
 .rp-kpi-img-wrap {
-  width: 90px;
-  height: 120px;
+  width: 148px;
+  height: 148px;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
@@ -178,13 +178,15 @@
   z-index: 1;
 }
 
-/* Images — fill container */
+/* Images — uniform contained size */
 .rp-kpi-img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  padding: 16px;
+  box-sizing: border-box;
 }
 .rp-kpi-img--206 { }
 .rp-kpi-img--194 { }
@@ -196,26 +198,25 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
   min-width: 0;
-  padding: 16px 14px;
+  padding: 16px;
 }
 .rp-kpi-text-col--wealth {
   justify-content: center;
-  gap: 4px;
-  padding: 16px 14px;
+  gap: 6px;
+  padding: 16px;
 }
 
 /* Labels */
 .rp-kpi-lbl {
-  font-size: 12px;
+  font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 500;
   color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.6em;
-  margin-bottom: 2px;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
 /* Values */
@@ -225,18 +226,18 @@
   color: #ffffff;
   line-height: 1.1;
 }
-.rp-kpi-val--64 { font-size: clamp(1.4rem, 1.4vw, 1.8rem); font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
-.rp-kpi-val--48 { font-size: clamp(1.2rem, 1.2vw, 1.5rem); font-weight: 700; line-height: 1.4em; letter-spacing: 0; }
+.rp-kpi-val--64 { font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 700; line-height: 1.3; letter-spacing: 0; }
+.rp-kpi-val--48 { font-size: clamp(1.3rem, 1.8vw, 1.75rem); font-weight: 700; line-height: 1.3; letter-spacing: 0; }
 .rp-kpi-val--blue { color: #DAE3FD; }
 
 /* Notes */
-.rp-kpi-note { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.4; }
+.rp-kpi-note { font-size: clamp(12px, 0.95vw, 14px); color: rgba(255,255,255,0.45); line-height: 1.4; }
 .rp-kpi-note--lg {
-  font-size: 12px;
+  font-size: clamp(12px, 0.95vw, 14px);
   font-weight: 400;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6em;
-  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+  letter-spacing: 0;
 }
 .rp-kpi-green { color: #24B14B; }
 
@@ -351,14 +352,44 @@
   line-height: 1.6em;
   letter-spacing: -0.02em;
 }
+.rp-donut-pair {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.rp-donut-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.rp-donut-col-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+.rp-donut-col-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.50);
+  text-align: center;
+  margin-bottom: 4px;
+}
 .rp-donut-chart-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .rp-donut-chart-wrap canvas {
-  max-width: 340px !important;
-  max-height: 340px !important;
+  max-width: 400px !important;
+  max-height: 400px !important;
 }
 
 /* ── JOURNEY STACKED BAR ── */
@@ -416,7 +447,7 @@
 }
 .rp-journey-grid-row {
   display: grid;
-  grid-template-columns: 260px 86px 170px;
+  grid-template-columns: 1fr 86px 1fr;
   column-gap: 12px;
   align-items: center;
 }
@@ -461,12 +492,12 @@
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
 }
-.rp-journey-pill--exit { background: rgba(255,255,255,0.42); }
-.rp-journey-pill--profit { background: rgba(255,255,255,0.30); }
-.rp-journey-pill--fx { background: rgba(45,97,237,0.78); }
-.rp-journey-pill--capital { background: rgba(80,110,156,0.88); }
-.rp-journey-pill--rental { background: rgba(255,255,255,0.24); }
-.rp-journey-pill--initial { background: rgba(255,255,255,0.16); }
+.rp-journey-pill--exit    { background: #132147; }
+.rp-journey-pill--profit  { background: #1F3058; }
+.rp-journey-pill--fx      { background: #2B4069; }
+.rp-journey-pill--capital { background: #384F7A; }
+.rp-journey-pill--rental  { background: #445F8B; }
+.rp-journey-pill--initial { background: #506E9C; }
 
 /* ── LINE CHART ── */
 .rp-chart-wrap { height: 240px; position: relative; }
@@ -1247,6 +1278,18 @@
 .rp-rating-blue   { background: rgba(59,130,246,0.15); color: #6b9fd4; }
 .rp-rating-grey   { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
 
+/* ── LARGE SCREENS (1440px+) ── */
+@media (min-width: 1440px) {
+  .rp-journey-performance { min-height: 680px; }
+  .rp-journey-row { font-size: 20px; }
+  .rp-journey-val-row { font-size: 20px; }
+  .rp-journey-val-row--exit { font-size: 24px; }
+  .rp-donut-chart-wrap canvas { max-width: 560px !important; max-height: 560px !important; }
+  .rp-donut-pair { gap: 48px; }
+  .rp-donut-title { font-size: 1.8rem; }
+  .rp-donut-lbl { font-size: 15px; }
+}
+
 /* ── PRINT ── */
 @media print {
   .noprint { display: none !important; }
@@ -1278,6 +1321,10 @@
   .rp-card-bench-header p { font-size: 14px; }
 }
 @media (max-width: 810px) {
+  .rp-donut-pair { flex-direction: column; align-items: stretch; gap: 0; }
+  .rp-donut-col { width: 100%; align-items: center; }
+  .rp-donut-chart-wrap { width: 100%; }
+  .rp-donut-chart-wrap canvas { max-width: 100% !important; max-height: 100vw !important; width: 100% !important; }
   .rp-header { padding: 16px 16px 0; }
   .rp-body { padding: 0 12px 80px; }
   .rp-kpi-row { grid-template-columns: 1fr; padding: 0 12px 20px; gap: 16px; }
@@ -1308,7 +1355,7 @@
     padding: 0 4px;
   }
   .rp-journey-grid-row {
-    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+    grid-template-columns: 1fr 44px 1fr;
     column-gap: 8px;
   }
   .rp-journey-row {
@@ -1420,17 +1467,17 @@
   .rp-journey-chart-wrap { height: 220px; }
   .rp-journey-legend-item { flex-wrap: wrap; }
   .rp-journey-performance {
-    min-height: 300px;
+    min-height: 560px;
     width: 100%;
     padding: 0 4px;
   }
   .rp-journey-grid-row {
-    grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
-    column-gap: 6px;
+    grid-template-columns: 1fr 54px 1fr;
+    column-gap: 8px;
   }
-  .rp-journey-row { font-size: 11px; }
-  .rp-journey-val-row { font-size: 11px; }
-  .rp-journey-val-row--exit { font-size: 12px; }
+  .rp-journey-row { font-size: 13px; }
+  .rp-journey-val-row { font-size: 13px; }
+  .rp-journey-val-row--exit { font-size: 15px; }
   .rp-journey-pill--first { border-top-left-radius: 12px; border-top-right-radius: 12px; }
   .rp-journey-pill--last { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; }
   .rp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }

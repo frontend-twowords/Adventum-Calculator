@@ -87,22 +87,34 @@
   <!-- ── SCROLLABLE BODY ── -->
   <div class="rp-body">
 
-    <!-- Section 1a: Returns Breakdown (donut) — full width -->
+    <!-- Section 1a: Returns Breakdown (donut) — two side-by-side charts -->
     <div class="rp-section">
       <div class="rp-card rp-donut-card">
         <div class="rp-donut-header">
-          <div class="rp-donut-title">Where Your Returns Come From</div>
-          <div class="rp-donut-sub">Breakdown of {{formatCurrency(TotalReturnOfInvestment, homecurrencyText)}} total profit</div>
+          <div class="rp-donut-title"><h3>Where Your Returns Come From</h3></div>
         </div>
+        <!-- Shared legend -->
         <div class="rp-donut-legend">
           <div class="rp-donut-legend-row">
-            <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:#506E9C"></span><span class="rp-donut-lbl">Capital Growth</span></div>
-            <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:linear-gradient(315deg,rgba(45,97,237,0.80),rgba(16,24,43,0.90))"></span><span class="rp-donut-lbl">FX Appreciation</span></div>
+            <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:#132147"></span><span class="rp-donut-lbl">Capital Growth</span></div>
+            <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:#2B4069"></span><span class="rp-donut-lbl">FX Appreciation</span></div>
           </div>
-          <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:rgba(255,255,255,0.15)"></span><span class="rp-donut-lbl">Net Rental Income</span></div>
+          <div class="rp-donut-legend-item"><span class="rp-donut-dot" style="background:#445F8B"></span><span class="rp-donut-lbl">Net Rental Income</span></div>
         </div>
-        <div class="rp-donut-chart-wrap">
-          <canvas id="can" width="270" height="270"></canvas>
+        <!-- Two donut charts side by side -->
+        <div class="rp-donut-pair">
+          <!-- Home currency chart -->
+          <div class="rp-donut-col">
+            <div class="rp-donut-chart-wrap">
+              <canvas id="can" width="400" height="400"></canvas>
+            </div>
+          </div>
+          <!-- GBP chart -->
+          <div class="rp-donut-col">
+            <div class="rp-donut-chart-wrap">
+              <canvas id="can-gbp" width="400" height="400"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -154,7 +166,7 @@
       <div class="rp-card">
         <div class="rp-card-bench-header">
           <div>
-            <h3>How Does This Compare?</h3>
+            <h3>How Does This Investment Compare?</h3>
             <p>Your {{homecurrencyText}} IRR vs common investment alternatives</p>
           </div>
           <span class="rp-bench-pill">annualised returns, {{calcData?.investedTenure}}-year horizon</span>
@@ -171,10 +183,10 @@
           <!-- India benchmarks -->
           <ng-container *ngIf="homecurrencyText === 'INR'">
             <div class="bench-row">
-              <span class="bench-row-label">Nifty 50 (10yr avg)</span>
+              <span class="bench-row-label">BSE Sensex (10yr avg)</span>
               <div class="bench-bar-bg">
-                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (12.1 / benchMax * 100) : 77">
-                  <span>12.1%</span>
+                <div class="bench-bar" [style.width.%]="benchMax > 0 ? (12.4 / benchMax * 100) : 77">
+                  <span>12.4%</span>
                 </div>
               </div>
             </div>

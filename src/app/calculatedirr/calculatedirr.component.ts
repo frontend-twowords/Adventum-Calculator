@@ -44,6 +44,9 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
   benchMax = 20;
   capitalAppreciation = 0;
   graphInitialInvestmentInHomeCurrency = 0;
+  RentalIncomeGBP = 0;
+  capitalAppreciationGBP = 0;
+  TotalReturnInGBP = 0;
   homecurrencyText: string;
   loadingPrintbtn = false;
   loadingDownloadbtn = false;
@@ -295,18 +298,90 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     // });
 
 
+    // Plugin: center text + outer callout lines with percentages
+    const doughnutPlugin = {
+      afterDraw: function(chart: any) {
+        if (chart.config.type !== 'doughnut') return;
+        const ctx2 = chart.ctx;
+        const opts = chart.config.options;
+        const cx = (chart.chartArea.left + chart.chartArea.right) / 2;
+        const cy = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+        // Scale fonts proportionally with chart area (baseline: 240px chart area)
+        const chartW = chart.chartArea.right - chart.chartArea.left;
+        const scale = Math.max(chartW / 240, 1);
+        const labelSize = Math.round(12 * scale);
+        const valueSize = Math.round(24 * scale);
+        const gap = Math.round(20 * scale);
+        ctx2.save();
+        ctx2.textAlign = 'center';
+        ctx2.textBaseline = 'middle';
+        // "Total Profit" label
+        ctx2.font = `400 ${labelSize}px Inter, sans-serif`;
+        ctx2.fillStyle = 'rgba(255,255,255,0.55)';
+        ctx2.fillText(opts.centerLabel || 'Total Profit', cx, cy - gap);
+        // Value
+        ctx2.font = `bold ${valueSize}px Inter, sans-serif`;
+        ctx2.fillStyle = '#ffffff';
+        ctx2.fillText(opts.centerValue || '', cx, cy + Math.round(gap * 0.2));
+        // Currency
+        ctx2.font = `400 ${labelSize}px Inter, sans-serif`;
+        ctx2.fillStyle = 'rgba(255,255,255,0.55)';
+        ctx2.fillText(opts.centerCurrency || '', cx, cy + Math.round(gap * 1.3));
+        ctx2.restore();
+      },
+      afterDatasetsDraw: function(chart: any) {
+        if (chart.config.type !== 'doughnut') return;
+        const ctx2 = chart.ctx;
+        const chartW = chart.chartArea.right - chart.chartArea.left;
+        const scale = Math.max(chartW / 240, 1);
+        const pctSize = Math.round(12 * scale);
+        chart.data.datasets.forEach(function(dataset: any, i: number) {
+          const meta = chart.getDatasetMeta(i);
+          if (meta.hidden) return;
+          const total = dataset.data.reduce((a: number, v: number) => a + v, 0);
+          meta.data.forEach(function(arc: any, index: number) {
+            const val = dataset.data[index];
+            if (!val || total === 0 || (val / total) < 0.04) return;
+            const pct = ((val / total) * 100).toFixed(1) + '%';
+            const model = arc._model || arc;
+            const midAngle = model.startAngle + (model.endAngle - model.startAngle) / 2;
+            const outerR = model.outerRadius;
+            const cosA = Math.cos(midAngle);
+            const sinA = Math.sin(midAngle);
+            const x1 = model.x + cosA * outerR;
+            const y1 = model.y + sinA * outerR;
+            const x2 = model.x + cosA * (outerR + 12);
+            const y2 = model.y + sinA * (outerR + 12);
+            const tickLen = 10;
+            const x3 = x2 + (cosA >= 0 ? tickLen : -tickLen);
+            const y3 = y2;
+            ctx2.save();
+            ctx2.strokeStyle = 'rgba(255,255,255,0.35)';
+            ctx2.lineWidth = 1;
+            ctx2.beginPath();
+            ctx2.moveTo(x1, y1);
+            ctx2.lineTo(x2, y2);
+            ctx2.lineTo(x3, y3);
+            ctx2.stroke();
+            ctx2.font = `600 ${pctSize}px Inter, sans-serif`;
+            ctx2.fillStyle = '#ffffff';
+            ctx2.textAlign = cosA >= 0 ? 'left' : 'right';
+            ctx2.textBaseline = 'middle';
+            ctx2.fillText(pct, x3 + (cosA >= 0 ? 5 : -5), y3);
+            ctx2.restore();
+          });
+        });
+      }
+    };
+
     const ctxpie = $('#can')[0].getContext('2d');
     const fxGrowth = this.TotalReturnOfInvestment - this.RentalIncome - this.capitalAppreciation;
-    // FX Appreciation gradient: 315deg rgba(45,97,237,0.60) → rgba(16,24,43,0.60) with rgba(255,255,255,0.30) overlay
-    const fxGrad = ctxpie.createLinearGradient(270, 0, 0, 270);
-    fxGrad.addColorStop(0, 'rgba(45,97,237,0.80)');
-    fxGrad.addColorStop(1, 'rgba(16,24,43,0.90)');
     var myPieChart = new Chart(ctxpie, {
       type: 'doughnut',
       data: {
         labels: ['Net Rental Income', 'FX Appreciation', 'Capital Growth'],
         datasets: [{
-          backgroundColor: ['rgba(255,255,255,0.15)', fxGrad, '#506E9C'],
+          backgroundColor: ['#445F8B', '#2B4069', '#132147'],
           borderColor: 'transparent',
           borderWidth: 0,
           data: [
@@ -316,10 +391,15 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
           ]
         }]
       },
+      plugins: [doughnutPlugin],
       options: {
         responsive: true,
         maintainAspectRatio: true,
         cutoutPercentage: 65,
+        centerLabel: 'Total Profit',
+        centerValue: this.formatCurrency(this.TotalReturnOfInvestment, this.homecurrencyText),
+        centerCurrency: this.homecurrencyText,
+        layout: { padding: { top: 70, right: 70, bottom: 70, left: 110 } },
         legend: { display: false },
         tooltips: {
           backgroundColor: '#132147',
@@ -338,7 +418,54 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
           }
         }
       }
-    });
+    } as any);
+
+    // GBP donut chart
+    const ctxpieGBP = $('#can-gbp')[0] ? $('#can-gbp')[0].getContext('2d') : null;
+    if (ctxpieGBP) {
+      new Chart(ctxpieGBP, {
+        type: 'doughnut',
+        data: {
+          labels: ['Net Rental Income', 'Capital Growth'],
+          datasets: [{
+            backgroundColor: ['#445F8B', '#132147'],
+            borderColor: 'transparent',
+            borderWidth: 0,
+            data: [
+              Math.max(this.RentalIncomeGBP, 0),
+              Math.max(this.capitalAppreciationGBP, 0)
+            ]
+          }]
+        },
+        plugins: [doughnutPlugin],
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          cutoutPercentage: 65,
+          centerLabel: 'Total Profit',
+          centerValue: this.formatCurrency(this.TotalReturnInGBP, 'GBP'),
+          centerCurrency: 'GBP',
+          layout: { padding: { top: 70, right: 70, bottom: 70, left: 110 } },
+          legend: { display: false },
+          tooltips: {
+            backgroundColor: '#132147',
+            titleFontColor: '#fff',
+            bodyFontColor: 'rgba(255,255,255,0.7)',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1,
+            callbacks: {
+              label: function(tooltipItem: any, data: any) {
+                const dataset = data.datasets[tooltipItem.datasetIndex];
+                const total = dataset.data.reduce((acc: number, val: number) => acc + val, 0);
+                const current = dataset.data[tooltipItem.index];
+                const pct = total > 0 ? ((current / total) * 100).toFixed(1) : '0.0';
+                return ' ' + data.labels[tooltipItem.index] + ': ' + pct + '%';
+              }
+            }
+          }
+        }
+      } as any);
+    }
 
 
     // Investment Journey chart (kept for backward compatibility if canvas exists)
@@ -511,7 +638,11 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
     this.capitalAppreciation = parseFloat(((this.EquityCapital+ InitialInvesment)*this.calcData.homecurrency).toFixed(4));
     this.graphInitialInvestmentInHomeCurrency = InitialInvesmentInHomeCurrency;
     //console.log(this.allCashFlowInHomeCurrency);
-    this.TotalReturnOfInvestment = parseFloat((this.allCashFlowInHomeCurrency.reduce((a, b) => a + b, 0)).toFixed(4));// Math.abs(parseFloat((this.allCashFlowInHomeCurrency.reduce((a, b) => a + b, 0)).toFixed(4)));
+    this.TotalReturnOfInvestment = parseFloat((this.allCashFlowInHomeCurrency.reduce((a, b) => a + b, 0)).toFixed(4));
+    // GBP equivalents (no FX component in GBP)
+    this.RentalIncomeGBP = parseFloat((this.RentalIncome / this.Initialhomecurrency).toFixed(4));
+    this.capitalAppreciationGBP = parseFloat((this.EquityCapital + InitialInvesment).toFixed(4));
+    this.TotalReturnInGBP = parseFloat((this.RentalIncomeGBP + this.capitalAppreciationGBP).toFixed(4));// Math.abs(parseFloat((this.allCashFlowInHomeCurrency.reduce((a, b) => a + b, 0)).toFixed(4)));
    // console.log(this.TotalReturnOfInvestment);
     const absInitialHC = Math.abs(InitialInvesmentInHomeCurrency);
     this.wealthMultiple = absInitialHC > 0 ? parseFloat(((absInitialHC + this.TotalReturnOfInvestment) / absInitialHC).toFixed(2)) : 0;
