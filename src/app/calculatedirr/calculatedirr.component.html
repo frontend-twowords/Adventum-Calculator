@@ -436,7 +436,7 @@
 
         <!-- 1. Executive Summary -->
         <div class="rp-annexure-section">
-          <div class="rp-annexure-section-title">1. Executive Summary</div>
+          <div class="rp-annexure-section-title"><h3>1. Executive Summary</h3></div>
           <p class="rp-annexure-section-sub">Key market indicators at a glance</p>
           <div class="rp-stat-grid">
             <div
@@ -462,7 +462,7 @@
           <!-- 2. Bank of England Base Rate Analysis -->
           <div class="rp-ann-card">
             <div class="rp-ann-card-header">
-              <div class="rp-ann-card-title">2. Bank of England Base Rate Analysis</div>
+              <div class="rp-ann-card-title"><h3>2. Bank of England Base Rate Analysis</h3></div>
               <div class="rp-ann-card-sub">MPC trajectory — current stance and forward guidance</div>
             </div>
             <div class="rp-ann-table-header">
@@ -481,7 +481,7 @@
           <!-- 3. UK Mortgage Market & BTL Costs -->
           <div class="rp-ann-card">
             <div class="rp-ann-card-header">
-              <div class="rp-ann-card-title">3. UK Mortgage Market &amp; BTL Costs</div>
+              <div class="rp-ann-card-title"><h3>3. UK Mortgage Market &amp; BTL Costs</h3></div>
               <div class="rp-ann-card-sub">Current buy-to-let rates and market activity</div>
             </div>
             <div class="rp-ann-table-header">
@@ -501,7 +501,7 @@
 
         <!-- 4. City Outlook -->
         <div class="rp-annexure-section">
-          <div class="rp-annexure-section-title">{{annexureData.outlookTitle}}</div>
+          <div class="rp-annexure-section-title"><h3>{{annexureData.outlookTitle}}</h3></div>
           <p class="rp-annexure-section-sub">{{annexureData.outlookSub}}</p>
           <div class="rp-outlook-grid">
             <div class="rp-outlook-card" *ngFor="let card of annexureData.outlookCards">
@@ -513,41 +513,26 @@
 
         <!-- 5. Catalysts -->
         <div class="rp-annexure-section">
-          <div class="rp-annexure-section-title">5. Financial News</div>
+          <div class="rp-annexure-section-title"><h3>5. Financial News</h3></div>
           <p class="rp-annexure-section-sub">{{annexureData.financialNewsSub}}</p>
           <div class="rp-cat-grid">
-            <!-- Left column -->
-            <div class="rp-cat-col">
-              <div class="rp-cat-card" *ngFor="let card of annexureData.financialNewsLeft; let i = index">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box" *ngIf="i === 0"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-                  <div class="rp-cat-icon-box" *ngIf="i === 1"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                  <div class="rp-cat-icon-box" *ngIf="i === 2"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                  <div class="rp-cat-icon-box" *ngIf="i === 3"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                  <div class="rp-cat-title">{{card.title}}</div>
-                </div>
+            <ng-container *ngFor="let card of annexureData.financialNewsLeft; let i = index">
+              <div class="rp-cat-card">
+                <div class="rp-cat-title">{{card.title}}</div>
                 <p class="rp-cat-body">{{card.body}}</p>
               </div>
-            </div>
-            <!-- Right column -->
-            <div class="rp-cat-col">
-              <div class="rp-cat-card" *ngFor="let card of annexureData.financialNewsRight; let i = index">
-                <div class="rp-cat-header">
-                  <div class="rp-cat-icon-box" *ngIf="i === 0"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.80)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                  <div class="rp-cat-icon-box" *ngIf="i === 1"><svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><line x1="9" y1="22" x2="9" y2="12"/><line x1="15" y1="12" x2="15" y2="22"/></svg></div>
-                  <div class="rp-cat-icon-box" *ngIf="i === 2"><svg width="31" height="33" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.60)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                  <div class="rp-cat-title">{{card.title}}</div>
-                </div>
-                <p class="rp-cat-body">{{card.body}}</p>
+              <div class="rp-cat-card" *ngIf="annexureData.financialNewsRight[i]">
+                <div class="rp-cat-title">{{annexureData.financialNewsRight[i].title}}</div>
+                <p class="rp-cat-body">{{annexureData.financialNewsRight[i].body}}</p>
               </div>
-            </div>
+            </ng-container>
           </div>
         </div>
 
         <!-- 6. Regional Comparables -->
         <div class="rp-annexure-section rp-comp-section">
           <div class="rp-comp-header">
-            <div class="rp-annexure-section-title">6. Regional Comparables</div>
+            <div class="rp-annexure-section-title"><h3>6. Regional Comparables</h3></div>
             <div class="rp-annexure-section-sub">{{annexureData.comparablesSub}}</div>
           </div>
           <div class="rp-comp-table">
@@ -586,7 +571,7 @@
         <!-- Annexure Disclaimer -->
         <div class="rp-annexure-disclaimer">
           <div class="rp-ann-disclaimer-title">Disclaimer</div>
-          <div class="rp-ann-disclaimer-body">This annexure has been prepared by Adventum Capital for informational purposes only and does not constitute investment advice, a personal recommendation, or an offer or solicitation to buy or sell any property or financial instrument. Past performance is not indicative of future results. Property values and rental income may go down as well as up. Investors should conduct their own due diligence and seek independent financial, legal, and tax advice before making any investment decisions. Data sourced from Bank of England, UK Finance, ONS, JLL, Savills, CBRE, Avison Young, and Moneyfacts as of February 2026.</div>
+          <div class="rp-ann-disclaimer-body">This annexure has been prepared by Adventum for informational purposes only and does not constitute investment advice, a personal recommendation, or an offer or solicitation to buy or sell any property or financial instrument. Past performance is not indicative of future results. Property values and rental income may go down as well as up. Investors should conduct their own due diligence and seek independent financial, legal, and tax advice before making any investment decisions. Data sourced from Bank of England, UK Finance, ONS, JLL, Savills, CBRE, Avison Young, and Moneyfacts as of February 2026.</div>
         </div>
       </div>
     </div>

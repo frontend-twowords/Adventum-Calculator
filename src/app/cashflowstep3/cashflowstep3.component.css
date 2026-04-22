@@ -1,4 +1,4 @@
-/* CASHFLOW STEP 3 */
+﻿/* CASHFLOW STEP 3 */
 :host { display: block; }
 
 .cf-page {
@@ -50,9 +50,9 @@
   padding: 28px;
   margin-top: auto;
 }
-.cf-card-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.5rem; font-weight: 300; line-height: 1.4em; color: #fff; margin-bottom: 4px; }
-.cf-card-title strong { font-weight: 700; }
-.cf-card-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+h3.cf-card-title { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 1.5rem; font-weight: 400; line-height: 1.4em; color: #fff; margin-bottom: 4px; }
+h3.cf-card-title strong { font-weight: 400; }
+.cf-card-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
 .cf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .cfs { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; }
 .cfs.acc { background: rgba(34,197,94,0.08); border-color: rgba(34,197,94,0.15); }
@@ -80,7 +80,7 @@
 .loc-pill {
   display: flex; align-items: center; gap: 6px;
   border: 1.5px solid #e5e7eb; border-radius: 50px;
-  padding: 8px 16px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #132147;
+  padding: 8px 16px; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #132147;
 }
 
 /* Headings */
@@ -90,7 +90,7 @@
 /* 3-col fields row */
 .fields-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 18px; }
 .field-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.field-lbl { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 500; line-height: 1.6em; letter-spacing: -0.02em; color: #132147; }
+.field-lbl { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.6em; letter-spacing: -0.02em; color: #132147; }
 .field-sub { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #9ca3af; }
 
 /* Input card — same as iw style from step1/2 */
@@ -106,7 +106,7 @@
 }
 .inp-val::placeholder { color: #9ca3af; font-weight: 400; }
 .inp-unit {
-  padding: 12px 14px; background: #f9fafb; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 12px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #6b7280;
+  padding: 12px 14px; background: #f9fafb; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.6em; letter-spacing: -0.02em; color: #6b7280;
   border-left: 1px solid #e5e7eb; flex-shrink: 0;
 }
 
@@ -157,12 +157,12 @@
 
 @media (max-width: 1200px) {
   .step-title { font-size: 1.8rem; }
-  .cf-card-title { font-size: 1.3rem; }
+  h3.cf-card-title { font-size: 1.3rem; }
   .cfs-v { font-size: 1.1rem; }
   .step-sub { font-size: 14px; }
-  .field-lbl { font-size: 12px; }
+  .field-lbl { font-size: 16px; }
   .inp-val { font-size: 14px; }
-  .inp-unit { font-size: 12px; }
+  .inp-unit { font-size: 16px; }
   .inp-sel { font-size: 14px; }
   .prev-val { font-size: 1.3rem; }
   .btn-back, .btn-cont { font-size: 14px; }
@@ -180,7 +180,7 @@
   .logo-wrap { flex-shrink: 0; }
   .panel-logo-img { height: 22px; }
   .cf-card { margin-top: 0; padding: 10px 12px; }
-  .cf-card-title { font-size: 12px; margin-bottom: 3px; }
+  h3.cf-card-title { font-size: 16px; margin-bottom: 3px; }
   .cf-card-sub { display: none; }
   .cf-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
   .cfs { padding: 6px 9px; }
@@ -194,20 +194,21 @@
 
 @media (max-width: 810px) {
   .step-title { font-size: 1.6rem; }
-  .cf-card-title { font-size: 12px; }
+  h3.cf-card-title { font-size: 16px; }
   .cfs-v { font-size: 13px; }
-  .step-sub { font-size: 12px; }
+  .step-sub { font-size: 16px; }
   .loc-pill { padding: 6px 12px; font-size: 11px; }
-  .field-lbl { font-size: 12px; }
-  .inp-val { padding: 10px 12px; font-size: 12px; }
-  .inp-unit { padding: 10px; font-size: 12px; }
-  .inp-sel { padding: 10px 12px; font-size: 12px; }
+  .field-lbl { font-size: 16px; }
+  .inp-val { padding: 10px 12px; font-size: 16px; }
+  .inp-unit { padding: 10px; font-size: 16px; }
+  .inp-sel { padding: 10px 12px; font-size: 16px; }
   .preview-row { grid-template-columns: 1fr; gap: 8px; }
   .prev-val { font-size: 1.2rem; }
-  .btn-back, .btn-cont { padding: 12px; font-size: 12px; }
+  .btn-back, .btn-cont { padding: 12px; font-size: 16px; }
   .actions { gap: 8px; padding-top: 20px; }
   .cf-card { padding: 20px; }
   .cf-title { font-size: 20px; }
   .cf-val { font-size: 18px; }
   .fields-row { grid-template-columns: 1fr; }
 }
+

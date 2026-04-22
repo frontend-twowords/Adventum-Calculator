@@ -31,45 +31,41 @@
   <main class="rp-body">
 
     <!-- KPI cards row -->
-    <div class="rp-kpi-grid">
+    <div class="rp-kpi-row">
 
       <!-- KPI 1: Total Net Cashflow (featured) -->
-      <div class="rp-kpi rp-kpi--featured">
-        <div class="rp-kpi__icon-wrap">
-          <div class="rp-icon-blob1"></div>
-          <div class="rp-icon-blob2"></div>
-          <img src="/assets/11d9fad285ba06a9681023cec70db1a364815571.png" alt="">
+      <div class="rp-kpi rp-kpi-wealth">
+        <div class="rp-kpi-img-wrap">
+          <img class="rp-kpi-img" src="/assets/11d9fad285ba06a9681023cec70db1a364815571.png" alt="">
         </div>
-        <div class="rp-kpi__inner">
-          <div class="rp-kpi__label">Total Net Cashflow</div>
-          <div class="rp-kpi__value rp-kpi__value--blue">£{{totalCashFlow | number:'1.0-0'}}</div>
+        <div class="rp-kpi-text-col">
+          <div class="rp-kpi-lbl">Total Net Cashflow</div>
+          <div class="rp-kpi-val rp-kpi-val--64 rp-kpi-val--blue">£{{totalCashFlow | number:'1.0-0'}}</div>
+          <div class="rp-kpi-note rp-kpi-note--lg">Over investment period</div>
         </div>
       </div>
 
       <!-- KPI 2: Initial Outlay -->
-      <div class="rp-kpi">
-        <div class="rp-kpi__icon-wrap">
-          <div class="rp-icon-blob1"></div>
-          <div class="rp-icon-blob2"></div>
-          <img src="/assets/831e0c53cafecde3e60b81e4eee36c893080e99b.png" alt="">
+      <div class="rp-kpi rp-kpi-plain">
+        <div class="rp-kpi-img-wrap">
+          <img class="rp-kpi-img" src="/assets/831e0c53cafecde3e60b81e4eee36c893080e99b.png" alt="">
         </div>
-        <div class="rp-kpi__inner">
-          <div class="rp-kpi__label">Initial Outlay</div>
-          <div class="rp-kpi__value">£{{initialOutlay | number:'1.0-0'}}</div>
-          <div class="rp-kpi__note">Deposit + SDLT + Fees</div>
+        <div class="rp-kpi-text-col">
+          <div class="rp-kpi-lbl">Initial Outlay</div>
+          <div class="rp-kpi-val rp-kpi-val--64">£{{initialOutlay | number:'1.0-0'}}</div>
+          <div class="rp-kpi-note rp-kpi-note--lg">Deposit + SDLT + Fees</div>
         </div>
       </div>
 
       <!-- KPI 3: Year 1 Net Cashflow -->
-      <div class="rp-kpi">
-        <div class="rp-kpi__icon-wrap">
-          <div class="rp-icon-blob1"></div>
-          <div class="rp-icon-blob2"></div>
-          <img src="/assets/303592f2c41b3425bbcee1b6febcb47dde7edad8.png" alt="">
+      <div class="rp-kpi rp-kpi-plain">
+        <div class="rp-kpi-img-wrap">
+          <img class="rp-kpi-img" src="/assets/303592f2c41b3425bbcee1b6febcb47dde7edad8.png" alt="">
         </div>
-        <div class="rp-kpi__inner">
-          <div class="rp-kpi__label">Year 1 Net Cashflow</div>
-          <div class="rp-kpi__value">£{{cashflowdata[0]?.CashFlow | number:'1.0-0'}}</div>
+        <div class="rp-kpi-text-col">
+          <div class="rp-kpi-lbl">Year 1 Net Cashflow</div>
+          <div class="rp-kpi-val rp-kpi-val--64">£{{cashflowdata[0]?.CashFlow | number:'1.0-0'}}</div>
+          <div class="rp-kpi-note rp-kpi-note--lg">First year net return</div>
         </div>
       </div>
 

@@ -26,47 +26,41 @@
   </div>
 
   <!-- ── KPI Row ── -->
-  <div class="cgr-kpi-row">
+  <div class="rp-kpi-row">
 
     <!-- KPI 1: Total Return % (featured) -->
-    <div class="cgr-kpi cgr-kpi--featured">
-      <div class="cgr-kpi__icon-wrap">
-        <div class="cgr-icon-blob1"></div>
-        <div class="cgr-icon-blob2"></div>
-        <img src="/assets/7c900b49323732ed7b943a957d4c6d2d6807882d.png" alt="">
+    <div class="rp-kpi rp-kpi-wealth">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/7c900b49323732ed7b943a957d4c6d2d6807882d.png" alt="">
       </div>
-      <div class="cgr-kpi__inner">
-        <div class="cgr-kpi-lbl">Total {{calcData?.homecurrencyText}} Return</div>
-        <div class="cgr-kpi-val">{{CaptitalGrowthinHomeCurrencyArray[CaptitalGrowthinHomeCurrencyArray.length-1]?.toFixed(1)}}%</div>
-        <div class="cgr-kpi-note">Over {{investedTenure}} Years</div>
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Total {{calcData?.homecurrencyText}} Return</div>
+        <div class="rp-kpi-val rp-kpi-val--64">{{CaptitalGrowthinHomeCurrencyArray[CaptitalGrowthinHomeCurrencyArray.length-1]?.toFixed(1)}}%</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">Over {{investedTenure}} Years</div>
       </div>
     </div>
 
     <!-- KPI 2: Initial Investment -->
-    <div class="cgr-kpi">
-      <div class="cgr-kpi__icon-wrap">
-        <div class="cgr-icon-blob1"></div>
-        <div class="cgr-icon-blob2"></div>
-        <img src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
+    <div class="rp-kpi rp-kpi-plain">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
       </div>
-      <div class="cgr-kpi__inner">
-        <div class="cgr-kpi-lbl">Initial (GBP)</div>
-        <div class="cgr-kpi-val">{{propertyValue | currency:'GBP':'symbol':'1.0-0'}}</div>
-        <div class="cgr-kpi-note">{{formatCurrency(propertyValueHomeCurrency, calcData?.homecurrencyText)}}</div>
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Initial (GBP)</div>
+        <div class="rp-kpi-val rp-kpi-val--64">{{propertyValue | currency:'GBP':'symbol':'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">{{formatCurrency(propertyValueHomeCurrency, calcData?.homecurrencyText)}}</div>
       </div>
     </div>
 
     <!-- KPI 3: Exit Value -->
-    <div class="cgr-kpi">
-      <div class="cgr-kpi__icon-wrap">
-        <div class="cgr-icon-blob1"></div>
-        <div class="cgr-icon-blob2"></div>
-        <img src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
+    <div class="rp-kpi rp-kpi-plain">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/02865e515a68234b6da6ed9c0adb3c6fa9ff612f.png" alt="">
       </div>
-      <div class="cgr-kpi__inner">
-        <div class="cgr-kpi-lbl">Exit (GBP)</div>
-        <div class="cgr-kpi-val">{{calculatedCapitalGrowth | currency:'GBP':'symbol':'1.0-0'}}</div>
-        <div class="cgr-kpi-note">{{formatCurrency(CaptitalGrowthinHomeCurrency, calcData?.homecurrencyText)}}</div>
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Exit (GBP)</div>
+        <div class="rp-kpi-val rp-kpi-val--64">{{calculatedCapitalGrowth | currency:'GBP':'symbol':'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">{{formatCurrency(CaptitalGrowthinHomeCurrency, calcData?.homecurrencyText)}}</div>
       </div>
     </div>
 

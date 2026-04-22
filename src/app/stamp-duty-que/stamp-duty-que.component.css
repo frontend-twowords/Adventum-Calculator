@@ -1,4 +1,4 @@
-/* ===== SDLT Two-Panel Layout ===== */
+﻿/* ===== SDLT Two-Panel Layout ===== */
 :host { display: block; height: 100vh; overflow: hidden; }
 
 .sdlt-page {
@@ -72,16 +72,16 @@
   margin-top: auto;
   backdrop-filter: blur(12px);
 }
-.sdlt-card-title {
+h3.sdlt-card-title {
   font-family: 'Inter Display', 'Inter', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: #fff;
   margin: 0 0 4px;
 }
-.sdlt-card-title strong { font-weight: 700; }
+h3.sdlt-card-title strong { font-weight: 400; }
 .sdlt-card-sub {
-  font-size: 12px;
+  font-size: 16px;
   color: rgba(255,255,255,0.45);
   margin: 0 0 20px;
 }
@@ -163,7 +163,7 @@
   padding: 8px 16px;
   border: 1.5px solid #e5e7eb;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
 }
@@ -206,7 +206,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
   margin-bottom: 8px;
@@ -440,7 +440,7 @@
     margin-top: 0; padding: 10px 12px;
     display: flex; flex-direction: column;
   }
-  .sdlt-card-title { font-size: 12px; margin: 0 0 4px; }
+  h3.sdlt-card-title { font-size: 16px; margin: 0 0 4px; }
   .sdlt-card-sub { display: none; }
   .sdlt-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
   .sdlt-stat { padding: 7px 9px; }
@@ -454,11 +454,11 @@
 @media (max-width: 810px) {
   .sdlt-title { font-size: 1.3rem; }
   .sdlt-subtitle { font-size: 14px; }
-  .sdlt-label { font-size: 12px; }
+  .sdlt-label { font-size: 16px; }
   .sdlt-inp, .sdlt-input-pre { font-size: 14px; padding: 10px 14px; }
   .sdlt-toggle-btn { padding: 10px; font-size: 14px; }
   .sdlt-btn-back, .sdlt-btn-continue { font-size: 14px; }
-  .sdlt-location-pill { padding: 6px 12px; font-size: 12px; }
+  .sdlt-location-pill { padding: 6px 12px; font-size: 16px; }
 }
 
 @media (min-width: 810px) {

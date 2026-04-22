@@ -1,4 +1,4 @@
-/* ===== EWR Two-Panel Layout ===== */
+﻿/* ===== EWR Two-Panel Layout ===== */
 :host { display: block; height: 100vh; overflow: hidden; }
 
 .ewr-page {
@@ -85,17 +85,18 @@
   flex-direction: column;
   gap: 8px;
 }
-.ewr-rent-title {
+h3.ewr-rent-title {
   font-family: 'Inter Display', 'Inter', sans-serif;
   font-size: 1.5rem;
+  font-weight: 400;
   line-height: 1.3;
   color: #fff;
   margin: 0;
 }
-.ewr-rent-title-light { font-weight: 300; }
-.ewr-rent-title-bold  { font-weight: 700; }
+.ewr-rent-title-light { font-weight: 400; }
+.ewr-rent-title-bold  { font-weight: 400; }
 .ewr-rent-sub {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   color: rgba(255,255,255,0.55);
   margin: 0;
@@ -182,7 +183,7 @@
   padding: 8px 16px;
   border: 1.5px solid #e5e7eb;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
 }
@@ -205,7 +206,7 @@
 
 /* Section Label */
 .ewr-sec-label {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -219,7 +220,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
   margin-bottom: 8px;
@@ -264,7 +265,7 @@
 .ewr-input-suf {
   padding: 13px 14px;
   background: #f9fafb;
-  font-size: 12px;
+  font-size: 16px;
   color: #6b7280;
   border-left: 1px solid #e5e7eb;
   flex-shrink: 0;
@@ -386,7 +387,7 @@
 .ewr-custom-option--selected .ewr-cdd-code { color: #16a34a; }
 .ewr-cdd-name { font-size: 14px; font-weight: 500; color: #132147; }
 .ewr-cdd-code {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #9ca3af;
   background: #f3f4f6;
@@ -463,7 +464,7 @@
     display: flex; flex-direction: column;
   }
   .ewr-rent-heading { margin-bottom: 4px; }
-  .ewr-rent-title { font-size: 13px; }
+  h3.ewr-rent-title { font-size: 13px; }
   .ewr-rent-sub { display: none; }
   .ewr-rent-stats { grid-template-columns: 1fr 1fr; gap: 5px; }
   .ewr-rs { padding: 7px 9px; gap: 4px; }
@@ -477,12 +478,12 @@
 @media (max-width: 810px) {
   .ewr-title { font-size: 1.3rem; }
   .ewr-subtitle { font-size: 14px; }
-  .ewr-label { font-size: 12px; }
+  .ewr-label { font-size: 16px; }
   .ewr-inp, .ewr-input-pre { font-size: 14px; padding: 10px 14px; }
   .ewr-mode-btn { font-size: 14px; padding: 10px; }
   .ewr-btn-back, .ewr-btn-continue { font-size: 14px; }
   .ewr-topbar { margin-bottom: 16px; }
-  .ewr-location-pill { padding: 6px 12px; font-size: 12px; }
+  .ewr-location-pill { padding: 6px 12px; font-size: 16px; }
 }
 
 @media (min-width: 810px) {

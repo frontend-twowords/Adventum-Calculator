@@ -13,7 +13,7 @@
 
       <!-- Live FX card -->
       <div class="pfx-card">
-        <h3 class="pfx-card-title">Project Your <strong>FX Returns</strong></h3>
+        <h3 class="pfx-card-title">Project Your FX Returns</h3>
         <p class="pfx-card-sub">Currency appreciation adds a powerful dimension to your returns.</p>
         <div class="pfx-stats">
           <div class="pfx-stat">
@@ -72,8 +72,8 @@
         </div>
       </div>
 
-      <!-- Home Currency (foreign buyers only) -->
-      <div class="pfx-field" *ngIf="foreignbuyer==='1'">
+      <!-- Home Currency -->
+      <div class="pfx-field">
         <div class="pfx-label">Home Currency</div>
         <div class="pfx-custom-select" [class.pfx-custom-select--open]="currencyDropdownOpen">
           <button type="button" class="pfx-custom-trigger" (click)="currencyDropdownOpen=!currencyDropdownOpen">
@@ -101,8 +101,8 @@
         </div>
       </div>
 
-      <!-- FX Rate (foreign buyers only) -->
-      <div class="pfx-field" *ngIf="foreignbuyer==='1' && selectedCurrencyCode">
+      <!-- FX Rate -->
+      <div class="pfx-field" *ngIf="selectedCurrencyCode">
         <div class="pfx-label">FX Rate (1 GBP)</div>
         <div class="pfx-input-wrap">
           <input class="pfx-inp" type="number" autocomplete="off"

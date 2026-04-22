@@ -1,4 +1,4 @@
-/* ===== PFX Two-Panel Layout ===== */
+﻿/* ===== PFX Two-Panel Layout ===== */
 :host { display: block; height: 100vh; overflow: hidden; }
 
 .pfx-page {
@@ -74,16 +74,16 @@
   margin-top: auto;
   backdrop-filter: blur(12px);
 }
-.pfx-card-title {
+h3.pfx-card-title {
   font-family: 'Inter Display', 'Inter', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: #fff;
   margin: 0 0 4px;
 }
-.pfx-card-title strong { font-weight: 700; }
+h3.pfx-card-title strong { font-weight: 400; }
 .pfx-card-sub {
-  font-size: 12px;
+  font-size: 16px;
   color: rgba(255,255,255,0.45);
   margin: 0 0 20px;
 }
@@ -160,7 +160,7 @@
   padding: 8px 16px;
   border: 1.5px solid #e5e7eb;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
 }
@@ -183,7 +183,7 @@
 
 /* Section label */
 .pfx-sec-label {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -203,7 +203,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   color: #132147;
   margin-bottom: 8px;
@@ -262,7 +262,7 @@
 .pfx-input-suf {
   padding: 13px 14px;
   background: #f9fafb;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #6b7280;
   border-left: 1px solid #e5e7eb;
@@ -363,7 +363,7 @@
 .pfx-custom-item--selected .pfx-cdd-code { color: #16a34a; }
 .pfx-cdd-name { font-size: 14px; font-weight: 500; color: #132147; }
 .pfx-cdd-code {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #9ca3af;
   background: #f3f4f6;
@@ -389,7 +389,7 @@
   border-radius: 50px;
   background: #fff;
   color: #6b7280;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   font-family: 'Inter Display', 'Inter', sans-serif;
@@ -465,7 +465,7 @@
     margin-top: 0;
     display: flex; flex-direction: column;
   }
-  .pfx-card-title { font-size: 13px; margin: 0 0 4px; }
+  h3.pfx-card-title { font-size: 13px; margin: 0 0 4px; }
   .pfx-card-sub { display: none; }
   .pfx-stats { grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
   .pfx-stat { padding: 7px 9px; }
@@ -480,12 +480,12 @@
 @media (max-width: 810px) {
   .pfx-title { font-size: 1.3rem; }
   .pfx-subtitle { font-size: 14px; }
-  .pfx-label { font-size: 12px; }
+  .pfx-label { font-size: 16px; }
   .pfx-inp, .pfx-input-pre { font-size: 14px; padding: 10px 14px; }
-  .pfx-period-btn { font-size: 12px; padding: 8px 16px; }
+  .pfx-period-btn { font-size: 16px; padding: 8px 16px; }
   .pfx-btn-back, .pfx-btn-continue { font-size: 14px; }
   .pfx-topbar { margin-bottom: 16px; }
-  .pfx-location-pill { padding: 6px 12px; font-size: 12px; }
+  .pfx-location-pill { padding: 6px 12px; font-size: 16px; }
 }
 
 @media (min-width: 810px) {

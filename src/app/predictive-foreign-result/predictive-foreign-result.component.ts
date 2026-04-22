@@ -150,6 +150,17 @@ export class PredictiveForeignResultComponent implements OnInit, AfterViewInit {
     return sym + val.toLocaleString('en-GB', { maximumFractionDigits: 0 });
   }
 
+  formatHomeCurrencyFull(val: number): string {
+    if (!val && val !== 0) { return '0'; }
+    const code = this.calcData?.homecurrencyText || '';
+    const sym = this.SYMBOLS[code] || code + ' ';
+    const abs = Math.abs(val);
+    const formatted = code === 'INR'
+      ? Math.round(abs).toLocaleString('en-IN')
+      : Math.round(abs).toLocaleString('en-GB');
+    return (val < 0 ? '-' : '') + sym + formatted;
+  }
+
   startagain(): void {
     localStorage.removeItem('calcData');
     this.router.navigate(['/']);

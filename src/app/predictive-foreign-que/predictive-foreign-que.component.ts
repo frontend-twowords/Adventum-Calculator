@@ -62,14 +62,12 @@ export class PredictiveForeignQueComponent implements OnInit {
       this.investedTenure = +this.calcData.investedTenure;
     }
     this.foreignbuyer = this.calcData?.ForeignBuyer || '';
-    if (this.foreignbuyer !== '1') {
-      const gbp = this.currencies.find(c => c.code === 'GBP');
-      if (gbp) {
-        this.selectedCurrencyCode = gbp.code;
-        this.selectedCurrencyName = gbp.name;
-        this.selectedCurrencySymbol = gbp.sym;
-        this.homecurrency = gbp.rate;
-      }
+    if (!this.selectedCurrencyCode) {
+      const gbp = this.currencies.find(c => c.code === 'GBP')!;
+      this.selectedCurrencyCode = gbp.code;
+      this.selectedCurrencyName = gbp.name;
+      this.selectedCurrencySymbol = gbp.sym;
+      this.homecurrency = gbp.rate;
     }
 
     // Pre-fill defaults if not already set
@@ -156,7 +154,7 @@ export class PredictiveForeignQueComponent implements OnInit {
       this.selectedCurrencyCode = found.code;
       this.selectedCurrencyName = found.name;
       this.selectedCurrencySymbol = found.sym;
-      this.homecurrency = found.rate;
+      this.homecurrency = parseFloat(found.rate.toFixed(1));
       this.currencyDropdownOpen = false;
       this.currencySearch = '';
       this.fetchLiveRate(found.code);
@@ -175,7 +173,7 @@ export class PredictiveForeignQueComponent implements OnInit {
         if (data?.result === 'success' && data.rates) {
           const hcRate = data.rates[code];
           if (hcRate) {
-            this.homecurrency = parseFloat(hcRate.toFixed(4));
+            this.homecurrency = parseFloat(hcRate.toFixed(1));
             this.calcLive();
           }
         }
@@ -198,20 +196,15 @@ export class PredictiveForeignQueComponent implements OnInit {
       flag = false;
     }
 
-    if (this.foreignbuyer !== '1') {
-      this.calcData.homecurrencyText = 'GBP';
-      this.calcData.homecurrency = 1;
+    if (this.selectedCurrencyCode) {
+      this.calcData.homecurrencyText = this.selectedCurrencyCode;
     } else {
-      if (this.selectedCurrencyCode) {
-        this.calcData.homecurrencyText = this.selectedCurrencyCode;
-      } else {
-        flag = false;
-      }
-      if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
-        this.calcData.homecurrency = this.homecurrency;
-      } else {
-        flag = false;
-      }
+      flag = false;
+    }
+    if (!this.dataService.EmptyNullOrUndefined(this.homecurrency)) {
+      this.calcData.homecurrency = this.homecurrency;
+    } else {
+      flag = false;
     }
 
     if (!this.dataService.EmptyNullOrUndefined(this.FXGrowth)) {

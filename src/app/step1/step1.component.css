@@ -1,4 +1,4 @@
-/* PROPERTY SELECT PAGE LAYOUT */
+﻿/* PROPERTY SELECT PAGE LAYOUT */
 .property-select-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -40,9 +40,9 @@
   background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
   border-radius: 16px; padding: 28px; margin-top: auto; backdrop-filter: blur(10px);
 }
-.panel-hero-title { font-size: 1.5rem; font-weight: 300; color: #ffffff; line-height: 1.3; margin-bottom: 8px; font-family: 'Inter Display', 'Inter', sans-serif; }
-.panel-hero-title strong { font-weight: 700; }
-.panel-hero-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.6; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
+h3.panel-hero-title { font-size: 1.5rem; font-weight: 400; color: #ffffff; line-height: 1.3; margin-bottom: 8px; font-family: 'Inter Display', 'Inter', sans-serif; }
+h3.panel-hero-title strong { font-weight: 400; }
+.panel-hero-sub { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.6; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 .panel-stats { display: flex; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px; }
 .panel-stat { flex: 1; text-align: center; }
 .panel-stat + .panel-stat { border-left: 1px solid rgba(255,255,255,0.12); }
@@ -70,7 +70,7 @@
 .location-pill {
   display: flex; align-items: center; gap: 6px;
   border: 1px solid #e5e7eb; border-radius: 50px;
-  padding: 8px 16px; font-size: 12px; font-weight: 500; color: #132147;
+  padding: 8px 16px; font-size: 16px; font-weight: 500; color: #132147;
   font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em;
 }
 
@@ -100,12 +100,12 @@
 .search-input:focus { border-color: #132147; }
 
 /* Area chips */
-.popular-label { font-size: 12px; color: #9ca3af; margin-bottom: 10px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
+.popular-label { font-size: 16px; color: #9ca3af; margin-bottom: 10px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 .area-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .area-chip {
   padding: 9px 18px; border-radius: 50px;
   border: 1.5px solid #e5e7eb; background: #ffffff;
-  font-size: 12px; font-weight: 500; color: #6b7280;
+  font-size: 16px; font-weight: 500; color: #6b7280;
   cursor: pointer; font-family: 'Inter Display', 'Inter', sans-serif;
   transition: all 0.2s; float: none; width: auto;
 }
@@ -119,7 +119,7 @@
 }
 .city-card-info { flex: 1; min-width: 0; }
 .city-card-name { font-size: 1.2rem; font-weight: 700; color: #ffffff; margin-bottom: 3px; font-family: 'Inter Display', 'Inter', sans-serif; }
-.city-card-desc { font-size: 12px; color: rgba(255,255,255,0.6); font-family: 'Inter Display', 'Inter', sans-serif; }
+.city-card-desc { font-size: 16px; color: rgba(255,255,255,0.6); font-family: 'Inter Display', 'Inter', sans-serif; }
 .city-card-stats { display: flex; flex-shrink: 0; }
 .city-stat { text-align: center; padding: 0 14px; border-left: 1px solid rgba(255,255,255,0.15); }
 .city-stat-val { font-size: 16px; font-weight: 700; color: #ffffff; font-family: 'Inter Display', 'Inter', sans-serif; }
@@ -130,11 +130,11 @@
   border: 1.5px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 20px;
 }
 .buyer-card-title { font-size: 1.0rem; font-weight: 600; color: #132147; margin-bottom: 3px; font-family: 'Inter Display', 'Inter', sans-serif; line-height: 1.4em; }
-.buyer-card-sub { font-size: 12px; color: #9ca3af; margin-bottom: 16px; font-family: 'Inter Display', 'Inter', sans-serif; }
+.buyer-card-sub { font-size: 16px; color: #9ca3af; margin-bottom: 16px; font-family: 'Inter Display', 'Inter', sans-serif; }
 .buyer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .buyer-row-labels { flex: 1; min-width: 160px; }
 .buyer-row-label-main { font-size: 1.0rem; font-weight: 500; color: #132147; font-family: 'Inter Display', 'Inter', sans-serif; line-height: 1.4em; }
-.buyer-row-label-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
+.buyer-row-label-sub { font-size: 16px; color: #9ca3af; margin-top: 2px; font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
 
 /* Toggle pair */
 .toggle-pair { display: flex; border: 1.5px solid #e5e7eb; border-radius: 12px; overflow: hidden; flex-shrink: 0; }
@@ -187,7 +187,7 @@
     padding: 10px 12px; margin-top: 0;
     display: flex; flex-direction: column;
   }
-  .panel-hero-title { font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
+  h3.panel-hero-title { font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
   .panel-hero-sub { margin-bottom: 8px; font-size: 11px; line-height: 1.3; }
   .panel-stats { padding-top: 8px; align-items: center; }
   .panel-stat-val { font-size: 14px; }
@@ -201,13 +201,13 @@
 @media (max-width: 810px) {
   .panel-topbar { margin-bottom: 16px; }
   .section-title { font-size: 1.6rem; }
-  .section-sub { font-size: 12px; margin-bottom: 16px; }
+  .section-sub { font-size: 16px; margin-bottom: 16px; }
   .search-input { padding: 11px 16px 11px 40px; font-size: 14px; }
-  .area-chip { padding: 7px 14px; font-size: 12px; }
+  .area-chip { padding: 7px 14px; font-size: 16px; }
   .panel-nav { gap: 8px; padding-top: 20px; }
   .btn-back-outline, .btn-continue { padding: 12px; font-size: 14px; }
   .toggle-opt { padding: 10px 14px; font-size: 14px; }
-  .location-pill { padding: 6px 12px; font-size: 12px; }
+  .location-pill { padding: 6px 12px; font-size: 16px; }
 }
 
 @media (min-width: 810px) {

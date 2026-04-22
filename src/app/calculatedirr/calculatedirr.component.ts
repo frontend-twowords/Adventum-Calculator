@@ -353,21 +353,36 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
             const x2 = model.x + cosA * (outerR + 12);
             const y2 = model.y + sinA * (outerR + 12);
             const tickLen = 10;
-            const x3 = x2 + (cosA >= 0 ? tickLen : -tickLen);
+            let x3 = x2 + (cosA >= 0 ? tickLen : -tickLen);
             const y3 = y2;
+            // Measure text and clamp x3 so label stays fully within canvas
+            ctx2.font = `600 ${pctSize}px Inter, sans-serif`;
+            const textW = ctx2.measureText(pct).width;
+            const margin = 6;
+            const logicalW = chart.width;
+            if (cosA < 0) {
+              // left side: right-aligned, left edge = x3 - 5 - textW
+              const minX3 = margin + textW + 5;
+              if (x3 < minX3) x3 = minX3;
+            } else {
+              // right side: left-aligned, right edge = x3 + 5 + textW
+              const maxX3 = logicalW - margin - textW - 5;
+              if (x3 > maxX3) x3 = maxX3;
+            }
+            const yTextOffset = sinA > 0 ? pctSize * 0.9 : -pctSize * 0.9;
+            const textY = y3 + yTextOffset;
             ctx2.save();
             ctx2.strokeStyle = 'rgba(255,255,255,0.35)';
             ctx2.lineWidth = 1;
             ctx2.beginPath();
             ctx2.moveTo(x1, y1);
             ctx2.lineTo(x2, y2);
-            ctx2.lineTo(x3, y3);
+            ctx2.lineTo(x3, textY);
             ctx2.stroke();
-            ctx2.font = `600 ${pctSize}px Inter, sans-serif`;
             ctx2.fillStyle = '#ffffff';
             ctx2.textAlign = cosA >= 0 ? 'left' : 'right';
             ctx2.textBaseline = 'middle';
-            ctx2.fillText(pct, x3 + (cosA >= 0 ? 5 : -5), y3);
+            ctx2.fillText(pct, x3 + (cosA >= 0 ? 5 : -5), textY);
             ctx2.restore();
           });
         });
@@ -376,6 +391,10 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
 
     const ctxpie = $('#can')[0].getContext('2d');
     const fxGrowth = this.TotalReturnOfInvestment - this.RentalIncome - this.capitalAppreciation;
+    const isSmallScreen = window.innerWidth <= 810;
+    const chartPadding = isSmallScreen
+      ? { top: 40, right: 40, bottom: 40, left: 40 }
+      : { top: 60, right: 60, bottom: 60, left: 60 };
     var myPieChart = new Chart(ctxpie, {
       type: 'doughnut',
       data: {
@@ -399,7 +418,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
         centerLabel: 'Total Profit',
         centerValue: this.formatCurrency(this.TotalReturnOfInvestment, this.homecurrencyText),
         centerCurrency: this.homecurrencyText,
-        layout: { padding: { top: 70, right: 70, bottom: 70, left: 110 } },
+        layout: { padding: chartPadding },
         legend: { display: false },
         tooltips: {
           backgroundColor: '#132147',
@@ -445,7 +464,7 @@ export class CalculatedirrComponent implements OnInit, AfterViewInit {
           centerLabel: 'Total Profit',
           centerValue: this.formatCurrency(this.TotalReturnInGBP, 'GBP'),
           centerCurrency: 'GBP',
-          layout: { padding: { top: 70, right: 70, bottom: 70, left: 110 } },
+          layout: { padding: chartPadding },
           legend: { display: false },
           tooltips: {
             backgroundColor: '#132147',

@@ -29,40 +29,34 @@
 
     <!-- Exit value (featured) -->
     <div class="pfxr-kpi pfxr-kpi--feat">
-      <div class="pfxr-kpi__icon-wrap">
-        <div class="pfxr-icon-blob1"></div>
-        <div class="pfxr-icon-blob2"></div>
-        <img src="/assets/e8b22e177f552a6f434e1c1fec7ee7376aa4fca6.png" alt="Exit Value">
+      <div class="pfxr-kpi-img-wrap">
+        <img class="pfxr-kpi-img" src="/assets/e8b22e177f552a6f434e1c1fec7ee7376aa4fca6.png" alt="Exit Value">
       </div>
-      <div class="pfxr-kpi__inner">
+      <div class="pfxr-kpi-text-col">
         <div class="pfxr-kpi-lbl">Exit ({{calcData?.homecurrencyText}})</div>
-        <div class="pfxr-kpi-val">{{formatHomeCurrency(exitValueHome)}}</div>
+        <div class="pfxr-kpi-val">{{formatHomeCurrencyFull(exitValueHome)}}</div>
         <div class="pfxr-kpi-note">Projected exit value</div>
       </div>
     </div>
 
     <!-- Initial value -->
-    <div class="pfxr-kpi">
-      <div class="pfxr-kpi__icon-wrap">
-        <div class="pfxr-icon-blob1"></div>
-        <div class="pfxr-icon-blob2"></div>
-        <img src="/assets/7aa8dbcb61a7c07c2f2a7ed6c6980b0d7de55599 (1).png" alt="Initial Value">
+    <div class="pfxr-kpi pfxr-kpi--plain">
+      <div class="pfxr-kpi-img-wrap">
+        <img class="pfxr-kpi-img" src="/assets/7aa8dbcb61a7c07c2f2a7ed6c6980b0d7de55599 (1).png" alt="Initial Value">
       </div>
-      <div class="pfxr-kpi__inner">
+      <div class="pfxr-kpi-text-col">
         <div class="pfxr-kpi-lbl">Initial ({{calcData?.homecurrencyText}})</div>
-        <div class="pfxr-kpi-val">{{formatHomeCurrency(initialValueHome)}}</div>
+        <div class="pfxr-kpi-val">{{formatHomeCurrencyFull(initialValueHome)}}</div>
         <div class="pfxr-kpi-note">Current value in home currency</div>
       </div>
     </div>
 
     <!-- FX-Only Growth % -->
-    <div class="pfxr-kpi">
-      <div class="pfxr-kpi__icon-wrap">
-        <div class="pfxr-icon-blob1"></div>
-        <div class="pfxr-icon-blob2"></div>
-        <img src="/assets/7c9f4b3024f2562f5ca2ecd7ac6e5b00e60e5781.png" alt="FX Growth">
+    <div class="pfxr-kpi pfxr-kpi--plain">
+      <div class="pfxr-kpi-img-wrap">
+        <img class="pfxr-kpi-img" src="/assets/7c9f4b3024f2562f5ca2ecd7ac6e5b00e60e5781.png" alt="FX Growth">
       </div>
-      <div class="pfxr-kpi__inner">
+      <div class="pfxr-kpi-text-col">
         <div class="pfxr-kpi-lbl">FX-Only Growth</div>
         <div class="pfxr-kpi-val">{{fxOnlyGrowthPct | number:'1.1-1'}}%</div>
         <div class="pfxr-kpi-note">Over {{calcData?.investedTenure}} Years</div>
@@ -84,7 +78,7 @@
       </div>
       <div class="pfxr-arow">
         <span class="pfxr-arow-lbl">FX Rate</span>
-        <span class="pfxr-arow-val">{{calcData?.homecurrencyText}} @ {{calcData?.homecurrency | number:'1.2-2'}}</span>
+        <span class="pfxr-arow-val">{{calcData?.homecurrencyText}} @ {{calcData?.homecurrency | number:'1.0-4'}}</span>
       </div>
       <div class="pfxr-arow">
         <span class="pfxr-arow-lbl">Growth</span>
@@ -121,7 +115,7 @@
           <tbody>
             <tr *ngFor="let row of yearlyRows">
               <td style="color:#fff;font-weight:600">{{row.year}}</td>
-              <td>{{row.rate | number:'1.2-2'}}</td>
+              <td>{{row.rate | number:'1.0-4'}}</td>
               <td >{{formatHomeCurrency(row.value)}}</td>
               <td class="pfxr-td-highlight">+{{row.growthPct | number:'1.1-1'}}%</td>
             </tr>

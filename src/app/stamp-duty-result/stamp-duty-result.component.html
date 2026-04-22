@@ -25,29 +25,29 @@
   </div>
 
   <!-- ══ KPI CARDS — 2 columns ══ -->
-  <div class="sdlt-kpi-row">
+  <div class="rp-kpi-row rp-kpi-row--2col">
 
     <!-- Total SDLT (featured) -->
-    <div class="sdlt-kpi sdlt-kpi--feat">
-      <div class="sdlt-kpi-icon">
-        <img src="/assets/SDLT - 1.png" alt="Total SDLT">
+    <div class="rp-kpi rp-kpi-wealth">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/SDLT - 1.png" alt="Total SDLT">
       </div>
-      <div class="sdlt-kpi-inner">
-        <div class="sdlt-kpi-lbl">Total SDLT Payable</div>
-        <div class="sdlt-kpi-val sdlt-kpi-val--blue">£{{stampDutyLandTax | number:'1.0-0'}}</div>
-        <div class="sdlt-kpi-note">{{purchaseTypeLabel}}</div>
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Total SDLT Payable</div>
+        <div class="rp-kpi-val rp-kpi-val--64 rp-kpi-val--blue">£{{stampDutyLandTax | number:'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">{{purchaseTypeLabel}}</div>
       </div>
     </div>
 
     <!-- Effective Tax Rate -->
-    <div class="sdlt-kpi">
-      <div class="sdlt-kpi-icon">
-        <img src="/assets/SDLT -2.png" alt="Effective Rate" class="sdlt-kpi-icon-lg">
+    <div class="rp-kpi rp-kpi-plain">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/SDLT -2.png" alt="Effective Rate">
       </div>
-      <div class="sdlt-kpi-inner">
-        <div class="sdlt-kpi-lbl">Effective Tax Rate</div>
-        <div class="sdlt-kpi-val">{{effectiveRate}}%</div>
-        <div class="sdlt-kpi-note">On £{{calcData?.PropertyValue | number:'1.0-0'}} property</div>
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Effective Tax Rate</div>
+        <div class="rp-kpi-val rp-kpi-val--64">{{effectiveRate}}%</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">On £{{calcData?.PropertyValue | number:'1.0-0'}} property</div>
       </div>
     </div>
 

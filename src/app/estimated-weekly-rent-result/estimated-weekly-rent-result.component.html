@@ -25,19 +25,17 @@
   </div>
 
   <!-- ══ KPI CARDS — 3 columns ══ -->
-  <div class="ewr-rp-kpi-row">
+  <div class="rp-kpi-row">
 
     <!-- Annual Rent -->
-    <div class="ewr-rp-kpi ewr-rp-kpi--feat">
-      <div class="ewr-rp-kpi__icon-wrap">
-        <div class="ewr-icon-blob1"></div>
-        <div class="ewr-icon-blob2"></div>
-        <img src="/assets/image 19-2.png" alt="Annual Rent">
+    <div class="rp-kpi rp-kpi-wealth">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/image 19-2.png" alt="Annual Rent">
       </div>
-      <div class="ewr-rp-kpi__inner">
-        <div class="ewr-rp-kpi-lbl">Annual Rent</div>
-        <div class="ewr-rp-kpi-val">£{{annualGBP | number:'1.0-0'}}</div>
-        <div class="ewr-rp-kpi-note">
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Annual Rent</div>
+        <div class="rp-kpi-val rp-kpi-val--64">£{{annualGBP | number:'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">
           <span *ngIf="homeCurrencyCode==='INR'">₹{{annualHomeFmt}}</span>
           <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{annualHome | number:'1.0-0'}}</span>
         </div>
@@ -45,16 +43,14 @@
     </div>
 
     <!-- Weekly Rent -->
-    <div class="ewr-rp-kpi">
-      <div class="ewr-rp-kpi__icon-wrap">
-        <div class="ewr-icon-blob1"></div>
-        <div class="ewr-icon-blob2"></div>
-        <img src="/assets/image 19-1.png" alt="Weekly Rent">
+    <div class="rp-kpi rp-kpi-plain">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/image 19-1.png" alt="Weekly Rent">
       </div>
-      <div class="ewr-rp-kpi__inner">
-        <div class="ewr-rp-kpi-lbl">Weekly Rent</div>
-        <div class="ewr-rp-kpi-val">£{{weeklyGBP | number:'1.0-0'}}</div>
-        <div class="ewr-rp-kpi-note">
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Weekly Rent</div>
+        <div class="rp-kpi-val rp-kpi-val--64">£{{weeklyGBP | number:'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">
           <span *ngIf="homeCurrencyCode==='INR'">₹{{weeklyHomeFmt}}</span>
           <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{weeklyHome | number:'1.0-0'}}</span>
         </div>
@@ -62,16 +58,14 @@
     </div>
 
     <!-- Monthly Rent -->
-    <div class="ewr-rp-kpi">
-      <div class="ewr-rp-kpi__icon-wrap">
-        <div class="ewr-icon-blob1"></div>
-        <div class="ewr-icon-blob2"></div>
-        <img src="/assets/image 19.png" alt="Monthly Rent">
+    <div class="rp-kpi rp-kpi-plain">
+      <div class="rp-kpi-img-wrap">
+        <img class="rp-kpi-img" src="/assets/image 19.png" alt="Monthly Rent">
       </div>
-      <div class="ewr-rp-kpi__inner">
-        <div class="ewr-rp-kpi-lbl">Monthly Rent</div>
-        <div class="ewr-rp-kpi-val">£{{monthlyGBP | number:'1.0-0'}}</div>
-        <div class="ewr-rp-kpi-note">
+      <div class="rp-kpi-text-col">
+        <div class="rp-kpi-lbl">Monthly Rent</div>
+        <div class="rp-kpi-val rp-kpi-val--64">£{{monthlyGBP | number:'1.0-0'}}</div>
+        <div class="rp-kpi-note rp-kpi-note--lg">
           <span *ngIf="homeCurrencyCode==='INR'">₹{{monthlyHomeFmt}}</span>
           <span *ngIf="homeCurrencyCode && homeCurrencyCode!=='INR'">{{homeCurrencyCode}} {{monthlyHome | number:'1.0-0'}}</span>
         </div>
